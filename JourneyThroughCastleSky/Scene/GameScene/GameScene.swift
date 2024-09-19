@@ -194,6 +194,7 @@ class GameScene: SKScene {
                 
         // Centraliza o inventário na tela
         inventory.position = .zero//CGPoint(x: size.width / 2, y: size.height / 2)
+        inventory.name = "inventory"
                 
         // Adiciona o inventário à cena
         cameraNode.addChild(inventory)
@@ -213,7 +214,6 @@ class GameScene: SKScene {
         var reference = -100
         User.singleton.inventoryComponent.itens.forEach({ item in
             let node = item.spriteComponent.sprite
-            node.setScale(0.2)
             node.scale(to: CGSize(width: 100, height: 100))
             node.position = .zero
             node.position.x += CGFloat(reference)
@@ -235,7 +235,7 @@ class GameScene: SKScene {
         
         
         if clickedNode.name == "buttonInventory" {
-            itemSystem.openInventory()
+            self.itemSystem.inventoryButtonPressed()
         }
     }
 }

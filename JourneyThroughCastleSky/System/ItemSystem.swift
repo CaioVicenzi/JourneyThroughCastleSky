@@ -9,21 +9,20 @@ import Foundation
 
 class ItemSystem {
     var gameScene : GameScene!
+    var isInventoryOpen : Bool = false
     
     func config (_ gameScene : GameScene) {
         self.gameScene = gameScene
     }
     
-    func openInventory () {
-        if let inventory = gameScene.inventory {
-            if inventory.parent != nil {
-                inventory.removeFromParent()
-            } else {
-                gameScene.setupInventory()
-            }
+    func inventoryButtonPressed () {
+        if isInventoryOpen {
+            gameScene.inventory?.removeFromParent()
         } else {
             gameScene.setupInventory()
         }
+        
+        isInventoryOpen.toggle()
     }
     
     func catchItem (){
@@ -39,12 +38,23 @@ class ItemSystem {
     private func catchItem (_ item : Item) {
         // função para adicionar o balão ao inventário do usuário.
         item.spriteComponent.sprite.removeFromParent()
-        item.positionComponent.yPosition = 4000
+        
+        //item.positionComponent.yPosition = 4000
         gameScene.buttonCatch?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
     }
     
     private func verifyItemIsNear (_ item : Item) -> Bool {
+        print(User.singleton.inventoryComponent.itens)
+        
+        if item.spriteComponent.sprite.parent == nil {
+            return false
+        }
+        
+        if item.spriteComponent.sprite.parent?.name == "inventory" {
+            return false
+        }
+        
         let xPlayer = User.singleton.positionComponent.xPosition
         let yPlayer = User.singleton.positionComponent.yPosition
         

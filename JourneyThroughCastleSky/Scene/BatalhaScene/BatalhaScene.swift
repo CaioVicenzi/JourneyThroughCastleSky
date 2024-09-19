@@ -314,7 +314,7 @@ class BatalhaScene : SKScene {
         var itemNumber : Int = 0
         
         // SEGUNDO PASSO: ADICIONAR OS ITENS NA TELA
-        User.singleton.inventoryComponent.itens.forEach { item in
+        User.singleton.inventoryComponent.itens.forEach { item in            
             let quadrado = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonAttack), size: CGSize(width: 100, height: 50)))
             quadrado.position.x += CGFloat(referencia)
             quadrado.fillColor = .gray
