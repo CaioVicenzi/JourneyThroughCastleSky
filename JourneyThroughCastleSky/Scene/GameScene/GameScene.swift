@@ -24,13 +24,13 @@ class GameScene: SKScene {
     
     var buttonCatch : SKShapeNode? = nil
     
-    private let controller = GameSceneController()
     private let movementSystem = MovementSystem()
+    private let itemSystem = ItemSystem()
 
     override func didMove(to view: SKView) {
         config()
-        controller.config(gameScene: self)
         movementSystem.config(self)
+        itemSystem.config(self)
         
         setupCamera()
         setupBackground()
@@ -64,12 +64,8 @@ class GameScene: SKScene {
         movementSystem.movePlayer()
         movementSystem.updateCameraPosition()
         
-        if controller.isEnemyNearPlayer () {
-            controller.moveEnemyTowardsPlayer()
-        }
-        
-        controller.checkColision ()
-        controller.verifyButtonCatch()
+        movementSystem.checkColision ()
+        itemSystem.verifyButtonCatch()
     }
     
     // MARK: SETUP ELEMENTS
@@ -229,6 +225,17 @@ class GameScene: SKScene {
     // END MARK
     
     override func mouseDown(with event: NSEvent) {
-        controller.mouseDown(event)
+        let location = event.location(in: self)
+        let clickedNode = self.atPoint(location)
+        
+        
+        if clickedNode.name == "buttonCatch"{
+            itemSystem.catchItem()
+        }
+        
+        
+        if clickedNode.name == "buttonInventory" {
+            itemSystem.openInventory()
+        }
     }
 }
