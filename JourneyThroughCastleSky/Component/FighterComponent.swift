@@ -1,0 +1,16 @@
+//
+//  FighterComponent.swift
+//  JourneyThroughCastleSky
+//
+//  Created by Caio Marques on 18/09/24.
+//
+
+import Foundation
+
+class FighterComponent {
+    var damage : Int
+    
+    init(damage: Int) {
+        self.damage = damage
+    }
+}
