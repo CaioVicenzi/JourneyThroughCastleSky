@@ -28,6 +28,7 @@
 		FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
 		FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */; };
 		FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */; };
+		FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
 		FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */; };
 		FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0892C91B750006D4EA0 /* GameScene.sks */; };
@@ -64,6 +65,7 @@
 		FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSystem.swift; sourceTree = "<group>"; };
 		FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSystem.swift; sourceTree = "<group>"; };
 		FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendly.swift; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
 		FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JourneyThroughCastleSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				FD932B082C9B57AA0047B5B7 /* User.swift */,
 				FD932B0C2C9B591A0047B5B7 /* Enemy.swift */,
 				FD932B0E2C9B5BCA0047B5B7 /* Item.swift */,
+				FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
 				FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */,
+				FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */,
 				FDAC55002C9A106300E90E17 /* Dialogo.swift in Sources */,
 				FD932B032C9B572E0047B5B7 /* DialogueComponent.swift in Sources */,
 				FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */,

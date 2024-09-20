@@ -46,6 +46,12 @@ class GameScene: SKScene {
             x: 500,
             y: 200)
     ]
+    let frindlies : [Friendly] = [
+        Friendly(spriteName: "papyrus", xPosition: 1000, yPosition: 500, dialogs: [
+            Dialogue(text: "Olá, eu sou papyrus", person: "Papyrus", velocity: 20),
+            Dialogue(text: "Eu sou seu amigo", person: "Papyrus", velocity: 20),
+        ])
+    ]
     
     var background : SKSpriteNode? = nil
     var dialogueBox : SKShapeNode? = nil
@@ -73,6 +79,7 @@ class GameScene: SKScene {
         setupEnemies()
         setupItems()
         setupButtonInventory()
+        setupFriendlies()
     }
     
     private func config () {
@@ -107,38 +114,33 @@ class GameScene: SKScene {
     }
     
     private func setupSprite () {
-        let playerSprite = User.singleton.spriteComponent.sprite
-        playerSprite.setScale(0.2)
-        let xPosition = User.singleton.positionComponent.xPosition
-        let yPosition = User.singleton.positionComponent.yPosition
-        
-        playerSprite.position = CGPoint(x: xPosition, y: yPosition)
-        self.scene?.addChild(playerSprite)
+        setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent, scale: 0.2)
     }
     
     private func setupEnemies () {
         enemies.forEach { enemy in
-            setupEnemy(enemy
-            )
+            setupSpritePosition(enemy.spriteComponent, enemy.positionComponent, scale: 0.2)
         }
     }
     
-    func setupEnemy (_ enemy : Enemy) {
-        let sprite = enemy.spriteComponent.sprite
-        sprite.position.y = CGFloat(enemy.positionComponent.yPosition)
-        sprite.position.x = CGFloat(enemy.positionComponent.xPosition)
-        sprite.setScale(0.2)
-        addChild(sprite)
+    private func setupFriendlies () {
+        frindlies.forEach { friendly in
+            setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: 0.1)
+        }
     }
     
     private func setupItems () {
         itens.forEach { item in
-            let sprite = item.spriteComponent.sprite
-            sprite.scale(to: CGSize(width: 75, height: 75))
-            sprite.position.y = CGFloat(item.positionComponent.yPosition)
-            sprite.position.x = CGFloat(item.positionComponent.xPosition)
-            addChild(sprite)
+            setupSpritePosition(item.spriteComponent, item.positionComponent, scale: 0.1)
         }
+    }
+    
+    func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGFloat = 1) {
+        let sprite = spriteComponent.sprite
+        sprite.position.y = CGFloat(positionComponent.yPosition)
+        sprite.position.x = CGFloat(positionComponent.xPosition)
+        sprite.setScale(scale)
+        addChild(sprite)
     }
     
     func setupButtonCatch () {
@@ -272,9 +274,19 @@ class GameScene: SKScene {
         }
         
         if event.keyCode == 36 {
-            dialogSystem.nextDialogue()
+            if gameState == .NORMAL {
+                frindlies.forEach { friendly in
+                    if movementSystem.isOtherNearPlayer(friendly.positionComponent, range: 30) {
+                        dialogsToPass.append(contentsOf: friendly.dialogueComponent.dialogs)
+                        dialogSystem.nextDialogue()
+                    }
+                }
+            } else {
+                dialogSystem.nextDialogue()
+            }
         }
     }
+    
     
     override func keyUp(with event: NSEvent) {
         movementSystem.keyUp(event)

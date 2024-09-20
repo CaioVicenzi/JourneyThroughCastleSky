@@ -111,7 +111,7 @@ class MovementSystem {
     
     func checkColision () {
         gameScene.enemies.forEach { enemy in
-            if isEnemyNearPlayer(enemy) {
+            if isOtherNearPlayer(enemy.positionComponent, range: 30) {
                 // Troca para a próxima cena
                 let nextScene = BatalhaScene(size: gameScene.size)
                 nextScene.config(enemy: enemy)
@@ -125,14 +125,16 @@ class MovementSystem {
         }
     }
     
-    func isEnemyNearPlayer(_ enemy : Enemy) -> Bool {
-        let enemyX = enemy.positionComponent.xPosition
-        let enemyY = enemy.positionComponent.yPosition
+    func isOtherNearPlayer(_ positionOther : PositionComponent, range : CGFloat) -> Bool {
+        let otherX = positionOther.xPosition
+        let otherY = positionOther.yPosition
         
         let playerX = User.singleton.positionComponent.xPosition
         let playerY = User.singleton.positionComponent.yPosition
         
-        let distance = sqrt(pow(CGFloat(playerX) - CGFloat(enemyX), 2) + pow(CGFloat(playerY) - CGFloat(enemyY), 2))
-        return distance < 30
+        let distance = sqrt(pow(CGFloat(playerX) - CGFloat(otherX), 2) + pow(CGFloat(playerY) - CGFloat(otherY), 2))
+        return distance < range
     }
+    
+    
 }
