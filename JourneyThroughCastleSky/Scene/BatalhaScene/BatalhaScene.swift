@@ -16,10 +16,16 @@ class BatalhaScene : SKScene {
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
     
+    var previousScene : SKScene? = nil
+    
     private var buttonSelected : ButtonSelected = .ATTACK
     private var gameChooseState : chooseState = .CHOOSE_BUTTON
     private var positionItemSelected = 0
     private var enemyDodge = false
+    
+    func config (_ scene : SKScene) {
+        self.previousScene = scene
+    }
     
     enum ButtonSelected : Int {
         case ATTACK = 0
@@ -206,6 +212,7 @@ class BatalhaScene : SKScene {
     private func useItem (_ item : Item) {
         if item.consumableComponent?.effect.type == .CURE {
             User.singleton.healthComponent.health += item.consumableComponent?.effect.amount ?? 0
+            myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
         } else if item.consumableComponent?.effect.type == .DAMAGE {
             User.singleton.fighterComponent.damage += item.consumableComponent?.effect.amount ?? 0
         }
@@ -298,9 +305,16 @@ class BatalhaScene : SKScene {
         nextScene.scaleMode = .aspectFill
         
         let transition = SKTransition.fade(withDuration: 1.0)
-        
         enemy.spriteComponent.sprite.removeFromParent()
-        self.view?.presentScene(nextScene, transition: transition)
+        
+        if let previousScene = previousScene as? GameScene {
+            //reviousScene.setupEnemy(enemy)
+            User.singleton.positionComponent.xPosition -= 40
+            User.singleton.spriteComponent.sprite.position.x -= 40
+            User.singleton.spriteComponent.sprite.removeFromParent()
+            
+            self.view?.presentScene(previousScene, transition: transition)
+        }
     }
     
     private func useItem () {

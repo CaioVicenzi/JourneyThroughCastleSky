@@ -9,63 +9,81 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
-    let enemy = Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "enemy")
-    let item1 = Item(name: "balloon", spriteName: "balloon", dialogs: [], effect: Effect(type: .DAMAGE, amount: 10), x: 200, y: 200)
-    let item2 = Item(name: "cupcake", spriteName: "cupcake", dialogs: [], effect: Effect(type: .CURE, amount: 15), x: 300, y: 300)
+    let enemies : [Enemy] = [
+        Enemy(x: 600, y: 500, damage: 10, health: 100, spriteName: "enemy"),
+        Enemy(x: 1000, y: 800, damage: 5, health: 1000, spriteName: "monster"),
+    ]
+    let itens : [Item] = [
+        Item(
+            name: "balloon",
+            spriteName: "balloon",
+            dialogs: [
+                Dialogue(text: "Esse é um balão", person: "", velocity: 30),
+                Dialogue(text: "Quando usado, ele é capaz de aumentar seu ataque", person: "", velocity: 30),
+            ],
+            effect: Effect(type: .DAMAGE, amount: 10),
+            x: 200,
+            y: 200),
+        Item(
+            name: "Cupcake",
+            spriteName: "cupcake",
+            dialogs: [
+                Dialogue(text: "Esse é um cupcake", person: "", velocity: 30),
+                Dialogue(text: "Quando usado, ele é capaz de aumentar sua vida", person: "", velocity: 30),
+            ],
+            effect: Effect(type: .CURE, amount: 15),
+            x: 300,
+            y: 300),
+        
+        Item(
+            name: "Diamond Apple",
+             spriteName: "diamondApple",
+            dialogs: [
+                Dialogue(text: "Essa é uma maçã de diamante", person: "", velocity: 10),
+                Dialogue(text: "Ela é muito roubada, aumentando seu ataque em 30 pts", person: "", velocity: 30)
+            ],
+            effect: Effect(type: .DAMAGE, amount: 50),
+            x: 500,
+            y: 200)
+    ]
     
-    var enemySprite : SKSpriteNode? = nil
-    var item1Sprite : SKSpriteNode? = nil
-    var item2Sprite : SKSpriteNode? = nil
-    var playerSprite : SKSpriteNode? = nil
     var background : SKSpriteNode? = nil
-    
+    var dialogueBox : SKShapeNode? = nil
     var inventory : SKShapeNode?
-    internal var cameraNode : SKCameraNode!
-    
     var buttonCatch : SKShapeNode? = nil
+    
+    internal var cameraNode : SKCameraNode!
     
     private let movementSystem = MovementSystem()
     private let itemSystem = ItemSystem()
+    private let dialogSystem = DialogSystem()
+    
+    var dialogsToPass : [Dialogue] = []
+    var gameState : GameState = .NORMAL
 
     override func didMove(to view: SKView) {
         config()
-        movementSystem.config(self)
-        itemSystem.config(self)
-        
+        setupNodes()
+    }
+    
+    private func setupNodes () {
         setupCamera()
         setupBackground()
         setupSprite()
-        setupEnemy()
-        setupBalloon()
-        setupCupcake()
+        setupEnemies()
+        setupItems()
         setupButtonInventory()
     }
     
-    func config () {
+    private func config () {
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
-        playerSprite = User.singleton.spriteComponent.sprite
-        enemySprite = enemy.spriteComponent.sprite
-        item1Sprite = item1.spriteComponent.sprite
-        item2Sprite = item2.spriteComponent.sprite
+        dialogSystem.config(self)
+        movementSystem.config(self)
+        itemSystem.config(self)
+        
         background = SKSpriteNode(imageNamed: "background")
         cameraNode = SKCameraNode()
-    }
-    
-    override func keyDown(with event: NSEvent) {
-        movementSystem.keyDown(event)
-    }
-    
-    override func keyUp(with event: NSEvent) {
-        movementSystem.keyUp(event)
-    }
-
-    override func update(_ currentTime: TimeInterval) {
-        movementSystem.movePlayer()
-        movementSystem.updateCameraPosition()
-        
-        movementSystem.checkColision ()
-        itemSystem.verifyButtonCatch()
     }
     
     // MARK: SETUP ELEMENTS
@@ -89,11 +107,7 @@ class GameScene: SKScene {
     }
     
     private func setupSprite () {
-        guard let playerSprite else {
-            print("Não temos sprite do player")
-            return
-        }
-        
+        let playerSprite = User.singleton.spriteComponent.sprite
         playerSprite.setScale(0.2)
         let xPosition = User.singleton.positionComponent.xPosition
         let yPosition = User.singleton.positionComponent.yPosition
@@ -102,53 +116,29 @@ class GameScene: SKScene {
         self.scene?.addChild(playerSprite)
     }
     
-    private func setupEnemy () {
-        guard let enemySprite else {print("Não temos o sprite do inimigo"); return}
-    
-        enemySprite.setScale(0.2)
-        
-        enemy.positionComponent.xPosition = Int(PositionHelper.singleton.centralizeQuarterRight(enemySprite).x)
-        enemy.positionComponent.yPosition = Int(PositionHelper.singleton.centralizeQuarterRight(enemySprite).y)
-        enemySprite.position = CGPoint(x: enemy.positionComponent.xPosition, y: enemy.positionComponent.yPosition)
-        self.addChild(enemySprite)
+    private func setupEnemies () {
+        enemies.forEach { enemy in
+            setupEnemy(enemy
+            )
+        }
     }
     
-    private func setupBalloon () {
-        
-        guard let item1Sprite else {
-            print("Não temos o sprite do item")
-            return
-        }
-        
-        item1Sprite.setScale(0.2)
-        
-        let xPosition = item1.positionComponent.xPosition
-        let yPosition = item1.positionComponent.yPosition
-        item1Sprite.position = CGPoint(x: xPosition, y: yPosition)
-        
-        item1Sprite.name = "balloon"
-        
-        self.addChild(item1Sprite)
-         
+    func setupEnemy (_ enemy : Enemy) {
+        let sprite = enemy.spriteComponent.sprite
+        sprite.position.y = CGFloat(enemy.positionComponent.yPosition)
+        sprite.position.x = CGFloat(enemy.positionComponent.xPosition)
+        sprite.setScale(0.2)
+        addChild(sprite)
     }
     
-    private func setupCupcake () {
-        
-        guard let item2Sprite else {
-            print("Não temos o sprite do item")
-            return
+    private func setupItems () {
+        itens.forEach { item in
+            let sprite = item.spriteComponent.sprite
+            sprite.scale(to: CGSize(width: 75, height: 75))
+            sprite.position.y = CGFloat(item.positionComponent.yPosition)
+            sprite.position.x = CGFloat(item.positionComponent.xPosition)
+            addChild(sprite)
         }
-        
-        
-        let xPosition = item2.positionComponent.xPosition
-        let yPosition = item2.positionComponent.yPosition
-        item2Sprite.position = CGPoint(x: xPosition, y: yPosition)
-        item2Sprite.setScale(0.07)
-
-        item2Sprite.name = "cupcake"
-        
-        self.addChild(item2Sprite)
-         
     }
     
     func setupButtonCatch () {
@@ -222,7 +212,43 @@ class GameScene: SKScene {
         })
     }
     
-    // END MARK
+    func setupDialogBox () {
+        dialogueBox = SKShapeNode(rect: CGRect(origin: .zero, size: CGSize(width: size.width / 1.2, height: 100)))
+        
+        guard let dialogueBox else {return}
+        dialogueBox.position.y = -(size.height / 2.8)
+        dialogueBox.position.x = -(size.width / 2.5)
+
+        
+        dialogueBox.fillColor = .gray.withAlphaComponent(0.9)
+        dialogueBox.strokeColor = .white
+        dialogueBox.zPosition = 3
+        
+        if dialogueBox.parent == nil {
+            cameraNode.addChild(dialogueBox)
+        }
+    }
+    
+    func addDialogToDialogBox (_ dialog : Dialogue) {
+        guard let dialogueBox else {return}
+        
+        gameState = .WAITING_DIALOG
+        
+        let author = SKLabelNode(text: dialog.person)
+        author.position = CGPoint(x: 50, y: 75)
+        author.horizontalAlignmentMode = .left
+        
+        let textLabel = SKLabelNode(text: "")
+        textLabel.position = CGPoint(x: 50, y: author.position.y - 50)
+        textLabel.fontSize = 12
+        textLabel.horizontalAlignmentMode = .left
+        dialogSystem.typeEffect(dialog, label: textLabel)
+
+        dialogueBox.addChild(author)
+        dialogueBox.addChild(textLabel)
+    }
+    
+    // MARK: INTERAÇÕES COM TECLADO E MOUSE
     
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
@@ -231,11 +257,35 @@ class GameScene: SKScene {
         
         if clickedNode.name == "buttonCatch"{
             itemSystem.catchItem()
+            dialogSystem.nextDialogue()
         }
         
         
         if clickedNode.name == "buttonInventory" {
             self.itemSystem.inventoryButtonPressed()
         }
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        if gameState == .NORMAL {
+            movementSystem.keyDown(event)
+        }
+        
+        if event.keyCode == 36 {
+            dialogSystem.nextDialogue()
+        }
+    }
+    
+    override func keyUp(with event: NSEvent) {
+        movementSystem.keyUp(event)
+    }
+
+    override func update(_ currentTime: TimeInterval) {
+        movementSystem.movePlayer()
+        movementSystem.updateCameraPosition()
+        
+        movementSystem.checkColision ()
+            
+        itemSystem.verifyButtonCatch()
     }
 }

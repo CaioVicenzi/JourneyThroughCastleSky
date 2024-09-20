@@ -25,11 +25,9 @@ class MovementSystem {
             if movimentoX < 0 {
                 User.singleton.movementComponent.moveX += velocity
                 User.singleton.positionComponent.xPosition -= velocity
-                updateUserPosition()
             } else {
                 User.singleton.movementComponent.moveX -= velocity
                 User.singleton.positionComponent.xPosition += velocity
-                updateUserPosition()
             }
         }
         
@@ -37,31 +35,27 @@ class MovementSystem {
             if movimentoY < 0 {
                 User.singleton.movementComponent.moveY += velocity
                 User.singleton.positionComponent.yPosition -= velocity
-                updateUserPosition()
             } else {
                 User.singleton.movementComponent.moveY -= velocity
                 User.singleton.positionComponent.yPosition += velocity
-                updateUserPosition()
             }
         }
+        
+        updateUserPosition()
     }
     
     private func updateUserPosition () {
-        if gameScene != nil {
-            gameScene.playerSprite!.position.x = CGFloat(User.singleton.positionComponent.xPosition)
-            gameScene.playerSprite!.position.y = CGFloat(User.singleton.positionComponent.yPosition)
-        }
+        User.singleton.spriteComponent.sprite.position.x = CGFloat(User.singleton.positionComponent.xPosition)
+        User.singleton.spriteComponent.sprite.position.y = CGFloat(User.singleton.positionComponent.yPosition)
     }
     
     func updateCameraPosition () {
         //self.camera?.position = helloWorld.position
+        guard let background = gameScene.background else {print("Não temos background no updateCameraPosition"); return}
+        let playerSprite = User.singleton.spriteComponent.sprite
         
-        guard let playerSprite = gameScene.playerSprite, let background = gameScene.background else {
-            print("'não temos nada..'")
-            return
-        }
         var cameraPosition = playerSprite.position
-                
+        
         // Calcular os limites da câmera
         let cameraHalfWidth = gameScene.size.width / 2
         let cameraHalfHeight = gameScene.size.height / 2
@@ -116,28 +110,29 @@ class MovementSystem {
     }
     
     func checkColision () {
-        if isEnemyNearPlayer() {
-            // Troca para a próxima cena
-            let nextScene = BatalhaScene(size: gameScene.size)
-            nextScene.config(enemy: gameScene.enemy)
-            gameScene.enemy.spriteComponent.sprite.removeFromParent()
-            nextScene.scaleMode = .aspectFill
-                    
-            let transition = SKTransition.fade(withDuration: 1.0)
-            gameScene.view?.presentScene(nextScene, transition: transition)
+        gameScene.enemies.forEach { enemy in
+            if isEnemyNearPlayer(enemy) {
+                // Troca para a próxima cena
+                let nextScene = BatalhaScene(size: gameScene.size)
+                nextScene.config(enemy: enemy)
+                enemy.spriteComponent.sprite.removeFromParent()
+                nextScene.scaleMode = .aspectFill
+                        
+                let transition = SKTransition.fade(withDuration: 1.0)
+                nextScene.config(gameScene)
+                gameScene.view?.presentScene(nextScene, transition: transition)
+            }
         }
-         
     }
     
-    func isEnemyNearPlayer() -> Bool {
-        let enemyX = gameScene.enemy.positionComponent.xPosition
-        let enemyY = gameScene.enemy.positionComponent.yPosition
+    func isEnemyNearPlayer(_ enemy : Enemy) -> Bool {
+        let enemyX = enemy.positionComponent.xPosition
+        let enemyY = enemy.positionComponent.yPosition
         
         let playerX = User.singleton.positionComponent.xPosition
         let playerY = User.singleton.positionComponent.yPosition
         
         let distance = sqrt(pow(CGFloat(playerX) - CGFloat(enemyX), 2) + pow(CGFloat(playerY) - CGFloat(enemyY), 2))
         return distance < 30
-         
     }
 }
