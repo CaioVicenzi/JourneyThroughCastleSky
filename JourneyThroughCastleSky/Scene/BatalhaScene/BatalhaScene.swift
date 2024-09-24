@@ -13,8 +13,11 @@ class BatalhaScene : SKScene {
     var buttonAttack = SKShapeNode()
     var buttonUseItem = SKShapeNode()
     var buttonSpare = SKShapeNode()
+    var buttonDodge = SKShapeNode()
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
+    
+    var battleSystem = BattleSystem()
     
     var previousScene : SKScene? = nil
     
@@ -31,6 +34,7 @@ class BatalhaScene : SKScene {
         case ATTACK = 0
         case USE_ITEM = 1
         case SPARE = 2
+        case DODGE = 3
     }
     
     enum chooseState {
@@ -98,6 +102,14 @@ class BatalhaScene : SKScene {
         addChild(buttonSpare)
     }
     
+    private func setupButtonDodge () {
+        buttonDodge = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonDodge), size: CGSize(width: 100, height: 50)))
+        buttonDodge.fillColor = .gray
+        buttonDodge.strokeColor = .white
+        buttonDodge.position.x += 550
+        addChild(buttonDodge)
+    }
+    
     private func setupEnemyLife () {
         enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
         enemyLifeLabel.position = PositionHelper.singleton.rightUpCorner(enemyLifeLabel)
@@ -106,6 +118,8 @@ class BatalhaScene : SKScene {
 
         addChild(enemyLifeLabel)
     }
+    
+    
     
     private func setupMyLife () {
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
@@ -173,6 +187,9 @@ class BatalhaScene : SKScene {
             case .SPARE:
                 spare()
                 gameChooseState = .SELECTED
+            case .DODGE:
+                dodge()
+                gameChooseState = .SELECTED
             }
             
             if gameChooseState == .SELECTED {
@@ -210,12 +227,8 @@ class BatalhaScene : SKScene {
     }
     
     private func useItem (_ item : Item) {
-        if item.consumableComponent?.effect.type == .CURE {
-            User.singleton.healthComponent.health += item.consumableComponent?.effect.amount ?? 0
-            myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
-        } else if item.consumableComponent?.effect.type == .DAMAGE {
-            User.singleton.fighterComponent.damage += item.consumableComponent?.effect.amount ?? 0
-        }
+        battleSystem.useItem(item)
+        myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
     }
     
     private func enemyTurn () {
@@ -299,6 +312,7 @@ class BatalhaScene : SKScene {
             }
         }
     }
+    
     
     private func spare () {
         let nextScene = GameScene(size: self.size)

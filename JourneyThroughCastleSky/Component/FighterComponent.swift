@@ -9,6 +9,7 @@ import Foundation
 
 class FighterComponent: Component {
     var damage : Int
+    var dodged = false
     
     init(damage: Int) {
         self.damage = damage
