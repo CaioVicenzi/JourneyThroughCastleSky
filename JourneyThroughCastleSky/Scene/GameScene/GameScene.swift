@@ -8,6 +8,16 @@
 import SpriteKit
 import GameplayKit
 
+protocol Command {
+    func execute() -> Void
+}
+
+class Consumable: Command {
+    func execute() {
+        
+    }
+}
+
 class GameScene: SKScene {
     let enemies : [Enemy] = [
         Enemy(x: 600, y: 500, damage: 10, health: 100, spriteName: "enemy"),
@@ -18,22 +28,22 @@ class GameScene: SKScene {
             name: "balloon",
             spriteName: "balloon",
             dialogs: [
-                Dialogue(text: "Esse é um balão", person: "", velocity: 30),
-                Dialogue(text: "Quando usado, ele é capaz de aumentar seu ataque", person: "", velocity: 30),
+                Dialogue(text: "Nossa! Um balão.", person: "You", velocity: 30),
+                Dialogue(text: "Ele deve me ajudar a atacar mais.", person: "You", velocity: 30),
             ],
             effect: Effect(type: .DAMAGE, amount: 10),
             x: 200,
-            y: 200),
+            y: 200, description: "Balão muito brabo que aumenta seu ataque em 10"),
         Item(
             name: "Cupcake",
             spriteName: "cupcake",
             dialogs: [
-                Dialogue(text: "Esse é um cupcake", person: "", velocity: 30),
-                Dialogue(text: "Quando usado, ele é capaz de aumentar sua vida", person: "", velocity: 30),
+                Dialogue(text: "Esse é um cupcake", person: "You", velocity: 30),
+                Dialogue(text: "Ele deve curar a minha vida", person: "You", velocity: 30),
             ],
             effect: Effect(type: .CURE, amount: 15),
             x: 300,
-            y: 300),
+            y: 300, description: "Cupcake muito brabo que restaura sua vida em 15"),
         
         Item(
             name: "Diamond Apple",
@@ -44,7 +54,7 @@ class GameScene: SKScene {
             ],
             effect: Effect(type: .DAMAGE, amount: 50),
             x: 500,
-            y: 200)
+            y: 200, description: "Maçã de diamante muito roubada.")
     ]
     let frindlies : [Friendly] = [
         Friendly(spriteName: "papyrus", xPosition: 1000, yPosition: 500, dialogs: [
@@ -55,6 +65,7 @@ class GameScene: SKScene {
     
     var background : SKSpriteNode? = nil
     var dialogueBox : SKShapeNode? = nil
+    var viewItemDescription : SKShapeNode? = nil
     var inventory : SKShapeNode?
     var buttonCatch : SKShapeNode? = nil
     
@@ -65,6 +76,8 @@ class GameScene: SKScene {
     private let dialogSystem = DialogSystem()
     
     var dialogsToPass : [Dialogue] = []
+    var descriptionsToPass : [DescriptionToPass] = []
+    
     var gameState : GameState = .NORMAL
 
     override func didMove(to view: SKView) {
@@ -233,7 +246,7 @@ class GameScene: SKScene {
     
     func addDialogToDialogBox (_ dialog : Dialogue) {
         guard let dialogueBox else {return}
-        
+    
         gameState = .WAITING_DIALOG
         
         let author = SKLabelNode(text: dialog.person)
@@ -244,10 +257,63 @@ class GameScene: SKScene {
         textLabel.position = CGPoint(x: 50, y: author.position.y - 50)
         textLabel.fontSize = 12
         textLabel.horizontalAlignmentMode = .left
-        dialogSystem.typeEffect(dialog, label: textLabel)
+        dialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: textLabel)
 
         dialogueBox.addChild(author)
         dialogueBox.addChild(textLabel)
+    }
+    
+    func showItemDescription (_ itemDescriptor : DescriptionToPass) {
+        self.viewItemDescription = SKShapeNode(rect: CGRect(origin: .zero, size: self.size))
+        guard let viewItemDescription else {return}
+        
+        viewItemDescription.fillColor = .black.withAlphaComponent(0.6)
+        viewItemDescription.strokeColor = .black.withAlphaComponent(0.6)
+        viewItemDescription.name = "cover"
+        viewItemDescription.zPosition = 9
+        viewItemDescription.alpha = 0
+        
+        let fadeIn = SKAction.fadeIn(withDuration: 0.5)
+        viewItemDescription.run(fadeIn)
+        
+        self.addChild(viewItemDescription)
+        
+        gameState = .WAITING_DIALOG
+        let textLabel = SKLabelNode(text: "")
+        textLabel.position = PositionHelper.singleton.centralizeQuarterDown(textLabel)
+        textLabel.position.y -= 50
+        
+        textLabel.fontSize = 12
+        textLabel.horizontalAlignmentMode = .center
+        textLabel.name = "cover"
+        textLabel.zPosition = 10
+        
+        viewItemDescription.addChild(textLabel)
+        
+        let sprite = itemDescriptor.sprite
+        sprite.name = "cover"
+        sprite.zPosition = 10
+        sprite.position = PositionHelper.singleton.centralizeQuarterDown(textLabel)
+        sprite.position.y += 200
+        sprite.scale(to: CGSize(width: 300, height: 300))
+        
+        
+        viewItemDescription.addChild(sprite)
+        
+        dialogSystem.typeEffect(itemDescriptor.description, velocity: 20, label: textLabel)
+    }
+    
+    func unshowItemDescription () {
+        guard let viewItemDescription else {return}
+        let fadeOut = SKAction.fadeOut(withDuration: 0.2)
+        let removeNode = SKAction.removeFromParent()
+        
+        for child in viewItemDescription.children {
+            child.run(SKAction.sequence([fadeOut, removeNode]))
+        }
+                
+        viewItemDescription.run(SKAction.sequence([fadeOut, removeNode]))
+        self.viewItemDescription = nil
     }
     
     // MARK: INTERAÇÕES COM TECLADO E MOUSE

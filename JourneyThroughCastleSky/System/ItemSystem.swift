@@ -6,12 +6,11 @@
 //
 
 import Foundation
+import SpriteKit
 
 class ItemSystem {
     var gameScene : GameScene!
     var isInventoryOpen : Bool = false
-    
-    
     
     func config (_ gameScene : GameScene) {
         self.gameScene = gameScene
@@ -25,25 +24,26 @@ class ItemSystem {
             })
         } else {
             gameScene.setupInventory()
-        
         }
         
         isInventoryOpen.toggle()
     }
     
+    /// função que pega o item mais próximo.
     func catchItem (){
         var nearestItem : Item? = nil
         var nearestDistance : CGFloat = 0.0
         
+        // Essa parte da função descobre qual é o item mais próximo do usuário na cena e armazena na variável nearestItem.
         gameScene.itens.forEach { item in
             if nearestItem == nil {
                 nearestItem = item
                 nearestDistance = calcDistanceItem(item)
-                
             } else {
                 // calcular a distância
                 let distance = calcDistanceItem(item)
                 
+                // se a distância for menor do que a menor distância, então ELA é a menor distância.
                 if distance <= nearestDistance {
                     nearestItem = item
                     nearestDistance = distance
@@ -51,24 +51,32 @@ class ItemSystem {
             }
         }
         
+        // se o nearestItem existe, pegue ele.
         if let nearestItem {
             catchItem(nearestItem)
         }
     }
     
+    /// Essa função pega um item, exibe os diálogos e coloca no inventário
     private func catchItem (_ item : Item) {
         // função para adicionar o balão ao inventário do usuário.
         item.spriteComponent.sprite.removeFromParent()
         
-        item.dialogueComponent?.dialogs.forEach({ dialogue in
-            gameScene.dialogsToPass.append(dialogue)
-            
-            
-        })
+        // para cada um dos diálogos dentro do componente do item, 
+        populateDialogs(item.dialogueComponent?.dialogs)
         
-        //item.positionComponent.yPosition = 4000
+        if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
+            gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
+        }
+        
         gameScene.buttonCatch?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
+    }
+    
+    private func populateDialogs (_ dialogs : [Dialogue]?) {
+        dialogs?.forEach({ dialogue in
+            gameScene.dialogsToPass.append(dialogue)
+        })
     }
     
     private func verifyItemIsNear (_ item : Item) -> Bool {

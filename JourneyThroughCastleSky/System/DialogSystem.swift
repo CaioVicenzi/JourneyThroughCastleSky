@@ -19,6 +19,8 @@ class DialogSystem {
     
     func nextDialogue () {
         gameScene.gameState = .NORMAL
+        
+        // limpar a dialog box
         gameScene.dialogueBox?.children.forEach({ node in
             node.removeFromParent()
         })
@@ -27,7 +29,9 @@ class DialogSystem {
             gameScene.dialogueBox?.removeFromParent()
         }
         
+        gameScene.unshowItemDescription()
         
+        //
         if let dialog = gameScene.dialogsToPass.first {
             gameScene.gameState = .WAITING_DIALOG
             if gameScene.dialogueBox?.parent == nil {
@@ -35,21 +39,27 @@ class DialogSystem {
             }
             gameScene.addDialogToDialogBox(dialog)
             gameScene.dialogsToPass.removeFirst()
+        } else {
+            if let description = gameScene.descriptionsToPass.first {
+                gameScene.gameState = .WAITING_DIALOG
+                gameScene.showItemDescription(description)
+                gameScene.descriptionsToPass.removeFirst()
+            }
         }
     }
     
-    func typeEffect (_ dialog : Dialogue, label : SKLabelNode) {
+    func typeEffect (_ text : String, velocity : Int, label : SKLabelNode) {
         var index : Int = 0
         
-        let milissecs = (Double(1) / Double(dialog.velocity))
+        let milissecs = (Double(1) / Double(velocity))
         Timer.scheduledTimer(withTimeInterval: milissecs, repeats: true) { timer in
             nextChar()
         }
         
         func nextChar () {
-            if index < dialog.text.count {
-                let stringIndex = dialog.text.index(dialog.text.startIndex, offsetBy: index)
-                label.text! += String(dialog.text[stringIndex])
+            if index < text.count {
+                let stringIndex = text.index(text.startIndex, offsetBy: index)
+                label.text! += String(text[stringIndex])
                 index += 1
             }
         }

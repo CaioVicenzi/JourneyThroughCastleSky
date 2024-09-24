@@ -30,6 +30,8 @@
 		FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */; };
 		FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
+		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
+		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */; };
 		FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0892C91B750006D4EA0 /* GameScene.sks */; };
 		FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E08B2C91B750006D4EA0 /* Actions.sks */; };
@@ -67,6 +69,8 @@
 		FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendly.swift; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
+		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
+		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JourneyThroughCastleSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF1E0892C91B750006D4EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -108,6 +112,7 @@
 				FD932B042C9B57620047B5B7 /* AffectedByEffect.swift */,
 				FD932B062C9B57860047B5B7 /* FightAIComponent.swift */,
 				FD932B0A2C9B58DC0047B5B7 /* FighterComponent.swift */,
+				FDE3CF042CA3413100D88620 /* ReadableComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 				FDAC54FF2C9A106300E90E17 /* Dialogo.swift */,
 				FD932AF62C9B56410047B5B7 /* Effect.swift */,
 				FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */,
+				FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -292,6 +298,7 @@
 				FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */,
 				FD932B012C9B57180047B5B7 /* InteractableComponent.swift in Sources */,
 				FD932AFD2C9B56D90047B5B7 /* StaminaComponent.swift in Sources */,
+				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
 				FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */,
@@ -302,6 +309,7 @@
 				FDF1E0A52C923540006D4EA0 /* BatalhaScene.swift in Sources */,
 				FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
+				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FD932AFF2C9B56EE0047B5B7 /* SpriteComponent.swift in Sources */,
 				FDAD41F62C9CB7D40053A4B0 /* MovementSystem.swift in Sources */,
 				FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */,

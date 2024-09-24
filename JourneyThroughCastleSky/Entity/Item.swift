@@ -14,18 +14,21 @@ class Item {
     let consumableComponent : ConsumableComponent?
     let spriteComponent : SpriteComponent
     let positionComponent : PositionComponent
+    let readableComponent : ReadableComponent
     
-    init(name : String, spriteName: String, dialogs : [Dialogue], effect : Effect, x: Int, y: Int) {
+    init(name : String, spriteName: String, dialogs : [Dialogue], effect : Effect, x: Int, y: Int, description : String) {
         self.dialogueComponent = DialogueComponent(dialogs: dialogs)
         self.consumableComponent = ConsumableComponent(nome: name, effect: effect)
         self.spriteComponent = SpriteComponent(spriteName)
         self.positionComponent = PositionComponent(xPosition: x, yPosition: y)
+        self.readableComponent = ReadableComponent(readableDescription: description)
     }
     
-    init(spriteName: String, x: Int, y: Int) {
+    init(spriteName: String, x: Int, y: Int, description : String) {
         consumableComponent = nil
         dialogueComponent = nil
         self.spriteComponent = SpriteComponent(spriteName)
         self.positionComponent = PositionComponent(xPosition: x, yPosition: y)
+        self.readableComponent = ReadableComponent(readableDescription: description)
     }
 }
