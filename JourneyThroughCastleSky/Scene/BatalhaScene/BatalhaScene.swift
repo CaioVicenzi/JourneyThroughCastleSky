@@ -59,6 +59,7 @@ class BatalhaScene : SKScene {
     }
     
     func config (enemy : Enemy) {
+        battleSystem.enemy = enemy
         self.enemy = enemy
     }
     
@@ -188,7 +189,7 @@ class BatalhaScene : SKScene {
                 spare()
                 gameChooseState = .SELECTED
             case .DODGE:
-                dodge()
+                
                 gameChooseState = .SELECTED
             }
             
@@ -287,22 +288,22 @@ class BatalhaScene : SKScene {
     }
     
     private func attack () {
-        if enemyDodge {
+        
+        
+        let attackResult = battleSystem.attack()
+        
+        if (attackResult.enemyDodged) {
+            
             let messageEnemyDodge = SKLabelNode(text: "Inimigo se esquivou")
             messageEnemyDodge.position = PositionHelper.singleton.centralize(messageEnemyDodge)
             scene?.addChild(messageEnemyDodge)
+            enemy.spriteComponent.sprite.run(.sequence([
+                .move(by: .init(dx: 100, dy: 0), duration: 1),
+                .move(by: .init(dx: -100, dy: 0), duration: 1)
+            ]))
             
-            enemy.spriteComponent.sprite.position.x += 100
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
-                messageEnemyDodge.removeFromParent()
-                self?.enemyDodge = false
-                self?.enemy.spriteComponent.sprite.position.x -= 100
-            })
         } else {
-            
-            enemy.healthComponent.health -= User.singleton.fighterComponent.damage
             enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
-            
             if enemy.healthComponent.health <= 0 {
                 let nextScene = YouWinScene(size: self.size)
                 nextScene.scaleMode = .aspectFill
