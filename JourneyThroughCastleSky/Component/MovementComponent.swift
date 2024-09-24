@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovementComponent {
+class MovementComponent: Component {
     var velocity : Int
     var moveX : Int
     var moveY : Int

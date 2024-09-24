@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class SpriteComponent {
+class SpriteComponent: Component {
     var sprite : SKSpriteNode
     
     init(_ spriteName: String) {

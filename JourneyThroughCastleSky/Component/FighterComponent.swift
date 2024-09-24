@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FighterComponent {
+class FighterComponent: Component {
     var damage : Int
     
     init(damage: Int) {
