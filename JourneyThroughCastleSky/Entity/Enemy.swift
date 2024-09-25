@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Enemy {
+class Enemy: Entity {
     let healthComponent : HealthComponent
     let spriteComponent : SpriteComponent
     let fightAIComponent : FightAIComponent = FightAIComponent()

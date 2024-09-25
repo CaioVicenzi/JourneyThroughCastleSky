@@ -7,8 +7,7 @@
 
 import Foundation
 
-// componente de qualquer elemento que pode fazer com que apareçam diálogos
-class DialogueComponent {
+class DialogueComponent: Component {
     var dialogs : [Dialogue]
     
     init(dialogs: [Dialogue]) {

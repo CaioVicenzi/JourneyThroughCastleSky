@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class User {
+class User: Entity {
     static let singleton = User()
     
     let healthComponent = HealthComponent(health: 100)

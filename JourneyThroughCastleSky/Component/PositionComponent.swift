@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PositionComponent {
+class PositionComponent: Component {
     var xPosition : Int
     var yPosition : Int
     
