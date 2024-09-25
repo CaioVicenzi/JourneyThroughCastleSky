@@ -18,8 +18,8 @@ class ViewController: NSViewController {
     
         if let view = self.skView {
             let gameScene =  GameScene(size: view.frame.size, enemies: [
-                Enemy(x: 100, y: 100, damage: 10, health: 100, spriteName: "enemy"),
-                Enemy(x: 600, y: 200, damage: 10, health: 100, spriteName: "monster"),
+                Enemy(x: 200, y: 100, damage: 10, health: 100, spriteName: "enemy"),
+                Enemy(x: 600, y: 400, damage: 10, health: 100, spriteName: "monster"),
             ], itens: [
                 Item(name: "Maçã de diamante", spriteName: "diamondApple", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50")
             ], friendlies: [
