@@ -16,7 +16,7 @@ class Item {
     let positionComponent : PositionComponent
     let readableComponent : ReadableComponent
     
-    init(name : String, spriteName: String, dialogs : [Dialogue], effect : Effect, x: Int, y: Int, description : String) {
+    init(name : String, spriteName: String, dialogs : [Dialogue] = [], effect : Effect, x: Int, y: Int, description : String) {
         self.dialogueComponent = DialogueComponent(dialogs: dialogs)
         self.consumableComponent = ConsumableComponent(nome: name, effect: effect)
         self.spriteComponent = SpriteComponent(spriteName)
