@@ -9,11 +9,11 @@ import Foundation
 import SpriteKit
 
 class DialogSystem {
-    var gameScene : GameScene!
+    var gameScene : TopDownScene!
     
     init() {}
     
-    func config (_ gameScene : GameScene) {
+    func config (_ gameScene : TopDownScene) {
         self.gameScene = gameScene
     }
     

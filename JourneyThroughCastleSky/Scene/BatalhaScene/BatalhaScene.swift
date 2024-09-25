@@ -301,6 +301,7 @@ class BatalhaScene : SKScene {
     }
     
     private func spare () {
+        /*
         let nextScene = GameScene(size: self.size)
         nextScene.scaleMode = .aspectFill
         
@@ -315,6 +316,7 @@ class BatalhaScene : SKScene {
             
             self.view?.presentScene(previousScene, transition: transition)
         }
+         */
     }
     
     private func useItem () {

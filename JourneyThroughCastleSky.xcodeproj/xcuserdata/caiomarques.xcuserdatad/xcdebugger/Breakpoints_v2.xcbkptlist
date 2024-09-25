@@ -14,9 +14,9 @@
             filePath = "JourneyThroughCastleSky/Scene/BatalhaScene/BatalhaScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "refreshButtonsState()"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
+            landmarkName = "spare()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

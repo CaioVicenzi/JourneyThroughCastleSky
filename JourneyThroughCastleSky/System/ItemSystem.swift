@@ -9,10 +9,10 @@ import Foundation
 import SpriteKit
 
 class ItemSystem {
-    var gameScene : GameScene!
+    var gameScene : TopDownScene!
     var isInventoryOpen : Bool = false
     
-    func config (_ gameScene : GameScene) {
+    func config (_ gameScene : TopDownScene) {
         self.gameScene = gameScene
     }
     
