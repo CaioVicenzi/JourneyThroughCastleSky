@@ -1,5 +1,6 @@
 struct AttackResult {
     let enemyDodged: Bool
+    var cancelled: Bool = false
 }
 
 
@@ -18,15 +19,27 @@ class BattleSystem {
     
     func attack() -> AttackResult {
         
-        let result = AttackResult(enemyDodged: enemyDodge)
-        
+        var result = AttackResult(enemyDodged: enemyDodge)
         
         if (enemyDodge) {
             enemyDodge = false
-        } else {
-            enemy.healthComponent.health -= User.singleton.fighterComponent.damage
+            return result
         }
         
+        
+        let currentStamina = User.singleton.staminaComponent.stamina
+        let requiredStamina = 10
+        
+        if (currentStamina < requiredStamina) {
+            result.cancelled = true
+            return result
+        }
+        
+        enemy.healthComponent.health -= User.singleton.fighterComponent.damage
+        User.singleton.staminaComponent.stamina = max(
+            0,
+            currentStamina - requiredStamina
+        )
         
         return result
         
