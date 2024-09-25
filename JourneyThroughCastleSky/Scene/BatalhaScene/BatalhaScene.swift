@@ -183,7 +183,7 @@ class BatalhaScene : SKScene {
                 attack()
                 gameChooseState = .SELECTED
             case .USE_ITEM:
-                useItem()
+                showItems()
                 gameChooseState = .CHOOSE_ITEM
             case .SPARE:
                 spare()
@@ -205,6 +205,7 @@ class BatalhaScene : SKScene {
     
     private func chooseItem (_ keyCode : UInt16) {
         refreshItemState()
+        
         switch keyCode {
         case 123: // Seta para a esquerda
             if positionItemSelected > 0 {
@@ -217,7 +218,6 @@ class BatalhaScene : SKScene {
             }
             refreshItemState()
         case 36:
-            //User.singleton.useItem(by: positionItemSelected, label: self.myLife)
             useItem(User.singleton.inventoryComponent.itens[positionItemSelected])
             positionItemSelected = 0
             enemyTurn()
@@ -227,12 +227,12 @@ class BatalhaScene : SKScene {
         }
     }
     
-    private func useItem (_ item : Item) {
+    private func useItem(_ item : Item) {
         battleSystem.useItem(item)
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
     }
     
-    private func enemyTurn () {
+    private func enemyTurn() {
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
         buttonUseItem.removeFromParent()
@@ -332,7 +332,7 @@ class BatalhaScene : SKScene {
         }
     }
     
-    private func useItem () {
+    private func showItems () {
         // PRIMEIRO PASSO: ELIMINAR OS BOTÕES POSSÍVEIS
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
