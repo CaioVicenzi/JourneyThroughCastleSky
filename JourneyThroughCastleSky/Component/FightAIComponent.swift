@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FightAIComponent {
+class FightAIComponent: Component {
     func attack () {
         
     }

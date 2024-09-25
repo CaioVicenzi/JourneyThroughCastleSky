@@ -13,8 +13,11 @@ class BatalhaScene : SKScene {
     var buttonAttack = SKShapeNode()
     var buttonUseItem = SKShapeNode()
     var buttonSpare = SKShapeNode()
+    var buttonDodge = SKShapeNode()
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
+    
+    var battleSystem = BattleSystem()
     
     var previousScene : SKScene? = nil
     
@@ -31,6 +34,7 @@ class BatalhaScene : SKScene {
         case ATTACK = 0
         case USE_ITEM = 1
         case SPARE = 2
+        case DODGE = 3
     }
     
     enum chooseState {
@@ -55,6 +59,7 @@ class BatalhaScene : SKScene {
     }
     
     func config (enemy : Enemy) {
+        battleSystem.enemy = enemy
         self.enemy = enemy
     }
     
@@ -98,6 +103,14 @@ class BatalhaScene : SKScene {
         addChild(buttonSpare)
     }
     
+    private func setupButtonDodge () {
+        buttonDodge = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonDodge), size: CGSize(width: 100, height: 50)))
+        buttonDodge.fillColor = .gray
+        buttonDodge.strokeColor = .white
+        buttonDodge.position.x += 550
+        addChild(buttonDodge)
+    }
+    
     private func setupEnemyLife () {
         enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
         enemyLifeLabel.position = PositionHelper.singleton.rightUpCorner(enemyLifeLabel)
@@ -106,6 +119,8 @@ class BatalhaScene : SKScene {
 
         addChild(enemyLifeLabel)
     }
+    
+    
     
     private func setupMyLife () {
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
@@ -168,10 +183,13 @@ class BatalhaScene : SKScene {
                 attack()
                 gameChooseState = .SELECTED
             case .USE_ITEM:
-                useItem()
+                showItems()
                 gameChooseState = .CHOOSE_ITEM
             case .SPARE:
                 spare()
+                gameChooseState = .SELECTED
+            case .DODGE:
+                
                 gameChooseState = .SELECTED
             }
             
@@ -187,6 +205,7 @@ class BatalhaScene : SKScene {
     
     private func chooseItem (_ keyCode : UInt16) {
         refreshItemState()
+        
         switch keyCode {
         case 123: // Seta para a esquerda
             if positionItemSelected > 0 {
@@ -199,7 +218,6 @@ class BatalhaScene : SKScene {
             }
             refreshItemState()
         case 36:
-            //User.singleton.useItem(by: positionItemSelected, label: self.myLife)
             useItem(User.singleton.inventoryComponent.itens[positionItemSelected])
             positionItemSelected = 0
             enemyTurn()
@@ -209,16 +227,12 @@ class BatalhaScene : SKScene {
         }
     }
     
-    private func useItem (_ item : Item) {
-        if item.consumableComponent?.effect.type == .CURE {
-            User.singleton.healthComponent.health += item.consumableComponent?.effect.amount ?? 0
-            myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
-        } else if item.consumableComponent?.effect.type == .DAMAGE {
-            User.singleton.fighterComponent.damage += item.consumableComponent?.effect.amount ?? 0
-        }
+    private func useItem(_ item : Item) {
+        battleSystem.useItem(item)
+        myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
     }
     
-    private func enemyTurn () {
+    private func enemyTurn() {
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
         buttonUseItem.removeFromParent()
@@ -274,22 +288,22 @@ class BatalhaScene : SKScene {
     }
     
     private func attack () {
-        if enemyDodge {
+        
+        
+        let attackResult = battleSystem.attack()
+        
+        if (attackResult.enemyDodged) {
+            
             let messageEnemyDodge = SKLabelNode(text: "Inimigo se esquivou")
             messageEnemyDodge.position = PositionHelper.singleton.centralize(messageEnemyDodge)
             scene?.addChild(messageEnemyDodge)
+            enemy.spriteComponent.sprite.run(.sequence([
+                .move(by: .init(dx: 100, dy: 0), duration: 1),
+                .move(by: .init(dx: -100, dy: 0), duration: 1)
+            ]))
             
-            enemy.spriteComponent.sprite.position.x += 100
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
-                messageEnemyDodge.removeFromParent()
-                self?.enemyDodge = false
-                self?.enemy.spriteComponent.sprite.position.x -= 100
-            })
         } else {
-            
-            enemy.healthComponent.health -= User.singleton.fighterComponent.damage
             enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
-            
             if enemy.healthComponent.health <= 0 {
                 let nextScene = YouWinScene(size: self.size)
                 nextScene.scaleMode = .aspectFill
@@ -299,6 +313,7 @@ class BatalhaScene : SKScene {
             }
         }
     }
+    
     
     private func spare () {
         let nextScene = GameScene(size: self.size)
@@ -317,7 +332,7 @@ class BatalhaScene : SKScene {
         }
     }
     
-    private func useItem () {
+    private func showItems () {
         // PRIMEIRO PASSO: ELIMINAR OS BOTÕES POSSÍVEIS
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()

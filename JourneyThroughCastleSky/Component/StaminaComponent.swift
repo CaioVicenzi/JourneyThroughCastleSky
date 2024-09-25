@@ -7,7 +7,7 @@
 
 import Foundation
 
-class StaminaComponent {
+class StaminaComponent: Component {
     var stamina : Int
     
     init(stamina: Int) {

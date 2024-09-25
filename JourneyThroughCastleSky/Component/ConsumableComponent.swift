@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConsumableComponent {
+class ConsumableComponent: Component {
     var nome : String
     var effect : Effect
     
