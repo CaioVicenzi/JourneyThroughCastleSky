@@ -63,7 +63,7 @@ class GameOverScene : SKScene {
         let location = event.location(in: self)
         let clickedNode = self.atPoint(location)
         if clickedNode.name == "goBackButton" || clickedNode.name == "textBackButton" {
-            self.view?.presentScene(GameScene(size: self.size), transition: .fade(withDuration: 1))
+            //self.view?.presentScene(GameScene(size: self.size), transition: .fade(withDuration: 1))
         }
     }
     
