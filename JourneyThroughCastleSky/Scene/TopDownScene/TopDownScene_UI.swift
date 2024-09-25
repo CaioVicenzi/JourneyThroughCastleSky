@@ -36,6 +36,15 @@ extension TopDownScene {
     /// Função que faz o setup do sprite do usuário, posicionando ele dentro do mapa..
     internal func setupSprite () {
         setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent, scale: 0.2)
+        
+        let sprite = User.singleton.spriteComponent.sprite
+        sprite.physicsBody = SKPhysicsBody(rectangleOf: sprite.size)
+        sprite.physicsBody?.categoryBitMask  = PhysicCategory.character
+        sprite.physicsBody?.collisionBitMask = PhysicCategory.wall
+        sprite.physicsBody?.contactTestBitMask = PhysicCategory.wall
+        sprite.physicsBody?.affectedByGravity = false
+        sprite.physicsBody?.isDynamic = true // pode se mover
+        
     }
     
     // MARK: FUNÇÕES QUE POSICIONAM ELEMENTOS EM LISTA DENTRO DO MAPA (ITENS, INIMIGOS E AMIGÁVEIS).

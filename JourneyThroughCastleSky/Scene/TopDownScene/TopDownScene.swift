@@ -14,7 +14,7 @@ import SpriteKit
 ///   - itens: são uma lista contendo todos os itens que se deseja colocar dentro da cena;
 ///   - friendliest: são uma lista contendo todos os amigáveis que se deseja colocar dentro da cena;
 ///   - background: um sprite que contém o fundo da cena.
-class TopDownScene : SKScene {
+class TopDownScene : SKScene, SKPhysicsContactDelegate {
     let enemies : [Enemy]
     let itens : [Item]
     let frindlies : [Friendly]
@@ -76,6 +76,9 @@ class TopDownScene : SKScene {
         
         // inicializando o cameraNode.
         cameraNode = SKCameraNode()
+        
+        self.physicsWorld.gravity = .zero
+        self.physicsWorld.contactDelegate = self
     }
         
     internal func setupNodes () {
