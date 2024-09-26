@@ -43,6 +43,7 @@
 		FDE3CF222CA4A96800D88620 /* BattleSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF212CA4A96800D88620 /* BattleSystem.swift */; };
 		FDE3CF242CA4A9AA00D88620 /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		FDE3CF262CA4AD0700D88620 /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
+		FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF272CA5F56400D88620 /* Wall.swift */; };
 		FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */; };
 		FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0892C91B750006D4EA0 /* GameScene.sks */; };
 		FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E08B2C91B750006D4EA0 /* Actions.sks */; };
@@ -93,6 +94,7 @@
 		FDE3CF212CA4A96800D88620 /* BattleSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleSystem.swift; sourceTree = "<group>"; };
 		FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneScene.swift; sourceTree = "<group>"; };
 		FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicCategory.swift; sourceTree = "<group>"; };
+		FDE3CF272CA5F56400D88620 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JourneyThroughCastleSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF1E0892C91B750006D4EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */,
 				FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */,
 				FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */,
+				FDE3CF272CA5F56400D88620 /* Wall.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				FDAD41F62C9CB7D40053A4B0 /* MovementSystem.swift in Sources */,
 				FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */,
 				FD932B0B2C9B58DC0047B5B7 /* FighterComponent.swift in Sources */,
+				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
 				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,

@@ -11,42 +11,43 @@ import SpriteKit
 class MovementSystem {
     var gameScene : TopDownScene!
     
+    var mostRecentMove : [Move] = []
+    
+    enum Move {
+        case UP, DOWN, LEFT, RIGHT
+    }
+    
     func config (_ gameScene : TopDownScene) {
         self.gameScene = gameScene
     }
     
     func movePlayer () {
-        let velocity : Int = User.singleton.movementComponent.velocity
-        let movimentoX = User.singleton.movementComponent.moveX
-        let movimentoY = User.singleton.movementComponent.moveY
-        
-        
-        if movimentoX >= velocity || movimentoX <= -velocity {
-            if movimentoX < 0 {
-                User.singleton.movementComponent.moveX += velocity
-                User.singleton.positionComponent.xPosition -= velocity
-            } else {
-                User.singleton.movementComponent.moveX -= velocity
-                User.singleton.positionComponent.xPosition += velocity
-            }
+        if mostRecentMove.isEmpty {
+            User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+            return
         }
         
-        if movimentoY >= velocity || movimentoY <= -velocity {
-            if movimentoY < 0 {
-                User.singleton.movementComponent.moveY += velocity
-                User.singleton.positionComponent.yPosition -= velocity
-            } else {
-                User.singleton.movementComponent.moveY -= velocity
-                User.singleton.positionComponent.yPosition += velocity
-            }
+        // Atualiza a posição do sprite com base nas teclas pressionadas
+        var moveX: CGFloat = 0
+        var moveY: CGFloat = 0
+        let playerSpeed = 150.0
+
+        switch mostRecentMove.last {
+            case .UP: moveY += playerSpeed
+            case .DOWN: moveY -= playerSpeed
+            case .LEFT: moveX -= playerSpeed
+            case .RIGHT: moveX += playerSpeed
+            case nil: break
         }
         
+        User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: moveX, dy: moveY)
         updateUserPosition()
     }
     
+    
     private func updateUserPosition () {
-        User.singleton.spriteComponent.sprite.position.x = CGFloat(User.singleton.positionComponent.xPosition)
-        User.singleton.spriteComponent.sprite.position.y = CGFloat(User.singleton.positionComponent.yPosition)
+        User.singleton.positionComponent.xPosition = Int(User.singleton.spriteComponent.sprite.position.x)
+        User.singleton.positionComponent.yPosition = Int(User.singleton.spriteComponent.sprite.position.y)
     }
     
     func updateCameraPosition () {
@@ -85,28 +86,40 @@ class MovementSystem {
     }
     
     func keyDown (_ event : NSEvent) {
-        guard let character = event.charactersIgnoringModifiers else {
-            return
-        }
-                    
-        let moveAmount = 10
-        
-        switch character {
-        case "w" :
-            User.singleton.movementComponent.moveY += moveAmount
-        case "a" :
-            User.singleton.movementComponent.moveX -= moveAmount
-        case "s" :
-            User.singleton.movementComponent.moveY -= moveAmount
-        case "d" :
-            User.singleton.movementComponent.moveX += moveAmount
-            default: break
-        }
+        switch event.keyCode {
+            case 13: // W key
+            mostRecentMove.append(.UP)
+            case 0:  // A key
+                mostRecentMove.append(.LEFT)
+            case 1:  // S key
+                mostRecentMove.append(.DOWN)
+            case 2:  // D key
+                mostRecentMove.append(.RIGHT)
+            default:
+                break
+            }
     }
     
     func keyUp (_ event : NSEvent) {
-        User.singleton.movementComponent.moveX = 0
-        User.singleton.movementComponent.moveY = 0
+        switch event.keyCode {
+            case 13: // W key
+                eliminate(.UP)
+            case 0:  // A key
+            eliminate(.LEFT)
+            case 1:  // S key
+                eliminate(.DOWN)
+            case 2:  // D key
+            eliminate(.RIGHT)
+            default:
+                break
+            }
+    }
+    
+    private func eliminate (_ move : Move) {
+        mostRecentMove.removeAll { listedMove in
+            move == listedMove
+        }
+        
     }
     
     func checkColision () {

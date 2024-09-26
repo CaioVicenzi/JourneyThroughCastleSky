@@ -25,6 +25,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var inventory : SKShapeNode?
     var buttonCatch : SKShapeNode?
     
+    var isColliding = false
+    
     internal var cameraNode : SKCameraNode!
     
     internal let movementSystem : MovementSystem
@@ -89,5 +91,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupItems()
         setupButtonInventory()
         setupFriendlies()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        isColliding = true
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        isColliding = false
     }
 }
