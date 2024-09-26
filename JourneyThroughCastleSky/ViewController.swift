@@ -17,7 +17,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     
         if let view = self.skView {
-            let gameScene = GameScene(size: view.frame.size)
+            let gameScene = BatalhaScene(size: view.frame.size)
             gameScene.scaleMode = .aspectFill
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)

@@ -41,78 +41,21 @@ class BatalhaScene : SKScene {
     }
     
     override func didMove(to view: SKView) {
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         setupNodes()
     }
     
     func setupNodes () {
-        setupEnemy()
-        setupTitleEnemy()
-        setupButtonAttack()
-        setupButtonSpare()
-        setupButtonUseItem()
-        setupMyLife()
-        setupEnemyLife()
+        setupEnemyScreen()
+        setupActionDescription()
+        setupRows()
+        setupHealthBar()
+        setupStaminaBar()
     }
     
     func config (enemy : Enemy) {
         self.enemy = enemy
     }
-    
-    private func setupEnemy () {
-        enemy.spriteComponent.sprite.position = PositionHelper.singleton.centralize(enemy.spriteComponent.sprite)
-        enemy.spriteComponent.sprite.setScale(0.4)
-        enemy.spriteComponent.sprite.position.y += 100
-        addChild(enemy.spriteComponent.sprite)
-    }
-    
-    // MARK: SETUP UI
-    
-    private func setupTitleEnemy () {
-        let titleEnemy = SKLabelNode(text: "Inimigo")
-        titleEnemy.position = PositionHelper.singleton.rightUpCorner(titleEnemy)
-        titleEnemy.fontSize = 20
-        addChild(titleEnemy)
-    }
-    
-    private func setupButtonAttack () {
-        buttonAttack = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonAttack), size: CGSize(width: 100, height: 50)))
-        buttonAttack.fillColor = .red
-        buttonAttack.strokeColor = .white
-        buttonAttack.position.x += 100
-        addChild(buttonAttack)
-    }
-    
-    private func setupButtonUseItem () {
-        buttonUseItem = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonUseItem), size: CGSize(width: 100, height: 50)))
-        buttonUseItem.fillColor = .gray
-        buttonUseItem.strokeColor = .white
-        buttonUseItem.position.x += 250
-        addChild(buttonUseItem)
-    }
-    
-    private func setupButtonSpare () {
-        buttonSpare = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonSpare), size: CGSize(width: 100, height: 50)))
-        buttonSpare.fillColor = .gray
-        buttonSpare.strokeColor = .white
-        buttonSpare.position.x += 400
-        addChild(buttonSpare)
-    }
-    
-    private func setupEnemyLife () {
-        enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
-        enemyLifeLabel.position = PositionHelper.singleton.rightUpCorner(enemyLifeLabel)
-        enemyLifeLabel.position.y -= 30
-        enemyLifeLabel.fontSize = 20
-
-        addChild(enemyLifeLabel)
-    }
-    
-    private func setupMyLife () {
-        myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
-        myLifeLabel.position = PositionHelper.singleton.centralizeQuarterLeft(myLifeLabel)
-        addChild(myLifeLabel)
-    }
-    
     
     // MARK: LÓGICA
     
