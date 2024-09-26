@@ -27,7 +27,7 @@ class BatalhaScene : SKScene {
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
     
-    var battleSystem = BattleSystem()
+    var battleSystem = CombatSystem()
     
     var previousScene : SKScene? = nil
     
@@ -248,6 +248,7 @@ class BatalhaScene : SKScene {
     }
     
     private func enemyTurn() {
+        battleSystem.enemyTurn()
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
         buttonUseItem.removeFromParent()

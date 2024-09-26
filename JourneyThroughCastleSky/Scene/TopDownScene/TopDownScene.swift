@@ -2,9 +2,8 @@
 //  TopDownScene.swift
 //  JourneyThroughCastleSky
 //
-//  Created by Caio Marques on 25/09/24.
+//  Created by Victor Soares on 26/09/24.
 //
-
 import Foundation
 import SpriteKit
 
@@ -77,7 +76,7 @@ class TopDownScene : SKScene {
         // inicializando o cameraNode.
         cameraNode = SKCameraNode()
     }
-        
+    
     internal func setupNodes () {
         setupCamera()
         setupBackground()
