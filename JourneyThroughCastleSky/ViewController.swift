@@ -17,8 +17,9 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     
         if let view = self.skView {
-            let gameScene =  MainMenuScene(size: skView.frame.size)
-            gameScene.scaleMode = .aspectFill
+            let gameScene = BatalhaScene(size: view.frame.size)
+            gameScene.config(enemy: Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "enemy"))
+            gameScene.scaleMode = .aspectFit
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
             view.ignoresSiblingOrder = true
