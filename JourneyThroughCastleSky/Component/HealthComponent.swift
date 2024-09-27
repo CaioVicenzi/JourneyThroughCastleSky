@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HealthComponent {
+class HealthComponent: Component {
     var health : Int
     
     init(health: Int) {

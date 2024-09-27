@@ -3,10 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98838C242CA4867900709648 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C232CA4867900709648 /* Component.swift */; };
+		98838C262CA486C600709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
+		98838C2A2CA487CD00709648 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C292CA487CD00709648 /* Entity.swift */; };
+		98838C2E2CA4A65C00709648 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C2D2CA4A65C00709648 /* Skill.swift */; };
+		98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */; };
+		98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C322CA5CE4A00709648 /* SkillComponent.swift */; };
+		98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C482CA5D8E300709648 /* TopDownScene.swift */; };
+		98838C4B2CA5DB8300709648 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0C2C9B591A0047B5B7 /* Enemy.swift */; };
+		98838C4C2CA5DC5200709648 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C232CA4867900709648 /* Component.swift */; };
+		98838C4D2CA5DC6100709648 /* FightAIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B062C9B57860047B5B7 /* FightAIComponent.swift */; };
+		98838C4E2CA5DC6100709648 /* FighterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0A2C9B58DC0047B5B7 /* FighterComponent.swift */; };
+		98838C4F2CA5DC6100709648 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
+		98838C502CA5DC6100709648 /* AffectedByEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B042C9B57620047B5B7 /* AffectedByEffect.swift */; };
+		98838C512CA5DC6100709648 /* StaminaComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AFC2C9B56D90047B5B7 /* StaminaComponent.swift */; };
+		98838C522CA5DC6100709648 /* ConsumableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF82C9B56940047B5B7 /* ConsumableComponent.swift */; };
+		98838C532CA5DC6100709648 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AFE2C9B56EE0047B5B7 /* SpriteComponent.swift */; };
+		98838C542CA5DC6100709648 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
+		98838C552CA5DC6100709648 /* SkillComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C322CA5CE4A00709648 /* SkillComponent.swift */; };
+		98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B002C9B57180047B5B7 /* InteractableComponent.swift */; };
+		98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */; };
+		98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B022C9B572E0047B5B7 /* DialogueComponent.swift */; };
+		98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AFA2C9B56C10047B5B7 /* HealthComponent.swift */; };
+		98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */; };
+		98838C5B2CA5DC8000709648 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C2D2CA4A65C00709648 /* Skill.swift */; };
+		98838C5C2CA5DC8000709648 /* IncreaseStrengthSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */; };
+		98838C5D2CA5DC8600709648 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0E2C9B5BCA0047B5B7 /* Item.swift */; };
+		98838C5E2CA5DC8600709648 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C292CA487CD00709648 /* Entity.swift */; };
+		98838C5F2CA5DC8600709648 /* Friendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */; };
+		98838C602CA5DC8600709648 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B082C9B57AA0047B5B7 /* User.swift */; };
+		98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
+		98838C622CA5DC8C00709648 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF62C9B56410047B5B7 /* Effect.swift */; };
+		98838C632CA5DC8C00709648 /* Dialogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC54FF2C9A106300E90E17 /* Dialogo.swift */; };
+		98838C642CA5DC8C00709648 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */; };
+		98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */; };
+		98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C482CA5D8E300709648 /* TopDownScene.swift */; };
+		98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */; };
+		98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */; };
+		98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */; };
+		98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
+		98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08D2C91B750006D4EA0 /* GameScene.swift */; };
+		98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
+		98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0A42C923540006D4EA0 /* BatalhaScene.swift */; };
+		98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */; };
+		98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */; };
+		98838C732CA5E09800709648 /* DialogSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */; };
+		98838C742CA5E09800709648 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */; };
+		98838C752CA5E09800709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
+		98838C762CA5E09800709648 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
+		98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */; };
 		FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
 		FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */; };
 		FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */; };
@@ -30,6 +79,13 @@
 		FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */; };
 		FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
+		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
+		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
+		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
+		FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */; };
+		FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */; };
+		FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */; };
+		FDE3CF142CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */; };
 		FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */; };
 		FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0892C91B750006D4EA0 /* GameScene.sks */; };
 		FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E08B2C91B750006D4EA0 /* Actions.sks */; };
@@ -43,7 +99,25 @@
 		FDF1E0AC2C938531006D4EA0 /* YouWinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		98838C402CA5D62D00709648 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDF1E07C2C91B750006D4EA0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDF1E0832C91B750006D4EA0;
+			remoteInfo = JourneyThroughCastleSky;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		98838C232CA4867900709648 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
+		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
+		98838C292CA487CD00709648 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
+		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
+		98838C322CA5CE4A00709648 /* SkillComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillComponent.swift; sourceTree = "<group>"; };
+		98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JourneyThroughCastleSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		98838C482CA5D8E300709648 /* TopDownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene.swift; sourceTree = "<group>"; };
 		FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -67,6 +141,13 @@
 		FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendly.swift; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
+		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
+		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
+		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
+		FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_INPUT.swift; sourceTree = "<group>"; };
+		FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_INVENTORY.swift; sourceTree = "<group>"; };
+		FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopDownScene_DIALOG-BOX.swift"; sourceTree = "<group>"; };
+		FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopDownScene_ITEM-DESCRIPTION.swift"; sourceTree = "<group>"; };
 		FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JourneyThroughCastleSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF1E0892C91B750006D4EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -82,7 +163,18 @@
 		FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouWinScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JourneyThroughCastleSkyTests; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		98838C392CA5D62D00709648 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FDF1E0812C91B750006D4EA0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -93,9 +185,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		98838C2F2CA4A68B00709648 /* Skills */ = {
+			isa = PBXGroup;
+			children = (
+				98838C2D2CA4A65C00709648 /* Skill.swift */,
+				98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */,
+			);
+			path = Skills;
+			sourceTree = "<group>";
+		};
 		FD16D8822C9B55870069D661 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				98838C232CA4867900709648 /* Component.swift */,
 				FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */,
 				FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */,
 				FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */,
@@ -108,6 +210,8 @@
 				FD932B042C9B57620047B5B7 /* AffectedByEffect.swift */,
 				FD932B062C9B57860047B5B7 /* FightAIComponent.swift */,
 				FD932B0A2C9B58DC0047B5B7 /* FighterComponent.swift */,
+				FDE3CF042CA3413100D88620 /* ReadableComponent.swift */,
+				98838C322CA5CE4A00709648 /* SkillComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -118,6 +222,7 @@
 				FDAC54FF2C9A106300E90E17 /* Dialogo.swift */,
 				FD932AF62C9B56410047B5B7 /* Effect.swift */,
 				FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */,
+				FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +230,7 @@
 		FD932AEF2C9B55A80047B5B7 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				98838C252CA486C600709648 /* CombatSystem.swift */,
 				FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */,
 				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
 				FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */,
@@ -143,6 +249,8 @@
 		FDAC55062C9B554200E90E17 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				98838C2F2CA4A68B00709648 /* Skills */,
+				98838C292CA487CD00709648 /* Entity.swift */,
 				FD932B082C9B57AA0047B5B7 /* User.swift */,
 				FD932B0C2C9B591A0047B5B7 /* Enemy.swift */,
 				FD932B0E2C9B5BCA0047B5B7 /* Item.swift */,
@@ -151,10 +259,24 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
+			isa = PBXGroup;
+			children = (
+				98838C482CA5D8E300709648 /* TopDownScene.swift */,
+				FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */,
+				FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */,
+				FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */,
+				FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */,
+				FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */,
+			);
+			path = TopDownScene;
+			sourceTree = "<group>";
+		};
 		FDF1E07B2C91B750006D4EA0 = {
 			isa = PBXGroup;
 			children = (
 				FDF1E0862C91B750006D4EA0 /* JourneyThroughCastleSky */,
+				98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 				FDF1E0852C91B750006D4EA0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */,
+				98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -198,6 +321,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				FDE3CF0A2CA485F400D88620 /* TopDownScene */,
 				FDAC55012C9A10BF00E90E17 /* GameScene */,
 				FDF1E0AD2C94B7CF006D4EA0 /* BatalhaScene */,
 				FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */,
@@ -218,6 +342,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		98838C3B2CA5D62D00709648 /* JourneyThroughCastleSkyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 98838C422CA5D62D00709648 /* Build configuration list for PBXNativeTarget "JourneyThroughCastleSkyTests" */;
+			buildPhases = (
+				98838C382CA5D62D00709648 /* Sources */,
+				98838C392CA5D62D00709648 /* Frameworks */,
+				98838C3A2CA5D62D00709648 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				98838C412CA5D62D00709648 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
+			);
+			name = JourneyThroughCastleSkyTests;
+			packageProductDependencies = (
+			);
+			productName = JourneyThroughCastleSkyTests;
+			productReference = 98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FDF1E0992C91B752006D4EA0 /* Build configuration list for PBXNativeTarget "JourneyThroughCastleSky" */;
@@ -242,9 +389,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1540;
+				LastSwiftUpdateCheck = 1600;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					98838C3B2CA5D62D00709648 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = FDF1E0832C91B750006D4EA0;
+					};
 					FDF1E0832C91B750006D4EA0 = {
 						CreatedOnToolsVersion = 15.4;
 					};
@@ -264,11 +415,19 @@
 			projectRoot = "";
 			targets = (
 				FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */,
+				98838C3B2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		98838C3A2CA5D62D00709648 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FDF1E0822C91B750006D4EA0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,6 +442,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		98838C382CA5D62D00709648 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98838C4B2CA5DB8300709648 /* Enemy.swift in Sources */,
+				98838C5D2CA5DC8600709648 /* Item.swift in Sources */,
+				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
+				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
+				98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */,
+				98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */,
+				98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */,
+				98838C5E2CA5DC8600709648 /* Entity.swift in Sources */,
+				98838C5F2CA5DC8600709648 /* Friendly.swift in Sources */,
+				98838C732CA5E09800709648 /* DialogSystem.swift in Sources */,
+				98838C742CA5E09800709648 /* MovementSystem.swift in Sources */,
+				98838C752CA5E09800709648 /* CombatSystem.swift in Sources */,
+				98838C762CA5E09800709648 /* ItemSystem.swift in Sources */,
+				98838C602CA5DC8600709648 /* User.swift in Sources */,
+				98838C5B2CA5DC8000709648 /* Skill.swift in Sources */,
+				98838C5C2CA5DC8000709648 /* IncreaseStrengthSkill.swift in Sources */,
+				98838C4D2CA5DC6100709648 /* FightAIComponent.swift in Sources */,
+				98838C4E2CA5DC6100709648 /* FighterComponent.swift in Sources */,
+				98838C4F2CA5DC6100709648 /* PositionComponent.swift in Sources */,
+				98838C502CA5DC6100709648 /* AffectedByEffect.swift in Sources */,
+				98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */,
+				98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */,
+				98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */,
+				98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */,
+				98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
+				98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */,
+				98838C512CA5DC6100709648 /* StaminaComponent.swift in Sources */,
+				98838C522CA5DC6100709648 /* ConsumableComponent.swift in Sources */,
+				98838C532CA5DC6100709648 /* SpriteComponent.swift in Sources */,
+				98838C542CA5DC6100709648 /* ReadableComponent.swift in Sources */,
+				98838C552CA5DC6100709648 /* SkillComponent.swift in Sources */,
+				98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */,
+				98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */,
+				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
+				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
+				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
+				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
+				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
+				98838C622CA5DC8C00709648 /* Effect.swift in Sources */,
+				98838C632CA5DC8C00709648 /* Dialogo.swift in Sources */,
+				98838C642CA5DC8C00709648 /* GameState.swift in Sources */,
+				98838C4C2CA5DC5200709648 /* Component.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FDF1E0802C91B750006D4EA0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,6 +500,9 @@
 				FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */,
 				FD932B012C9B57180047B5B7 /* InteractableComponent.swift in Sources */,
 				FD932AFD2C9B56D90047B5B7 /* StaminaComponent.swift in Sources */,
+				FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */,
+				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
+				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
 				FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */,
@@ -299,21 +510,32 @@
 				FDAC55002C9A106300E90E17 /* Dialogo.swift in Sources */,
 				FD932B032C9B572E0047B5B7 /* DialogueComponent.swift in Sources */,
 				FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */,
+				FDE3CF142CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
 				FDF1E0A52C923540006D4EA0 /* BatalhaScene.swift in Sources */,
 				FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */,
+				98838C262CA486C600709648 /* CombatSystem.swift in Sources */,
+				98838C2E2CA4A65C00709648 /* Skill.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
+				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FD932AFF2C9B56EE0047B5B7 /* SpriteComponent.swift in Sources */,
 				FDAD41F62C9CB7D40053A4B0 /* MovementSystem.swift in Sources */,
 				FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */,
 				FD932B0B2C9B58DC0047B5B7 /* FighterComponent.swift in Sources */,
+				98838C242CA4867900709648 /* Component.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
+				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,
+				FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				FD932AFB2C9B56C10047B5B7 /* HealthComponent.swift in Sources */,
 				FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */,
 				FDF1E0A32C921D16006D4EA0 /* GameOverScene.swift in Sources */,
 				FD932B0F2C9B5BCA0047B5B7 /* Item.swift in Sources */,
 				FDF1E0AC2C938531006D4EA0 /* YouWinScene.swift in Sources */,
 				FD932B092C9B57AA0047B5B7 /* User.swift in Sources */,
+				98838C2A2CA487CD00709648 /* Entity.swift in Sources */,
+				98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */,
+				FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */,
+				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,
 				FD932B052C9B57620047B5B7 /* AffectedByEffect.swift in Sources */,
@@ -321,6 +543,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		98838C412CA5D62D00709648 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */;
+			targetProxy = 98838C402CA5D62D00709648 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FDF1E0932C91B752006D4EA0 /* Main.storyboard */ = {
@@ -334,6 +564,42 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		98838C432CA5D62D00709648 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M67J2XKW43;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.JourneyThroughCastleSkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JourneyThroughCastleSky.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JourneyThroughCastleSky";
+			};
+			name = Debug;
+		};
+		98838C442CA5D62D00709648 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M67J2XKW43;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Victor.JourneyThroughCastleSkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JourneyThroughCastleSky.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JourneyThroughCastleSky";
+			};
+			name = Release;
+		};
 		FDF1E0972C91B752006D4EA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -509,6 +775,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		98838C422CA5D62D00709648 /* Build configuration list for PBXNativeTarget "JourneyThroughCastleSkyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				98838C432CA5D62D00709648 /* Debug */,
+				98838C442CA5D62D00709648 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FDF1E07F2C91B750006D4EA0 /* Build configuration list for PBXProject "JourneyThroughCastleSky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

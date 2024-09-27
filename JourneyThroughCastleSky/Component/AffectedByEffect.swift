@@ -7,6 +7,6 @@
 
 import Foundation
 
-class AffectedByEffect {
+class AffectedByEffect: Component {
     var effects : [Effect] = []
 }

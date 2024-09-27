@@ -8,18 +8,53 @@
 import Foundation
 import SpriteKit
 
-class User {
+class User: Entity {
     static let singleton = User()
     
-    let healthComponent = HealthComponent(health: 100)
-    let inventoryComponent = InventoryComponent()
-    let movementComponent = MovementComponent(velocity: 3)
-    let staminaComponent = StaminaComponent(stamina: 100)
-    let spriteComponent = SpriteComponent ("sprite")
-    let fighterComponent = FighterComponent(damage: 5)
-    let affectedByEffectComponent = AffectedByEffect()
-    let positionComponent = PositionComponent(xPosition: 100, yPosition: 100)
+    var healthComponent: HealthComponent {
+        getComponent(HealthComponent.self) as! HealthComponent
+    }
+    var inventoryComponent: InventoryComponent {
+        getComponent(InventoryComponent.self) as! InventoryComponent
+    }
+    var movementComponent: MovementComponent {
+        getComponent(MovementComponent.self) as! MovementComponent
+    }
+    var staminaComponent: StaminaComponent {
+        getComponent(StaminaComponent.self) as! StaminaComponent
+    }
+    var spriteComponent: SpriteComponent {
+        getComponent(SpriteComponent.self) as! SpriteComponent
+    }
     
+    var fighterComponent: FighterComponent {
+        getComponent(FighterComponent.self) as! FighterComponent
+    }
+    
+    var affectedByEffectComponent: AffectedByEffect {
+        getComponent(AffectedByEffect.self) as! AffectedByEffect
+    }
+    
+    var positionComponent: PositionComponent {
+        getComponent(PositionComponent.self) as! PositionComponent
+    }
+    
+    var skillComponent: SkillComponent {
+        getComponent(SkillComponent.self) as! SkillComponent
+    }
+    
+    override init() {
+        super.init()
+        addComponent(HealthComponent(health: 100))
+        addComponent(InventoryComponent())
+        addComponent(MovementComponent(velocity: 3))
+        addComponent(StaminaComponent(stamina: 100))
+        addComponent(SpriteComponent("sprite"))
+        addComponent(FighterComponent(damage: 5))
+        addComponent(AffectedByEffect())
+        addComponent(PositionComponent(xPosition: 100, yPosition: 100))
+        addComponent(SkillComponent())
+    }
     
 }
 

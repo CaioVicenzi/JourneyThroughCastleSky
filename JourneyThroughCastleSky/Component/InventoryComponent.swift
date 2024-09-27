@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
-class InventoryComponent {
+class InventoryComponent: Component {
     var itens : [Item] = []
+    var skills: [Skill] = []
 }

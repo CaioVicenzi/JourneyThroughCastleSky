@@ -7,7 +7,7 @@
 
 import Foundation
 
-class InteractableComponent {
+class InteractableComponent: Component {
     func interact (_ completion : () -> Void) {
         completion()
     }

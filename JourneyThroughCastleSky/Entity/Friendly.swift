@@ -7,6 +7,11 @@
 
 import Foundation
 
+/// Amigáveis são uma entidade de personagens especiais que o usuário pode diálogar com eles, mas eles não podem combater com o usuário nem se mover (se houver alguma alteração futura que pode fazer o amigável se locomover, aqui deverá ser feito essa alteração.
+/// - parameters
+///   - spriteComponent: os amigáveis terão um sprite associado a eles para serem adicionados em uma cena.
+///   - positionComponent: os amigáveis terão um posicionamento dentro do mapa.
+///   - dialogueComponent: contém os diálogos que serão acionados caso o usuário interaja com o amigável.
 class Friendly {
     let spriteComponent : SpriteComponent
     let positionComponent : PositionComponent

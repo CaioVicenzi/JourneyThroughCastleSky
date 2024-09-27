@@ -9,9 +9,9 @@ import Foundation
 import SpriteKit
 
 class MovementSystem {
-    var gameScene : GameScene!
+    var gameScene : TopDownScene!
     
-    func config (_ gameScene : GameScene) {
+    func config (_ gameScene : TopDownScene) {
         self.gameScene = gameScene
     }
     
