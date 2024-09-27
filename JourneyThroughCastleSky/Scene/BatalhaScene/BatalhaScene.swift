@@ -190,8 +190,8 @@ class BatalhaScene : SKScene {
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
     }
     
-    private func enemyTurn() {
-        battleSystem.enemyTurn()
+    public func enemyTurn() {
+        
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
         buttonUseItem.removeFromParent()
@@ -209,21 +209,20 @@ class BatalhaScene : SKScene {
                 node.removeFromParent()
             }
         }
-        
-        
+        let currentPlayerHealth = User.singleton.healthComponent.health
+        battleSystem.enemyTurn()
+        let enemyAttacked = User.singleton.healthComponent.health < currentPlayerHealth
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
             let label = SKLabelNode()
             
-            
-            let randomico = Int.random(in: 0 ..< 2)
-            if randomico == 0 {
-                User.singleton.healthComponent.health -= 10
-                if User.singleton.healthComponent.health <= 0 {
-                    if let self {
-                        self.view?.presentScene(GameOverScene(size: self.size))
-                    }
+            if User.singleton.healthComponent.health <= 0 {
+                if let self {
+                    self.view?.presentScene(GameOverScene(size: self.size))
                 }
-                self?.myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
+            }
+            self?.myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
+            
+            if (enemyAttacked) {
                 label.text = "Inimigo atacou!"
             } else {
                 self?.enemyDodge = true
@@ -282,7 +281,7 @@ class BatalhaScene : SKScene {
     }
     
     
-    private func spare () {
+    public func spare () {
         /*
         let nextScene = GameScene(size: self.size)
         nextScene.scaleMode = .aspectFill

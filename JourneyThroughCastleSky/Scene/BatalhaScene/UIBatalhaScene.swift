@@ -112,5 +112,7 @@ extension BatalhaScene{
         let index = Int(buttonName.suffix(1))!
         
         actions[index]()
+        
+        enemyTurn()
     }
 }

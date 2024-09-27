@@ -73,6 +73,15 @@ class CombatSystem {
         User.singleton.skillComponent.skills.removeAll { skill in
             !skill.isActive
         }
+        
+        let enemyDamage = enemy.fighterComponent.damage
+        let random = Float.random(in: 0..<1)
+        print(User.singleton.healthComponent.health)
+        if (random > 0.5) {
+            User.singleton.healthComponent.health -= enemyDamage
+        } else {
+            enemyDodge = true
+        }
     }
     
 }
