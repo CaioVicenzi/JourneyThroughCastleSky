@@ -37,35 +37,45 @@ extension BatalhaScene{
             individualRow.fillColor = .blue
             individualRow.strokeColor = .black
             
+            individualRow.isUserInteractionEnabled = true
+            
+            individualRow.name = "rowButton\(i)"
+            
             addChild(individualRow)
             rowNodes.append(individualRow)
         }
-        
-        func setupActionDescription(){
-            let actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
-            
-            actionDescription.fillColor = .yellow
-            actionDescription.strokeColor = .black
-            
-            addChild(actionDescription)
-        }
-        
-        func setupHealthBar(){
-            let healthBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
-            
-            healthBar.fillColor = .green
-            healthBar.strokeColor = .black
-            
-            addChild(healthBar)
-        }
-        
-        func setupStaminaBar(){
-            let staminaBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925), y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
-            
-            staminaBar.fillColor = .purple
-            staminaBar.strokeColor = .black
-            
-            addChild(staminaBar)
-        }
     }
+        
+    func setupActionDescription(){
+        let actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
+            
+        actionDescription.fillColor = .yellow
+        actionDescription.strokeColor = .black
+            
+        addChild(actionDescription)
+    }
+        
+    func setupHealthBar(){
+        let healthBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
+            
+        healthBar.fillColor = .green
+        healthBar.strokeColor = .black
+            
+        addChild(healthBar)
+    }
+        
+    func setupStaminaBar(){
+        let staminaBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.045))
+        
+        staminaBar.fillColor = .purple
+        staminaBar.strokeColor = .black
+        
+        addChild(staminaBar)
+    }
+    
+    func handleButtonPress(named buttonName: String) {
+            print("\(buttonName) foi pressionado")
+        }
+    
 }
+

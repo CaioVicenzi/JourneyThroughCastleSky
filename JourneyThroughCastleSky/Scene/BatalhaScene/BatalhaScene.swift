@@ -16,6 +16,8 @@ class BatalhaScene : SKScene {
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
     
+    var control: Bool = true
+    
     var previousScene : SKScene? = nil
     
     private var buttonSelected : ButtonSelected = .ATTACK
@@ -45,12 +47,27 @@ class BatalhaScene : SKScene {
         setupNodes()
     }
     
+    override func touchesBegan(with event: NSEvent) {
+        let location = event.location(in: self)
+
+                if let touchedNode = self.atPoint(location).name {
+                    if touchedNode.starts(with: "rowButton") {
+                        control = true
+                        handleButtonPress(named: touchedNode)
+            }
+        }
+    }
+    
+    override func touchesEnded(with event: NSEvent) {
+        control = false
+    }
+    
     func setupNodes () {
         setupEnemyScreen()
-        setupActionDescription()
         setupRows()
-        setupHealthBar()
         setupStaminaBar()
+        setupHealthBar()
+        setupActionDescription()
     }
     
     func config (enemy : Enemy) {
@@ -319,6 +336,5 @@ class BatalhaScene : SKScene {
             }
         }
     }
-     
 }
 
