@@ -74,8 +74,18 @@ extension BatalhaScene{
     }
     
     func handleButtonPress(named buttonName: String) {
-            print("\(buttonName) foi pressionado")
+        print("\(buttonName) foi pressionado")
+            
+        switch buttonName {
+        case "rowButton0":
+            // Ação para o botão 0
+            print("Ação do botão 0")
+        case "rowButton1":
+            // Ação para o botão 1
+            print("Ação do botão 1")
+        // Continue para os outros botões
+        default:
+            break
         }
-    
+    }
 }
-
