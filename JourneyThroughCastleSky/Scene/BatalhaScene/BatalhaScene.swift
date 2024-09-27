@@ -8,6 +8,16 @@
 import Foundation
 import SpriteKit
 
+struct ActionResult {
+    enum State {
+        case cancelled
+        case success
+    }
+    
+    var state: State = .success
+    
+}
+
 class BatalhaScene : SKScene {
     var enemy : Enemy!
     var buttonAttack = SKShapeNode()
@@ -177,20 +187,25 @@ class BatalhaScene : SKScene {
                     buttonSelected = proximoButton
                 }
             }
-        case 36:
+        case 36: // Enter
+            var result: ActionResult = ActionResult()
             switch buttonSelected {
-            case .ATTACK:
-                attack()
-                gameChooseState = .SELECTED
-            case .USE_ITEM:
-                showItems()
-                gameChooseState = .CHOOSE_ITEM
-            case .SPARE:
-                spare()
-                gameChooseState = .SELECTED
-            case .DODGE:
+                case .ATTACK:
+                    result = attack()
+                    gameChooseState = .SELECTED
+                case .USE_ITEM:
+                    showItems()
+                    gameChooseState = .CHOOSE_ITEM
+                case .SPARE:
+                    spare()
+                    gameChooseState = .SELECTED
+                case .DODGE:
+                    gameChooseState = .SELECTED
+            }
                 
-                gameChooseState = .SELECTED
+            if (result.state == .cancelled) {
+                gameChooseState = .CHOOSE_BUTTON
+                return
             }
             
             if gameChooseState == .SELECTED {
@@ -287,10 +302,16 @@ class BatalhaScene : SKScene {
         })
     }
     
-    private func attack () {
+    private func attack () -> ActionResult {
         
         
         let attackResult = battleSystem.attack()
+        var actionResult = ActionResult()
+        
+        if (attackResult.cancelled) {
+            actionResult.state = .cancelled
+            return actionResult
+        }
         
         if (attackResult.enemyDodged) {
             
@@ -312,6 +333,8 @@ class BatalhaScene : SKScene {
                 self.view?.presentScene(nextScene, transition: transition)
             }
         }
+        
+        return actionResult
     }
     
     
