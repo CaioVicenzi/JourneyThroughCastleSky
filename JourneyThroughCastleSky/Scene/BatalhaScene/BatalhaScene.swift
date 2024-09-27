@@ -76,7 +76,7 @@ class BatalhaScene : SKScene {
         let location = event.location(in: self)
             
         let touchedNode = atPoint(location)
-        
+        print(touchedNode)
         if let nodeName = touchedNode.name, nodeName.starts(with: "rowButton") {
             handleButtonPress(named: nodeName)
         }
@@ -361,4 +361,3 @@ class BatalhaScene : SKScene {
         }
     }
 }
-

@@ -26,23 +26,45 @@ extension BatalhaScene{
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
         
+        var buttonLabels = [
+            
+            "Atacar",
+            "Itens",
+            "Habilidades",
+            "Fugir",
+            "Esquivar",
+        ]
+        
         var rowNodes: [SKShapeNode] = []
         
-        for i in 0..<numberOfRows {
-            let individualRow = SKShapeNode(rect: CGRect(x: -(self.size.width * 0.925) / 2,
-                                                         y: (-self.size.height * 0.45)/5 - (CGFloat(i) * rowHeight),
+        for (i, label) in buttonLabels.enumerated() {
+            let individualRow = SKShapeNode(rect: CGRect(x: 0,
+                                                         y: 0,
                                                          width: self.size.width * 0.4625,
                                                          height: rowHeight))
             
             individualRow.fillColor = .blue
             individualRow.strokeColor = .black
             
-            individualRow.isUserInteractionEnabled = true
+            individualRow.isUserInteractionEnabled = false
+            individualRow.position = .init(x: -(self.size.width * 0.925) / 2, y: (-self.size.height * 0.45)/5 - (CGFloat(i) * rowHeight))
+            let label = SKLabelNode(text: label)
+            label.verticalAlignmentMode = .center
+            label.position = .init(
+                x: individualRow.position.x + individualRow
+                    .calculateAccumulatedFrame().width * 0.5,
+                y: individualRow
+                    .position.y + individualRow
+                    .calculateAccumulatedFrame().height * 0.5)
+            print(individualRow.position)
+            
             
             individualRow.name = "rowButton\(i)"
             
-            addChild(individualRow)
+    
             rowNodes.append(individualRow)
+            addChild(individualRow)
+            addChild(label)
         }
     }
         
@@ -64,7 +86,7 @@ extension BatalhaScene{
         addChild(healthBar)
     }
         
-    func setupStaminaBar(){
+    func setupStaminaBar() {
         let staminaBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.045))
         
         staminaBar.fillColor = .purple
