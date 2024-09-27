@@ -10,5 +10,4 @@ import SpriteKit
 
 class InventoryComponent: Component {
     var itens : [Item] = []
-    var skills: [Skill] = []
 }
