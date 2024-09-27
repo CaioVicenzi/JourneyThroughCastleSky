@@ -95,28 +95,22 @@ extension BatalhaScene{
         addChild(staminaBar)
     }
     
+    // Eu tenho que deletar isso depois
+    func voidFunc() {
+        
+    }
+    
     func handleButtonPress(named buttonName: String) {
-        print("\(buttonName) foi pressionado")
-        
-        
         let actions = [
-            attack
+            battleSystem.attack,
+            voidFunc,
+            voidFunc,
+            spare,
+            voidFunc,
         ]
         
         let index = Int(buttonName.suffix(1))!
         
         actions[index]()
-        
-        switch buttonName {
-        case "rowButton0":
-            // Ação para o botão 0
-            print("Ação do botão 0")
-        case "rowButton1":
-            // Ação para o botão 1
-            print("Ação do botão 1")
-        // Continue para os outros botões
-        default:
-            break
-        }
     }
 }
