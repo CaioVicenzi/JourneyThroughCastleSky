@@ -8,16 +8,6 @@
 import Foundation
 import SpriteKit
 
-struct ActionResult {
-    enum State {
-        case cancelled
-        case success
-    }
-    
-    var state: State = .success
-    
-}
-
 class BatalhaScene : SKScene {
     var enemy : Enemy!
     var buttonAttack = SKShapeNode()
@@ -27,7 +17,7 @@ class BatalhaScene : SKScene {
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
     
-    var battleSystem = CombatSystem()
+    var battleSystem = BattleSystem()
     
     var previousScene : SKScene? = nil
     
@@ -55,16 +45,17 @@ class BatalhaScene : SKScene {
     }
     
     override func didMove(to view: SKView) {
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         setupNodes()
     }
     
     func setupNodes () {
-        setupEnemyScreen()
-        setupRows()
-        setupStaminaBar()
-        setupHealthBar()
-        setupActionDescription()
+        setupEnemy()
+        setupTitleEnemy()
+        setupButtonAttack()
+        setupButtonSpare()
+        setupButtonUseItem()
+        setupMyLife()
+        setupEnemyLife()
     }
     
     func config (enemy : Enemy) {
@@ -72,15 +63,71 @@ class BatalhaScene : SKScene {
         self.enemy = enemy
     }
     
-    override func mouseDown(with event: NSEvent) {
-        let location = event.location(in: self)
-            
-        let touchedNode = atPoint(location)
-        
-        if let nodeName = touchedNode.name, nodeName.starts(with: "rowButton") {
-            handleButtonPress(named: nodeName)
-        }
+    private func setupEnemy () {
+        enemy.spriteComponent.sprite.position = PositionHelper.singleton.centralize(enemy.spriteComponent.sprite)
+        enemy.spriteComponent.sprite.setScale(0.4)
+        enemy.spriteComponent.sprite.position.y += 100
+        addChild(enemy.spriteComponent.sprite)
     }
+    
+    // MARK: SETUP UI
+    
+    private func setupTitleEnemy () {
+        let titleEnemy = SKLabelNode(text: "Inimigo")
+        titleEnemy.position = PositionHelper.singleton.rightUpCorner(titleEnemy)
+        titleEnemy.fontSize = 20
+        addChild(titleEnemy)
+    }
+    
+    private func setupButtonAttack () {
+        buttonAttack = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonAttack), size: CGSize(width: 100, height: 50)))
+        buttonAttack.fillColor = .red
+        buttonAttack.strokeColor = .white
+        buttonAttack.position.x += 100
+        addChild(buttonAttack)
+    }
+    
+    private func setupButtonUseItem () {
+        buttonUseItem = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonUseItem), size: CGSize(width: 100, height: 50)))
+        buttonUseItem.fillColor = .gray
+        buttonUseItem.strokeColor = .white
+        buttonUseItem.position.x += 250
+        addChild(buttonUseItem)
+    }
+    
+    private func setupButtonSpare () {
+        buttonSpare = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonSpare), size: CGSize(width: 100, height: 50)))
+        buttonSpare.fillColor = .gray
+        buttonSpare.strokeColor = .white
+        buttonSpare.position.x += 400
+        addChild(buttonSpare)
+    }
+    
+    private func setupButtonDodge () {
+        buttonDodge = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonDodge), size: CGSize(width: 100, height: 50)))
+        buttonDodge.fillColor = .gray
+        buttonDodge.strokeColor = .white
+        buttonDodge.position.x += 550
+        addChild(buttonDodge)
+    }
+    
+    private func setupEnemyLife () {
+        enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
+        enemyLifeLabel.position = PositionHelper.singleton.rightUpCorner(enemyLifeLabel)
+        enemyLifeLabel.position.y -= 30
+        enemyLifeLabel.fontSize = 20
+
+        addChild(enemyLifeLabel)
+    }
+    
+    
+    
+    private func setupMyLife () {
+        myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
+        myLifeLabel.position = PositionHelper.singleton.centralizeQuarterLeft(myLifeLabel)
+        addChild(myLifeLabel)
+    }
+    
     
     // MARK: LÓGICA
     
@@ -130,25 +177,20 @@ class BatalhaScene : SKScene {
                     buttonSelected = proximoButton
                 }
             }
-        case 36: // Enter
-            var result: ActionResult = ActionResult()
+        case 36:
             switch buttonSelected {
-                case .ATTACK:
-                    result = attack()
-                    gameChooseState = .SELECTED
-                case .USE_ITEM:
-                    showItems()
-                    gameChooseState = .CHOOSE_ITEM
-                case .SPARE:
-                    spare()
-                    gameChooseState = .SELECTED
-                case .DODGE:
-                    gameChooseState = .SELECTED
-            }
+            case .ATTACK:
+                attack()
+                gameChooseState = .SELECTED
+            case .USE_ITEM:
+                showItems()
+                gameChooseState = .CHOOSE_ITEM
+            case .SPARE:
+                spare()
+                gameChooseState = .SELECTED
+            case .DODGE:
                 
-            if (result.state == .cancelled) {
-                gameChooseState = .CHOOSE_BUTTON
-                return
+                gameChooseState = .SELECTED
             }
             
             if gameChooseState == .SELECTED {
@@ -191,7 +233,6 @@ class BatalhaScene : SKScene {
     }
     
     private func enemyTurn() {
-        battleSystem.enemyTurn()
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
         buttonUseItem.removeFromParent()
@@ -246,16 +287,10 @@ class BatalhaScene : SKScene {
         })
     }
     
-    private func attack () -> ActionResult {
+    private func attack () {
         
         
         let attackResult = battleSystem.attack()
-        var actionResult = ActionResult()
-        
-        if (attackResult.cancelled) {
-            actionResult.state = .cancelled
-            return actionResult
-        }
         
         if (attackResult.enemyDodged) {
             
@@ -277,8 +312,6 @@ class BatalhaScene : SKScene {
                 self.view?.presentScene(nextScene, transition: transition)
             }
         }
-        
-        return actionResult
     }
     
     
@@ -360,5 +393,6 @@ class BatalhaScene : SKScene {
             }
         }
     }
+     
 }
 
