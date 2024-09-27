@@ -26,7 +26,7 @@ extension BatalhaScene{
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
         
-        var buttonLabels = [
+        let buttonLabels = [
             
             "Atacar",
             "Itens",
@@ -97,7 +97,16 @@ extension BatalhaScene{
     
     func handleButtonPress(named buttonName: String) {
         print("\(buttonName) foi pressionado")
-            
+        
+        
+        let actions = [
+            attack
+        ]
+        
+        let index = Int(buttonName.suffix(1))!
+        
+        actions[index]()
+        
         switch buttonName {
         case "rowButton0":
             // Ação para o botão 0

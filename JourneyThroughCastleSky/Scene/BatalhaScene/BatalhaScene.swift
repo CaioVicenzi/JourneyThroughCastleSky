@@ -246,7 +246,7 @@ class BatalhaScene : SKScene {
         })
     }
     
-    private func attack () -> ActionResult {
+    public func attack () -> ActionResult {
         
         
         let attackResult = battleSystem.attack()
