@@ -87,13 +87,13 @@ class MovementSystem {
     
     func keyDown (_ event : NSEvent) {
         switch event.keyCode {
-            case 13: // W key
+            case 0x7E: // W key
             mostRecentMove.append(.UP)
-            case 0:  // A key
+            case 0x7B:  // A key
                 mostRecentMove.append(.LEFT)
-            case 1:  // S key
+            case 0x7D:  // S key
                 mostRecentMove.append(.DOWN)
-            case 2:  // D key
+            case 0x7C:  // D key
                 mostRecentMove.append(.RIGHT)
             default:
                 break
@@ -102,14 +102,14 @@ class MovementSystem {
     
     func keyUp (_ event : NSEvent) {
         switch event.keyCode {
-            case 13: // W key
-                eliminate(.UP)
-            case 0:  // A key
-            eliminate(.LEFT)
-            case 1:  // S key
+            case 0x7E: // SETA PARA CIMA
+            eliminate(.UP)
+            case 0x7B:  // SETA PARA A ESQUERDA
+                eliminate(.LEFT)
+            case 0x7D:  // SETA PARA BAIXO
                 eliminate(.DOWN)
-            case 2:  // D key
-            eliminate(.RIGHT)
+            case 0x7C:  // SETA PARA DIREITA
+                eliminate(.RIGHT)
             default:
                 break
             }

@@ -15,20 +15,21 @@ import SpriteKit
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     let enemies : [Enemy]
-    let itens : [Item]
-    let frindlies : [Friendly]
+    //let itens : [Item]
     
     var background : SKSpriteNode?
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
     var inventory : SKShapeNode?
-    var buttonCatch : SKShapeNode?
+    //var buttonCatch : SKShapeNode?
+    var catchLabel : SKLabelNode?
     
     internal var cameraNode : SKCameraNode!
     
     internal let movementSystem : MovementSystem
     internal let itemSystem : ItemSystem
     internal let dialogSystem : DialogSystem
+    internal let friendlySystem : FriendlySystem
     
     var dialogsToPass : [Dialogue] = []
     var descriptionsToPass : [DescriptionToPass] = []
@@ -37,13 +38,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
         self.enemies = enemies
-        self.itens = itens
-        self.frindlies = friendlies
+        //self.itens = itens
         self.background = background
         
         self.movementSystem = MovementSystem()
-        self.itemSystem = ItemSystem()
         self.dialogSystem = DialogSystem()
+        self.friendlySystem = FriendlySystem(friendlies: friendlies)
+        self.itemSystem = ItemSystem(items: itens)
         
         super.init()
     }
@@ -54,13 +55,16 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     init(size: CGSize, enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
         self.enemies = enemies
-        self.itens = itens
-        self.frindlies = friendlies
+        //self.itens = itens
         self.background = background
         
         self.movementSystem = MovementSystem()
-        self.itemSystem = ItemSystem()
         self.dialogSystem = DialogSystem()
+        
+        
+        self.itemSystem = ItemSystem(items: itens)
+        self.friendlySystem = FriendlySystem(friendlies: friendlies)
+
         super.init(size: size)
     }
     
@@ -72,6 +76,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         dialogSystem.config(self)
         movementSystem.config(self)
         itemSystem.config(self)
+        friendlySystem.config(self)
         
         // inicializando o cameraNode.
         cameraNode = SKCameraNode()
@@ -86,7 +91,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupSprite()
         setupEnemies()
         setupItems()
-        setupButtonInventory()
+        //setupButtonInventory()
         setupFriendlies()
     }
 }

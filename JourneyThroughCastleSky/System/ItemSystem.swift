@@ -11,6 +11,11 @@ import SpriteKit
 class ItemSystem {
     var gameScene : TopDownScene!
     var isInventoryOpen : Bool = false
+    var items : [Item]
+    
+    init(items: [Item]) {
+        self.items = items
+    }
     
     func config (_ gameScene : TopDownScene) {
         self.gameScene = gameScene
@@ -30,30 +35,12 @@ class ItemSystem {
     }
     
     /// função que pega o item mais próximo.
-    func catchItem (){
-        var nearestItem : Item? = nil
-        var nearestDistance : CGFloat = 0.0
-        
-        // Essa parte da função descobre qual é o item mais próximo do usuário na cena e armazena na variável nearestItem.
-        gameScene.itens.forEach { item in
-            if nearestItem == nil {
-                nearestItem = item
-                nearestDistance = calcDistanceItem(item)
-            } else {
-                // calcular a distância
-                let distance = calcDistanceItem(item)
-                
-                // se a distância for menor do que a menor distância, então ELA é a menor distância.
-                if distance <= nearestDistance {
-                    nearestItem = item
-                    nearestDistance = distance
-                }
+    func catchNearestItem (){
+        items.forEach { item in
+            if isItemNearUser(item) {
+                catchItem(item)
+                gameScene.dialogSystem.nextDialogue()
             }
-        }
-        
-        // se o nearestItem existe, pegue ele.
-        if let nearestItem {
-            catchItem(nearestItem)
         }
     }
     
@@ -62,14 +49,15 @@ class ItemSystem {
         // função para adicionar o balão ao inventário do usuário.
         item.spriteComponent.sprite.removeFromParent()
         
-        // para cada um dos diálogos dentro do componente do item, 
+        // para cada um dos diálogos dentro do componente do item,
         populateDialogs(item.dialogueComponent?.dialogs)
         
         if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
             gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
         }
         
-        gameScene.buttonCatch?.removeFromParent()
+        //gameScene.buttonCatch?.removeFromParent()
+        gameScene.catchLabel?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
     }
     
@@ -79,7 +67,7 @@ class ItemSystem {
         })
     }
     
-    private func verifyItemIsNear (_ item : Item) -> Bool {
+    private func isItemNearUser (_ item : Item) -> Bool {
         if item.spriteComponent.sprite.parent == nil {
             return false
         }
@@ -106,24 +94,27 @@ class ItemSystem {
     
     /// Função que verifica se vai exibir o botão de pegar o item
     func verifyButtonCatch () {
-        
-        // primeiro verifica se existe algum item perto do usuário e armazena na variável showButtonCatch
-        var showButtonCatch = false
-        gameScene.itens.forEach { item in
-            if verifyItemIsNear(item) {
-                showButtonCatch = true
-            }
-        }
-        
-        // se a showButtonCatch for verdadeira, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
-        if showButtonCatch {
-            if self.gameScene.buttonCatch?.parent == nil {
-                self.gameScene.setupButtonCatch()
+        // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
+        if isAnyItemNear() {
+            if self.gameScene.catchLabel?.parent == nil {
+                self.gameScene.setupCatchLabel()
             }
         } else {
-            if self.gameScene.buttonCatch?.parent != nil {
-                self.gameScene.buttonCatch?.removeFromParent()
+            if self.gameScene.catchLabel?.parent != nil {
+                self.gameScene.catchLabel?.removeFromParent()
             }
         }
+    }
+    
+    
+    // função que verifica se existe algum item perto do usuário
+    func isAnyItemNear () -> Bool {
+        var anyItemNear = false
+        items.forEach { item in
+            if isItemNearUser(item) {
+                anyItemNear = true
+            }
+        }
+        return anyItemNear
     }
 }
