@@ -62,14 +62,14 @@ extension TopDownScene {
     
     /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa.
     internal func setupFriendlies () {
-        frindlies.forEach { friendly in
+        friendlySystem.friendlies.forEach { friendly in
             setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: 0.1)
         }
     }
     
     /// Função que posiciona todos os itens dentro da lista de itens dentro do mapa.
     internal func setupItems () {
-        itens.forEach { item in
+        itemSystem.items.forEach { item in
             setupSpritePosition(item.spriteComponent, item.positionComponent, scale: 0.1)
         }
     }
@@ -85,6 +85,7 @@ extension TopDownScene {
     
     // MARK: FUNÇÕES QUE FAZEM O SETUP DE OUTROS ELEMENTOS DENTRO DO MAPA.
     
+    /*
     /// Função que faz o setup do Button Catch, que é o botão que aparece quando o usuário está perto de um item, se o usuário apertar nesse botão, ele pode pegar esse item.
     func setupButtonCatch () {
         self.buttonCatch = SKShapeNode(rectOf: CGSize(width: 50, height: 50))
@@ -97,7 +98,28 @@ extension TopDownScene {
         buttonCatch.name = "buttonCatch"
         cameraNode.addChild(buttonCatch)
     }
+     */
     
+    func setupCatchLabel () {
+        self.catchLabel = SKLabelNode()
+        
+        if itemSystem.isAnyItemNear() {
+            catchLabel?.text = "Press Enter to catch item"
+        }
+        
+        catchLabel?.color = .blue
+        catchLabel?.fontSize = 12
+        catchLabel?.position = CGPoint(x: -(self.size.width / 3.47), y: -(self.size.height / 3))
+        catchLabel?.zPosition = 3
+        
+        if let catchLabel {
+            if catchLabel.parent == nil {
+                cameraNode.addChild(catchLabel)
+            }
+        }
+    }
+    
+    /*
     /// Função que faz o setup do botão que faz o inventário abrir.
     internal func setupButtonInventory () {
         let buttonInventory = SKShapeNode(rectOf: CGSize(width: 40, height: 40))
@@ -108,4 +130,5 @@ extension TopDownScene {
         buttonInventory.zPosition = 3
         cameraNode.addChild(buttonInventory)
     }
+     */
 }

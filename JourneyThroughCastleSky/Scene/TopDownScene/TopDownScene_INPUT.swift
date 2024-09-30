@@ -16,34 +16,34 @@ extension TopDownScene {
             movementSystem.keyDown(event)
         }
         
-        if event.keyCode == 36 {
-            if gameState == .NORMAL {
-                frindlies.forEach { friendly in
-                    if movementSystem.isOtherNearPlayer(friendly.positionComponent, range: 30) {
-                        dialogsToPass.append(contentsOf: friendly.dialogueComponent.dialogs)
-                        dialogSystem.nextDialogue()
-                    }
-                }
-            } else {
-                dialogSystem.nextDialogue()
-            }
+        if event.keyCode == 36 { // tecla enter
+            enterKeyPressed()
+        }
+        
+        if event.keyCode == 34 { // tecla i
+            iKeyPressed()
         }
     }
     
-    override func mouseDown(with event: NSEvent) {
-        let location = event.location(in: self)
-        let clickedNode = self.atPoint(location)
-        
-        
-        if clickedNode.name == "buttonCatch"{
-            itemSystem.catchItem()
+    // Função ativada quando a tecla Enter for pressionada do teclado do usuário.
+    private func enterKeyPressed () {
+        if gameState == .NORMAL {
+            // se existir algum amigável por perto, então fale com o amigável mais próximo.
+            if friendlySystem.isAnyFriendlyNear() {
+                friendlySystem.talkToNearestFriendly()
+            }
+            
+            // se houver um item perto, então pegue o item mais próximo
+            itemSystem.catchNearestItem()
+        } else {
             dialogSystem.nextDialogue()
         }
-        
-        
-        if clickedNode.name == "buttonInventory" {
-            self.itemSystem.inventoryButtonPressed()
-        }
+    }
+    
+    
+    
+    private func iKeyPressed () {
+        itemSystem.inventoryButtonPressed()
     }
     
     override func update(_ currentTime: TimeInterval) {

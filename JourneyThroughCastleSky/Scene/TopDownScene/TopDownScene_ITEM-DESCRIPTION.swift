@@ -14,7 +14,12 @@ extension TopDownScene {
     /// Função que mostra a descrição de um item que ela recebe como argumento
     func showItemDescription (_ item : DescriptionToPass) {
         // adicionando um node que cobre toda a tela para deixar a tela atrás da descrição do item mais escura.
-        self.viewItemDescription = SKShapeNode(rect: CGRect(origin: .zero, size: self.size))
+        
+        let xPosition = -(size.width / 2)
+        let yPosition = -(size.height / 2)
+        let ponto = CGPoint(x: xPosition, y: yPosition)
+        
+        self.viewItemDescription = SKShapeNode(rect: CGRect(origin: ponto, size: self.size))
         guard let viewItemDescription else {return}
         
         // faz o setup desse node.
@@ -28,7 +33,7 @@ extension TopDownScene {
         let fadeIn = SKAction.fadeIn(withDuration: 0.5)
         viewItemDescription.run(fadeIn)
         
-        self.addChild(viewItemDescription)
+        cameraNode.addChild(viewItemDescription)
         
         // seta o gameState para esperando diálogo
         gameState = .WAITING_DIALOG
@@ -41,8 +46,8 @@ extension TopDownScene {
         if let sprite {
             sprite.name = "cover"
             sprite.zPosition = 10
-            sprite.position = PositionHelper.singleton.centralizeQuarterDown(textLabel)
-            sprite.position.y += 200
+            sprite.position = .zero
+            sprite.position.y += 100
             sprite.scale(to: CGSize(width: 300, height: 300))
             viewItemDescription.addChild(sprite)
             dialogSystem.typeEffect(item.description, velocity: 20, label: textLabel)
@@ -52,7 +57,8 @@ extension TopDownScene {
     /// função que faz o setup da label do texto
     private func setupTextLabel (_ textLabel : SKLabelNode) {
         guard let viewItemDescription else {return}
-        textLabel.position = PositionHelper.singleton.centralizeQuarterDown(textLabel)
+        textLabel.position = .zero
+        textLabel.position.y -= 100
         textLabel.position.y -= 50
         textLabel.fontSize = 12
         textLabel.horizontalAlignmentMode = .center
