@@ -50,7 +50,9 @@ extension TopDownScene {
             sprite.position.y += 100
             sprite.scale(to: CGSize(width: 300, height: 300))
             viewItemDescription.addChild(sprite)
-            dialogSystem.typeEffect(item.description, velocity: 20, label: textLabel)
+            dialogSystem.typeEffect(item.description, velocity: 20, label: textLabel) {[weak self] in
+                self?.gameState = .DIALOG_FINISHED
+            }
         }
     }
     

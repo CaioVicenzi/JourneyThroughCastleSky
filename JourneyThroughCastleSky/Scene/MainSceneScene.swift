@@ -39,7 +39,10 @@ class MainMenuScene : SKScene {
                 Enemy(x: 200, y: 100, damage: 10, health: 100, spriteName: "enemy"),
                 Enemy(x: 600, y: 400, damage: 10, health: 100, spriteName: "monster"),
             ], itens: [
-                Item(name: "Maçã de diamante", spriteName: "diamondApple", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50"),
+                Item(name: "Maçã de diamante", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50"),
+                Item(name: "Maçã de diamante", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50"),
+                Item(name: "Maçã de diamante", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50"),
+                Item(name: "Maçã de diamante", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 50), x: 400, y: 200, description: "Maçã de diamante muito roubada, aumenta seu ataque em 50"),
                 Item(name: "Bolinho", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10), x: 1000, y: 10, description: "Um bolinho muito massa que cura 10 pontos da sua vida")
             ], friendlies: [
                 Friendly(spriteName: "papyrus", xPosition: 900, yPosition: 100, dialogs: [Dialogue(text: "Olá, eu sou o Papyrus", person: "Papyrus", velocity: 20), Dialogue(text: "Eu sou seu amigo", person: "Papyrus", velocity: 20)])

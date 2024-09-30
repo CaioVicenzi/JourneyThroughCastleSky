@@ -44,23 +44,25 @@ class DialogSystem {
                 gameScene.gameState = .WAITING_DIALOG
                 gameScene.showItemDescription(description)
                 gameScene.descriptionsToPass.removeFirst()
+            } else {
+                gameScene.gameState = .NORMAL
             }
         }
     }
     
-    func typeEffect (_ text : String, velocity : Int, label : SKLabelNode) {
-        var index : Int = 0
+    func typeEffect (_ text : String, velocity : Int, label : SKLabelNode,_ completionHandler: @escaping () -> Void) {
+        var i : Int = 0
         
         let milissecs = (Double(1) / Double(velocity))
         Timer.scheduledTimer(withTimeInterval: milissecs, repeats: true) { timer in
-            nextChar()
-        }
-        
-        func nextChar () {
-            if index < text.count {
-                let stringIndex = text.index(text.startIndex, offsetBy: index)
+            if i < text.count {
+                let stringIndex = text.index(text.startIndex, offsetBy: i)
                 label.text! += String(text[stringIndex])
-                index += 1
+                i += 1
+            } else {
+                // ACABOU
+                completionHandler()
+                timer.invalidate()
             }
         }
     }

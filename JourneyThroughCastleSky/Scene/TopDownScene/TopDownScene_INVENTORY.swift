@@ -14,7 +14,7 @@ extension TopDownScene {
     /// Função que vai fazer o setup do inventório dentro da cena.
     internal func setupInventory () {
         // Definir o tamanho do inventário (80% da largura e 80% da altura da tela)
-        let inventorySize = CGSize(width: size.width * 0.5, height: size.height * 0.5)
+        let inventorySize = CGSize(width: size.width * 0.5, height: size.height * 0.6)
                 
         // Cria o inventário como um SKShapeNode (um retângulo com bordas arredondadas)
         inventory = SKShapeNode(rectOf: inventorySize, cornerRadius: 20)
@@ -47,13 +47,43 @@ extension TopDownScene {
     /// Função que adiciona os itens dentro do inventório.
     internal func addInventoryItems () {
         var reference = -100
+        var referencey = 0.0
+        var index = 0
         User.singleton.inventoryComponent.itens.forEach({ item in
+            let squareBehind = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+            squareBehind.position = .zero
+            squareBehind.fillColor = .gray
+            squareBehind.strokeColor = .white
+            squareBehind.position.x += CGFloat(reference)
+            squareBehind.name = "inventorySquare\(index)"
+            
+            squareBehind.position.y += referencey
+            
+
+            
             let node = item.spriteComponent.sprite
-            node.scale(to: CGSize(width: 100, height: 100))
+            squareBehind.addChild(node)
+            node.scale(to: CGSize(width: 60, height: 60))
             node.position = .zero
-            node.position.x += CGFloat(reference)
-            reference += 100
-            inventory?.addChild(node)
+            index += 1
+            if index == 3 {
+                referencey = -110
+                reference = -100
+            } else {
+                reference += 110
+            }
+            
+            
+            inventory?.addChild(squareBehind)
         })
+    }
+    
+    internal func updateInventorySquares () {
+        let itemAmount = User.singleton.inventoryComponent.itens.count
+        
+        for i in 0 ..< itemAmount {
+            let filho = inventory?.childNode(withName: "inventorySquare\(i)") as? SKShapeNode
+            filho?.fillColor = i == inventoryItemSelected ? .blue : .gray
+        }
     }
 }
