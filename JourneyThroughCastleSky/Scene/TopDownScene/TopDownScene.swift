@@ -16,6 +16,7 @@ import SpriteKit
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     let enemies : [Enemy]
     //let itens : [Item]
+    var inventoryItemSelected = 0
     
     var background : SKSpriteNode?
     var dialogueBox : SKShapeNode?
@@ -91,7 +92,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupSprite()
         setupEnemies()
         setupItems()
-        //setupButtonInventory()
         setupFriendlies()
     }
 }

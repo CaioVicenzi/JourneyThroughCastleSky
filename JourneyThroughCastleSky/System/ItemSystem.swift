@@ -27,11 +27,14 @@ class ItemSystem {
             gameScene.inventory?.children.forEach({ node in
                 node.removeFromParent()
             })
+            gameScene.gameState = .NORMAL
         } else {
             gameScene.setupInventory()
+            gameScene.gameState = .INVENTORY
         }
         
         isInventoryOpen.toggle()
+        
     }
     
     /// função que pega o item mais próximo.
@@ -93,7 +96,7 @@ class ItemSystem {
     }
     
     /// Função que verifica se vai exibir o botão de pegar o item
-    func verifyButtonCatch () {
+    func showCatchLabel () {
         // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
         if isAnyItemNear() {
             if self.gameScene.catchLabel?.parent == nil {
