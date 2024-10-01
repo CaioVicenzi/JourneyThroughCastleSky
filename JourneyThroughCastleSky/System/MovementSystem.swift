@@ -103,19 +103,19 @@ class MovementSystem {
     func keyUp (_ event : NSEvent) {
         switch event.keyCode {
             case 0x7E: // SETA PARA CIMA
-            eliminate(.UP)
+            endMove(.UP)
             case 0x7B:  // SETA PARA A ESQUERDA
-                eliminate(.LEFT)
+                endMove(.LEFT)
             case 0x7D:  // SETA PARA BAIXO
-                eliminate(.DOWN)
+                endMove(.DOWN)
             case 0x7C:  // SETA PARA DIREITA
-                eliminate(.RIGHT)
+                endMove(.RIGHT)
             default:
                 break
             }
     }
     
-    private func eliminate (_ move : Move) {
+    private func endMove (_ move : Move) {
         mostRecentMove.removeAll { listedMove in
             move == listedMove
         }
