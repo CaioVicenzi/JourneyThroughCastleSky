@@ -37,6 +37,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var gameState : GameState = .NORMAL
     
+    let pauseUIComponent : PauseMenu = PauseMenu()
+    
     private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
         self.enemies = enemies
         //self.itens = itens

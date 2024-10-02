@@ -20,12 +20,36 @@ extension TopDownScene {
             selectItemInventory(event)
         }
         
-        if event.keyCode == 36 { // tecla enter
+        if gameState == .PAUSE {
+            selectPauseOption(event)
+        }
+        
+        let isEnterKey = event.keyCode == 36
+        let isIKey = event.keyCode == 34
+        let isEscKey = event.keyCode == 53
+        
+        if isEnterKey { // tecla enter
             enterKeyPressed()
         }
         
-        if event.keyCode == 34 { // tecla i
+        if isIKey { // tecla i
             iKeyPressed()
+        }
+        
+        if isEscKey {// tecla Esc
+            escKeyPressed()
+        }
+    }
+    
+    private func selectPauseOption (_ event : NSEvent){
+        switch event.keyCode {
+            case 0x7E: // UP key
+                pauseUIComponent.pressUpKey()
+            case 0x7D:  // DOWN key
+                pauseUIComponent.pressDownKey()
+            case 36:
+                pauseUIComponent.pressEnterKey()
+            default: break
         }
     }
     
@@ -77,6 +101,17 @@ extension TopDownScene {
     private func iKeyPressed () {
         if gameState == .NORMAL || gameState == .INVENTORY {
             itemSystem.inventoryButtonPressed()
+        }
+    }
+    
+    private func escKeyPressed () {
+        if gameState == .PAUSE {
+            gameState = .NORMAL
+            pauseUIComponent.cleanMenuPause(cameraNode: self.cameraNode)
+        } else if gameState == .NORMAL{ // somente pode dar pause quando o jogo estiver no modo normal
+            gameState = .PAUSE
+            movementSystem.mostRecentMove = []
+            pauseUIComponent.addToScene(self)
         }
     }
     

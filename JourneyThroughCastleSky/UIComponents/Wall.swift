@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class Wall {
+class Wall : UIComponent{
     var xPosition : CGFloat
     var yPostion : CGFloat
     var xSize : CGFloat

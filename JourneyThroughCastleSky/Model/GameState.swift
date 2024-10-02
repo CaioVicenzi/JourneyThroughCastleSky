@@ -12,4 +12,5 @@ enum GameState {
     case WAITING_DIALOG
     case DIALOG_FINISHED
     case INVENTORY
+    case PAUSE
 }
