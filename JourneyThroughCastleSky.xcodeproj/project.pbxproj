@@ -85,6 +85,8 @@
 		FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A272CAB215A002B2848 /* FriendlySystem.swift */; };
 		FDB27A292CAB215A002B2848 /* FriendlySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A272CAB215A002B2848 /* FriendlySystem.swift */; };
 		FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A412CADC163002B2848 /* PauseMenu.swift */; };
+		FDB27A522CADE614002B2848 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDB27A512CADE614002B2848 /* MainHallScene.sks */; };
+		FDB27A532CADE614002B2848 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDB27A512CADE614002B2848 /* MainHallScene.sks */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
@@ -152,6 +154,7 @@
 		FDAD41FD2C9E104E0053A4B0 /* Friendly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendly.swift; sourceTree = "<group>"; };
 		FDB27A272CAB215A002B2848 /* FriendlySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendlySystem.swift; sourceTree = "<group>"; };
 		FDB27A412CADC163002B2848 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
+		FDB27A512CADE614002B2848 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
@@ -284,6 +287,14 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		FDB27A502CADE5C5002B2848 /* GameplaySks */ = {
+			isa = PBXGroup;
+			children = (
+				FDB27A512CADE614002B2848 /* MainHallScene.sks */,
+			);
+			path = GameplaySks;
+			sourceTree = "<group>";
+		};
 		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -338,6 +349,7 @@
 				FDF1E09F2C921CF5006D4EA0 /* Scene */,
 				FDF1E09C2C91B803006D4EA0 /* Helper */,
 				FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */,
+				FDB27A502CADE5C5002B2848 /* GameplaySks */,
 				FDF1E0892C91B750006D4EA0 /* GameScene.sks */,
 				FDF1E08B2C91B750006D4EA0 /* Actions.sks */,
 				FDF1E08F2C91B750006D4EA0 /* ViewController.swift */,
@@ -465,6 +477,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB27A522CADE614002B2848 /* MainHallScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDB27A532CADE614002B2848 /* MainHallScene.sks in Resources */,
 				FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */,
 				FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */,
 				FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */,

@@ -19,23 +19,33 @@ class Consumable: Command {
 }
 
 class GameScene: TopDownScene {
-    var checkpoint : Checkpoint? = nil
     
     override func didMove(to view: SKView) {
         super.config()
         super.setupNodes()
-        setupWall()
+        setupWalls()
         setupCheckpoint()
     }
     
-    private func setupWall () {
-        let wall1 = Wall(xPosition: 500, yPostion: 400, xSize: 300, ySize: 10)
-        wall1.addToScene(self)
+    private func setupWalls () {
+        enumerateChildNodes(withName: "wall") { node, _ in
+            Wall.setupPhysicsBody(node as! SKSpriteNode)
+        }
     }
     
     private func setupCheckpoint () {
-        self.checkpoint = Checkpoint(xPosition: 1000, yPosition: 100, nextScene: GameScene(size: self.size, enemies: [], itens: [], friendlies: [], background: SKSpriteNode(imageNamed: "background")))
-        checkpoint?.addToScene(self)
+        //self.checkpoint = Checkpoint(xPosition: 1000, yPosition: 100, nextScene: GameScene(size: self.size, enemies: [], itens: [], friendlies: []))
+        //checkpoint?.addToScene(self)
+        
+        let checkPoint = childNode(withName: "checkpoint") as? SKSpriteNode
+        guard let checkPoint else {print("Não existe o checkpoint");return}
+        
+        checkPoint.physicsBody = SKPhysicsBody(rectangleOf: checkPoint.size)
+        checkPoint.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
+        checkPoint.physicsBody?.collisionBitMask = PhysicCategory.character
+        checkPoint.physicsBody?.contactTestBitMask = PhysicCategory.character
+        checkPoint.physicsBody?.affectedByGravity = false
+        checkPoint.physicsBody?.isDynamic = false // não se move
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -66,8 +76,12 @@ class GameScene: TopDownScene {
             segundoBody = contact.bodyA
         }
         
+        
         if primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint {
-            self.view?.presentScene(checkpoint?.nextScene ?? SKScene(), transition: SKTransition.fade(withDuration: 1.0)) 
+            self.view?.presentScene(SKScene(), transition: SKTransition.fade(withDuration: 1.0))
         }
     }
+    
+    
+    
 }

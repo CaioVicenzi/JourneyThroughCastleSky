@@ -14,11 +14,10 @@ import SpriteKit
 ///   - friendliest: são uma lista contendo todos os amigáveis que se deseja colocar dentro da cena;
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
-    let enemies : [Enemy]
+    var enemies : [Enemy]
     //let itens : [Item]
     var inventoryItemSelected = 0
     
-    var background : SKSpriteNode?
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
     var inventory : SKShapeNode?
@@ -39,11 +38,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     let pauseUIComponent : PauseMenu = PauseMenu()
     
-    private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
+    private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly]) {
         self.enemies = enemies
-        //self.itens = itens
-        self.background = background
-        
         self.movementSystem = MovementSystem()
         self.dialogSystem = DialogSystem()
         self.friendlySystem = FriendlySystem(friendlies: friendlies)
@@ -53,13 +49,20 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init?(coder aDecoder : NSCoder) não implementado")
+        //fatalError("init?(coder aDecoder : NSCoder) não implementado")
+        
+        self.enemies = []
+        self.movementSystem = MovementSystem()
+        self.dialogSystem = DialogSystem()
+        self.friendlySystem = FriendlySystem(friendlies: [])
+        self.itemSystem = ItemSystem(items: [])
+        
+        super.init(coder: aDecoder)
+        
     }
     
-    init(size: CGSize, enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
+    init(size: CGSize, enemies : [Enemy], itens : [Item], friendlies : [Friendly]) {
         self.enemies = enemies
-        //self.itens = itens
-        self.background = background
         
         self.movementSystem = MovementSystem()
         self.dialogSystem = DialogSystem()
@@ -82,7 +85,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         friendlySystem.config(self)
         
         // inicializando o cameraNode.
-        cameraNode = SKCameraNode()
+        cameraNode = childNode(withName: "cameraNode")! as! SKCameraNode
+        
         
         self.physicsWorld.gravity = .zero
         self.physicsWorld.contactDelegate = self
@@ -90,7 +94,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     internal func setupNodes () {
         setupCamera()
-        setupBackground()
+        //setupBackground()
         setupSprite()
         setupEnemies()
         setupItems()
