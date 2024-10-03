@@ -44,4 +44,14 @@ class Wall : UIComponent{
         wall.physicsBody?.isDynamic = false // não se move
         scene.addChild(wall)
     }
+    
+    static func setupPhysicsBody (_ wall : SKSpriteNode) {
+        wall.physicsBody = SKPhysicsBody(rectangleOf: wall.size)
+        
+        wall.physicsBody?.categoryBitMask = PhysicCategory.wall
+        wall.physicsBody?.collisionBitMask = PhysicCategory.character
+        wall.physicsBody?.contactTestBitMask = PhysicCategory.character
+        wall.physicsBody?.affectedByGravity = false
+        wall.physicsBody?.isDynamic = false // não se move
+    }
 }

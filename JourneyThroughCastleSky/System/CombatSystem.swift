@@ -18,6 +18,8 @@ class CombatSystem {
         
         } else if item.consumableComponent?.effect.type == .DAMAGE {
             User.singleton.fighterComponent.damage += item.consumableComponent?.effect.amount ?? 0
+        } else if item.consumableComponent?.effect.type == .STAMINE {
+            User.singleton.staminaComponent.stamina += item.consumableComponent?.effect.amount ?? 0
         }
     }
     

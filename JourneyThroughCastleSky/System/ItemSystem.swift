@@ -71,15 +71,11 @@ class ItemSystem {
     }
     
     private func isItemNearUser (_ item : Item) -> Bool {
-        if item.spriteComponent.sprite.parent == nil {
+        if gameScene.gameState == .NORMAL {
+            return calcDistanceItem(item) < 50
+        } else {
             return false
         }
-        
-        if item.spriteComponent.sprite.parent?.name == "inventory" {
-            return false
-        }
-        
-        return calcDistanceItem(item) < 50
     }
     
     private func calcDistanceItem (_ item : Item) -> CGFloat {
