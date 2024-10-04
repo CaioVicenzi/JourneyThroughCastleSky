@@ -181,6 +181,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4377B8592CAF173800FDD2B9 /* CutsceneScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CutsceneScene; sourceTree = "<group>"; };
 		98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JourneyThroughCastleSkyTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -360,6 +361,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				FDAC55012C9A10BF00E90E17 /* GameScene */,
 				FDE3CF0A2CA485F400D88620 /* TopDownScene */,
 				FDF1E0AD2C94B7CF006D4EA0 /* BatalhaScene */,
@@ -396,6 +398,7 @@
 				98838C412CA5D62D00709648 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 			);
 			name = JourneyThroughCastleSkyTests;
@@ -416,6 +419,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 			);
 			name = JourneyThroughCastleSky;
 			productName = JourneyThroughCastleSky;
@@ -777,7 +783,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = LF887LSVNZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -804,7 +810,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = LF887LSVNZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
