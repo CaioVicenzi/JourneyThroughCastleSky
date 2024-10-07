@@ -27,6 +27,7 @@ class ItemSystem {
             gameScene.inventory?.children.forEach({ node in
                 node.removeFromParent()
             })
+            gameScene.removeLabelUseItem()
             gameScene.gameState = .NORMAL
         } else {
             gameScene.setupInventory()
@@ -41,10 +42,30 @@ class ItemSystem {
     func catchNearestItem (){
         items.forEach { item in
             if isItemNearUser(item) {
+                removeNearestItemSprite(item.consumableComponent!.nome)
                 catchItem(item)
+                items.removeAll { currentItem in
+                    currentItem.id == item.id
+                }
                 gameScene.dialogSystem.nextDialogue()
             }
         }
+    }
+    
+    private func removeNearestItemSprite (_ name : String) {
+        gameScene.enumerateChildNodes(withName: name) { node, _ in
+            let positionComponent = PositionComponent(xPosition: Int(node.position.x), yPosition: Int(node.position.y))
+            if self.isPositionNearPlayer(positionComponent) {
+                if node.parent != nil {
+                    node.removeFromParent()
+                }
+            }
+        }
+    }
+    
+    /// Essa função serve para ver se o sprite está perto do player
+    private func isPositionNearPlayer(_ positionComponent : PositionComponent) -> Bool {
+        return calcDistanceFromUser(positionComponent) < 50
     }
     
     /// Essa função pega um item, exibe os diálogos e coloca no inventário
@@ -72,18 +93,18 @@ class ItemSystem {
     
     private func isItemNearUser (_ item : Item) -> Bool {
         if gameScene.gameState == .NORMAL {
-            return calcDistanceItem(item) < 50
+            return calcDistanceFromUser(item.positionComponent) < 50
         } else {
             return false
         }
     }
     
-    private func calcDistanceItem (_ item : Item) -> CGFloat {
+    private func calcDistanceFromUser (_ positionComponent : PositionComponent) -> CGFloat {
         let xPlayer = User.singleton.positionComponent.xPosition
         let yPlayer = User.singleton.positionComponent.yPosition
         
-        let xItem = item.positionComponent.xPosition
-        let yItem = item.positionComponent.yPosition
+        let xItem = positionComponent.xPosition
+        let yItem = positionComponent.yPosition
         
         let x = pow(CGFloat(xPlayer) - CGFloat(xItem), 2)
         let y = pow(CGFloat(yPlayer) - CGFloat(yItem), 2)
@@ -115,5 +136,20 @@ class ItemSystem {
             }
         }
         return anyItemNear
+    }
+    
+    func useItem (_ item : Item) {
+        if let effect = item.consumableComponent?.effect {
+            switch effect.type {
+            case .CURE:
+                User.singleton.healthComponent.health += effect.amount
+            case .DAMAGE:
+                User.singleton.fighterComponent.damage += effect.amount
+            case .STAMINE:
+                User.singleton.staminaComponent.stamina += effect.amount
+            case .NONE:
+                break
+            }
+        }
     }
 }

@@ -78,10 +78,15 @@ class GameScene: TopDownScene {
         
         
         if primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint {
-            self.view?.presentScene(SKScene(), transition: SKTransition.fade(withDuration: 1.0))
+            if User.singleton.inventoryComponent.itens.contains(where: { item in
+                item.consumableComponent?.nome == "Chaves"
+            }) {
+                self.view?.presentScene(SKScene(), transition: SKTransition.fade(withDuration: 1.0))
+            } else {
+                self.dialogsToPass.append(Dialogue(text: "Preciso da chave para entrar aqui...", person: "you", velocity: 20))
+                dialogSystem.nextDialogue()
+            }
+            
         }
     }
-    
-    
-    
 }

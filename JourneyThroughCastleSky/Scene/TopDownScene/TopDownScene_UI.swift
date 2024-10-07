@@ -11,33 +11,9 @@ import SpriteKit
 
 /// Como a TopDownScene estava ficando muito gigantesca e enorme, eu decidi dividir as partes que renderizam a UI do jogo para esse arquivo.
 extension TopDownScene {
-    
-    // MARK:
-    ///Função que faz o setup da câmera do topdown, que vai seguir o usuário ao longo da caminhada dele.
-    internal func setupCamera () {
-        //cameraNode.position = .zero
-        //addChild(cameraNode)
-        self.camera = cameraNode
-    }
-    
-    /*
-    ///Função que faz o setup do background, setando as propriedades da posição dele, do tamanho e da zPosition, colocando-a abaixo de todos os nodes.
-    internal func setupBackground () {
-        guard let background else {
-            print("Não temos background")
-            return
-        }
-        
-        background.position = CGPoint(x: size.width, y: size.height)
-        background.size = CGSize(width: size.width * 2, height: size.height * 2)
-        background.zPosition = -1
-        addChild(background)
-    }
-     */
-    
     /// Função que faz o setup do sprite do usuário, posicionando ele dentro do mapa..
     internal func setupSprite () {
-        setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent, scale: 0.2)
+        setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent, scale: CGSize(width: 75, height: 75))
         
         let sprite = User.singleton.spriteComponent.sprite
         
@@ -59,49 +35,69 @@ extension TopDownScene {
     // MARK: FUNÇÕES QUE POSICIONAM ELEMENTOS EM LISTA DENTRO DO MAPA (ITENS, INIMIGOS E AMIGÁVEIS).
     /// Função que posiciona todos os inimigos dentro da lista de enemies dentro do mapa.
     internal func setupEnemies () {
-        self.enumerateChildNodes(withName: "strongEnemy") { node, _ in
+        setupEnemy("strongEnemy", spriteName: "papyrus")
+        setupEnemy("weakEnemy", spriteName: "monster")
+    }
+    
+    private func setupEnemy (_ name : String, spriteName : String) {
+        self.enumerateChildNodes(withName: name) { node, _ in
             guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            self.enemies.append(Enemy(x: Int(node.position.x), y: Int(node.position.y), damage: 10, health: 100, spriteName: "papyrus"))
-        }
-        
-        self.enumerateChildNodes(withName: "weakEnemy") { node, _ in
-            guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            self.enemies.append(Enemy(x: Int(node.position.x), y: Int(node.position.y), damage: 10, health: 100, spriteName: "papyrus"))
+            node.removeFromParent()
+            
+            let enemyCriado = Enemy(x: Int(node.position.x), y: Int(node.position.y), damage: 10, health: 100, spriteName: spriteName)
+            
+            self.enemies.append(enemyCriado)
+            self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 100))
         }
     }
     
     /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa.
     internal func setupFriendlies () {
         friendlySystem.friendlies.forEach { friendly in
-            setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: 0.1)
+            setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: CGSize(width: 100, height: 100))
         }
     }
     
     /// Função que posiciona todos os itens dentro da lista de itens dentro do mapa.
     internal func setupItems () {
-        self.enumerateChildNodes(withName: "cure") { node, _ in
-            guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            self.itemSystem.items.append(Item(name: "Bolinho brabo", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10), x: Int(node.position.x), y: Int(node.position.y), description: "Um bolinho que pode recuperar a sua vida 10"))
-        }
         
-        self.enumerateChildNodes(withName: "damage") { node, _ in
+        setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
+        setupItem("damage", spriteName: "balloon", effect: Effect(type: .CURE, amount: 10))
+        setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .CURE, amount: 10))
+        setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
+    }
+    
+    private func setupItem (_ name : String, spriteName : String, effect : Effect) {
+        enumerateChildNodes(withName: name) { node, _ in
             guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            self.itemSystem.items.append(Item(name: "Balão de guerra", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10), x: Int(node.position.x), y: Int(node.position.y), description: "Um bolinho que pode aumentar o ataque em 10 dmg"))
-        }
-        
-        self.enumerateChildNodes(withName: "estamina") { node, _ in
-            guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            self.itemSystem.items.append(Item(name: "Maçã de diamante", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10), x: Int(node.position.x), y: Int(node.position.y), description: "Uma maçã de diamante que pode aumentar a estamina em 10 stm"))
+            
+            var nameItem : String
+            var descriptionItem : String
+            
+            switch effect.type {
+            case .CURE: nameItem = "Bolinho lendário"; descriptionItem = "Um bolinho lendário que recupera sua vida em 10"
+            case .DAMAGE: nameItem = "Balão de guerra"; descriptionItem = "Um balão que aumenta seu ataque em 10"
+            case .STAMINE: nameItem = "Maçã de diamante"; descriptionItem = "Uma maçã que aumenta sua estamina em 10"
+            case .NONE: nameItem = "Chaves"; descriptionItem = "Uma chave misteriosa"
+            }
+            
+            
+            let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
+            
+            self.itemSystem.items.append(createdItem)
+            node.removeFromParent()
+            self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
         }
     }
     
     
     /// Função que faz o setup de qualquer elemento que contenha um sprite, um posicionamento e uma escala.
-    func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGFloat = 1) {
+    func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGSize = CGSize(width: 100, height: 100)) {
         let sprite = spriteComponent.sprite
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
-        sprite.setScale(scale)
+        //sprite.setScale(scale)
+        sprite.scale(to: scale)
         addChild(sprite)
     }
     
@@ -109,11 +105,7 @@ extension TopDownScene {
     
     func setupCatchLabel () {
         self.catchLabel = SKLabelNode()
-        
-        if itemSystem.isAnyItemNear() {
-            catchLabel?.text = "Press Enter to catch item"
-        }
-        
+        catchLabel?.text = "Press Enter to catch item"
         catchLabel?.fontColor = .blue
         catchLabel?.fontName = "Helvetica-Bold"
         catchLabel?.fontSize = 12

@@ -70,6 +70,8 @@ extension TopDownScene {
             if inventoryItemSelected < inventoryItemsCount - 1  {
                 inventoryItemSelected += 1
             }
+            case 32: // u key
+                uKeyPressed()
             default: break
         }
     }
@@ -96,7 +98,11 @@ extension TopDownScene {
         }
     }
     
-    
+    private func uKeyPressed () {
+        let itemThatsGoingToBeUsed = User.singleton.inventoryComponent.itens[inventoryItemSelected]
+        itemSystem.useItem(itemThatsGoingToBeUsed)
+        
+    }
     
     private func iKeyPressed () {
         if gameState == .NORMAL || gameState == .INVENTORY {
@@ -120,6 +126,9 @@ extension TopDownScene {
         movementSystem.updateCameraPosition()
         movementSystem.checkColision ()
         itemSystem.showCatchLabel()
-        updateInventorySquares()
+        if gameState == .INVENTORY {
+            updateInventorySquares()
+            updateLabelUseItem()
+        }
     }
 }

@@ -15,13 +15,11 @@ import SpriteKit
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var enemies : [Enemy]
-    //let itens : [Item]
     var inventoryItemSelected = 0
     
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
     var inventory : SKShapeNode?
-    //var buttonCatch : SKShapeNode?
     var catchLabel : SKLabelNode?
     
     internal var cameraNode : SKCameraNode!
@@ -37,6 +35,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var gameState : GameState = .NORMAL
     
     let pauseUIComponent : PauseMenu = PauseMenu()
+    
+    var useItemLabel : SKLabelNode?
     
     private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly]) {
         self.enemies = enemies
@@ -85,7 +85,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         friendlySystem.config(self)
         
         // inicializando o cameraNode.
-        cameraNode = childNode(withName: "cameraNode")! as! SKCameraNode
+        cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
         
         
         self.physicsWorld.gravity = .zero
@@ -93,8 +93,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     internal func setupNodes () {
-        setupCamera()
-        //setupBackground()
+        self.camera = cameraNode
         setupSprite()
         setupEnemies()
         setupItems()

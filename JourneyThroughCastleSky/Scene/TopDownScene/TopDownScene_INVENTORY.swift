@@ -24,7 +24,7 @@ extension TopDownScene {
         inventory.fillColor = .gray
         inventory.strokeColor = .white
         inventory.lineWidth = 5
-        inventory.zPosition = 10
+        inventory.zPosition = 15
                 
         // Centraliza o inventário na tela
         inventory.position = .zero
@@ -42,6 +42,21 @@ extension TopDownScene {
                 
         // Adiciona alguns itens ao inventário
         addInventoryItems()
+        
+        
+        updateLabelUseItem()
+    }
+    
+    func updateLabelUseItem () {
+        if User.singleton.inventoryComponent.itens.count >= 1 {
+            if User.singleton.inventoryComponent.itens[inventoryItemSelected].consumableComponent?.effect.type != .NONE {
+                addLabelUseItem()
+            } else {
+                removeLabelUseItem()
+            }
+        } else {
+            removeLabelUseItem()
+        }
     }
     
     /// Função que adiciona os itens dentro do inventório.
@@ -84,6 +99,30 @@ extension TopDownScene {
         for i in 0 ..< itemAmount {
             let filho = inventory?.childNode(withName: "inventorySquare\(i)") as? SKShapeNode
             filho?.fillColor = i == inventoryItemSelected ? .blue : .gray
+        }
+    }
+    
+    private func addLabelUseItem () {
+        self.useItemLabel = SKLabelNode()
+        useItemLabel?.text = "Press U to use a item"
+        useItemLabel?.fontColor = .red
+        useItemLabel?.fontName = "Helvetica-Bold"
+        useItemLabel?.fontSize = 12
+        useItemLabel?.position = CGPoint(x: -(self.size.width / 3.47), y: -(self.size.height / 3))
+        useItemLabel?.zPosition = 3
+        
+        if let useItemLabel {
+            if useItemLabel.parent == nil {
+                cameraNode.addChild(useItemLabel)
+            }
+        }
+    }
+    
+    internal func removeLabelUseItem () {
+        if let useItemLabel {
+            if useItemLabel.parent != nil {
+                useItemLabel.removeFromParent()
+            }
         }
     }
 }
