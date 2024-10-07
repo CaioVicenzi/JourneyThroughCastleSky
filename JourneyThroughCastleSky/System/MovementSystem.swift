@@ -84,41 +84,11 @@ class MovementSystem {
         mostRecentMove.removeAll { listedMove in
             move == listedMove
         }
-        
     }
     
-    func checkColision () {
-        gameScene.enemies.forEach { enemy in
-            if isOtherNearPlayer(enemy.positionComponent, range: 30) {
-                // Troca para a próxima cena
-                let nextScene = BatalhaScene(size: gameScene.size)
-                nextScene.config(enemy: enemy)
-                enemy.spriteComponent.sprite.removeFromParent()
-                nextScene.scaleMode = .aspectFill
-                        
-                let transition = SKTransition.fade(withDuration: 1.0)
-                nextScene.config(gameScene)
-                gameScene.view?.presentScene(nextScene, transition: transition)
-            }
-        }
-    }
-    
-    func isOtherNearPlayer(_ positionOther : PositionComponent, range : CGFloat) -> Bool {
-        let otherX = positionOther.xPosition
-        let otherY = positionOther.yPosition
-        
-        let playerX = User.singleton.positionComponent.xPosition
-        let playerY = User.singleton.positionComponent.yPosition
-        
-        let distance = sqrt(pow(CGFloat(playerX) - CGFloat(otherX), 2) + pow(CGFloat(playerY) - CGFloat(otherY), 2))
-        return distance < range
-    }
     
     func updateCameraPosition () {
-        
         guard let background = gameScene.childNode(withName: "background") as? SKSpriteNode else {fatalError("There is no background")}
-        //self.camera?.position = helloWorld.position
-        //guard let background = gameScene.background else {print("Não temos background no updateCameraPosition"); return}
         let playerSprite = User.singleton.spriteComponent.sprite
         
         var cameraPosition = playerSprite.position
@@ -151,6 +121,4 @@ class MovementSystem {
         gameScene.cameraNode.position = cameraPosition
          
     }
-    
-    
 }

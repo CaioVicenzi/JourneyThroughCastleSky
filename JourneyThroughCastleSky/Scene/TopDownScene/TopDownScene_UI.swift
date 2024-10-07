@@ -46,6 +46,18 @@ extension TopDownScene {
             
             let enemyCriado = Enemy(x: Int(node.position.x), y: Int(node.position.y), damage: 10, health: 100, spriteName: spriteName)
             
+            let spriteInimigo = enemyCriado.spriteComponent.sprite
+            let enemyWidth = spriteInimigo.size.width
+            let enemyHeight = spriteInimigo.size.height
+            
+            spriteInimigo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: enemyWidth, height: enemyHeight))
+            spriteInimigo.physicsBody?.categoryBitMask  = PhysicCategory.enemy
+            spriteInimigo.physicsBody?.collisionBitMask = PhysicCategory.character
+            spriteInimigo.physicsBody?.contactTestBitMask = PhysicCategory.character
+            spriteInimigo.physicsBody?.affectedByGravity = false
+            spriteInimigo.physicsBody?.isDynamic = false
+            spriteInimigo.physicsBody?.allowsRotation = false
+            
             self.enemies.append(enemyCriado)
             self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 100))
         }
@@ -62,8 +74,8 @@ extension TopDownScene {
     internal func setupItems () {
         
         setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
-        setupItem("damage", spriteName: "balloon", effect: Effect(type: .CURE, amount: 10))
-        setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .CURE, amount: 10))
+        setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
+        setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
         setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
     }
     

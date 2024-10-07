@@ -86,7 +86,22 @@ class GameScene: TopDownScene {
                 self.dialogsToPass.append(Dialogue(text: "Preciso da chave para entrar aqui...", person: "you", velocity: 20))
                 dialogSystem.nextDialogue()
             }
-            
+        }
+        
+        if primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy {
+            self.enemies.forEach { enemy in
+                if enemy.spriteComponent.sprite.physicsBody == segundoBody {
+                    // Troca para a próxima cena
+                    let nextScene = BatalhaScene(size: size)
+                    nextScene.config(enemy: enemy)
+                    enemy.spriteComponent.sprite.removeFromParent()
+                    nextScene.scaleMode = .aspectFill
+                            
+                    let transition = SKTransition.fade(withDuration: 1.0)
+                    nextScene.config(self)
+                    self.view?.presentScene(nextScene, transition: transition)
+                }
+            }
         }
     }
 }

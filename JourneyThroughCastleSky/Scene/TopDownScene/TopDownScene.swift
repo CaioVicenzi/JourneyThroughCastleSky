@@ -21,6 +21,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var viewItemDescription : SKShapeNode?
     var inventory : SKShapeNode?
     var catchLabel : SKLabelNode?
+    var titleSelectedItem : SKLabelNode?
+    var descriptionSelectedItem : SKLabelNode?
     
     internal var cameraNode : SKCameraNode!
     
@@ -28,6 +30,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal let itemSystem : ItemSystem
     internal let dialogSystem : DialogSystem
     internal let friendlySystem : FriendlySystem
+    internal let menuSystem : MenuSystem
+    internal let positionSystem : PositionSystem
+    internal let inventorySystem : InventorySystem
     
     var dialogsToPass : [Dialogue] = []
     var descriptionsToPass : [DescriptionToPass] = []
@@ -38,16 +43,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var useItemLabel : SKLabelNode?
     
-    private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly]) {
-        self.enemies = enemies
-        self.movementSystem = MovementSystem()
-        self.dialogSystem = DialogSystem()
-        self.friendlySystem = FriendlySystem(friendlies: friendlies)
-        self.itemSystem = ItemSystem(items: itens)
-        
-        super.init()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         
@@ -56,22 +51,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         self.dialogSystem = DialogSystem()
         self.friendlySystem = FriendlySystem(friendlies: [])
         self.itemSystem = ItemSystem(items: [])
+        self.menuSystem = MenuSystem()
+        self.positionSystem = PositionSystem()
+        self.inventorySystem = InventorySystem()
+        
         
         super.init(coder: aDecoder)
         
-    }
-    
-    init(size: CGSize, enemies : [Enemy], itens : [Item], friendlies : [Friendly]) {
-        self.enemies = enemies
-        
-        self.movementSystem = MovementSystem()
-        self.dialogSystem = DialogSystem()
-        
-        
-        self.itemSystem = ItemSystem(items: itens)
-        self.friendlySystem = FriendlySystem(friendlies: friendlies)
-
-        super.init(size: size)
     }
     
     internal func config () {
@@ -83,6 +69,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         movementSystem.config(self)
         itemSystem.config(self)
         friendlySystem.config(self)
+        menuSystem.config(self)
+        inventorySystem.config(self)
+        inventorySystem.config(self)
         
         // inicializando o cameraNode.
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode

@@ -43,21 +43,53 @@ extension TopDownScene {
         // Adiciona alguns itens ao inventário
         addInventoryItems()
         
-        
-        updateLabelUseItem()
+        setupDetailItem()
     }
     
-    func updateLabelUseItem () {
-        if User.singleton.inventoryComponent.itens.count >= 1 {
-            if User.singleton.inventoryComponent.itens[inventoryItemSelected].consumableComponent?.effect.type != .NONE {
-                addLabelUseItem()
-            } else {
-                removeLabelUseItem()
-            }
-        } else {
-            removeLabelUseItem()
-        }
+    func setupDetailItem () {
+        guard let inventory else {fatalError("Não existe um inventário")}
+        
+        let base = SKShapeNode(rectOf: CGSize(width: inventory.frame.width - 10, height: size.height / 8))
+        base.strokeColor = .white
+        base.fillColor = .gray
+        base.position.y = inventory.position.y - (inventory.frame.height / 3)
+        
+        inventory.addChild(base)
+        
+        setupSelectedItemLabels(base)
     }
+    
+    func setupSelectedItemLabels (_ base : SKShapeNode) {
+        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
+
+        titleSelectedItem = SKLabelNode(text: item.consumableComponent?.nome)
+        descriptionSelectedItem = SKLabelNode(text: item.readableComponent.readableDescription)
+        
+        titleSelectedItem?.fontSize = 20
+        titleSelectedItem?.position = .zero
+        
+        descriptionSelectedItem?.fontSize = 14
+        descriptionSelectedItem?.position = .zero
+        descriptionSelectedItem?.position.y -= 40
+        
+        
+        // é certeza que eles existe, afinal de contas, se a execução do código foi parar aqui, quer dizer que deu certo...
+        base.addChild(titleSelectedItem!)
+        base.addChild(descriptionSelectedItem!)
+        
+        
+    }
+    
+    func updateSelectedItemLabels () {
+        guard let titleSelectedItem, let descriptionSelectedItem else {
+            return
+        }
+        
+        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
+        titleSelectedItem.text = item.consumableComponent?.nome
+        descriptionSelectedItem.text = item.readableComponent.readableDescription
+    }
+    
     
     /// Função que adiciona os itens dentro do inventório.
     internal func addInventoryItems () {
@@ -74,8 +106,6 @@ extension TopDownScene {
             
             squareBehind.position.y += referencey
             
-
-            
             let node = item.spriteComponent.sprite
             squareBehind.addChild(node)
             node.scale(to: CGSize(width: 60, height: 60))
@@ -88,7 +118,6 @@ extension TopDownScene {
                 reference += 110
             }
             
-            
             inventory?.addChild(squareBehind)
         })
     }
@@ -99,30 +128,6 @@ extension TopDownScene {
         for i in 0 ..< itemAmount {
             let filho = inventory?.childNode(withName: "inventorySquare\(i)") as? SKShapeNode
             filho?.fillColor = i == inventoryItemSelected ? .blue : .gray
-        }
-    }
-    
-    private func addLabelUseItem () {
-        self.useItemLabel = SKLabelNode()
-        useItemLabel?.text = "Press U to use a item"
-        useItemLabel?.fontColor = .red
-        useItemLabel?.fontName = "Helvetica-Bold"
-        useItemLabel?.fontSize = 12
-        useItemLabel?.position = CGPoint(x: -(self.size.width / 3.47), y: -(self.size.height / 3))
-        useItemLabel?.zPosition = 3
-        
-        if let useItemLabel {
-            if useItemLabel.parent == nil {
-                cameraNode.addChild(useItemLabel)
-            }
-        }
-    }
-    
-    internal func removeLabelUseItem () {
-        if let useItemLabel {
-            if useItemLabel.parent != nil {
-                useItemLabel.removeFromParent()
-            }
         }
     }
 }

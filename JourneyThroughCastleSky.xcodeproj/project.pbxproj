@@ -88,6 +88,12 @@
 		FDB27A292CAB215A002B2848 /* FriendlySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A272CAB215A002B2848 /* FriendlySystem.swift */; };
 		FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A412CADC163002B2848 /* PauseMenu.swift */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
+		FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9952CB4577300A1647B /* MenuSystem.swift */; };
+		FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9952CB4577300A1647B /* MenuSystem.swift */; };
+		FDD5F9992CB45CB600A1647B /* InventorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9982CB45CB600A1647B /* InventorySystem.swift */; };
+		FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9982CB45CB600A1647B /* InventorySystem.swift */; };
+		FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
+		FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -156,6 +162,9 @@
 		FDB27A272CAB215A002B2848 /* FriendlySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendlySystem.swift; sourceTree = "<group>"; };
 		FDB27A412CADC163002B2848 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
+		FDD5F9952CB4577300A1647B /* MenuSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSystem.swift; sourceTree = "<group>"; };
+		FDD5F9982CB45CB600A1647B /* InventorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySystem.swift; sourceTree = "<group>"; };
+		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
@@ -259,9 +268,12 @@
 			children = (
 				98838C252CA486C600709648 /* CombatSystem.swift */,
 				FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */,
-				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
 				FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */,
 				FDB27A272CAB215A002B2848 /* FriendlySystem.swift */,
+				FDD5F9952CB4577300A1647B /* MenuSystem.swift */,
+				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
+				FDD5F9982CB45CB600A1647B /* InventorySystem.swift */,
+				FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -505,6 +517,7 @@
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
 				43841E6D2CA72CB1009496B2 /* Component.swift in Sources */,
 				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
+				FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */,
 				98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */,
 				98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */,
@@ -540,7 +553,9 @@
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
+				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				43841E722CA72CDB009496B2 /* Entity.swift in Sources */,
+				FDD5F9992CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */,
 				98838C622CA5DC8C00709648 /* Effect.swift in Sources */,
 				98838C632CA5DC8C00709648 /* Dialogo.swift in Sources */,
@@ -577,6 +592,7 @@
 				FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */,
 				98838C262CA486C600709648 /* CombatSystem.swift in Sources */,
 				98838C2E2CA4A65C00709648 /* Skill.swift in Sources */,
+				FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
 				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FDE3CF2B2CA5FD7900D88620 /* Checkpoint.swift in Sources */,
@@ -587,6 +603,7 @@
 				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
+				FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,
 				FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				FD932AFB2C9B56C10047B5B7 /* HealthComponent.swift in Sources */,
@@ -597,6 +614,7 @@
 				FD932B092C9B57AA0047B5B7 /* User.swift in Sources */,
 				98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */,
 				FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */,
+				FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
