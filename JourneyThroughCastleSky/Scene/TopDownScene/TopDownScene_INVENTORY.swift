@@ -24,7 +24,7 @@ extension TopDownScene {
         inventory.fillColor = .gray
         inventory.strokeColor = .white
         inventory.lineWidth = 5
-        inventory.zPosition = 10
+        inventory.zPosition = 15
                 
         // Centraliza o inventário na tela
         inventory.position = .zero
@@ -42,7 +42,54 @@ extension TopDownScene {
                 
         // Adiciona alguns itens ao inventário
         addInventoryItems()
+        
+        setupDetailItem()
     }
+    
+    func setupDetailItem () {
+        guard let inventory else {fatalError("Não existe um inventário")}
+        
+        let base = SKShapeNode(rectOf: CGSize(width: inventory.frame.width - 10, height: size.height / 8))
+        base.strokeColor = .white
+        base.fillColor = .gray
+        base.position.y = inventory.position.y - (inventory.frame.height / 3)
+        
+        inventory.addChild(base)
+        
+        setupSelectedItemLabels(base)
+    }
+    
+    func setupSelectedItemLabels (_ base : SKShapeNode) {
+        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
+
+        titleSelectedItem = SKLabelNode(text: item.consumableComponent?.nome)
+        descriptionSelectedItem = SKLabelNode(text: item.readableComponent.readableDescription)
+        
+        titleSelectedItem?.fontSize = 20
+        titleSelectedItem?.position = .zero
+        
+        descriptionSelectedItem?.fontSize = 14
+        descriptionSelectedItem?.position = .zero
+        descriptionSelectedItem?.position.y -= 40
+        
+        
+        // é certeza que eles existe, afinal de contas, se a execução do código foi parar aqui, quer dizer que deu certo...
+        base.addChild(titleSelectedItem!)
+        base.addChild(descriptionSelectedItem!)
+        
+        
+    }
+    
+    func updateSelectedItemLabels () {
+        guard let titleSelectedItem, let descriptionSelectedItem else {
+            return
+        }
+        
+        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
+        titleSelectedItem.text = item.consumableComponent?.nome
+        descriptionSelectedItem.text = item.readableComponent.readableDescription
+    }
+    
     
     /// Função que adiciona os itens dentro do inventório.
     internal func addInventoryItems () {
@@ -59,8 +106,6 @@ extension TopDownScene {
             
             squareBehind.position.y += referencey
             
-
-            
             let node = item.spriteComponent.sprite
             squareBehind.addChild(node)
             node.scale(to: CGSize(width: 60, height: 60))
@@ -72,7 +117,6 @@ extension TopDownScene {
             } else {
                 reference += 110
             }
-            
             
             inventory?.addChild(squareBehind)
         })
