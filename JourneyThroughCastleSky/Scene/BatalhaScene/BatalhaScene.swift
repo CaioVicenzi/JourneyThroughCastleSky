@@ -26,6 +26,7 @@ class BatalhaScene : SKScene {
     var buttonDodge = SKShapeNode()
     var myLifeLabel = SKLabelNode()
     var enemyLifeLabel = SKLabelNode()
+    var actionDescription: SKShapeNode!
     
     var battleSystem = CombatSystem()
     
@@ -300,37 +301,7 @@ class BatalhaScene : SKScene {
          */
     }
     
-    private func showItems () {
-        // PRIMEIRO PASSO: ELIMINAR OS BOTÕES POSSÍVEIS
-        buttonSpare.removeFromParent()
-        buttonAttack.removeFromParent()
-        buttonUseItem.removeFromParent()
-        
-        var referencia : Int = 150
-        var referencia2 : Int = 0
-        var itemNumber : Int = 0
-        
-        // SEGUNDO PASSO: ADICIONAR OS ITENS NA TELA
-        User.singleton.inventoryComponent.itens.forEach { item in            
-            let quadrado = SKShapeNode(rect: CGRect(origin: PositionHelper.singleton.centralizeQuarterLeft(buttonAttack), size: CGSize(width: 100, height: 50)))
-            quadrado.position.x += CGFloat(referencia)
-            quadrado.fillColor = .gray
-            referencia += 150
-            
-            
-            let itemSprite = item.spriteComponent.sprite
-            itemSprite.scale(to: CGSize(width: 40, height: 40))
-            itemSprite.position = CGPoint(x: 200, y: 150)
-            itemSprite.position.x += CGFloat(referencia2)
-            referencia2 += 10
-            
-            quadrado.addChild(itemSprite)
-            quadrado.name = "quadradoItem\(itemNumber)"
-            itemNumber += 1
-            
-            addChild(quadrado)
-        }
-    }
+    
     
     private func refreshButtonsState () {
         if buttonSelected == .ATTACK {

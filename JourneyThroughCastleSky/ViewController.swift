@@ -17,8 +17,21 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     
         if let view = self.skView {
-            let gameScene =  MainMenuScene(size: skView.frame.size)
-            gameScene.scaleMode = .aspectFill
+            User.singleton.inventoryComponent.itens
+                .append(
+                    .init(
+                        name: "TESTE",
+                        spriteName: "balloons",
+                        dialogs: [],
+                        effect: .init(type: .CURE, amount: 1),
+                        x: 0,
+                        y: 0,
+                        description: "ASDASD"
+                    )
+                )
+            let gameScene = BatalhaScene(size: view.frame.size)
+            gameScene.config(enemy: Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "enemy"))
+            gameScene.scaleMode = .aspectFit
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
             view.ignoresSiblingOrder = true

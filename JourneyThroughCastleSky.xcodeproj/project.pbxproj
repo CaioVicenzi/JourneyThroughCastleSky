@@ -17,6 +17,8 @@
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		9877AA462CA74416008C5CEC /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877AA452CA74416008C5CEC /* CGPoint.swift */; };
 		9877AA472CA74416008C5CEC /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877AA452CA74416008C5CEC /* CGPoint.swift */; };
+		9877AA492CA7513F008C5CEC /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877AA482CA7513D008C5CEC /* LabelComponent.swift */; };
+		9877AA4A2CA7513F008C5CEC /* LabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9877AA482CA7513D008C5CEC /* LabelComponent.swift */; };
 		98838C262CA486C600709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C2E2CA4A65C00709648 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C2D2CA4A65C00709648 /* Skill.swift */; };
 		98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */; };
@@ -122,6 +124,7 @@
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		9877AA452CA74416008C5CEC /* CGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		9877AA482CA7513D008C5CEC /* LabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelComponent.swift; sourceTree = "<group>"; };
 		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
 		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
@@ -227,6 +230,7 @@
 		FD16D8822C9B55870069D661 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				9877AA482CA7513D008C5CEC /* LabelComponent.swift */,
 				FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */,
 				FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */,
 				FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */,
@@ -501,6 +505,7 @@
 			files = (
 				98838C4B2CA5DB8300709648 /* Enemy.swift in Sources */,
 				98838C5D2CA5DC8600709648 /* Item.swift in Sources */,
+				9877AA492CA7513F008C5CEC /* LabelComponent.swift in Sources */,
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
 				43841E6D2CA72CB1009496B2 /* Component.swift in Sources */,
 				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
@@ -595,6 +600,7 @@
 				FD932B092C9B57AA0047B5B7 /* User.swift in Sources */,
 				98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */,
 				FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */,
+				9877AA4A2CA7513F008C5CEC /* LabelComponent.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
