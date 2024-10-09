@@ -14,7 +14,7 @@ class MenuSystem {
         self.gameScene = gameScene
     }
     
-    func toggleInventory () {
+    func togglePause () {
         let gameState = gameScene.gameState
         let pauseUIComponent = gameScene.pauseUIComponent
         
@@ -26,6 +26,18 @@ class MenuSystem {
             gameScene.gameState = .PAUSE
             gameScene.movementSystem.mostRecentMove = []
             gameScene.pauseUIComponent.addToScene(gameScene)
+        }
+    }
+    
+    func input (_ keyCode : UInt16){
+        switch keyCode {
+            case 0x7E: // UP key
+                gameScene.pauseUIComponent.pressUpKey()
+            case 0x7D:  // DOWN key
+                gameScene.pauseUIComponent.pressDownKey()
+            case 36:
+                gameScene.pauseUIComponent.pressEnterKey()
+            default: break
         }
     }
 }

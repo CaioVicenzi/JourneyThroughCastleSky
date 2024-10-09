@@ -20,8 +20,7 @@ class FriendlySystem {
     }
     
     func isFriendlyNearUser (_ friendly : Friendly) -> Bool {
-        guard let gameScene else {fatalError("FriendlySystem não foi iniciado corretamente...")}
-        return gameScene.positionSystem.isOtherNearPlayer(friendly.positionComponent, range: 50)
+        return PositionSystem.isOtherNearPlayer(friendly.positionComponent, range: 50)
     }
     
     func isAnyFriendlyNear () -> Bool {
@@ -39,7 +38,7 @@ class FriendlySystem {
     func talkToNearestFriendly () {
         friendlies.forEach { friendly in
             if isFriendlyNearUser(friendly) {
-                gameScene?.dialogsToPass.append(contentsOf: friendly.dialogueComponent.dialogs)
+                gameScene?.dialogSystem.inputDialogs(friendly.dialogueComponent.dialogs)
                 gameScene?.dialogSystem.nextDialogue()
             }
         }

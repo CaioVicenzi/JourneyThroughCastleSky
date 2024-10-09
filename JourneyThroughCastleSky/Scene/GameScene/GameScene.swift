@@ -83,7 +83,7 @@ class GameScene: TopDownScene {
             }) {
                 self.view?.presentScene(SKScene(), transition: SKTransition.fade(withDuration: 1.0))
             } else {
-                self.dialogsToPass.append(Dialogue(text: "Preciso da chave para entrar aqui...", person: "you", velocity: 20))
+                self.dialogSystem.inputDialog("Preciso da chave para entrar aqui...", person: "You", velocity: 20)
                 dialogSystem.nextDialogue()
             }
         }

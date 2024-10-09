@@ -34,7 +34,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal let positionSystem : PositionSystem
     internal let inventorySystem : InventorySystem
     
-    var dialogsToPass : [Dialogue] = []
     var descriptionsToPass : [DescriptionToPass] = []
     
     var gameState : GameState = .NORMAL
@@ -87,5 +86,14 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupEnemies()
         setupItems()
         setupFriendlies()
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        movementSystem.movePlayer()
+        itemSystem.showCatchLabel()
+        if gameState == .INVENTORY {
+            updateInventorySquares()
+        }
+        updateSelectedItemLabels()
     }
 }

@@ -23,7 +23,8 @@ class ItemSystem {
     /// função que pega o item mais próximo.
     func catchNearestItem (){
         items.forEach { item in
-            if isItemNearUser(item) {
+            let itemNearUser = PositionSystem.isOtherNearPlayer(item.positionComponent, range: 50)
+            if itemNearUser{
                 removeNearestItemSprite(item.consumableComponent!.nome)
                 catchItem(item)
                 items.removeAll { currentItem in
@@ -37,7 +38,7 @@ class ItemSystem {
     private func removeNearestItemSprite (_ name : String) {
         gameScene.enumerateChildNodes(withName: name) { node, _ in
             let positionComponent = PositionComponent(xPosition: Int(node.position.x), yPosition: Int(node.position.y))
-            if self.gameScene.positionSystem.isOtherNearPlayer(positionComponent, range: 50){
+            if PositionSystem.isOtherNearPlayer(positionComponent, range: 50){
                 if node.parent != nil {
                     node.removeFromParent()
                 }
@@ -50,38 +51,24 @@ class ItemSystem {
         // função para adicionar o balão ao inventário do usuário.
         item.spriteComponent.sprite.removeFromParent()
         
-        // para cada um dos diálogos dentro do componente do item,
-        populateDialogs(item.dialogueComponent?.dialogs)
+        // adicionar os diálogos do item dentro da lista de diálogos para passar.
+        if let dialogs = item.dialogueComponent?.dialogs {
+            gameScene.dialogSystem.inputDialogs(dialogs)
+        }
         
+        // adiciona também a descrição do item
         if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
             gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
         }
         
-        //gameScene.buttonCatch?.removeFromParent()
         gameScene.catchLabel?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
     }
     
-    private func populateDialogs (_ dialogs : [Dialogue]?) {
-        dialogs?.forEach({ dialogue in
-            gameScene.dialogsToPass.append(dialogue)
-        })
-    }
-    
-    private func isItemNearUser (_ item : Item) -> Bool {
-        if gameScene.gameState == .NORMAL {
-            return gameScene.positionSystem.calcDistanceFromUser(item.positionComponent) < 50
-        } else {
-            return false
-        }
-    }
-    
-    
-    
     /// Função que verifica se vai exibir o botão de pegar o item
     func showCatchLabel () {
         // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
-        if isAnyItemNear() {
+        if PositionSystem.isAnyNearPlayer(items.map({ item in item.positionComponent})) && gameScene.gameState == .NORMAL {
             if self.gameScene.catchLabel?.parent == nil {
                 self.gameScene.setupCatchLabel()
             }
@@ -91,18 +78,7 @@ class ItemSystem {
             }
         }
     }
-    
-    
-    // função que verifica se existe algum item perto do usuário
-    func isAnyItemNear () -> Bool {
-        var anyItemNear = false
-        items.forEach { item in
-            if isItemNearUser(item) {
-                anyItemNear = true
-            }
-        }
-        return anyItemNear
-    }
+     
     
     static func useItem (_ item : Item) {
         if let effect = item.consumableComponent?.effect {
