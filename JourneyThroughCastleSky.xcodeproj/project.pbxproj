@@ -11,6 +11,8 @@
 		43841E6D2CA72CB1009496B2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E6B2CA72CB1009496B2 /* Component.swift */; };
 		43841E722CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
 		43841E732CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
+		43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
+		43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
 		43F0076F2CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
@@ -122,6 +124,7 @@
 /* Begin PBXFileReference section */
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
 		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
 		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
@@ -224,6 +227,7 @@
 			children = (
 				FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */,
 				FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */,
+				43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */,
 				FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */,
 				FD932AF82C9B56940047B5B7 /* ConsumableComponent.swift */,
 				FD932AFA2C9B56C10047B5B7 /* HealthComponent.swift */,
@@ -530,6 +534,7 @@
 				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
+				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
 				43841E722CA72CDB009496B2 /* Entity.swift in Sources */,
@@ -594,6 +599,7 @@
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,
+				43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				FD932B052C9B57620047B5B7 /* AffectedByEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
