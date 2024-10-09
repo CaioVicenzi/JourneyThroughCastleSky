@@ -8,7 +8,8 @@
 import Foundation
 import SpriteKit
 
-class Item {
+class Item : Identifiable{
+    let id = UUID()
     let interactableComponent = InteractableComponent()
     let dialogueComponent : DialogueComponent?
     let consumableComponent : ConsumableComponent?

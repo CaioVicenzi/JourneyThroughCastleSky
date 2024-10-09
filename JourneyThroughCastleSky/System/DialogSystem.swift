@@ -50,7 +50,7 @@ class DialogSystem {
         }
     }
     
-    func typeEffect (_ text : String, velocity : Int, label : SKLabelNode,_ completionHandler: @escaping () -> Void) {
+    static func typeEffect (_ text : String, velocity : Int, label : SKLabelNode,_ completionHandler: @escaping () -> Void) {
         var i : Int = 0
         
         let milissecs = (Double(1) / Double(velocity))

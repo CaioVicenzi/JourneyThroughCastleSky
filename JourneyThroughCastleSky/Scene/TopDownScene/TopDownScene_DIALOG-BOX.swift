@@ -46,7 +46,7 @@ extension TopDownScene {
         textLabel.position = CGPoint(x: 50, y: author.position.y - 50)
         textLabel.fontSize = 12
         textLabel.horizontalAlignmentMode = .left
-        dialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: textLabel) { [weak self] in
+        DialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: textLabel) { [weak self] in
             self?.gameState = .DIALOG_FINISHED
         }
 

@@ -21,7 +21,7 @@ class FriendlySystem {
     
     func isFriendlyNearUser (_ friendly : Friendly) -> Bool {
         guard let gameScene else {fatalError("FriendlySystem não foi iniciado corretamente...")}
-        return gameScene.movementSystem.isOtherNearPlayer(friendly.positionComponent, range: 50)
+        return gameScene.positionSystem.isOtherNearPlayer(friendly.positionComponent, range: 50)
     }
     
     func isAnyFriendlyNear () -> Bool {
