@@ -21,8 +21,8 @@ class Consumable: Command {
 class GameScene: TopDownScene {
     
     override func didMove(to view: SKView) {
-        super.config()
-        super.setupNodes()
+        super.didMove(to: view)
+        
         setupWalls()
         setupCheckpoint()
     }
