@@ -17,6 +17,18 @@
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
+		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
+		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
+		986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
+		9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
+		9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
+		986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
+		986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */; };
+		986032932CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */; };
+		986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */; };
+		986032962CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */; };
+		986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986032A82CB8689300D8ECD2 /* CGSize.swift */; };
+		986032AA2CB8689800D8ECD2 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986032A82CB8689300D8ECD2 /* CGSize.swift */; };
 		98838C262CA486C600709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C2E2CA4A65C00709648 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C2D2CA4A65C00709648 /* Skill.swift */; };
 		98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */; };
@@ -133,6 +145,12 @@
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
+		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		986032882CB717DE00D8ECD2 /* MainHall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHall.sks; sourceTree = "<group>"; };
+		9860328E2CB7185500D8ECD2 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
+		986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTileset.jpg; sourceTree = "<group>"; };
+		986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTilesetRed.jpg; sourceTree = "<group>"; };
+		986032A82CB8689300D8ECD2 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
 		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
@@ -223,6 +241,25 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		986032852CB717AC00D8ECD2 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */,
+				986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */,
+				986032882CB717DE00D8ECD2 /* MainHall.sks */,
+				9860328E2CB7185500D8ECD2 /* MyTileSet.sks */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		986032A72CB8688C00D8ECD2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				986032A82CB8689300D8ECD2 /* CGSize.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		98838C2F2CA4A68B00709648 /* Skills */ = {
@@ -358,6 +395,7 @@
 		FDF1E0862C91B750006D4EA0 /* JourneyThroughCastleSky */ = {
 			isa = PBXGroup;
 			children = (
+				986032A72CB8688C00D8ECD2 /* Extensions */,
 				FDE3CF292CA5FD5C00D88620 /* UIComponents */,
 				FD932AEF2C9B55A80047B5B7 /* System */,
 				FD16D8822C9B55870069D661 /* Component */,
@@ -380,6 +418,7 @@
 		FDF1E09C2C91B803006D4EA0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				985DD3E02CB86DD400E58612 /* Math.swift */,
 				FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */,
 				FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */,
 			);
@@ -389,6 +428,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				986032852CB717AC00D8ECD2 /* Editor */,
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				FDAC55012C9A10BF00E90E17 /* GameScene */,
 				FDE3CF0A2CA485F400D88620 /* TopDownScene */,
@@ -499,6 +539,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986032962CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
+				986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
+				9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
+				986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,10 +551,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
+				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
+				9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 				FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */,
 				FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */,
 				FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */,
+				986032932CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
 				FDF1E0952C91B752006D4EA0 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +581,7 @@
 				98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */,
 				98838C5F2CA5DC8600709648 /* Friendly.swift in Sources */,
 				98838C732CA5E09800709648 /* DialogSystem.swift in Sources */,
+				985DD3E22CB86DD600E58612 /* Math.swift in Sources */,
 				FDB27A292CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				98838C742CA5E09800709648 /* MovementSystem.swift in Sources */,
 				98838C752CA5E09800709648 /* CombatSystem.swift in Sources */,
@@ -563,6 +612,7 @@
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
 				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
+				986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
 				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				43841E722CA72CDB009496B2 /* Entity.swift in Sources */,
@@ -614,11 +664,13 @@
 				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
+				986032AA2CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,
 				FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				FD932AFB2C9B56C10047B5B7 /* HealthComponent.swift in Sources */,
 				FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */,
+				985DD3E12CB86DD600E58612 /* Math.swift in Sources */,
 				FDF1E0A32C921D16006D4EA0 /* GameOverScene.swift in Sources */,
 				FD932B0F2C9B5BCA0047B5B7 /* Item.swift in Sources */,
 				FDF1E0AC2C938531006D4EA0 /* YouWinScene.swift in Sources */,
@@ -821,7 +873,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -848,7 +900,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

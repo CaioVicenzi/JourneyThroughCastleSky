@@ -93,32 +93,30 @@ class MovementSystem {
         
         var cameraPosition = playerSprite.position
         
-        // Calcular os limites da câmera
-        let cameraHalfWidth = gameScene.size.width / 2
-        let cameraHalfHeight = gameScene.size.height / 2
+        
+        let cameraHalfSize = gameScene.size.half
+        
+        
                 
+        let bounds = gameScene.bounds
+        
+        
         // Limitar o movimento da câmera nos eixos X e Y
-        let minX = cameraHalfWidth
-        let maxX = background.size.width - cameraHalfWidth
-        let minY = cameraHalfHeight
-        let maxY = background.size.height - cameraHalfHeight
+        let minX = bounds.minX + cameraHalfSize.width
+        let maxX = bounds.maxX - cameraHalfSize.width
+        let minY = bounds.minY + cameraHalfSize.height
+        let maxY = bounds.maxY - cameraHalfSize.height
                 
-        // Verificar se a câmera está nos limites horizontais
-        if cameraPosition.x < minX {
-            cameraPosition.x = minX
-        } else if cameraPosition.x > maxX {
-            cameraPosition.x = maxX
-        }
-                
-        // Verificar se a câmera está nos limites verticais
-        if cameraPosition.y < minY {
-            cameraPosition.y = minY
-        } else if cameraPosition.y > maxY {
-            cameraPosition.y = maxY
-        }
+        
+        cameraPosition.x = Math
+            .clamp(value: cameraPosition.x, minV: minX, maxV: maxX)
+        
+        cameraPosition.y = Math
+            .clamp(value: cameraPosition.y, minV: minY, maxV: maxY)
+      
         
         // Atualizar a posição da câmera
         gameScene.cameraNode.position = cameraPosition
-         
+        print(playerSprite.position)
     }
 }

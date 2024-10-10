@@ -36,7 +36,7 @@ extension TopDownScene {
     /// Função que posiciona todos os inimigos dentro da lista de enemies dentro do mapa.
     internal func setupEnemies () {
         setupEnemy("strongEnemy", spriteName: "papyrus")
-        setupEnemy("weakEnemy", spriteName: "monster")
+        setupEnemy("weakEnemy", spriteName: "enemy")
     }
     
     private func setupEnemy (_ name : String, spriteName : String) {

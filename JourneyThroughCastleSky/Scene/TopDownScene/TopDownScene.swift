@@ -14,6 +14,15 @@ import SpriteKit
 ///   - friendliest: são uma lista contendo todos os amigáveis que se deseja colocar dentro da cena;
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
+    
+    var bounds: CGRect {
+        
+        let boundsNode = self.childNode(withName: "bounds")!
+        
+        return boundsNode.frame
+        
+    }
+    
     var enemies : [Enemy]
     var inventoryItemSelected = 0
     
@@ -60,9 +69,18 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
     }
     
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        config()
+        setupNodes()
+        setupTileColliders()
+    }
+    
     internal func config () {
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
+        
+        
         
         // configurando os systems
         dialogSystem.config(self)
@@ -79,6 +97,58 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         self.physicsWorld.gravity = .zero
         self.physicsWorld.contactDelegate = self
+    }
+    
+    
+    
+    // TODO: Otimizar a quantidade de nodes com colisão
+    private func setupTileColliders() {
+        
+        let nodes = children
+        
+        for case let node as SKTileMapNode in nodes {
+            guard node.userData?.value(forKey: "hasCollision") as? Int == 1 else {
+                continue
+            }
+           
+            let nodeSize = CGSize(
+                width: node.numberOfColumns,
+                height: node.numberOfRows
+            )
+            
+            
+            for y in 0..<Int(nodeSize.height) {
+                for x in 0..<Int(nodeSize.width) {
+                    
+                    let tileDefinition = node.tileDefinition(atColumn: x, row: y)
+                    
+                    
+                    if let texture = tileDefinition?.textures[0] {
+                        let tileWorldCoord = node.centerOfTile(atColumn: x, row: y)
+                        let collisionNode = SKNode()
+                        collisionNode.position = tileWorldCoord
+                        
+                        let physicsBody: SKPhysicsBody = .init(
+                            rectangleOf: texture.size()
+                        )
+                        physicsBody.friction = 0
+                        
+                        
+                        physicsBody.isDynamic = false
+                        
+                        collisionNode.physicsBody = physicsBody
+                        
+                        addChild(collisionNode)
+                        
+                        
+                    }
+                    
+                }
+            }
+            
+            
+        }
+        
     }
     
     internal func setupNodes () {
