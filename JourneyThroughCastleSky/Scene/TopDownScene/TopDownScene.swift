@@ -14,6 +14,15 @@ import SpriteKit
 ///   - friendliest: são uma lista contendo todos os amigáveis que se deseja colocar dentro da cena;
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
+    
+    var bounds: CGRect {
+        
+        let boundsNode = self.childNode(withName: "bounds")!
+        
+        return boundsNode.frame
+        
+    }
+    
     var enemies : [Enemy]
     var inventoryItemSelected = 0
     
@@ -71,6 +80,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
         
+        
+        
         // configurando os systems
         dialogSystem.config(self)
         movementSystem.config(self)
@@ -87,6 +98,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         self.physicsWorld.gravity = .zero
         self.physicsWorld.contactDelegate = self
     }
+    
+    
     
     // TODO: Otimizar a quantidade de nodes com colisão
     private func setupTileColliders() {
