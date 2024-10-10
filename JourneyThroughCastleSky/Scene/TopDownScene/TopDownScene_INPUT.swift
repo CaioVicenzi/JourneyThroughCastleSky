@@ -87,39 +87,31 @@ extension TopDownScene {
         } else if gameState == .DIALOG_FINISHED  {
             dialogSystem.nextDialogue()
         } else if gameState == .INVENTORY {
-            itemSystem.inventoryButtonPressed()
-            let itemSelected = User.singleton.inventoryComponent.itens[inventoryItemSelected]
-            
-            descriptionsToPass.append(DescriptionToPass(sprite: itemSelected.spriteComponent.sprite, description: itemSelected.readableComponent.readableDescription))
+            //let itemSelected = User.singleton.inventoryComponent.itens[inventoryItemSelected]
+            inventorySystem.inventoryButtonPressed()
+            inventorySystem.useItemFromInventory(in: inventoryItemSelected)
             inventoryItemSelected = 0
             dialogSystem.nextDialogue()
+             
         }
     }
     
-    
-    
     private func iKeyPressed () {
-        if gameState == .NORMAL || gameState == .INVENTORY {
-            itemSystem.inventoryButtonPressed()
-        }
+        inventorySystem.inventoryButtonPressed()
     }
     
     private func escKeyPressed () {
-        if gameState == .PAUSE {
-            gameState = .NORMAL
-            pauseUIComponent.cleanMenuPause(cameraNode: self.cameraNode)
-        } else if gameState == .NORMAL{ // somente pode dar pause quando o jogo estiver no modo normal
-            gameState = .PAUSE
-            movementSystem.mostRecentMove = []
-            pauseUIComponent.addToScene(self)
-        }
+        menuSystem.toggleInventory()
     }
     
     override func update(_ currentTime: TimeInterval) {
         movementSystem.movePlayer()
         movementSystem.updateCameraPosition()
-        movementSystem.checkColision ()
+        //movementSystem.checkColision ()
         itemSystem.showCatchLabel()
-        updateInventorySquares()
+        if gameState == .INVENTORY {
+            updateInventorySquares()
+        }
+        updateSelectedItemLabels()
     }
 }

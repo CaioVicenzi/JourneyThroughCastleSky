@@ -35,6 +35,7 @@ class MainMenuScene : SKScene {
         let clickedNode = self.atPoint(location)
         
         if clickedNode.name == "startGameButton" {
+            /*
             let gameScene =  GameScene(size: size, enemies: [
                 Enemy(x: 200, y: 100, damage: 10, health: 100, spriteName: "enemy"),
                 Enemy(x: 600, y: 400, damage: 10, health: 100, spriteName: "monster"),
@@ -47,9 +48,22 @@ class MainMenuScene : SKScene {
             ], friendlies: [
                 Friendly(spriteName: "papyrus", xPosition: 900, yPosition: 100, dialogs: [Dialogue(text: "Olá, eu sou o Papyrus", person: "Papyrus", velocity: 20), Dialogue(text: "Eu sou seu amigo", person: "Papyrus", velocity: 20)])
             ], background: SKSpriteNode(imageNamed: "background"))
+             
             
+            
+             
+             */
+            
+            let gameScene = SKScene(fileNamed: "MainHallScene.sks")
+            gameScene?.scaleMode = .aspectFill
+             
             let transition = SKTransition.fade(withDuration: 1.0)
-            self.view?.presentScene(gameScene, transition: transition)
+            if let gameScene {
+                self.view?.presentScene(gameScene, transition: transition)
+            }
         }
+         
+         
+        
     }
 }

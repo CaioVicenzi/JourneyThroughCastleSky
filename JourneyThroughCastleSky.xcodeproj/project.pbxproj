@@ -11,6 +11,8 @@
 		43841E6D2CA72CB1009496B2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E6B2CA72CB1009496B2 /* Component.swift */; };
 		43841E722CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
 		43841E732CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
+		43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
+		43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
 		43F0076F2CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
@@ -68,6 +70,8 @@
 		98838C752CA5E09800709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C762CA5E09800709648 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
 		98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */; };
+		FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
+		FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
 		FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
 		FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */; };
 		FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */; };
@@ -94,6 +98,12 @@
 		FDB27A292CAB215A002B2848 /* FriendlySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A272CAB215A002B2848 /* FriendlySystem.swift */; };
 		FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB27A412CADC163002B2848 /* PauseMenu.swift */; };
 		FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
+		FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9952CB4577300A1647B /* MenuSystem.swift */; };
+		FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9952CB4577300A1647B /* MenuSystem.swift */; };
+		FDD5F9992CB45CB600A1647B /* InventorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9982CB45CB600A1647B /* InventorySystem.swift */; };
+		FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9982CB45CB600A1647B /* InventorySystem.swift */; };
+		FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
+		FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -134,12 +144,14 @@
 		9860328E2CB7185500D8ECD2 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTileset.jpg; sourceTree = "<group>"; };
 		986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTilesetRed.jpg; sourceTree = "<group>"; };
+		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
 		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
 		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
 		98838C322CA5CE4A00709648 /* SkillComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillComponent.swift; sourceTree = "<group>"; };
 		98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JourneyThroughCastleSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98838C482CA5D8E300709648 /* TopDownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene.swift; sourceTree = "<group>"; };
+		FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
 		FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -165,6 +177,9 @@
 		FDB27A272CAB215A002B2848 /* FriendlySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendlySystem.swift; sourceTree = "<group>"; };
 		FDB27A412CADC163002B2848 /* PauseMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseMenu.swift; sourceTree = "<group>"; };
 		FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBatalhaScene.swift; sourceTree = "<group>"; };
+		FDD5F9952CB4577300A1647B /* MenuSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSystem.swift; sourceTree = "<group>"; };
+		FDD5F9982CB45CB600A1647B /* InventorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySystem.swift; sourceTree = "<group>"; };
+		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
@@ -193,6 +208,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		4377B8592CAF173800FDD2B9 /* CutsceneScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CutsceneScene; sourceTree = "<group>"; };
 		98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JourneyThroughCastleSkyTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -246,6 +262,7 @@
 			children = (
 				FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */,
 				FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */,
+				43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */,
 				FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */,
 				FD932AF82C9B56940047B5B7 /* ConsumableComponent.swift */,
 				FD932AFA2C9B56C10047B5B7 /* HealthComponent.swift */,
@@ -279,9 +296,12 @@
 			children = (
 				98838C252CA486C600709648 /* CombatSystem.swift */,
 				FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */,
-				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
 				FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */,
 				FDB27A272CAB215A002B2848 /* FriendlySystem.swift */,
+				FDD5F9952CB4577300A1647B /* MenuSystem.swift */,
+				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
+				FDD5F9982CB45CB600A1647B /* InventorySystem.swift */,
+				FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -305,6 +325,14 @@
 				43841E712CA72CDB009496B2 /* Entity.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		FDB27A502CADE5C5002B2848 /* GameplaySks */ = {
+			isa = PBXGroup;
+			children = (
+				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
+			);
+			path = GameplaySks;
 			sourceTree = "<group>";
 		};
 		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
@@ -361,6 +389,7 @@
 				FDF1E09F2C921CF5006D4EA0 /* Scene */,
 				FDF1E09C2C91B803006D4EA0 /* Helper */,
 				FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */,
+				FDB27A502CADE5C5002B2848 /* GameplaySks */,
 				FDF1E0892C91B750006D4EA0 /* GameScene.sks */,
 				FDF1E08B2C91B750006D4EA0 /* Actions.sks */,
 				FDF1E08F2C91B750006D4EA0 /* ViewController.swift */,
@@ -384,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				986032852CB717AC00D8ECD2 /* Editor */,
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				FDAC55012C9A10BF00E90E17 /* GameScene */,
 				FDE3CF0A2CA485F400D88620 /* TopDownScene */,
 				FDF1E0AD2C94B7CF006D4EA0 /* BatalhaScene */,
@@ -420,6 +450,7 @@
 				98838C412CA5D62D00709648 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 			);
 			name = JourneyThroughCastleSkyTests;
@@ -440,6 +471,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 			);
 			name = JourneyThroughCastleSky;
 			productName = JourneyThroughCastleSky;
@@ -493,6 +527,7 @@
 				986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
 				9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */,
+				FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +538,7 @@
 				986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
 				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */,
+				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 				FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */,
 				FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */,
 				FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */,
@@ -523,6 +559,7 @@
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
 				43841E6D2CA72CB1009496B2 /* Component.swift in Sources */,
 				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
+				FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */,
 				98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */,
 				98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */,
@@ -556,9 +593,12 @@
 				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
+				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
+				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				43841E722CA72CDB009496B2 /* Entity.swift in Sources */,
+				FDD5F9992CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */,
 				98838C622CA5DC8C00709648 /* Effect.swift in Sources */,
 				98838C632CA5DC8C00709648 /* Dialogo.swift in Sources */,
@@ -595,6 +635,7 @@
 				FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */,
 				98838C262CA486C600709648 /* CombatSystem.swift in Sources */,
 				98838C2E2CA4A65C00709648 /* Skill.swift in Sources */,
+				FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
 				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FDE3CF2B2CA5FD7900D88620 /* Checkpoint.swift in Sources */,
@@ -605,6 +646,7 @@
 				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
+				FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,
 				FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				FD932AFB2C9B56C10047B5B7 /* HealthComponent.swift in Sources */,
@@ -615,11 +657,13 @@
 				FD932B092C9B57AA0047B5B7 /* User.swift in Sources */,
 				98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */,
 				FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */,
+				FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,
+				43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				FD932B052C9B57620047B5B7 /* AffectedByEffect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

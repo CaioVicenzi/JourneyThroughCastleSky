@@ -186,7 +186,7 @@ class BatalhaScene : SKScene {
     }
     
     private func useItem(_ item : Item) {
-        battleSystem.useItem(item)
+        ItemSystem.useItem(item)
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
     }
     

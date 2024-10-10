@@ -14,16 +14,15 @@ import SpriteKit
 ///   - friendliest: são uma lista contendo todos os amigáveis que se deseja colocar dentro da cena;
 ///   - background: um sprite que contém o fundo da cena.
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
-    let enemies : [Enemy]
-    //let itens : [Item]
+    var enemies : [Enemy]
     var inventoryItemSelected = 0
     
-    var background : SKSpriteNode?
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
     var inventory : SKShapeNode?
-    //var buttonCatch : SKShapeNode?
     var catchLabel : SKLabelNode?
+    var titleSelectedItem : SKLabelNode?
+    var descriptionSelectedItem : SKLabelNode?
     
     internal var cameraNode : SKCameraNode!
     
@@ -31,6 +30,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal let itemSystem : ItemSystem
     internal let dialogSystem : DialogSystem
     internal let friendlySystem : FriendlySystem
+    internal let menuSystem : MenuSystem
+    internal let positionSystem : PositionSystem
+    internal let inventorySystem : InventorySystem
     
     var dialogsToPass : [Dialogue] = []
     var descriptionsToPass : [DescriptionToPass] = []
@@ -39,36 +41,23 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     let pauseUIComponent : PauseMenu = PauseMenu()
     
-    private init(enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
-        self.enemies = enemies
-        //self.itens = itens
-        self.background = background
-        
-        self.movementSystem = MovementSystem()
-        self.dialogSystem = DialogSystem()
-        self.friendlySystem = FriendlySystem(friendlies: friendlies)
-        self.itemSystem = ItemSystem(items: itens)
-        
-        super.init()
-    }
+    var useItemLabel : SKLabelNode?
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init?(coder aDecoder : NSCoder) não implementado")
-    }
-    
-    init(size: CGSize, enemies : [Enemy], itens : [Item], friendlies : [Friendly], background : SKSpriteNode) {
-        self.enemies = enemies
-        //self.itens = itens
-        self.background = background
+        //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         
+        self.enemies = []
         self.movementSystem = MovementSystem()
         self.dialogSystem = DialogSystem()
+        self.friendlySystem = FriendlySystem(friendlies: [])
+        self.itemSystem = ItemSystem(items: [])
+        self.menuSystem = MenuSystem()
+        self.positionSystem = PositionSystem()
+        self.inventorySystem = InventorySystem()
         
         
-        self.itemSystem = ItemSystem(items: itens)
-        self.friendlySystem = FriendlySystem(friendlies: friendlies)
-
-        super.init(size: size)
+        super.init(coder: aDecoder)
+        
     }
     
     internal func config () {
@@ -80,17 +69,20 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         movementSystem.config(self)
         itemSystem.config(self)
         friendlySystem.config(self)
+        menuSystem.config(self)
+        inventorySystem.config(self)
+        inventorySystem.config(self)
         
         // inicializando o cameraNode.
-        cameraNode = SKCameraNode()
+        cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
+        
         
         self.physicsWorld.gravity = .zero
         self.physicsWorld.contactDelegate = self
     }
     
     internal func setupNodes () {
-        setupCamera()
-        setupBackground()
+        self.camera = cameraNode
         setupSprite()
         setupEnemies()
         setupItems()

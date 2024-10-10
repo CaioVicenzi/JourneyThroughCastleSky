@@ -10,7 +10,6 @@ import SpriteKit
 
 class ItemSystem {
     var gameScene : TopDownScene!
-    var isInventoryOpen : Bool = false
     var items : [Item]
     
     init(items: [Item]) {
@@ -21,28 +20,27 @@ class ItemSystem {
         self.gameScene = gameScene
     }
     
-    func inventoryButtonPressed () {
-        if isInventoryOpen {
-            gameScene.inventory?.removeFromParent()
-            gameScene.inventory?.children.forEach({ node in
-                node.removeFromParent()
-            })
-            gameScene.gameState = .NORMAL
-        } else {
-            gameScene.setupInventory()
-            gameScene.gameState = .INVENTORY
-        }
-        
-        isInventoryOpen.toggle()
-        
-    }
-    
     /// função que pega o item mais próximo.
     func catchNearestItem (){
         items.forEach { item in
             if isItemNearUser(item) {
+                removeNearestItemSprite(item.consumableComponent!.nome)
                 catchItem(item)
+                items.removeAll { currentItem in
+                    currentItem.id == item.id
+                }
                 gameScene.dialogSystem.nextDialogue()
+            }
+        }
+    }
+    
+    private func removeNearestItemSprite (_ name : String) {
+        gameScene.enumerateChildNodes(withName: name) { node, _ in
+            let positionComponent = PositionComponent(xPosition: Int(node.position.x), yPosition: Int(node.position.y))
+            if self.gameScene.positionSystem.isOtherNearPlayer(positionComponent, range: 50){
+                if node.parent != nil {
+                    node.removeFromParent()
+                }
             }
         }
     }
@@ -71,29 +69,14 @@ class ItemSystem {
     }
     
     private func isItemNearUser (_ item : Item) -> Bool {
-        if item.spriteComponent.sprite.parent == nil {
+        if gameScene.gameState == .NORMAL {
+            return gameScene.positionSystem.calcDistanceFromUser(item.positionComponent) < 50
+        } else {
             return false
         }
-        
-        if item.spriteComponent.sprite.parent?.name == "inventory" {
-            return false
-        }
-        
-        return calcDistanceItem(item) < 50
     }
     
-    private func calcDistanceItem (_ item : Item) -> CGFloat {
-        let xPlayer = User.singleton.positionComponent.xPosition
-        let yPlayer = User.singleton.positionComponent.yPosition
-        
-        let xItem = item.positionComponent.xPosition
-        let yItem = item.positionComponent.yPosition
-        
-        let x = pow(CGFloat(xPlayer) - CGFloat(xItem), 2)
-        let y = pow(CGFloat(yPlayer) - CGFloat(yItem), 2)
-        
-        return sqrt(CGFloat(x) + CGFloat(y))
-    }
+    
     
     /// Função que verifica se vai exibir o botão de pegar o item
     func showCatchLabel () {
@@ -119,5 +102,20 @@ class ItemSystem {
             }
         }
         return anyItemNear
+    }
+    
+    static func useItem (_ item : Item) {
+        if let effect = item.consumableComponent?.effect {
+            switch effect.type {
+            case .CURE:
+                User.singleton.healthComponent.health += effect.amount
+            case .DAMAGE:
+                User.singleton.fighterComponent.damage += effect.amount
+            case .STAMINE:
+                User.singleton.staminaComponent.stamina += effect.amount
+            case .NONE:
+                break
+            }
+        }
     }
 }

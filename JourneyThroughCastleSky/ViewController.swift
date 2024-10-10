@@ -17,14 +17,14 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     
         if let view = self.skView {
-            let gameScene =  MainMenuScene(size: skView.frame.size)
+            let gameScene =  CutsceneScenes(size: skView.frame.size)
             gameScene.scaleMode = .aspectFill
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
             view.ignoresSiblingOrder = true
             view.showsFPS = true
             view.showsNodeCount = true
-            //view.showsPhysics = true
+            view.showsPhysics = true
         }
     }
 }
