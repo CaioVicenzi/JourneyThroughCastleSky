@@ -84,7 +84,7 @@ class ItemSystem {
         if let effect = item.consumableComponent?.effect {
             switch effect.type {
             case .CURE:
-                User.singleton.healthComponent.health += effect.amount
+                cure(item.consumableComponent!.effect.amount)
             case .DAMAGE:
                 User.singleton.fighterComponent.damage += effect.amount
             case .STAMINE:
@@ -92,6 +92,14 @@ class ItemSystem {
             case .NONE:
                 break
             }
+        }
+    }
+    
+    private static func cure (_ amount : Int) {
+        if User.singleton.healthComponent.health + amount >= 100 {
+            User.singleton.healthComponent.health = 100
+        } else {
+            User.singleton.healthComponent.health += amount
         }
     }
 }

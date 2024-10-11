@@ -83,9 +83,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal func setupNodes () {
         self.camera = cameraNode
         setupSprite()
-        setupEnemies()
-        setupItems()
-        setupFriendlies()
     }
     
     override func update(_ currentTime: TimeInterval) {

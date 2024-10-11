@@ -94,6 +94,8 @@
 		FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F9982CB45CB600A1647B /* InventorySystem.swift */; };
 		FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
 		FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
+		FDD5F9A02CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
+		FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -165,6 +167,7 @@
 		FDD5F9952CB4577300A1647B /* MenuSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSystem.swift; sourceTree = "<group>"; };
 		FDD5F9982CB45CB600A1647B /* InventorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySystem.swift; sourceTree = "<group>"; };
 		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
+		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				FDF1E08D2C91B750006D4EA0 /* GameScene.swift */,
+				FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */,
 			);
 			path = GameScene;
 			sourceTree = "<group>";
@@ -543,6 +547,7 @@
 				98838C512CA5DC6100709648 /* StaminaComponent.swift in Sources */,
 				98838C522CA5DC6100709648 /* ConsumableComponent.swift in Sources */,
 				43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */,
+				FDD5F9A02CB86CFF00A1647B /* GameSceneData.swift in Sources */,
 				98838C532CA5DC6100709648 /* SpriteComponent.swift in Sources */,
 				98838C542CA5DC6100709648 /* ReadableComponent.swift in Sources */,
 				98838C552CA5DC6100709648 /* SkillComponent.swift in Sources */,
@@ -604,6 +609,7 @@
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
 				FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */,
+				FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */,
 				FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */,
 				FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				FD932AFB2C9B56C10047B5B7 /* HealthComponent.swift in Sources */,
