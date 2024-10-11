@@ -8,7 +8,8 @@
 import Foundation
 import SpriteKit
 
-class Enemy {
+class Enemy : Identifiable{
+    let id : UUID = UUID()
     let healthComponent : HealthComponent
     let spriteComponent : SpriteComponent
     let fightAIComponent : FightAIComponent = FightAIComponent()

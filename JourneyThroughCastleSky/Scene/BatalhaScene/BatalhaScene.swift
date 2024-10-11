@@ -36,6 +36,7 @@ class BatalhaScene : SKScene {
     private var positionItemSelected = 0
     private var enemyDodge = false
     
+    
     func config (_ scene : SKScene) {
         self.previousScene = scene
     }
@@ -85,6 +86,15 @@ class BatalhaScene : SKScene {
     // MARK: LÓGICA
     
     override func keyDown(with event: NSEvent) {
+        if event.keyCode == 53 {
+            spare()
+        }
+        
+        #warning("isso é apenas um cheat para teste.")
+        if event.keyCode == 13 {
+            getOutWinning()
+        }
+    
         switch gameChooseState {
         case .NONE:
             return
@@ -283,22 +293,34 @@ class BatalhaScene : SKScene {
     
     
     private func spare () {
-        /*
-        let nextScene = GameScene(size: self.size)
-        nextScene.scaleMode = .aspectFill
         
+        let nextScene =  SKScene(fileNamed: "MainHallScene.sks")
+        nextScene?.scaleMode = .aspectFill
         let transition = SKTransition.fade(withDuration: 1.0)
-        enemy.spriteComponent.sprite.removeFromParent()
         
-        if let previousScene = previousScene as? GameScene {
-            //reviousScene.setupEnemy(enemy)
-            User.singleton.positionComponent.xPosition -= 40
-            User.singleton.spriteComponent.sprite.position.x -= 40
-            User.singleton.spriteComponent.sprite.removeFromParent()
-            
-            self.view?.presentScene(previousScene, transition: transition)
+        User.singleton.positionComponent.xPosition = 100
+        User.singleton.positionComponent.yPosition = 100
+        User.singleton.spriteComponent.sprite.position.x = 100
+        User.singleton.spriteComponent.sprite.position.y = 100
+        
+        if let nextScene {
+            self.view?.presentScene(nextScene, transition: transition)
         }
-         */
+    }
+    
+    private func getOutWinning () {
+        let nextScene =  SKScene(fileNamed: "MainHallScene.sks")
+        nextScene?.scaleMode = .aspectFill
+        let transition = SKTransition.fade(withDuration: 1.0)
+        
+        // matar o inimigo mais perto.
+        GameScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
+            inimigo.id == self.enemy.id
+        })
+        
+        if let nextScene {
+            self.view?.presentScene(nextScene, transition: transition)
+        }
     }
     
     private func showItems () {
@@ -360,5 +382,7 @@ class BatalhaScene : SKScene {
             }
         }
     }
+    
+    
 }
 

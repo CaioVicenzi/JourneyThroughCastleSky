@@ -9,13 +9,7 @@ import Foundation
 
 /// Toda a lógica das telas de TopDown que tem relação ao posicionamento dos elementos
 class PositionSystem {
-    var gameScene : TopDownScene!
-    
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
-    
-    func calcDistanceFromUser (_ positionComponent : PositionComponent) -> CGFloat {
+    static func calcDistanceFromUser (_ positionComponent : PositionComponent) -> CGFloat {
         let xPlayer = User.singleton.positionComponent.xPosition
         let yPlayer = User.singleton.positionComponent.yPosition
         
@@ -28,8 +22,20 @@ class PositionSystem {
         return sqrt(CGFloat(x) + CGFloat(y))
     }
     
-    func isOtherNearPlayer(_ positionOther : PositionComponent, range : CGFloat) -> Bool {
+    static func isOtherNearPlayer(_ positionOther : PositionComponent, range : CGFloat) -> Bool {
         let distance = calcDistanceFromUser(positionOther)
         return distance < range
+    }
+    
+    static func isAnyNearPlayer (_ elements : [PositionComponent] ) -> Bool {
+        var anyNear = false
+
+        elements.forEach { pc in
+            if isOtherNearPlayer(pc, range: 50) {
+                anyNear = true
+            }
+        }
+        
+        return anyNear
     }
 }

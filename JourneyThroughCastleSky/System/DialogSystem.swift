@@ -10,6 +10,7 @@ import SpriteKit
 
 class DialogSystem {
     var gameScene : TopDownScene!
+    private var dialogsToPass : [Dialogue] = []
     
     init() {}
     
@@ -32,13 +33,13 @@ class DialogSystem {
         gameScene.unshowItemDescription()
         
         //
-        if let dialog = gameScene.dialogsToPass.first {
+        if let dialog = self.dialogsToPass.first {
             gameScene.gameState = .WAITING_DIALOG
             if gameScene.dialogueBox?.parent == nil {
                 gameScene.setupDialogBox()
             }
             gameScene.addDialogToDialogBox(dialog)
-            gameScene.dialogsToPass.removeFirst()
+            self.dialogsToPass.removeFirst()
         } else {
             if let description = gameScene.descriptionsToPass.first {
                 gameScene.gameState = .WAITING_DIALOG
@@ -48,6 +49,15 @@ class DialogSystem {
                 gameScene.gameState = .NORMAL
             }
         }
+    }
+    
+    func inputDialogs (_ dialogues: [Dialogue]) {
+        self.dialogsToPass.append(contentsOf: dialogues)
+    }
+    
+    func inputDialog (_ text : String, person : String, velocity : Int = 10) {
+        let dialogue = Dialogue(text: text, person: person, velocity: velocity)
+        self.dialogsToPass.append(dialogue)
     }
     
     static func typeEffect (_ text : String, velocity : Int, label : SKLabelNode,_ completionHandler: @escaping () -> Void) {
@@ -64,6 +74,14 @@ class DialogSystem {
                 completionHandler()
                 timer.invalidate()
             }
+        }
+    }
+    
+    func input (_ keyCode : UInt16) {
+        let isEnterKey = keyCode == 36
+
+        if isEnterKey {
+            nextDialogue()
         }
     }
 }

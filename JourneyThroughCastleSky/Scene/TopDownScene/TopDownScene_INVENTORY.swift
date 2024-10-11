@@ -62,8 +62,8 @@ extension TopDownScene {
     func setupSelectedItemLabels (_ base : SKShapeNode) {
         let item = InventorySystem.getInventoryItem(inventoryItemSelected)
 
-        titleSelectedItem = SKLabelNode(text: item.consumableComponent?.nome)
-        descriptionSelectedItem = SKLabelNode(text: item.readableComponent.readableDescription)
+        titleSelectedItem = SKLabelNode(text: item?.consumableComponent?.nome)
+        descriptionSelectedItem = SKLabelNode(text: item?.readableComponent.readableDescription)
         
         titleSelectedItem?.fontSize = 20
         titleSelectedItem?.position = .zero
@@ -86,8 +86,8 @@ extension TopDownScene {
         }
         
         let item = InventorySystem.getInventoryItem(inventoryItemSelected)
-        titleSelectedItem.text = item.consumableComponent?.nome
-        descriptionSelectedItem.text = item.readableComponent.readableDescription
+        titleSelectedItem.text = item?.consumableComponent?.nome
+        descriptionSelectedItem.text = item?.readableComponent.readableDescription
     }
     
     

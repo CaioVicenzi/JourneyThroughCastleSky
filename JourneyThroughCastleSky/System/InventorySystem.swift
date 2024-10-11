@@ -18,16 +18,23 @@ class InventorySystem {
     
     /// Função criada para que a partir de um inteiro que representa a posição de um elemento dentro do inventário, é possível você usar um item.
     func useItemFromInventory (in position : Int) {
-        let item = InventorySystem.getInventoryItem(position)
-        ItemSystem.useItem(item)
+        guard let item = InventorySystem.getInventoryItem(position) else {
+            return
+        }
         
+        ItemSystem.useItem(item)
+            
         if item.consumableComponent?.effect.type == .NONE {
             //não é pra remover
-            gameScene.dialogsToPass.append(Dialogue(text: "I can't consume this item...", person: "You", velocity: 20))
+            gameScene.dialogSystem.inputDialog("I can't consume this item...", person: "You", velocity: 20)
         } else {
             // é pra remover
             InventorySystem.removeItemFromInventory(item)
         }
+            
+        gameScene.inventoryItemSelected = 0
+        gameScene.dialogSystem.nextDialogue()
+        closeInventory()
     }
     
     static func removeItemFromInventory(_ item : Item) {
@@ -36,9 +43,9 @@ class InventorySystem {
         }
     }
     
-    static func getInventoryItem (_ position : Int) -> Item {
+    static func getInventoryItem (_ position : Int) -> Item? {
         guard position < User.singleton.inventoryComponent.itens.count else {
-            fatalError("Item dessa posição não existe.")
+            return nil
         }
         
         return User.singleton.inventoryComponent.itens[position]
@@ -49,19 +56,59 @@ class InventorySystem {
             gameScene.setupInventory()
             gameScene.gameState = .INVENTORY
         } else {
-            guard let inventory = gameScene.inventory else {return}
-            // Cria o efeito de fadeIn para poder adicionar ele dentro dos componentes do inventory.
-            let fadeOut = SKAction.fadeOut(withDuration: 0.5)
-            let removeAction = SKAction.removeFromParent()
-            let fadeOutAndRemove = SKAction.sequence([fadeOut, removeAction])
-            
-            inventory.run(fadeOutAndRemove)
-            
-            gameScene.inventory?.children.forEach({ node in
-                node.run(fadeOutAndRemove)
-                node.removeFromParent()
-            })
-            gameScene.gameState = .NORMAL
+            closeInventory()
+        }
+    }
+    
+    private func closeInventory () {
+        guard let inventory = gameScene.inventory else {print("não temos inventory"); return}
+        /*
+        // Cria o efeito de fadeIn para poder adicionar ele dentro dos componentes do inventory.
+        let fadeOut = SKAction.fadeOut(withDuration: 0.5)
+        let removeAction = SKAction.removeFromParent()
+        let fadeOutAndRemove = SKAction.sequence([fadeOut, removeAction])
+        
+        
+        gameScene.inventory?.children.forEach({ node in
+            node.run(fadeOutAndRemove)
+            node.removeFromParent()
+        })
+        
+        inventory.run(fadeOutAndRemove)
+
+         */
+        gameScene.gameState = .NORMAL
+
+        gameScene.inventory?.children.forEach({ node in
+            node.removeFromParent()
+        })
+        inventory.removeFromParent()
+    }
+    
+    func selectItemInventory (_ keyCode : UInt16) {
+        // quantidade de itens que tem dentro do inventário personagem.
+        let inventoryItemsCount = User.singleton.inventoryComponent.itens.count
+        let inventoryItemSelected = gameScene.inventoryItemSelected
+        
+        switch keyCode {
+            case 0x7B:  // LEFT key
+            if inventoryItemSelected > 0 {
+                gameScene.inventoryItemSelected -= 1
+                }
+            case 0x7C:  // RIGHT key
+            if inventoryItemSelected < inventoryItemsCount - 1  {
+                gameScene.inventoryItemSelected += 1
+            }
+            default: break
+        }
+    }
+    
+    func input (_ keyCode : UInt16) {
+        let isEnterKey = keyCode == 36
+        
+        selectItemInventory(keyCode)
+        if isEnterKey {
+            self.useItemFromInventory(in: gameScene.inventoryItemSelected)
         }
     }
 }

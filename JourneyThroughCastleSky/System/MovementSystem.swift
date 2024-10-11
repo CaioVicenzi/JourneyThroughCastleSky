@@ -8,9 +8,12 @@
 import Foundation
 import SpriteKit
 
+
+/// Uma classe onde toda a lógica relacionada ao movimento dentro de uma TopDownScene está contida.
 class MovementSystem {
     var gameScene : TopDownScene!
     
+    // essa variável é um array de todas as teclas que estão pressionadas, a mais recente é a que vai valer, isso faz com que o movimento do usuário seja igual a outros jogos.
     var mostRecentMove : [Move] = []
     
     enum Move {
@@ -42,6 +45,7 @@ class MovementSystem {
         
         User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: moveX, dy: moveY)
         updateUserPosition()
+        updateCameraPosition()
     }
     
     
@@ -50,7 +54,7 @@ class MovementSystem {
         User.singleton.positionComponent.yPosition = Int(User.singleton.spriteComponent.sprite.position.y)
     }
     
-    func keyDown (_ event : NSEvent) {
+    func input (_ event : NSEvent) {
         switch event.keyCode {
             case 0x7E: // W key
             mostRecentMove.append(.UP)
@@ -86,7 +90,7 @@ class MovementSystem {
         }
     }
     
-    
+    // lógica que vai atualizar a posição da câmera (isso provavelmente será alterado no futuro
     func updateCameraPosition () {
         guard let background = gameScene.childNode(withName: "background") as? SKSpriteNode else {fatalError("There is no background")}
         let playerSprite = User.singleton.spriteComponent.sprite
