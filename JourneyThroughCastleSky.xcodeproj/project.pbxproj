@@ -19,6 +19,18 @@
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
+		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
+		985DD4082CB997DE00E58612 /* hall-de-reliquias.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */; };
+		985DD4092CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
+		985DD40A2CB997DE00E58612 /* hall-de-reliquias.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */; };
+		985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 985DD40B2CB9981E00E58612 /* calabouço.jpeg */; };
+		985DD40E2CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 985DD40C2CB9981E00E58612 /* hall-de-reliquias.jpeg */; };
+		985DD40F2CB9981E00E58612 /* calabouço.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 985DD40B2CB9981E00E58612 /* calabouço.jpeg */; };
+		985DD4102CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 985DD40C2CB9981E00E58612 /* hall-de-reliquias.jpeg */; };
+		985DD4152CB9987400E58612 /* HallOfRelics.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4142CB9987400E58612 /* HallOfRelics.sks */; };
+		985DD4162CB9987400E58612 /* HallOfRelics.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4142CB9987400E58612 /* HallOfRelics.sks */; };
+		985DD4182CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
+		985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
 		986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
 		9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
 		9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
@@ -148,6 +160,12 @@
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
+		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
+		985DD40B2CB9981E00E58612 /* calabouço.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "calabouço.jpeg"; sourceTree = "<group>"; };
+		985DD40C2CB9981E00E58612 /* hall-de-reliquias.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hall-de-reliquias.jpeg"; sourceTree = "<group>"; };
+		985DD4142CB9987400E58612 /* HallOfRelics.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = HallOfRelics.sks; path = JourneyThroughCastleSky/HallOfRelics.sks; sourceTree = SOURCE_ROOT; };
+		985DD4172CB9A60B00E58612 /* Dungeon.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Dungeon.sks; sourceTree = "<group>"; };
 		986032882CB717DE00D8ECD2 /* MainHall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHall.sks; sourceTree = "<group>"; };
 		9860328E2CB7185500D8ECD2 /* MyTileSet.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyTileSet.sks; sourceTree = "<group>"; };
 		986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTileset.jpg; sourceTree = "<group>"; };
@@ -348,7 +366,13 @@
 		FDB27A502CADE5C5002B2848 /* GameplaySks */ = {
 			isa = PBXGroup;
 			children = (
+				985DD40C2CB9981E00E58612 /* hall-de-reliquias.jpeg */,
+				985DD40B2CB9981E00E58612 /* calabouço.jpeg */,
+				985DD4052CB997DE00E58612 /* calabouço.webp */,
+				985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */,
 				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
+				985DD4142CB9987400E58612 /* HallOfRelics.sks */,
+				985DD4172CB9A60B00E58612 /* Dungeon.sks */,
 			);
 			path = GameplaySks;
 			sourceTree = "<group>";
@@ -543,10 +567,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				985DD4182CB9A60B00E58612 /* Dungeon.sks in Resources */,
+				985DD40F2CB9981E00E58612 /* calabouço.jpeg in Resources */,
+				985DD4102CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */,
 				986032962CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
+				985DD4152CB9987400E58612 /* HallOfRelics.sks in Resources */,
 				986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
 				9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */,
+				985DD4072CB997DE00E58612 /* calabouço.webp in Resources */,
+				985DD4082CB997DE00E58612 /* hall-de-reliquias.webp in Resources */,
 				FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,11 +589,17 @@
 				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
+				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
+				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
+				985DD40E2CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */,
+				985DD4092CB997DE00E58612 /* calabouço.webp in Resources */,
+				985DD40A2CB997DE00E58612 /* hall-de-reliquias.webp in Resources */,
 				FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */,
 				FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */,
 				FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */,
 				986032932CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
 				FDF1E0952C91B752006D4EA0 /* Base in Resources */,
+				985DD4162CB9987400E58612 /* HallOfRelics.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
