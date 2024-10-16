@@ -19,14 +19,11 @@ class Consumable: Command {
 }
 
 class GameScene: TopDownScene {
-    
-    
-    
-    override func didMove(to view: SKView) {        
-        super.config()
-        super.setupNodes()
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
         setupWalls()
         setupCheckpoint()
+        
         
         if GameSceneData.shared == nil {
             setupEnemies()

@@ -31,7 +31,7 @@ extension TopDownScene {
         sprite.physicsBody?.allowsRotation = false
         
     }
-    
+    /*
     // MARK: FUNÇÕES QUE POSICIONAM ELEMENTOS EM LISTA DENTRO DO MAPA (ITENS, INIMIGOS E AMIGÁVEIS).
     /// Função que posiciona todos os inimigos dentro da lista de enemies dentro do mapa.
     internal func setupEnemies () {
@@ -101,7 +101,7 @@ extension TopDownScene {
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
         }
     }
-    
+    */
     
     /// Função que faz o setup de qualquer elemento que contenha um sprite, um posicionamento e uma escala.
     func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGSize = CGSize(width: 100, height: 100)) {

@@ -107,6 +107,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         for case let node as SKTileMapNode in nodes {
             guard node.userData?.value(forKey: "hasCollision") as? Int == 1 else {
+                print("coco bosta")
                 continue
             }
            
@@ -131,7 +132,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                             rectangleOf: texture.size()
                         )
                         physicsBody.friction = 0
-                        
+                        physicsBody.categoryBitMask = PhysicCategory.wall
                         
                         physicsBody.isDynamic = false
                         
