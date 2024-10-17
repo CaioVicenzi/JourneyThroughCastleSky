@@ -199,5 +199,27 @@ extension BatalhaScene{
         staminaBar?.run(scaleAction)
     }
     
+    func setupEnemyLifeBar () {
+        let backgroundEnemyLifeBar : SKShapeNode = SKShapeNode(rectOf: CGSize(width: 300, height: 30))
+        
+        backgroundEnemyLifeBar.position.y = (size.height / 2)  - 100
+        backgroundEnemyLifeBar.position.x = (size.width / 2)  - 205
+        backgroundEnemyLifeBar.fillColor = .darkGray
+        
+        addChild(backgroundEnemyLifeBar)
+        
+        enemyLifeBar = SKShapeNode(rectOf: CGSize(width: backgroundEnemyLifeBar.frame.width, height: backgroundEnemyLifeBar.frame.height))
+        guard let enemyLifeBar else {return}
+        enemyLifeBar.position = .zero
+        enemyLifeBar.fillColor = .red
+        enemyLifeBar.zPosition = 10
+        backgroundEnemyLifeBar.addChild(enemyLifeBar)
+    }
     
+    internal func updateEnemyLifeBar () {
+        // calcular percentual estamina
+        let enemyLifePercentage : CGFloat = CGFloat(enemy.healthComponent.health) / CGFloat(enemy.healthComponent.maxHealth)
+        let scaleAction = SKAction.scaleX(to: enemyLifePercentage, duration: 1.0)
+        enemyLifeBar?.run(scaleAction)
+    }
 }

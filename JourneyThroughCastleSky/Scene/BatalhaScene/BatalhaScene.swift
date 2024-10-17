@@ -39,6 +39,7 @@ class BatalhaScene : SKScene {
     var actionDescription : SKShapeNode? = nil
     var healthBar : SKShapeNode? = nil
     var staminaBar : SKShapeNode? = nil
+    var enemyLifeBar : SKShapeNode? = nil
     
     func config (_ scene : SKScene) {
         self.previousScene = scene
@@ -70,6 +71,7 @@ class BatalhaScene : SKScene {
         setupStaminaBar()
         setupHealthBar()
         setupActionDescription()
+        setupEnemyLifeBar()
     }
     
     func config (enemy : Enemy) {
@@ -271,8 +273,11 @@ class BatalhaScene : SKScene {
                 label.text = "Inimigo esperou..."
             }
             
-            label.position = PositionHelper.singleton.centralize(label)
-            self?.addChild(label)
+            if let self {
+                label.position.x = -(self.size.width / 2) + 150
+                label.position.y = (self.size.height / 2) - 150
+                self.addChild(label)
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
                 label.removeFromParent()
@@ -322,6 +327,7 @@ class BatalhaScene : SKScene {
         }
         
         updateStamineBar()
+        updateEnemyLifeBar()
         return actionResult
     }
     
