@@ -36,6 +36,8 @@ class BatalhaScene : SKScene {
     private var positionItemSelected = 0
     private var enemyDodge = false
     
+    var actionDescription : SKShapeNode? = nil
+    
     
     func config (_ scene : SKScene) {
         self.previousScene = scene
@@ -58,6 +60,7 @@ class BatalhaScene : SKScene {
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         setupNodes()
+        self.gameChooseState = .CHOOSE_BUTTON
     }
     
     func setupNodes () {
@@ -71,16 +74,6 @@ class BatalhaScene : SKScene {
     func config (enemy : Enemy) {
         battleSystem.enemy = enemy
         self.enemy = enemy
-    }
-    
-    override func mouseDown(with event: NSEvent) {
-        let location = event.location(in: self)
-            
-        let touchedNode = atPoint(location)
-        
-        if let nodeName = touchedNode.name, nodeName.starts(with: "rowButton") {
-            handleButtonPress(named: nodeName)
-        }
     }
     
     // MARK: LÓGICA
@@ -105,13 +98,27 @@ class BatalhaScene : SKScene {
         case .SELECTED:
             return
         }
-        refreshButtonsState()
+        //refreshButtonsState()
+    }
+    
+    internal func updateColorChooseOption () {
+        for index in 0 ..< 4 {
+            let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
+            
+            
+            if index == buttonSelected.rawValue {
+                rowButton.fillColor = .blue
+            } else {
+                rowButton.fillColor = .gray
+            }
+        }
     }
     
     private func chooseButton (_ keyCode : UInt16) {
         switch keyCode {
-        case 123: // Seta para a esquerda
+        case 126: // Seta para cima
             if let proximoButton = ButtonSelected(rawValue: buttonSelected.rawValue - 1) {
+                
                 let buttonAtual = buttonSelected
                 
                 if buttonAtual == .SPARE {
@@ -123,10 +130,12 @@ class BatalhaScene : SKScene {
                 } else {
                     buttonSelected = proximoButton
                 }
+                 
+                updateColorChooseOption()
             }
             
             
-        case 124: // Seta para a direita
+        case 125: // Seta para baixo
             if let proximoButton = ButtonSelected(rawValue: buttonSelected.rawValue + 1) {
                 let buttonAtual = buttonSelected
                 
@@ -139,6 +148,8 @@ class BatalhaScene : SKScene {
                 } else {
                     buttonSelected = proximoButton
                 }
+                
+                updateColorChooseOption()
             }
         case 36: // Enter
             var result: ActionResult = ActionResult()
@@ -147,7 +158,8 @@ class BatalhaScene : SKScene {
                     result = attack()
                     gameChooseState = .SELECTED
                 case .USE_ITEM:
-                    showItems()
+                    //showItems()
+                    setupItemRows()
                     gameChooseState = .CHOOSE_ITEM
                 case .SPARE:
                     spare()
@@ -175,12 +187,12 @@ class BatalhaScene : SKScene {
         refreshItemState()
         
         switch keyCode {
-        case 123: // Seta para a esquerda
+        case 126: // Seta para cima
             if positionItemSelected > 0 {
                 positionItemSelected -= 1
             }
             refreshItemState()
-        case 124: // Seta para a direita
+        case 125: // Seta para baixo
             if positionItemSelected < User.singleton.inventoryComponent.itens.count - 1 {
                 positionItemSelected += 1
             }
@@ -291,7 +303,6 @@ class BatalhaScene : SKScene {
         return actionResult
     }
     
-    
     private func spare () {
         
         let nextScene =  SKScene(fileNamed: "MainHallScene.sks")
@@ -355,26 +366,10 @@ class BatalhaScene : SKScene {
         }
     }
     
-    private func refreshButtonsState () {
-        if buttonSelected == .ATTACK {
-            buttonAttack.fillColor = .red
-            buttonSpare.fillColor = .gray
-            buttonUseItem.fillColor = .gray
-        } else if buttonSelected == .SPARE {
-            buttonAttack.fillColor = .gray
-            buttonSpare.fillColor = .blue
-            buttonUseItem.fillColor = .gray
-        } else {
-            buttonAttack.fillColor = .gray
-            buttonSpare.fillColor = .gray
-            buttonUseItem.fillColor = .yellow
-        }
-    }
-    
-    private func refreshItemState () {
+    internal func refreshItemState () {
         for i in 0 ..< User.singleton.inventoryComponent.itens.count {
 
-            let node = self.childNode(withName: "quadradoItem\(i)") as! SKShapeNode
+            let node = self.childNode(withName: "itemRow\(i)") as! SKShapeNode
             if i == positionItemSelected {
                 node.fillColor = .blue
             } else {
@@ -383,6 +378,6 @@ class BatalhaScene : SKScene {
         }
     }
     
-    
+     
 }
 

@@ -22,7 +22,7 @@ extension BatalhaScene{
     }
     
     func setupRows() {
-        let numberOfRows = 5
+        let numberOfRows = 4
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
         
@@ -34,20 +34,81 @@ extension BatalhaScene{
                                                          width: self.size.width * 0.4625,
                                                          height: rowHeight))
             
-            individualRow.fillColor = .blue
+            individualRow.fillColor = .gray
             individualRow.strokeColor = .black
             
-            individualRow.isUserInteractionEnabled = true
+            //individualRow.isUserInteractionEnabled = true
             
             individualRow.name = "rowButton\(i)"
+            
+            let label = SKLabelNode(text: returnButtonLabel(i))
+            
+            label.position.x = 0 - (individualRow.frame.width / 2)
+            label.position.y = 0 - (individualRow.frame.height / 2) - (label.frame.height / 2)
+            label.position.y -= CGFloat(Int(rowHeight) * i)
+
+            individualRow.addChild(label)
             
             addChild(individualRow)
             rowNodes.append(individualRow)
         }
+        updateColorChooseOption()
+    }
+    
+    func setupItemRows () {
+        guard let actionDescription else {return}
+        
+        var i = 0
+        for item in User.singleton.inventoryComponent.itens {
+            var rowNodes: [SKShapeNode] = []
+            
+            let individualRow = SKShapeNode(rectOf: CGSize(width: actionDescription.frame.width, height: 100))
+            individualRow.position = .zero
+            
+            individualRow.position.x += (individualRow.frame.width / 2) - 3
+            individualRow.position.y -= (individualRow.frame.height / 2)
+            individualRow.position.y -= (individualRow.frame.height) * CGFloat(i)
+            if i != 0 {
+                individualRow.position.y -= 2
+            }
+            
+            individualRow.fillColor = .gray
+            individualRow.strokeColor = .black
+                
+                
+            individualRow.name = "itemRow\(i)"
+                
+            let label = SKLabelNode(text: item.consumableComponent?.nome)
+                
+            label.position.x = .zero
+            label.position.y = .zero
+
+            individualRow.addChild(label)
+                
+            addChild(individualRow)
+            rowNodes.append(individualRow)
+            i += 1
+        }
+        
+        refreshItemState()
+    }
+    
+    func returnButtonLabel (_ index : Int) -> String {
+        if index == 0 {
+            return "Attack"
+        } else if index == 1 {
+            return "Items"
+        } else if index == 2 {
+            return "Dodge"
+        } else {
+            return "Run"
+        }
     }
         
     func setupActionDescription(){
-        let actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
+        actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
+        
+        guard let actionDescription else {return}
             
         actionDescription.fillColor = .yellow
         actionDescription.strokeColor = .black
