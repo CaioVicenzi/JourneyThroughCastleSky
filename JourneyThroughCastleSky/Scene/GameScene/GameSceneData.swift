@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension GameScene {
+extension TopDownScene {
     /// Vai ser uma classe para conter todos os dados que serão recuperados da
     class GameSceneData {
         static var shared : GameSceneData?
