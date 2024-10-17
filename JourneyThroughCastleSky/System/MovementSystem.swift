@@ -25,10 +25,7 @@ class MovementSystem {
     }
     
     func movePlayer () {
-        if mostRecentMove.isEmpty {
-            User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-            return
-        }
+
         
         // Atualiza a posição do sprite com base nas teclas pressionadas
         var moveX: CGFloat = 0
@@ -92,18 +89,10 @@ class MovementSystem {
     
     // lógica que vai atualizar a posição da câmera (isso provavelmente será alterado no futuro
     func updateCameraPosition () {
-        guard let background = gameScene.childNode(withName: "background") as? SKSpriteNode else {fatalError("There is no background")}
         let playerSprite = User.singleton.spriteComponent.sprite
-        
         var cameraPosition = playerSprite.position
-        
-        
         let cameraHalfSize = gameScene.size.half
-        
-        
-                
         let bounds = gameScene.bounds
-        
         
         // Limitar o movimento da câmera nos eixos X e Y
         let minX = bounds.minX + cameraHalfSize.width
@@ -115,12 +104,14 @@ class MovementSystem {
         cameraPosition.x = Math
             .clamp(value: cameraPosition.x, minV: minX, maxV: maxX)
         
+        
+        print(gameScene.size)
+        
         cameraPosition.y = Math
             .clamp(value: cameraPosition.y, minV: minY, maxV: maxY)
       
         
         // Atualizar a posição da câmera
         gameScene.cameraNode.position = cameraPosition
-        print(playerSprite.position)
     }
 }
