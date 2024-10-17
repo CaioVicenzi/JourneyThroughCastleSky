@@ -14,10 +14,10 @@
             filePath = "JourneyThroughCastleSky/Scene/BatalhaScene/BatalhaScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "410"
-            endingLineNumber = "410"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "BatalhaScene"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

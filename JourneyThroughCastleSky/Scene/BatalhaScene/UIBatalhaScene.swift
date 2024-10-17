@@ -129,8 +129,18 @@ extension BatalhaScene{
         
         guard let actionDescription else {return}
             
-        actionDescription.fillColor = .yellow
+        actionDescription.fillColor = .black
         actionDescription.strokeColor = .black
+        
+        descriptionLabel = SKLabelNode()
+        guard let descriptionLabel else {return}
+        descriptionLabel.text = "init"
+        descriptionLabel.position = .zero
+        descriptionLabel.position.x += actionDescription.frame.width / 2 + descriptionLabel.frame.width / 2
+        descriptionLabel.position.y -= actionDescription.frame.height / 2 + descriptionLabel.frame.height / 2
+        descriptionLabel.fontSize = 12
+        actionDescription.addChild(descriptionLabel)
+        
             
         addChild(actionDescription)
     }
@@ -221,5 +231,24 @@ extension BatalhaScene{
         let enemyLifePercentage : CGFloat = CGFloat(enemy.healthComponent.health) / CGFloat(enemy.healthComponent.maxHealth)
         let scaleAction = SKAction.scaleX(to: enemyLifePercentage, duration: 1.0)
         enemyLifeBar?.run(scaleAction)
+    }
+    
+    internal func updateDescriptionLabel () {
+        var newText = ""
+        
+        if gameChooseState != .SELECTED && gameChooseState != .NONE {
+            switch buttonSelected {
+            case .ATTACK:
+                newText = "Ataque o seu inimigo causando \(User.singleton.fighterComponent.damage) de dano"
+            case .USE_ITEM:
+                newText = ""
+            case .SPARE:
+                newText = "Corra do seu inimigo..."
+            case .DODGE:
+                newText = "Desviar do inimigo na próxima rodada."
+            }
+        }
+        
+        self.descriptionLabel?.text = newText
     }
 }

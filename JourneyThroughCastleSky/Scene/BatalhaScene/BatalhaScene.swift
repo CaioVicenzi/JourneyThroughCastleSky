@@ -31,8 +31,8 @@ class BatalhaScene : SKScene {
     
     var previousScene : SKScene? = nil
     
-    private var buttonSelected : ButtonSelected = .ATTACK
-    private var gameChooseState : chooseState = .CHOOSE_BUTTON
+    internal var buttonSelected : ButtonSelected = .ATTACK
+    internal var gameChooseState : chooseState = .CHOOSE_BUTTON
     private var positionItemSelected = 0
     private var enemyDodge = false
     
@@ -40,6 +40,7 @@ class BatalhaScene : SKScene {
     var healthBar : SKShapeNode? = nil
     var staminaBar : SKShapeNode? = nil
     var enemyLifeBar : SKShapeNode? = nil
+    var descriptionLabel : SKLabelNode? = nil
     
     func config (_ scene : SKScene) {
         self.previousScene = scene
@@ -48,8 +49,8 @@ class BatalhaScene : SKScene {
     enum ButtonSelected : Int {
         case ATTACK = 0
         case USE_ITEM = 1
-        case SPARE = 2
-        case DODGE = 3
+        case DODGE = 2
+        case SPARE = 3
     }
     
     enum chooseState {
@@ -134,7 +135,7 @@ class BatalhaScene : SKScene {
                 
                 let buttonAtual = buttonSelected
                 
-                if buttonAtual == .SPARE {
+                if buttonAtual == .DODGE {
                     if User.singleton.inventoryComponent.itens.isEmpty {
                         buttonSelected = .ATTACK
                     } else {
@@ -154,7 +155,7 @@ class BatalhaScene : SKScene {
                 
                 if buttonAtual == .ATTACK {
                     if User.singleton.inventoryComponent.itens.isEmpty {
-                        buttonSelected = .SPARE
+                        buttonSelected = .DODGE
                     } else {
                         buttonSelected = .USE_ITEM
                     }
@@ -406,6 +407,8 @@ class BatalhaScene : SKScene {
         }
     }
     
-     
+    override func update(_ currentTime: TimeInterval) {
+        updateDescriptionLabel()
+    }
 }
 
