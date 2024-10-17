@@ -92,7 +92,6 @@ class MovementSystem {
     
     // lógica que vai atualizar a posição da câmera (isso provavelmente será alterado no futuro
     func updateCameraPosition () {
-        guard let background = gameScene.childNode(withName: "background") as? SKSpriteNode else {fatalError("There is no background")}
         let playerSprite = User.singleton.spriteComponent.sprite
         
         var cameraPosition = playerSprite.position

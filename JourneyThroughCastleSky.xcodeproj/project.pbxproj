@@ -86,6 +86,8 @@
 		98838C752CA5E09800709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C762CA5E09800709648 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
 		98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */; };
+		98DAD0072CC18E3E0020DFAC /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD0062CC18E3C0020DFAC /* Dungeon.swift */; };
+		98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD0062CC18E3C0020DFAC /* Dungeon.swift */; };
 		FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
 		FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
 		FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
@@ -177,6 +179,7 @@
 		98838C322CA5CE4A00709648 /* SkillComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillComponent.swift; sourceTree = "<group>"; };
 		98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JourneyThroughCastleSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98838C482CA5D8E300709648 /* TopDownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene.swift; sourceTree = "<group>"; };
+		98DAD0062CC18E3C0020DFAC /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
 		FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
@@ -290,6 +293,14 @@
 				98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */,
 			);
 			path = Skills;
+			sourceTree = "<group>";
+		};
+		98DAD0052CC18E330020DFAC /* Dungeon */ = {
+			isa = PBXGroup;
+			children = (
+				98DAD0062CC18E3C0020DFAC /* Dungeon.swift */,
+			);
+			path = Dungeon;
 			sourceTree = "<group>";
 		};
 		FD16D8822C9B55870069D661 /* Component */ = {
@@ -456,6 +467,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				98DAD0052CC18E330020DFAC /* Dungeon */,
 				986032852CB717AC00D8ECD2 /* Editor */,
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				FDAC55012C9A10BF00E90E17 /* GameScene */,
@@ -647,6 +659,7 @@
 				98838C542CA5DC6100709648 /* ReadableComponent.swift in Sources */,
 				98838C552CA5DC6100709648 /* SkillComponent.swift in Sources */,
 				98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */,
+				98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */,
 				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
@@ -720,6 +733,7 @@
 				98838C332CA5CE4A00709648 /* SkillComponent.swift in Sources */,
 				FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */,
 				FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */,
+				98DAD0072CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
@@ -915,7 +929,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -942,7 +956,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
