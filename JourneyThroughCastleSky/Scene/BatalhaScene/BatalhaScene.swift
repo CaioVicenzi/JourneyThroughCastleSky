@@ -106,8 +106,6 @@ class BatalhaScene : SKScene {
     }
     
     internal func updateColorChooseOption () {
-        print("UPDATE: \(gameChooseState)")
-        
         if gameChooseState == .NONE || gameChooseState == .SELECTED {
             for index in 0 ..< 4 {
                 let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
@@ -319,11 +317,7 @@ class BatalhaScene : SKScene {
         } else {
             enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
             if enemy.healthComponent.health <= 0 {
-                let nextScene = YouWinScene(size: self.size)
-                nextScene.scaleMode = .aspectFill
-                
-                let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(nextScene, transition: transition)
+                getOutWinning()
             }
         }
         
