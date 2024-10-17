@@ -158,13 +158,13 @@ extension BatalhaScene{
             
         addChild(backgroundHealthBar)
         
-        healthBar = SKShapeNode(rect: backgroundHealthBar.frame)
+        healthBar = SKSpriteNode(color: .green, size: CGSize(width: backgroundHealthBar.frame.width - 4, height: backgroundHealthBar.frame.height - 4))
         guard let healthBar else {return}
         
         healthBar.position = .zero
-        healthBar.position.x += (healthBar.frame.width / 2)
-        healthBar.position.y -= (healthBar.frame.height / 2)
-        healthBar.fillColor = .green
+        healthBar.position.x -= (healthBar.frame.width / 2)
+        //healthBar.position.y -= (healthBar.frame.height / 2)
+        healthBar.anchorPoint = CGPoint(x: 0, y: 0.5)
         
         backgroundHealthBar.addChild(healthBar)
     }
@@ -173,7 +173,7 @@ extension BatalhaScene{
         
         // calcular percentual vida
         let lifePercentage : CGFloat = CGFloat(User.singleton.healthComponent.health) / CGFloat(User.singleton.healthComponent.maxHealth)
-        let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 1.0)//SKAction.scale(to: lifePercentage, duration: 1.0)
+        let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 0.2)//SKAction.scale(to: lifePercentage, duration: 1.0)
         
         healthBar?.run(scaleAction)
     }
@@ -205,7 +205,7 @@ extension BatalhaScene{
     internal func updateStamineBar () {
         // calcular percentual estamina
         let staminePercentage : CGFloat = CGFloat(User.singleton.staminaComponent.stamina) / CGFloat(100)
-        let scaleAction = SKAction.scaleX(to: staminePercentage, duration: 1.0)
+        let scaleAction = SKAction.scaleX(to: staminePercentage, duration: 0.4)
         staminaBar?.run(scaleAction)
     }
     
@@ -218,18 +218,19 @@ extension BatalhaScene{
         
         addChild(backgroundEnemyLifeBar)
         
-        enemyLifeBar = SKShapeNode(rectOf: CGSize(width: backgroundEnemyLifeBar.frame.width, height: backgroundEnemyLifeBar.frame.height))
+        enemyLifeBar = SKSpriteNode(color: .red, size: CGSize(width: backgroundEnemyLifeBar.frame.width - 4, height: backgroundEnemyLifeBar.frame.height - 4))
         guard let enemyLifeBar else {return}
         enemyLifeBar.position = .zero
-        enemyLifeBar.fillColor = .red
+        enemyLifeBar.position.x -= enemyLifeBar.frame.width / 2
         enemyLifeBar.zPosition = 10
+        enemyLifeBar.anchorPoint = CGPoint(x: 0, y: 0.5)
         backgroundEnemyLifeBar.addChild(enemyLifeBar)
     }
     
     internal func updateEnemyLifeBar () {
         // calcular percentual estamina
         let enemyLifePercentage : CGFloat = CGFloat(enemy.healthComponent.health) / CGFloat(enemy.healthComponent.maxHealth)
-        let scaleAction = SKAction.scaleX(to: enemyLifePercentage, duration: 1.0)
+        let scaleAction = SKAction.scaleX(to: enemyLifePercentage, duration: 0.2)
         enemyLifeBar?.run(scaleAction)
     }
     

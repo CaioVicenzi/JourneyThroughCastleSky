@@ -37,9 +37,9 @@ class BatalhaScene : SKScene {
     private var enemyDodge = false
     
     var actionDescription : SKShapeNode? = nil
-    var healthBar : SKShapeNode? = nil
+    var healthBar : SKSpriteNode? = nil
     var staminaBar : SKShapeNode? = nil
-    var enemyLifeBar : SKShapeNode? = nil
+    var enemyLifeBar : SKSpriteNode? = nil
     var descriptionLabel : SKLabelNode? = nil
     
     func config (_ scene : SKScene) {
