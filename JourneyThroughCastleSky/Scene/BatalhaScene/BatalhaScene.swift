@@ -37,7 +37,8 @@ class BatalhaScene : SKScene {
     private var enemyDodge = false
     
     var actionDescription : SKShapeNode? = nil
-    
+    var healthBar : SKShapeNode? = nil
+    var staminaBar : SKShapeNode? = nil
     
     func config (_ scene : SKScene) {
         self.previousScene = scene
@@ -102,6 +103,16 @@ class BatalhaScene : SKScene {
     }
     
     internal func updateColorChooseOption () {
+        print("UPDATE: \(gameChooseState)")
+        
+        if gameChooseState == .NONE || gameChooseState == .SELECTED {
+            for index in 0 ..< 4 {
+                let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
+                rowButton.fillColor = .gray
+            }
+            return
+        }
+        
         for index in 0 ..< 4 {
             let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
             
@@ -178,6 +189,8 @@ class BatalhaScene : SKScene {
                 enemyTurn()
             }
             
+            updateColorChooseOption()
+            
         default:
             return
         }
@@ -209,7 +222,12 @@ class BatalhaScene : SKScene {
     
     private func useItem(_ item : Item) {
         ItemSystem.useItem(item)
+        User.singleton.inventoryComponent.itens.removeAll { currentItem in
+            currentItem.id == item.id
+        }
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
+        removeAllItemRows()
+        updateColorChooseOption()
     }
     
     private func enemyTurn() {
@@ -247,6 +265,7 @@ class BatalhaScene : SKScene {
                 }
                 self?.myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
                 label.text = "Inimigo atacou!"
+                self?.updateHealthBar()
             } else {
                 self?.enemyDodge = true
                 label.text = "Inimigo esperou..."
@@ -264,6 +283,8 @@ class BatalhaScene : SKScene {
                     self.addChild(self.buttonUseItem)
                     self.gameChooseState = .CHOOSE_BUTTON
                 }
+                
+                self?.updateColorChooseOption()
             })
         })
     }
@@ -300,6 +321,7 @@ class BatalhaScene : SKScene {
             }
         }
         
+        updateStamineBar()
         return actionResult
     }
     

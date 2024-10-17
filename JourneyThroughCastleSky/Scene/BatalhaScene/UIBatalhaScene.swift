@@ -13,10 +13,19 @@ extension BatalhaScene{
     // MARK: SETUP UI
     
     func setupEnemyScreen(){
-        let enemyScreen = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.45))
+        //let enemyScreen = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.45))
+        let enemyScreen = SKShapeNode(rectOf: CGSize(width: self.size.width*0.925, height: self.size.height*0.45))
+        enemyScreen.position = .zero
+        enemyScreen.position.y += (enemyScreen.frame.height / 2)
         
-        enemyScreen.fillColor = .red
+        enemyScreen.fillColor = .black
         enemyScreen.strokeColor = .black
+        
+        let enemySprite = enemy.spriteComponent.sprite.copy() as! SKSpriteNode
+        enemySprite.physicsBody = nil
+        enemySprite.position = .zero
+        enemyScreen.addChild(enemySprite)
+        
         
         addChild(enemyScreen)
     }
@@ -93,6 +102,16 @@ extension BatalhaScene{
         refreshItemState()
     }
     
+    func removeAllItemRows () {
+        for child in children {
+            if let name = child.name {
+                if name.starts(with: "itemRow") {
+                    child.removeFromParent()
+                }
+            }
+        }
+    }
+    
     func returnButtonLabel (_ index : Int) -> String {
         if index == 0 {
             return "Attack"
@@ -116,37 +135,69 @@ extension BatalhaScene{
         addChild(actionDescription)
     }
         
-    func setupHealthBar(){
-        let healthBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
+    internal func setupHealthBar(){
+        //let backgroundHealthBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
+        let backgroundHealthBar = SKShapeNode(rectOf: CGSize(width: self.size.width * 0.4625, height: self.size.height*0.045))
+        
+        backgroundHealthBar.position = .zero
+        backgroundHealthBar.position.x -= backgroundHealthBar.frame.width / 2
+        backgroundHealthBar.position.y += backgroundHealthBar.frame.height / 2
             
+        backgroundHealthBar.fillColor = .darkGray
+        backgroundHealthBar.strokeColor = .black
+            
+        addChild(backgroundHealthBar)
+        
+        healthBar = SKShapeNode(rect: backgroundHealthBar.frame)
+        guard let healthBar else {return}
+        
+        healthBar.position = .zero
+        healthBar.position.x += (healthBar.frame.width / 2)
+        healthBar.position.y -= (healthBar.frame.height / 2)
         healthBar.fillColor = .green
-        healthBar.strokeColor = .black
-            
-        addChild(healthBar)
+        
+        backgroundHealthBar.addChild(healthBar)
+    }
+    
+    internal func updateHealthBar () {
+        
+        // calcular percentual vida
+        let lifePercentage : CGFloat = CGFloat(User.singleton.healthComponent.health) / CGFloat(User.singleton.healthComponent.maxHealth)
+        let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 1.0)//SKAction.scale(to: lifePercentage, duration: 1.0)
+        
+        healthBar?.run(scaleAction)
     }
         
     func setupStaminaBar(){
-        let staminaBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.045))
+        let staminaBackgroundBar = SKShapeNode(rectOf: CGSize(width: (self.size.width*0.925) / 2, height: self.size.height*0.045))
+        
+        staminaBackgroundBar.position = .zero
+        staminaBackgroundBar.position.x += staminaBackgroundBar.frame.width / 2
+        staminaBackgroundBar.position.y += staminaBackgroundBar.frame.height / 2
+        staminaBackgroundBar.fillColor = .darkGray
+        staminaBackgroundBar.strokeColor = .black
+        
+        addChild(staminaBackgroundBar)
+        
+        staminaBar = SKShapeNode(rect: staminaBackgroundBar.frame)
+        staminaBar?.position = .zero
+        guard let staminaBar else {return}
+
+        staminaBar.position.y -= staminaBar.frame.height / 2
+        staminaBar.position.x -= staminaBar.frame.width / 2
+        
         
         staminaBar.fillColor = .purple
-        staminaBar.strokeColor = .black
         
-        addChild(staminaBar)
+        staminaBackgroundBar.addChild(staminaBar)
     }
     
-    func handleButtonPress(named buttonName: String) {
-        print("\(buttonName) foi pressionado")
-            
-        switch buttonName {
-        case "rowButton0":
-            // Ação para o botão 0
-            print("Ação do botão 0")
-        case "rowButton1":
-            // Ação para o botão 1
-            print("Ação do botão 1")
-        // Continue para os outros botões
-        default:
-            break
-        }
+    internal func updateStamineBar () {
+        // calcular percentual estamina
+        let staminePercentage : CGFloat = CGFloat(User.singleton.staminaComponent.stamina) / CGFloat(100)
+        let scaleAction = SKAction.scaleX(to: staminePercentage, duration: 1.0)
+        staminaBar?.run(scaleAction)
     }
+    
+    
 }
