@@ -35,7 +35,7 @@ class MainMenuScene : SKScene {
         let clickedNode = self.atPoint(location)
         
         if clickedNode.name == "startGameButton" {
-            let gameScene = SKScene(fileNamed: "Dungeon.sks")
+            let gameScene = SKScene(fileNamed: "HallOfRelics.sks")
             gameScene?.scaleMode = .aspectFill
             gameScene?.size = view!.frame.size
              
