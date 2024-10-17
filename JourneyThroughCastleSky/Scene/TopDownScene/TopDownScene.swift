@@ -231,7 +231,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         // inicializando o cameraNode.
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
         
-        
         self.physicsWorld.gravity = .zero
         self.physicsWorld.contactDelegate = self
     }
@@ -273,8 +272,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             child.removeFromParent()
         }
     }
-    
-    
     
     private func collideWithEnemy (_ enemyPhysicsBody : SKPhysicsBody) {
         self.enemies.forEach { enemy in
@@ -360,10 +357,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     internal func setupNodes () {
-        print(
-            User.singleton.positionComponent.xPosition,
-            User.singleton.positionComponent.yPosition
-        )
         self.camera = cameraNode
         setupSprite()
     }

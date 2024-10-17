@@ -37,6 +37,7 @@ class MainMenuScene : SKScene {
         if clickedNode.name == "startGameButton" {
             let gameScene = SKScene(fileNamed: "Dungeon.sks")
             gameScene?.scaleMode = .aspectFill
+            gameScene?.size = view!.frame.size
              
             let transition = SKTransition.fade(withDuration: 1.0)
             if let gameScene {
