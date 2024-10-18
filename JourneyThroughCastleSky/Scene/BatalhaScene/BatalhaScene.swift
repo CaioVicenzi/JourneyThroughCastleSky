@@ -373,6 +373,12 @@ class BatalhaScene : SKScene {
         let transition = SKTransition.fade(withDuration: 1.0)
         //nextScene?.size = view!.frame.size
         
+        // remover o spawn para evitar do user nascer lá
+        if let nextScene = nextScene as? TopDownScene {
+            let spawn = nextScene.childNode(withName: "spawn")
+            spawn?.removeFromParent()
+        }
+        
         // mata o inimigo.
         MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
             inimigo.id == self.enemy.id

@@ -13,7 +13,15 @@ import SpriteKit
 extension TopDownScene {
     /// Função que faz o setup do sprite do usuário, posicionando ele dentro do mapa..
     internal func setupSprite () {
-        setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent, scale: CGSize(width: 75, height: 75))
+        // descobrir onde está o spawn e colocar o usuário lá
+        if let spawn = childNode(withName: "spawn") {
+            User.singleton.positionComponent.xPosition = Int(spawn.position.x)
+            User.singleton.positionComponent.yPosition = Int(spawn.position.y)
+            spawn.removeFromParent()
+        }
+        
+        
+        setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent)
         
         let sprite = User.singleton.spriteComponent.sprite
         
@@ -105,7 +113,7 @@ extension TopDownScene {
     */
     
     /// Função que faz o setup de qualquer elemento que contenha um sprite, um posicionamento e uma escala.
-    func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGSize = CGSize(width: 100, height: 100)) {
+    func setupSpritePosition (_ spriteComponent : SpriteComponent, _ positionComponent : PositionComponent, scale : CGSize = CGSize(width: 50, height: 50)) {
         let sprite = spriteComponent.sprite
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
