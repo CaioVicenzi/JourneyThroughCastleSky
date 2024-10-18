@@ -8,17 +8,20 @@
 import Foundation
 import SpriteKit
 
-struct ActionResult {
-    enum State {
-        case cancelled
-        case success
-    }
-    
-    var state: State = .success
-    
-}
+
 
 class BatalhaScene : SKScene {
+    
+    struct ActionResult {
+        enum State {
+            case cancelled
+            case success
+        }
+        
+        var state: State = .success
+        
+    }
+    
     var enemy : Enemy!
     var buttonAttack = SKShapeNode()
     var buttonUseItem = SKShapeNode()

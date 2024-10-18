@@ -2,7 +2,13 @@ protocol HasExecutionTime {
     var executionTime: ExecutionTimeComponent {get}
 }
 
-class Attack: Entity, HasExecutionTime {
+class Attack: Entity, HasExecutionTime, IsAction {
+    var actionComponent: ActionComponent {
+        return getComponent(
+            ActionComponent.self
+        ) as! ActionComponent
+    }
+
     var executionTime: ExecutionTimeComponent {
         return getComponent(
             ExecutionTimeComponent.self

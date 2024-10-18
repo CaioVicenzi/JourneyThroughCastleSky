@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol HasStamina {
+    
+    var staminaComponent: StaminaComponent { get }
+    
+}
+
 class StaminaComponent: Component {
     var stamina : Int
     

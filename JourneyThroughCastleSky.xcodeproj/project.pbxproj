@@ -25,6 +25,8 @@
 		983EFF482CC2DFA5002E407B /* ActionQueueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */; };
 		983EFF4A2CC2DFEE002E407B /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF492CC2DFEC002E407B /* DamageComponent.swift */; };
 		983EFF4B2CC2DFEE002E407B /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF492CC2DFEC002E407B /* DamageComponent.swift */; };
+		983EFF502CC2F0D7002E407B /* ActionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF4F2CC2F0D4002E407B /* ActionComponent.swift */; };
+		983EFF512CC2F0D7002E407B /* ActionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF4F2CC2F0D4002E407B /* ActionComponent.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
@@ -175,6 +177,7 @@
 		983EFF432CC2D9A4002E407B /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionQueueComponent.swift; sourceTree = "<group>"; };
 		983EFF492CC2DFEC002E407B /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
+		983EFF4F2CC2F0D4002E407B /* ActionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionComponent.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
 		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
@@ -331,6 +334,7 @@
 		FD16D8822C9B55870069D661 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				983EFF4F2CC2F0D4002E407B /* ActionComponent.swift */,
 				983EFF492CC2DFEC002E407B /* DamageComponent.swift */,
 				983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */,
 				983EFF302CC2D414002E407B /* ExecutionTimeComponent.swift */,
@@ -653,6 +657,7 @@
 				98838C4B2CA5DB8300709648 /* Enemy.swift in Sources */,
 				98838C5D2CA5DC8600709648 /* Item.swift in Sources */,
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
+				983EFF512CC2F0D7002E407B /* ActionComponent.swift in Sources */,
 				43841E6D2CA72CB1009496B2 /* Component.swift in Sources */,
 				983EFF442CC2D9A6002E407B /* Attack.swift in Sources */,
 				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
@@ -773,6 +778,7 @@
 				FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98DAD0072CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
+				983EFF502CC2F0D7002E407B /* ActionComponent.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,

@@ -1,10 +1,12 @@
-struct AttackResult {
-    let enemyDodged: Bool
-    
-    var cancelled: Bool = false
-}
+
 
 class CombatSystem {
+    struct ActionResult {
+        let enemyDodged: Bool
+        
+        var cancelled: Bool = false
+    }
+
     var enemyDodge = false
     var enemy: Enemy!
     
@@ -13,17 +15,24 @@ class CombatSystem {
     }
     
     private func proccessExecutionTimeAttack(attack: Attack) {
-        let executionTime = attack.executionTime.executionTime
-        
         User.singleton.fighterComponent.actionInQueue = attack
     }
     
     @discardableResult
-    func attack() -> AttackResult {
+    func attack() -> ActionResult {
         
-        var result = AttackResult(enemyDodged: enemyDodge)
+        return runAction(
+            fighter: User.singleton,
+            action: User.singleton.fighterComponent
+                .attacks[0])
+    }
+    
+    func runAction(fighter: IsFighter, action: IsAction) -> ActionResult {
         
-        var attack = User.singleton.fighterComponent.attacks[0]
+        
+        var result = ActionResult(enemyDodged: enemyDodge)
+        
+        var attack = action as! Attack
         
         if (
             attack.executionTime.executionTime > 0 && !User.singleton.fighterComponent
@@ -32,9 +41,9 @@ class CombatSystem {
             return result
         }
         
-        if (User.singleton.fighterComponent.hasActionInQueue) {
+        if (fighter.fighterComponent.hasActionInQueue) {
             
-            let action = User.singleton.fighterComponent.actionInQueue
+            let action = fighter.fighterComponent.actionInQueue
             
             if (action?.executionTime.roundsRemaining != 0) {
                 action?.executionTime.roundsRemaining -= 1
@@ -52,20 +61,24 @@ class CombatSystem {
             return result
         }
         
-        let currentStamina = User.singleton.staminaComponent.stamina
-        let requiredStamina = 10
-        
-        if (currentStamina < requiredStamina) {
-            result.cancelled = true
-            return result
+        if let fighter = fighter as? any HasStamina  {
+            let currentStamina = fighter.staminaComponent.stamina
+            let requiredStamina = 10
+            
+            if (currentStamina < requiredStamina) {
+                result.cancelled = true
+                return result
+            }
+            
+            User.singleton.staminaComponent.stamina = max(
+                0,
+                currentStamina - requiredStamina
+            )
         }
         
-        enemy.healthComponent.health -= User.singleton.fighterComponent.damage
-        User.singleton.staminaComponent.stamina = max(
-            0,
-            currentStamina - requiredStamina
-        )
+      
         
+        enemy.healthComponent.health -= User.singleton.fighterComponent.damage
         return result
     }
     
@@ -84,7 +97,6 @@ class CombatSystem {
     }
     
     func enemyTurn() {
-        print("Inimigo Jogou")
         
         User.singleton.skillComponent.skills.forEach { skill in
             skill.update()
