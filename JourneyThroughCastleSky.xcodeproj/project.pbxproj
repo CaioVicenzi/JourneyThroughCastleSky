@@ -17,6 +17,14 @@
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
+		983EFF312CC2D418002E407B /* ExecutionTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF302CC2D414002E407B /* ExecutionTimeComponent.swift */; };
+		983EFF322CC2D418002E407B /* ExecutionTimeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF302CC2D414002E407B /* ExecutionTimeComponent.swift */; };
+		983EFF442CC2D9A6002E407B /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF432CC2D9A4002E407B /* Attack.swift */; };
+		983EFF452CC2D9A6002E407B /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF432CC2D9A4002E407B /* Attack.swift */; };
+		983EFF472CC2DFA5002E407B /* ActionQueueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */; };
+		983EFF482CC2DFA5002E407B /* ActionQueueComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */; };
+		983EFF4A2CC2DFEE002E407B /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF492CC2DFEC002E407B /* DamageComponent.swift */; };
+		983EFF4B2CC2DFEE002E407B /* DamageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983EFF492CC2DFEC002E407B /* DamageComponent.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
@@ -163,6 +171,10 @@
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
+		983EFF302CC2D414002E407B /* ExecutionTimeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExecutionTimeComponent.swift; sourceTree = "<group>"; };
+		983EFF432CC2D9A4002E407B /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
+		983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionQueueComponent.swift; sourceTree = "<group>"; };
+		983EFF492CC2DFEC002E407B /* DamageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageComponent.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
 		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
@@ -319,6 +331,9 @@
 		FD16D8822C9B55870069D661 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				983EFF492CC2DFEC002E407B /* DamageComponent.swift */,
+				983EFF462CC2DF9B002E407B /* ActionQueueComponent.swift */,
+				983EFF302CC2D414002E407B /* ExecutionTimeComponent.swift */,
 				FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */,
 				FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */,
 				43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */,
@@ -377,6 +392,7 @@
 		FDAC55062C9B554200E90E17 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				983EFF432CC2D9A4002E407B /* Attack.swift */,
 				98838C2F2CA4A68B00709648 /* Skills */,
 				FD932B082C9B57AA0047B5B7 /* User.swift */,
 				FD932B0C2C9B591A0047B5B7 /* Enemy.swift */,
@@ -638,6 +654,7 @@
 				98838C5D2CA5DC8600709648 /* Item.swift in Sources */,
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
 				43841E6D2CA72CB1009496B2 /* Component.swift in Sources */,
+				983EFF442CC2D9A6002E407B /* Attack.swift in Sources */,
 				98838C6F2CA5DC9E00709648 /* GameOverScene.swift in Sources */,
 				FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */,
@@ -647,6 +664,7 @@
 				98838C732CA5E09800709648 /* DialogSystem.swift in Sources */,
 				985DD3E22CB86DD600E58612 /* Math.swift in Sources */,
 				FDB27A292CAB215A002B2848 /* FriendlySystem.swift in Sources */,
+				983EFF472CC2DFA5002E407B /* ActionQueueComponent.swift in Sources */,
 				98838C742CA5E09800709648 /* MovementSystem.swift in Sources */,
 				98DAD01C2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */,
 				98838C752CA5E09800709648 /* CombatSystem.swift in Sources */,
@@ -659,6 +677,7 @@
 				98838C4F2CA5DC6100709648 /* PositionComponent.swift in Sources */,
 				98838C502CA5DC6100709648 /* AffectedByEffect.swift in Sources */,
 				98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */,
+				983EFF4B2CC2DFEE002E407B /* DamageComponent.swift in Sources */,
 				98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */,
 				98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */,
 				98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */,
@@ -666,6 +685,7 @@
 				98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */,
 				98838C512CA5DC6100709648 /* StaminaComponent.swift in Sources */,
 				98838C522CA5DC6100709648 /* ConsumableComponent.swift in Sources */,
+				983EFF322CC2D418002E407B /* ExecutionTimeComponent.swift in Sources */,
 				43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */,
 				FDD5F9A02CB86CFF00A1647B /* GameSceneData.swift in Sources */,
 				98838C532CA5DC6100709648 /* SpriteComponent.swift in Sources */,
@@ -695,6 +715,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983EFF4A2CC2DFEE002E407B /* DamageComponent.swift in Sources */,
 				FD932AF92C9B56940047B5B7 /* ConsumableComponent.swift in Sources */,
 				FD932AF72C9B56410047B5B7 /* Effect.swift in Sources */,
 				FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */,
@@ -705,16 +726,19 @@
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,
+				983EFF482CC2DFA5002E407B /* ActionQueueComponent.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				98DAD01B2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
 				FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */,
 				FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */,
 				43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */,
+				983EFF452CC2D9A6002E407B /* Attack.swift in Sources */,
 				43F0076F2CA72D8C0049590D /* PhysicCategory.swift in Sources */,
 				FDAC55002C9A106300E90E17 /* Dialogo.swift in Sources */,
 				FD932B032C9B572E0047B5B7 /* DialogueComponent.swift in Sources */,
 				FDAD41FC2C9E05FE0053A4B0 /* GameState.swift in Sources */,
+				983EFF312CC2D418002E407B /* ExecutionTimeComponent.swift in Sources */,
 				FDE3CF142CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
 				FDF1E0A52C923540006D4EA0 /* BatalhaScene.swift in Sources */,
 				43841E6C2CA72CB1009496B2 /* Component.swift in Sources */,

@@ -8,7 +8,8 @@
 import Foundation
 import SpriteKit
 
-class Item : Identifiable{
+
+class Item : Identifiable {
     let id = UUID()
     let interactableComponent = InteractableComponent()
     let dialogueComponent : DialogueComponent?
@@ -16,6 +17,7 @@ class Item : Identifiable{
     let spriteComponent : SpriteComponent
     let positionComponent : PositionComponent
     let readableComponent : ReadableComponent
+    let executionTime: ExecutionTimeComponent = .init(executionTime: 0)
     
     init(name : String, spriteName: String, dialogs : [Dialogue] = [], effect : Effect, x: Int, y: Int, description : String) {
         self.dialogueComponent = DialogueComponent(dialogs: dialogs)

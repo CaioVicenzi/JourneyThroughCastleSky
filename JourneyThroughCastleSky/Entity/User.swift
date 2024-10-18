@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class User: Entity {
+class User: Entity, IsFighter {
     static let singleton = User()
     
     var healthComponent: HealthComponent {
@@ -54,37 +54,8 @@ class User: Entity {
         addComponent(AffectedByEffect())
         addComponent(PositionComponent(xPosition: 100, yPosition: 100))
         addComponent(SkillComponent())
+        
+        fighterComponent.attacks.append(.init(damage: 100, executionTime: 2))
     }
     
 }
-
-/*
-class User {
-    static var singleton : User = User()
-    
-    var inventory : [Item] = []
-    var life : Int = 100
-    var damage : Int = 5
-    
-    
-    func useItem (by index : Int, label : SKLabelNode) {
-        let item = inventory[index]
-        
-        switch item {
-        case .BALOON:
-            damage += 10
-        case .CUPCAKE:
-            life += 15
-            label.text = "Life: \(life)"
-        }
-        
-        inventory.remove(at: index)
-    }
-}
-
-
-enum Item : String {
-    case BALOON = "balloon"
-    case CUPCAKE = "cupcake"
-}
- */

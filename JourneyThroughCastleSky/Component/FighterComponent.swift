@@ -7,7 +7,21 @@
 
 import Foundation
 
+protocol IsFighter {
+    var fighterComponent: FighterComponent {get}
+}
+
 class FighterComponent: Component {
+    
+    var hasActionInQueue: Bool {
+        return actionInQueue != nil
+    }
+    
+    var attacks: [Attack] = []
+    var actionInQueue: HasExecutionTime?
+    
+    
+    
     var damage : Int
     var dodged = false
     
