@@ -1,14 +1,24 @@
 //
-//  MainHall.swift
+//  MainHallScene.swift
 //  JourneyThroughCastleSky
 //
-//  Created by Caio Marques on 18/10/24.
+//  Created by Caio Marques on 11/09/24.
 //
 
-import Foundation
 import SpriteKit
+import GameplayKit
 
-class MainHall : TopDownScene {
+protocol Command {
+    func execute() -> Void
+}
+
+class Consumable: Command {
+    func execute() {
+        
+    }
+}
+
+class MainHallScene: TopDownScene {
     override func didBegin(_ contact: SKPhysicsContact) {
         super.didBegin(contact)
         
@@ -25,7 +35,13 @@ class MainHall : TopDownScene {
         
         let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
         if collidedWithDoorNextScene {
-            goNextScene()
-        }
+            if User.singleton.inventoryComponent.itens.contains(where: { item in
+                item.consumableComponent?.nome == "Chaves"
+            }) {
+                goNextScene()
+            } else {
+                self.dialogSystem.inputDialog("Preciso da chave para entrar aqui...", person: "You", velocity: 20)
+                dialogSystem.nextDialogue()
+            }        }
     }
 }

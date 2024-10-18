@@ -331,9 +331,9 @@ class BatalhaScene : SKScene {
         var sksFileName : String
         switch User.singleton.phase {
         case .MAIN_HALL_SCENE:
-            sksFileName = "MainHall.sks"
-        case .HALL_OF_RELICS:
             sksFileName = "MainHallScene.sks"
+        case .HALL_OF_RELICS:
+            sksFileName = "HallOfRelics.sks"
         case .DUNGEON:
             sksFileName = "Dungeon.sks"
         }
@@ -373,8 +373,8 @@ class BatalhaScene : SKScene {
         let transition = SKTransition.fade(withDuration: 1.0)
         //nextScene?.size = view!.frame.size
         
-        // matar o inimigo mais perto.
-        GameScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
+        // mata o inimigo.
+        MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
             inimigo.id == self.enemy.id
         })
         

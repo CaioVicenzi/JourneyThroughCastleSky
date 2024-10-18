@@ -32,7 +32,7 @@ class PauseMenu : UIComponent {
         makeButton(base, label: "Sair do jogo", distance: 100)
         updateButtonColors()
         
-        if let scene = scene as? GameScene {
+        if let scene = scene as? TopDownScene {
             scene.cameraNode.addChild(base)
         }
     }
@@ -100,8 +100,10 @@ class PauseMenu : UIComponent {
     func pressEnterKey() {
         if selectedOption == 0 {
             print("Opção 1 escolhida")
+            self.base?.removeFromParent()
         } else {
             print("Opção 2 escolhida")
+            self.base?.removeFromParent()
         }
     }
 }

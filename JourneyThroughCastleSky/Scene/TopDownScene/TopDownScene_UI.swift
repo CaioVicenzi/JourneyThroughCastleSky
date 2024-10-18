@@ -17,6 +17,7 @@ extension TopDownScene {
         
         let sprite = User.singleton.spriteComponent.sprite
         
+        
         let xSize = sprite.size.width / 2
         let ySize = sprite.size.height / 2
         
@@ -108,6 +109,7 @@ extension TopDownScene {
         let sprite = spriteComponent.sprite
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
+        
         sprite.scale(to: scale)
         addChild(sprite)
     }

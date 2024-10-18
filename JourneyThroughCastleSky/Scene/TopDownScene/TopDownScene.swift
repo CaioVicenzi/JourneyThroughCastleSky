@@ -273,7 +273,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         let nextScene : SKScene?
         switch User.singleton.phase {
         case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "MainHallScene.sks")
+            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
             User.singleton.phase = .HALL_OF_RELICS
         case .HALL_OF_RELICS:
             nextScene = SKScene(fileNamed: "Dungeon.sks")
@@ -285,8 +285,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         //nextScene?.size = view!.frame.size
 
         // preparar user
-        User.singleton.positionComponent.xPosition = 100
-        User.singleton.positionComponent.yPosition = 100
+        #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
+        User.singleton.positionComponent.xPosition = 10
+        User.singleton.positionComponent.yPosition = 50
         User.singleton.spriteComponent.sprite.removeFromParent()
         self.removeAllParents(self)
         
@@ -297,7 +298,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func removeAllParents (_ scene : SKScene) {
         for child in scene.children {
-            child.removeFromParent()
+            if let childName = child.name, childName.contains("Enemy") {
+                child.removeFromParent()
+            }
         }
     }
     
