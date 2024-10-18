@@ -258,24 +258,25 @@ class BatalhaScene : SKScene {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { [weak self] in
             let label = SKLabelNode()
             
+    
+            self?.myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
+            self?.updateHealthBar()
             
-            let randomico = Int.random(in: 0 ..< 2)
-            if randomico == 0 {
-                User.singleton.healthComponent.health -= 10
-                if User.singleton.healthComponent.health <= 0 {
-                    if let self {
-                        self.view?.presentScene(GameOverScene(size: self.size))
-                    }
+            
+            
+            if User.singleton.healthComponent.health <= 0 {
+                if let self {
+                    self.view?.presentScene(GameOverScene(size: self.size))
                 }
-                self?.myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
-                label.text = "Inimigo atacou!"
-                self?.updateHealthBar()
-            } else {
-                self?.enemyDodge = true
-                label.text = "Inimigo esperou..."
             }
             
             if let self {
+                if (self.battleSystem.enemyDodge) {
+                    label.text = "Inimigo esperou..."
+                } else {
+                    label.text = "Inimigo atacou!"
+                }
+                
                 label.position.x = -(self.size.width / 2) + 150
                 label.position.y = (self.size.height / 2) - 150
                 self.addChild(label)

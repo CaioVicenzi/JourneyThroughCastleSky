@@ -97,6 +97,13 @@ class CombatSystem {
     }
     
     func enemyTurn() {
+        let randomico = Int.random(in: 0 ..< 2)
+        
+        if randomico == 0 {
+            User.singleton.healthComponent.health -= 10
+        } else {
+            enemyDodge = true
+        }
         
         User.singleton.skillComponent.skills.forEach { skill in
             skill.update()
