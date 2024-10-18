@@ -32,7 +32,6 @@
 		985DD4182CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
 		985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
 		986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
-		9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
 		9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
 		986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
 		986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */; };
@@ -126,6 +125,10 @@
 		FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
 		FDD5F9A02CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
 		FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
+		FDDCF2F62CC2E49200181ADE /* MainHall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF2F52CC2E49200181ADE /* MainHall.swift */; };
+		FDDCF2F72CC2E49200181ADE /* MainHall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF2F52CC2E49200181ADE /* MainHall.swift */; };
+		FDDCF2F92CC2E53600181ADE /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDDCF2F82CC2E53600181ADE /* MainHall.sks */; };
+		FDDCF2FA2CC2E53600181ADE /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDDCF2F82CC2E53600181ADE /* MainHall.sks */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -213,6 +216,8 @@
 		FDD5F9982CB45CB600A1647B /* InventorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySystem.swift; sourceTree = "<group>"; };
 		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
+		FDDCF2F52CC2E49200181ADE /* MainHall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHall.swift; sourceTree = "<group>"; };
+		FDDCF2F82CC2E53600181ADE /* MainHall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHall.sks; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
@@ -390,13 +395,22 @@
 		FDB27A502CADE5C5002B2848 /* GameplaySks */ = {
 			isa = PBXGroup;
 			children = (
+				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
 				985DD40C2CB9981E00E58612 /* hall-de-reliquias.jpeg */,
 				985DD40B2CB9981E00E58612 /* calabouço.jpeg */,
 				985DD4052CB997DE00E58612 /* calabouço.webp */,
 				985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */,
-				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
 			);
 			path = GameplaySks;
+			sourceTree = "<group>";
+		};
+		FDDCF2F42CC2E48100181ADE /* MainHall */ = {
+			isa = PBXGroup;
+			children = (
+				FDDCF2F52CC2E49200181ADE /* MainHall.swift */,
+				FDDCF2F82CC2E53600181ADE /* MainHall.sks */,
+			);
+			path = MainHall;
 			sourceTree = "<group>";
 		};
 		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
@@ -478,6 +492,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				FDDCF2F42CC2E48100181ADE /* MainHall */,
 				98DAD0192CC1A48D0020DFAC /* HallOfHelics */,
 				98DAD0052CC18E330020DFAC /* Dungeon */,
 				986032852CB717AC00D8ECD2 /* Editor */,
@@ -600,6 +615,7 @@
 				9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				985DD4072CB997DE00E58612 /* calabouço.webp in Resources */,
+				FDDCF2F92CC2E53600181ADE /* MainHall.sks in Resources */,
 				985DD4082CB997DE00E58612 /* hall-de-reliquias.webp in Resources */,
 				FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 			);
@@ -610,8 +626,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
+				FDDCF2FA2CC2E53600181ADE /* MainHall.sks in Resources */,
 				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
-				9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
@@ -674,6 +690,7 @@
 				98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */,
 				98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */,
+				FDDCF2F72CC2E49200181ADE /* MainHall.swift in Sources */,
 				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
@@ -723,6 +740,7 @@
 				98838C2E2CA4A65C00709648 /* Skill.swift in Sources */,
 				FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
+				FDDCF2F62CC2E49200181ADE /* MainHall.swift in Sources */,
 				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FDE3CF2B2CA5FD7900D88620 /* Checkpoint.swift in Sources */,
 				FD932AFF2C9B56EE0047B5B7 /* SpriteComponent.swift in Sources */,
@@ -943,7 +961,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -970,7 +988,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

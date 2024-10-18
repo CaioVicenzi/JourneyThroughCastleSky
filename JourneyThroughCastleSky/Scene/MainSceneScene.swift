@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class MainMenuScene : SKScene {
-    let titleLabel : SKLabelNode = SKLabelNode(text: "Jouney Through Castle Sky")
+    let titleLabel : SKLabelNode = SKLabelNode(text: "Journey Through Castle Sky")
     var startGameButton : SKShapeNode? = nil
     
     override func didMove(to view: SKView) {
@@ -35,17 +35,14 @@ class MainMenuScene : SKScene {
         let clickedNode = self.atPoint(location)
         
         if clickedNode.name == "startGameButton" {
-            let gameScene = SKScene(fileNamed: "HallOfRelics.sks")
+            let gameScene = SKScene(fileNamed: "MainHall.sks")
             gameScene?.scaleMode = .aspectFill
-            gameScene?.size = view!.frame.size
+            //gameScene?.size = view!.frame.size
              
             let transition = SKTransition.fade(withDuration: 1.0)
             if let gameScene {
                 self.view?.presentScene(gameScene, transition: transition)
             }
         }
-         
-         
-        
     }
 }

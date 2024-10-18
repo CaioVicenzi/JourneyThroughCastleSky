@@ -1,7 +1,14 @@
+//
+//  MainHall.swift
+//  JourneyThroughCastleSky
+//
+//  Created by Caio Marques on 18/10/24.
+//
+
+import Foundation
 import SpriteKit
 
-class Dungeon: TopDownScene {
-    
+class MainHall : TopDownScene {
     override func didBegin(_ contact: SKPhysicsContact) {
         super.didBegin(contact)
         

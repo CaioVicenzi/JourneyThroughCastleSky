@@ -19,6 +19,7 @@ class DialogSystem {
     }
     
     func nextDialogue () {
+        gameScene.movementSystem.mostRecentMove = []
         gameScene.gameState = .NORMAL
         
         // limpar a dialog box
