@@ -32,7 +32,6 @@
 		985DD4182CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
 		985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4172CB9A60B00E58612 /* Dungeon.sks */; };
 		986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
-		9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 986032882CB717DE00D8ECD2 /* MainHall.sks */; };
 		9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
 		986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9860328E2CB7185500D8ECD2 /* MyTileSet.sks */; };
 		986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */; };
@@ -76,7 +75,7 @@
 		98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */; };
 		98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */; };
 		98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
-		98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08D2C91B750006D4EA0 /* GameScene.swift */; };
+		98838C6B2CA5DC9500709648 /* MainHallScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08D2C91B750006D4EA0 /* MainHallScene.swift */; };
 		98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */; };
 		98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0A42C923540006D4EA0 /* BatalhaScene.swift */; };
 		98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */; };
@@ -139,7 +138,7 @@
 		FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */; };
 		FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0892C91B750006D4EA0 /* GameScene.sks */; };
 		FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E08B2C91B750006D4EA0 /* Actions.sks */; };
-		FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08D2C91B750006D4EA0 /* GameScene.swift */; };
+		FDF1E08E2C91B750006D4EA0 /* MainHallScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08D2C91B750006D4EA0 /* MainHallScene.swift */; };
 		FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E08F2C91B750006D4EA0 /* ViewController.swift */; };
 		FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0912C91B752006D4EA0 /* Assets.xcassets */; };
 		FDF1E0952C91B752006D4EA0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FDF1E0942C91B752006D4EA0 /* Base */; };
@@ -229,7 +228,7 @@
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF1E0892C91B750006D4EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FDF1E08B2C91B750006D4EA0 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
-		FDF1E08D2C91B750006D4EA0 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		FDF1E08D2C91B750006D4EA0 /* MainHallScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHallScene.swift; sourceTree = "<group>"; };
 		FDF1E08F2C91B750006D4EA0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FDF1E0912C91B752006D4EA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FDF1E0942C91B752006D4EA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -365,13 +364,14 @@
 			path = System;
 			sourceTree = "<group>";
 		};
-		FDAC55012C9A10BF00E90E17 /* GameScene */ = {
+		FDAC55012C9A10BF00E90E17 /* MainHall */ = {
 			isa = PBXGroup;
 			children = (
-				FDF1E08D2C91B750006D4EA0 /* GameScene.swift */,
+				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
+				FDF1E08D2C91B750006D4EA0 /* MainHallScene.swift */,
 				FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */,
 			);
-			path = GameScene;
+			path = MainHall;
 			sourceTree = "<group>";
 		};
 		FDAC55062C9B554200E90E17 /* Entity */ = {
@@ -394,7 +394,6 @@
 				985DD40B2CB9981E00E58612 /* calabouço.jpeg */,
 				985DD4052CB997DE00E58612 /* calabouço.webp */,
 				985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */,
-				FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */,
 			);
 			path = GameplaySks;
 			sourceTree = "<group>";
@@ -482,7 +481,7 @@
 				98DAD0052CC18E330020DFAC /* Dungeon */,
 				986032852CB717AC00D8ECD2 /* Editor */,
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
-				FDAC55012C9A10BF00E90E17 /* GameScene */,
+				FDAC55012C9A10BF00E90E17 /* MainHall */,
 				FDE3CF0A2CA485F400D88620 /* TopDownScene */,
 				FDF1E0AD2C94B7CF006D4EA0 /* BatalhaScene */,
 				FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */,
@@ -611,7 +610,6 @@
 			files = (
 				986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
 				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
-				9860328A2CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
@@ -678,7 +676,7 @@
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
 				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
-				98838C6B2CA5DC9500709648 /* GameScene.swift in Sources */,
+				98838C6B2CA5DC9500709648 /* MainHallScene.swift in Sources */,
 				986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
 				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
@@ -718,7 +716,7 @@
 				FDE3CF142CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
 				FDF1E0A52C923540006D4EA0 /* BatalhaScene.swift in Sources */,
 				43841E6C2CA72CB1009496B2 /* Component.swift in Sources */,
-				FDF1E08E2C91B750006D4EA0 /* GameScene.swift in Sources */,
+				FDF1E08E2C91B750006D4EA0 /* MainHallScene.swift in Sources */,
 				98838C262CA486C600709648 /* CombatSystem.swift in Sources */,
 				98838C2E2CA4A65C00709648 /* Skill.swift in Sources */,
 				FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */,
@@ -943,7 +941,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -970,7 +968,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

@@ -247,20 +247,61 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             segundoBody = contact.bodyA
         }
         
-        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
+        /*
+        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
         if collidedWithDoorNextScene {
             if User.singleton.inventoryComponent.itens.contains(where: { item in
                 item.consumableComponent?.nome == "Chaves"
             }) {
-                self.view?.presentScene(SKScene(), transition: SKTransition.fade(withDuration: 1.0))
+                goNextScene()
             } else {
                 self.dialogSystem.inputDialog("Preciso da chave para entrar aqui...", person: "You", velocity: 20)
                 dialogSystem.nextDialogue()
             }
         }
+         */
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
+    }
+     
+    
+    internal func goNextScene () {
+        let transition = SKTransition.fade(withDuration: 1.0)
+        
+        // primeiramente a gente descobre em qual fase ele tá.
+        let nextScene : SKScene?
+        switch User.singleton.phase {
+        case .MAIN_HALL_SCENE:
+            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
+            User.singleton.phase = .HALL_OF_RELICS
+        case .HALL_OF_RELICS:
+            nextScene = SKScene(fileNamed: "Dungeon.sks")
+            User.singleton.phase = .DUNGEON
+        case .DUNGEON:
+            nextScene = YouWinScene()
+        }
+        nextScene?.scaleMode = .aspectFill
+        //nextScene?.size = view!.frame.size
+
+        // preparar user
+        #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
+        User.singleton.positionComponent.xPosition = 10
+        User.singleton.positionComponent.yPosition = 50
+        User.singleton.spriteComponent.sprite.removeFromParent()
+        self.removeAllParents(self)
+        
+        if let nextScene {
+            self.view?.presentScene(nextScene, transition: transition)
+        }
+    }
+    
+    private func removeAllParents (_ scene : SKScene) {
+        for child in scene.children {
+            if let childName = child.name, childName.contains("Enemy") {
+                child.removeFromParent()
+            }
+        }
     }
     
     private func populateGameSceneData () {

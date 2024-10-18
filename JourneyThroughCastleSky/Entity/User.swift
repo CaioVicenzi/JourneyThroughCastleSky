@@ -10,6 +10,13 @@ import SpriteKit
 
 class User: Entity {
     static let singleton = User()
+    var phase : Phase
+    
+    enum Phase{
+        case MAIN_HALL_SCENE
+        case HALL_OF_RELICS
+        case DUNGEON
+    }
     
     var healthComponent: HealthComponent {
         getComponent(HealthComponent.self) as! HealthComponent
@@ -44,6 +51,7 @@ class User: Entity {
     }
     
     override init() {
+        self.phase = .MAIN_HALL_SCENE
         super.init()
         addComponent(HealthComponent(health: 100))
         addComponent(InventoryComponent())
