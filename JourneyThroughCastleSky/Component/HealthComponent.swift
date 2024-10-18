@@ -7,6 +7,10 @@
 
 import Foundation
 
+protocol HasHealth {
+    var healthComponent: HealthComponent { get }
+}
+
 class HealthComponent: Component {
     var health : Int
     var maxHealth : Int

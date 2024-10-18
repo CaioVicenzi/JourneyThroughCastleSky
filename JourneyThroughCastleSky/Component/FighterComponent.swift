@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol IsFighter {
+protocol IsFighter: HasHealth {
     var fighterComponent: FighterComponent {get}
 }
 

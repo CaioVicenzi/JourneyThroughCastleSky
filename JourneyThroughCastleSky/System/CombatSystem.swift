@@ -23,11 +23,13 @@ class CombatSystem {
         
         return runAction(
             fighter: User.singleton,
+            target: enemy,
             action: User.singleton.fighterComponent
                 .attacks[0])
     }
     
-    func runAction(fighter: IsFighter, action: IsAction) -> ActionResult {
+    @discardableResult
+    func runAction(fighter: IsFighter, target: IsFighter, action: IsAction) -> ActionResult {
         
         
         var result = ActionResult(enemyDodged: enemyDodge)
@@ -77,8 +79,7 @@ class CombatSystem {
         }
         
       
-        
-        enemy.healthComponent.health -= User.singleton.fighterComponent.damage
+        target.healthComponent.health -= User.singleton.fighterComponent.damage
         return result
     }
     
@@ -100,7 +101,13 @@ class CombatSystem {
         let randomico = Int.random(in: 0 ..< 2)
         
         if randomico == 0 {
-            User.singleton.healthComponent.health -= 10
+            
+            let randomAttack = enemy.fighterComponent.attacks.randomElement()!
+            
+            runAction(
+                fighter: enemy,
+                target: User.singleton, action: randomAttack
+            )
         } else {
             enemyDodge = true
         }
