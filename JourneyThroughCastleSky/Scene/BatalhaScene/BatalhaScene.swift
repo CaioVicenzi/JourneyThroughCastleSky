@@ -50,7 +50,7 @@ class BatalhaScene : SKScene {
         case ATTACK = 0
         case USE_ITEM = 1
         case DODGE = 2
-        case SPARE = 3
+        case SKILL = 3
     }
     
     enum chooseState {
@@ -83,10 +83,6 @@ class BatalhaScene : SKScene {
     // MARK: LÓGICA
     
     override func keyDown(with event: NSEvent) {
-        if event.keyCode == 53 {
-            spare()
-        }
-        
         #warning("isso é apenas um cheat para teste.")
         if event.keyCode == 13 {
             getOutWinning()
@@ -102,7 +98,6 @@ class BatalhaScene : SKScene {
         case .SELECTED:
             return
         }
-        //refreshButtonsState()
     }
     
     internal func updateColorChooseOption () {
@@ -173,10 +168,10 @@ class BatalhaScene : SKScene {
                     //showItems()
                     setupItemRows()
                     gameChooseState = .CHOOSE_ITEM
-                case .SPARE:
-                    spare()
-                    gameChooseState = .SELECTED
                 case .DODGE:
+                    gameChooseState = .SELECTED
+                case .SKILL:
+                    print("Skill pressed")
                     gameChooseState = .SELECTED
             }
                 
@@ -304,6 +299,8 @@ class BatalhaScene : SKScene {
             return actionResult
         }
         
+        print(enemy.healthComponent.health)
+        
         if (attackResult.enemyDodged) {
             
             let messageEnemyDodge = SKLabelNode(text: "Inimigo se esquivou")
@@ -314,11 +311,10 @@ class BatalhaScene : SKScene {
                 .move(by: .init(dx: -100, dy: 0), duration: 1)
             ]))
             
-        } else {
-            enemyLifeLabel.text = "Life: \(enemy.healthComponent.health)"
-            if enemy.healthComponent.health <= 0 {
-                getOutWinning()
-            }
+        }
+        
+        if enemy.healthComponent.health <= 0 {
+            getOutWinning()
         }
         
         updateStamineBar()
@@ -326,40 +322,12 @@ class BatalhaScene : SKScene {
         return actionResult
     }
     
-    private func spare () {
-        
-        var sksFileName : String
-        switch User.singleton.phase {
-        case .MAIN_HALL_SCENE:
-            sksFileName = "MainHallScene.sks"
-        case .HALL_OF_RELICS:
-            sksFileName = "HallOfRelics.sks"
-        case .DUNGEON:
-            sksFileName = "Dungeon.sks"
-        }
-        
-        // agora a gente chama essa cena e volta ao normal.
-        let nextScene =  SKScene(fileNamed: sksFileName)
-        
-        nextScene?.scaleMode = .aspectFill
-        let transition = SKTransition.fade(withDuration: 1.0)
-        
-        User.singleton.positionComponent.xPosition = 100
-        User.singleton.positionComponent.yPosition = 100
-        User.singleton.spriteComponent.sprite.position.x = 100
-        User.singleton.spriteComponent.sprite.position.y = 100
-        
-        if let nextScene {
-            self.view?.presentScene(nextScene, transition: transition)
-        }
-    }
-    
     private func getOutWinning () {
         // primeiramente a gente descobre em qual fase ele tá.
         var sksFileName : String
         switch User.singleton.phase {
         case .MAIN_HALL_SCENE:
-            sksFileName = "MainHall.sks"
+            sksFileName = "MainHallScene.sks"
         case .HALL_OF_RELICS:
             sksFileName = "HallOfRelics.sks"
         case .DUNGEON:
@@ -383,6 +351,7 @@ class BatalhaScene : SKScene {
         MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
             inimigo.id == self.enemy.id
         })
+        
         
         if let nextScene {
             self.view?.presentScene(nextScene, transition: transition)
