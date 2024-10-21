@@ -201,18 +201,19 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupCheckpoint () {
-        //self.checkpoint = Checkpoint(xPosition: 1000, yPosition: 100, nextScene: GameScene(size: self.size, enemies: [], itens: [], friendlies: []))
-        //checkpoint?.addToScene(self)
-        
-        let checkPoint = childNode(withName: "checkpoint") as? SKSpriteNode
-        guard let checkPoint else {print("Não existe o checkpoint");return}
-        
-        checkPoint.physicsBody = SKPhysicsBody(rectangleOf: checkPoint.size)
-        checkPoint.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
-        checkPoint.physicsBody?.collisionBitMask = PhysicCategory.character
-        checkPoint.physicsBody?.contactTestBitMask = PhysicCategory.character
-        checkPoint.physicsBody?.affectedByGravity = false
-        checkPoint.physicsBody?.isDynamic = false // não se move
+        for child in children {
+            if let childName = child.name {
+                if childName.starts(with: "checkpoint") {
+                    child.physicsBody = SKPhysicsBody(rectangleOf: child.frame.size)
+                    child.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
+                    child.physicsBody?.collisionBitMask = PhysicCategory.character
+                    child.physicsBody?.contactTestBitMask = PhysicCategory.character
+                    child.physicsBody?.affectedByGravity = false
+                    child.physicsBody?.isDynamic = false // não se move
+                }
+            }
+            
+        }
     }
     
     
@@ -249,37 +250,38 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
-        /*
+        
         let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
         if collidedWithDoorNextScene {
-            if User.singleton.inventoryComponent.itens.contains(where: { item in
-                item.consumableComponent?.nome == "Chaves"
-            }) {
-                goNextScene()
-            } else {
-                self.dialogSystem.inputDialog("Preciso da chave para entrar aqui...", person: "You", velocity: 20)
-                dialogSystem.nextDialogue()
+            // se dependendo do nome do checkpoint, é possível redirecionar o usuário para a cena correta.
+            if segundoBody.node?.name == "checkpoint_HallOfRelics" {
+                goNextScene(.HALL_OF_RELICS)
+            }
+            if segundoBody.node?.name == "checkpoint_Dungeon" {
+                goNextScene(.DUNGEON)
+            }
+            if segundoBody.node?.name == "checkpoint_MainHall" {
+                goNextScene(.MAIN_HALL_SCENE)
             }
         }
-         */
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
     }
      
     
-    internal func goNextScene () {
+    internal func goNextScene (_ scene : GamePhase) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
         // primeiramente a gente descobre em qual fase ele tá.
         let nextScene : SKScene?
-        switch User.singleton.phase {
+        switch scene {
         case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
-            User.singleton.phase = .HALL_OF_RELICS
-        case .HALL_OF_RELICS:
-            nextScene = SKScene(fileNamed: "Dungeon.sks")
-            User.singleton.phase = .DUNGEON
+            nextScene = SKScene(fileNamed: "MainHallScene.sks")
+            User.singleton.currentPhase = .HALL_OF_RELICS
         case .DUNGEON:
-            nextScene = YouWinScene()
+            nextScene = SKScene(fileNamed: "Dungeon.sks")
+            User.singleton.currentPhase = .DUNGEON
+        case .HALL_OF_RELICS:
+            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
         }
         nextScene?.scaleMode = .aspectFill
         //nextScene?.size = view!.frame.size
