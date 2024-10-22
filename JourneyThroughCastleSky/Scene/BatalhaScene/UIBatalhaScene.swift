@@ -120,7 +120,7 @@ extension BatalhaScene{
         } else if index == 2 {
             return "Dodge"
         } else {
-            return "Run"
+            return "Skill"
         }
     }
         
@@ -243,10 +243,10 @@ extension BatalhaScene{
                 newText = "Ataque o seu inimigo causando \(User.singleton.fighterComponent.damage) de dano"
             case .USE_ITEM:
                 newText = ""
-            case .SPARE:
-                newText = "Corra do seu inimigo..."
             case .DODGE:
                 newText = "Desviar do inimigo na próxima rodada."
+            case .SKILL:
+                newText = "Usar alguma habilidade"
             }
         }
         
