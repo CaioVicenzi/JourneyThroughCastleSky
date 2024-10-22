@@ -157,11 +157,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     /// Função que posiciona todos os itens dentro da lista de itens dentro do mapa.
     internal func setupItems () {
-        
         setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
         setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
         setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
         setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
+        setupItem("cristal", spriteName: "cristal", effect: Effect(type: .UP_LEVEL, amount: 0))
     }
     
     private func setupItem (_ name : String, spriteName : String, effect : Effect) {
@@ -176,6 +176,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                 case .DAMAGE: nameItem = "Balão de guerra"; descriptionItem = "Um balão que aumenta seu ataque em 10"
                 case .STAMINE: nameItem = "Maçã de diamante"; descriptionItem = "Uma maçã que aumenta sua estamina em 10"
                 case .NONE: nameItem = "Chaves"; descriptionItem = "Uma chave misteriosa"
+                case .UP_LEVEL: nameItem = "Cristal"; descriptionItem = "Um cristal misterioso"
             }
             
             
@@ -276,12 +277,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         switch scene {
         case .MAIN_HALL_SCENE:
             nextScene = SKScene(fileNamed: "MainHallScene.sks")
-            User.singleton.currentPhase = .HALL_OF_RELICS
+            User.singleton.currentPhase = .MAIN_HALL_SCENE
         case .DUNGEON:
             nextScene = SKScene(fileNamed: "Dungeon.sks")
             User.singleton.currentPhase = .DUNGEON
         case .HALL_OF_RELICS:
             nextScene = SKScene(fileNamed: "HallOfRelics.sks")
+            User.singleton.currentPhase = .HALL_OF_RELICS
         }
         nextScene?.scaleMode = .aspectFill
         //nextScene?.size = view!.frame.size

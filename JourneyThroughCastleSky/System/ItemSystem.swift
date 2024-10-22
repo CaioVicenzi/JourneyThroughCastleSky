@@ -91,6 +91,8 @@ class ItemSystem {
                 User.singleton.staminaComponent.stamina += effect.amount
             case .NONE:
                 break
+            case .UP_LEVEL:
+                User.singleton.upLevel()
             }
         }
     }

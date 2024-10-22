@@ -108,6 +108,8 @@
 		FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0C2C9B591A0047B5B7 /* Enemy.swift */; };
 		FD932B0F2C9B5BCA0047B5B7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0E2C9B5BCA0047B5B7 /* Item.swift */; };
 		FDAC55002C9A106300E90E17 /* Dialogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC54FF2C9A106300E90E17 /* Dialogo.swift */; };
+		FDAC75002CC81F6600D32638 /* LevelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */; };
+		FDAC75012CC81F6600D32638 /* LevelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */; };
 		FDAD41F62C9CB7D40053A4B0 /* MovementSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */; };
 		FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
 		FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */; };
@@ -202,6 +204,7 @@
 		FD932B0C2C9B591A0047B5B7 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		FD932B0E2C9B5BCA0047B5B7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		FDAC54FF2C9A106300E90E17 /* Dialogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogo.swift; sourceTree = "<group>"; };
+		FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelComponent.swift; sourceTree = "<group>"; };
 		FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
 		FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSystem.swift; sourceTree = "<group>"; };
 		FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSystem.swift; sourceTree = "<group>"; };
@@ -338,6 +341,7 @@
 				FDE3CF042CA3413100D88620 /* ReadableComponent.swift */,
 				98838C322CA5CE4A00709648 /* SkillComponent.swift */,
 				43841E6B2CA72CB1009496B2 /* Component.swift */,
+				FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -644,6 +648,7 @@
 				FDD5F9962CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */,
 				98838C6C2CA5DC9A00709648 /* UIBatalhaScene.swift in Sources */,
+				FDAC75002CC81F6600D32638 /* LevelComponent.swift in Sources */,
 				98838C6D2CA5DC9A00709648 /* BatalhaScene.swift in Sources */,
 				FDDCF34D2CC6F2A400181ADE /* GamePhase.swift in Sources */,
 				98838C5F2CA5DC8600709648 /* Friendly.swift in Sources */,
@@ -733,6 +738,7 @@
 				FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */,
 				FD932B0B2C9B58DC0047B5B7 /* FighterComponent.swift in Sources */,
 				FDDCF34E2CC6F2A400181ADE /* GamePhase.swift in Sources */,
+				FDAC75012CC81F6600D32638 /* LevelComponent.swift in Sources */,
 				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
