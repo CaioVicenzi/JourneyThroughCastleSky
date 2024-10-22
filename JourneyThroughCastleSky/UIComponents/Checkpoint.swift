@@ -31,7 +31,7 @@ class Checkpoint : UIComponent{
         
         checkPoint.physicsBody = SKPhysicsBody(rectangleOf: checkpointSize)
         
-        checkPoint.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
+        checkPoint.physicsBody?.categoryBitMask = PhysicCategory.door
         checkPoint.physicsBody?.collisionBitMask = PhysicCategory.character
         checkPoint.physicsBody?.contactTestBitMask = PhysicCategory.character
         checkPoint.physicsBody?.affectedByGravity = false

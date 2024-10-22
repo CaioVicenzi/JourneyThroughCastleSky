@@ -7,6 +7,20 @@
 import Foundation
 import SpriteKit
 
+
+class Door: SKSpriteNode {
+    
+    var destiny: String {
+        return self.userData?.value(forKey: "destiny") as! String
+    }
+    
+    var destinyPhase: GamePhase? {
+        return GamePhase(rawValue: self.destiny)
+    }
+    
+    
+}
+
 /// Classe genérica que vai conter todos os atributos e métodos que são compartilhados por todas as cenas que contém o modo TopDown de exploração de ambiente.
 /// - parameters
 ///   - enemies: são uma lista contendo todos os inimigos que se deseja colocar dentro da cena;
@@ -72,7 +86,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupTileColliders()
         
         setupWalls()
-        setupCheckpoint()
+        setupDoors()
         
         
         if GameSceneData.shared == nil {
@@ -229,20 +243,24 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func setupCheckpoint () {
-        for child in children {
-            if let childName = child.name {
-                if childName.starts(with: "checkpoint") {
-                    child.physicsBody = SKPhysicsBody(rectangleOf: child.frame.size)
-                    child.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
-                    child.physicsBody?.collisionBitMask = PhysicCategory.character
-                    child.physicsBody?.contactTestBitMask = PhysicCategory.character
-                    child.physicsBody?.affectedByGravity = false
-                    child.physicsBody?.isDynamic = false // não se move
-                }
-            }
-            
+    private func setupDoors () {
+        
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return
         }
+        
+        let doors = doorsNode.children
+        
+        for door in doors {
+            door.physicsBody = SKPhysicsBody(rectangleOf: door.frame.size)
+            door.physicsBody?.categoryBitMask = PhysicCategory.door
+            door.physicsBody?.collisionBitMask = PhysicCategory.character
+            door.physicsBody?.contactTestBitMask = PhysicCategory.character
+            door.physicsBody?.affectedByGravity = false
+            door.physicsBody?.isDynamic = false
+        }
+        
+       
     }
     
     
@@ -280,17 +298,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
         
-        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
+        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.door
+        
         if collidedWithDoorNextScene {
-            // se dependendo do nome do checkpoint, é possível redirecionar o usuário para a cena correta.
-            if segundoBody.node?.name == "checkpoint_HallOfRelics" {
-                goNextScene(.HALL_OF_RELICS)
-            }
-            if segundoBody.node?.name == "checkpoint_Dungeon" {
-                goNextScene(.DUNGEON)
-            }
-            if segundoBody.node?.name == "checkpoint_MainHall" {
-                goNextScene(.MAIN_HALL_SCENE)
+            if let door = segundoBody.node as? Door {
+                if let gamePhase = door.destinyPhase {
+                    goNextScene(gamePhase)
+                }
             }
         }
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
@@ -300,19 +314,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal func goNextScene (_ scene : GamePhase) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
-        print(scene.rawValue)
-        
         let sceneName = scene.rawValue + ".sks"
         
-        // primeiramente a gente descobre em qual fase ele tá.
         let nextScene = SKScene(fileNamed: sceneName)
         User.singleton.currentPhase = scene
         
-        
         nextScene?.scaleMode = .aspectFill
-        //nextScene?.size = view!.frame.size
 
-        // preparar user
         #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
         User.singleton.positionComponent.xPosition = 10
         User.singleton.positionComponent.yPosition = 50
