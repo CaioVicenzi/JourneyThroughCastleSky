@@ -25,11 +25,23 @@ class ItemSystem {
         items.forEach { item in
             let itemNearUser = PositionSystem.isOtherNearPlayer(item.positionComponent, range: 50)
             if itemNearUser{
-                removeNearestItemSprite(item.consumableComponent!.nome)
-                catchItem(item)
-                items.removeAll { currentItem in
-                    currentItem.id == item.id
+                
+                let isCrystal = item.consumableComponent?.effect.type == .UP_LEVEL
+                
+                let userHasKey = User.singleton.inventoryComponent.itens.contains { item in
+                    item.consumableComponent?.nome == "Chaves"
                 }
+                
+                if isCrystal {
+                    if userHasKey {
+                        catchItem(item)
+                    } else {
+                        gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
+                    }
+                } else {
+                    catchItem(item)
+                }
+                
                 gameScene.dialogSystem.nextDialogue()
             }
         }
@@ -48,22 +60,30 @@ class ItemSystem {
     
     /// Essa função pega um item, exibe os diálogos e coloca no inventário
     private func catchItem (_ item : Item) {
-        // função para adicionar o balão ao inventário do usuário.
+        removeNearestItemSprite(item.consumableComponent!.nome)
+
+        // remover o item do mapa.
         item.spriteComponent.sprite.removeFromParent()
-        
+                
         // adicionar os diálogos do item dentro da lista de diálogos para passar.
         if let dialogs = item.dialogueComponent?.dialogs {
             gameScene.dialogSystem.inputDialogs(dialogs)
         }
-        
+                
         // adiciona também a descrição do item
         if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
             gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
         }
-        
+                
         gameScene.catchLabel?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
+                
+        items.removeAll { currentItem in
+            currentItem.id == item.id
+        }
     }
+    
+    
     
     /// Função que verifica se vai exibir o botão de pegar o item
     func showCatchLabel () {
