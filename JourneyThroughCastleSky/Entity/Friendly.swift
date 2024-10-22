@@ -12,7 +12,7 @@ import Foundation
 ///   - spriteComponent: os amigáveis terão um sprite associado a eles para serem adicionados em uma cena.
 ///   - positionComponent: os amigáveis terão um posicionamento dentro do mapa.
 ///   - dialogueComponent: contém os diálogos que serão acionados caso o usuário interaja com o amigável.
-class Friendly {
+class Friendly{
     let spriteComponent : SpriteComponent
     let positionComponent : PositionComponent
     let dialogueComponent : DialogueComponent
