@@ -99,6 +99,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         excludeAll("damage")
         excludeAll("estamina")
         excludeAll("key")
+        excludeAll("friendlyGuy")
         
         for enemy in shared.enemies {
             addChild(enemy.spriteComponent.sprite)
@@ -138,17 +139,45 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             spriteInimigo.physicsBody?.allowsRotation = false
             
             self.enemies.append(enemyCriado)
-            self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 100))
+            self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 200))
         }
         
         excludeAll(name)
     }
     
-    /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa.
+    /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa
     internal func setupFriendlies () {
-        friendlySystem.friendlies.forEach { friendly in
-            setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: CGSize(width: 100, height: 100))
+        setupFriendly("friendlyGuy", spriteName: "weerdman")
+    }
+    
+    private func setupFriendly(_ name: String, spriteName: String) {
+        self.enumerateChildNodes(withName: name) { [self] node, _ in
+            guard node is SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
+            
+            let weerdman = Friendly(
+                spriteName: spriteName,
+                xPosition: Int(416.127),
+                yPosition: Int(-92.599),
+                dialogs: [Dialogue(text: "Hello, there!", person: "friendlyGuy", velocity: 100), Dialogue(text: "How are ya, mate?", person: "friendlyGuy", velocity: 100)]
+            )
+            
+            let spriteFriendly = weerdman.spriteComponent.sprite
+            let friendlyWidth = spriteFriendly.size.width
+            let friendlyHeight = spriteFriendly.size.height
+            
+            spriteFriendly.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: friendlyWidth, height: friendlyHeight))
+            spriteFriendly.physicsBody?.categoryBitMask = PhysicCategory.enemy
+            spriteFriendly.physicsBody?.collisionBitMask = PhysicCategory.character
+            spriteFriendly.physicsBody?.contactTestBitMask = PhysicCategory.character
+            spriteFriendly.physicsBody?.affectedByGravity = false
+            spriteFriendly.physicsBody?.isDynamic = false
+            spriteFriendly.physicsBody?.allowsRotation = false
+            
+            friendlySystem.friendlies.append(weerdman)
+            self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
         }
+        
+        excludeAll(name)
     }
     
     override func keyUp(with event: NSEvent) {
