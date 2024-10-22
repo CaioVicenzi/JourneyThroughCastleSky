@@ -300,18 +300,15 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal func goNextScene (_ scene : GamePhase) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
+        print(scene.rawValue)
+        
+        let sceneName = scene.rawValue + ".sks"
+        
         // primeiramente a gente descobre em qual fase ele tá.
-        let nextScene : SKScene?
-        switch scene {
-        case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "MainHallScene.sks")
-            User.singleton.currentPhase = .HALL_OF_RELICS
-        case .DUNGEON:
-            nextScene = SKScene(fileNamed: "Dungeon.sks")
-            User.singleton.currentPhase = .DUNGEON
-        case .HALL_OF_RELICS:
-            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
-        }
+        let nextScene = SKScene(fileNamed: sceneName)
+        User.singleton.currentPhase = scene
+        
+        
         nextScene?.scaleMode = .aspectFill
         //nextScene?.size = view!.frame.size
 

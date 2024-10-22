@@ -7,8 +7,8 @@
 
 import Foundation
 
-enum GamePhase{
-    case MAIN_HALL_SCENE
-    case HALL_OF_RELICS
-    case DUNGEON
+enum GamePhase: String {
+    case MAIN_HALL_SCENE = "MainHallScene"
+    case HALL_OF_RELICS = "HallOfRelics"
+    case DUNGEON = "Dungeon"
 }
