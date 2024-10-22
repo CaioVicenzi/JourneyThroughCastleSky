@@ -325,7 +325,7 @@ class BatalhaScene : SKScene {
     private func getOutWinning () {
         // primeiramente a gente descobre em qual fase ele tá.
         var sksFileName : String
-        switch User.singleton.phase {
+        switch User.singleton.currentPhase {
         case .MAIN_HALL_SCENE:
             sksFileName = "MainHallScene.sks"
         case .HALL_OF_RELICS:

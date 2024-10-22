@@ -99,6 +99,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         excludeAll("damage")
         excludeAll("estamina")
         excludeAll("key")
+        excludeAll("friendlyGuy")
         
         for enemy in shared.enemies {
             addChild(enemy.spriteComponent.sprite)
@@ -138,17 +139,45 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             spriteInimigo.physicsBody?.allowsRotation = false
             
             self.enemies.append(enemyCriado)
-            self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 100))
+            self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 200))
         }
         
         excludeAll(name)
     }
     
-    /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa.
+    /// Função que posiciona todos os amigáveis dentro da lista de friendlies dentro do mapa
     internal func setupFriendlies () {
-        friendlySystem.friendlies.forEach { friendly in
-            setupSpritePosition(friendly.spriteComponent, friendly.positionComponent, scale: CGSize(width: 100, height: 100))
+        setupFriendly("friendlyGuy", spriteName: "weerdman")
+    }
+    
+    private func setupFriendly(_ name: String, spriteName: String) {
+        self.enumerateChildNodes(withName: name) { [self] node, _ in
+            guard node is SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
+            
+            let weerdman = Friendly(
+                spriteName: spriteName,
+                xPosition: Int(465.311),
+                yPosition: Int(-40.816),
+                dialogs: [Dialogue(text: "Irmão!", person: "Weerdman", velocity: 50), Dialogue(text: "Eu não sou seu irmão.", person: "O Desconhecido", velocity: 50),Dialogue(text: "É o meu jeito de me expressar.", person: "Weerdman", velocity: 50),Dialogue(text: "Certo... Quem é você?", person: "O Desconhecido", velocity: 50),Dialogue(text: "Weerdman, à sua disposição. O que um soldado com uma bela e brilhante armadura está fazendo aqui nas ruínas esquecidas desse antigo mundo?", person: "Weerdman", velocity: 50),Dialogue(text: "Eu não sei.", person: "O Desconhecido", velocity: 50),Dialogue(text: "Você não sabe?", person: "Weerdman", velocity: 50),Dialogue(text: "Eu não me lembro… Eu não me lembro de nada…", person: "O Desconhecido", velocity: 50),Dialogue(text: "Interessante! Memorance, talvez… Sim, sim… Memorance! Posso ver os seus olhos brilharem com a corrupção blasfema de Leville. Ela te envolve como um véu invisível. Fascinante!", person: "Weerdman", velocity: 50),Dialogue(text: "O que é isso?.", person: "O Desconhecido", velocity: 50),Dialogue(text: "Ah… Memorance! Maldito feitiço! Apaga sua memória. É como o vento soprando grãos de areia. Faz com que seu cérebro se torne um quebra-cabeças a ser desvendado. Um sussurro etéreo distante nas profundezas do seu ser. Apenas eu posso desfazê-lo!", person: "Weerdman", velocity: 50), Dialogue(text: "Você?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Sim! Quem mais? Mas… Preciso de um favor, ou melhor, favores em troca.", person: "Weerdman", velocity: 50), Dialogue(text: "E se eu não aceitar?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Bom… então vague por essas terras sozinho. E procure por alguém gentil o suficiente para ajudá-lo. Não creio que encontrará, irmão. Tolo é aquele que tem uma joia rara nas mãos e sai para procurar pedras.", person: "Weerdman", velocity: 50),Dialogue(text: "Hum… e você acha que eu vou conseguir realizar esses favores para você?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Olha para você! Quase um herói de armadura! Parece que veio diretamente de um conto de fadas.", person: "Weerdman", velocity: 50), Dialogue(text: "De que favores estamos falando?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Preciso que recupere cristais. Pedras antigas de uma era distante!", person: "Weerdman", velocity: 50), Dialogue(text: "Entendo… Parece ser uma troca justa.", person: "O Desconhecido", velocity: 50), Dialogue(text: "Esse é o espírito! Ah, mas esteja avisado. Não sou nenhum tolo. Existem quatro cristais. A cada cristal que pegar, eu tiro um pouco da corrupção. No final, será novinho em folha! He he…", person: "Weerdman", velocity: 50), Dialogue(text: "Entendo. Por onde eu começo?", person: "O Desconhecido", velocity: 50), Dialogue(text: "O primeiro cristal está no calabouço. Mas tome cuidado… Mítico é o herói que busca o perigo sem se importar com sua reputação, armado apenas com bravura e caráter e a vontade de mudar o mundo. E no seu caso… uma espada!", person: "Weerdman", velocity: 50), Dialogue(text: "Certo?...", person: "O Desconhecido", velocity: 50), Dialogue(text: "Vá com cuidado, irmão! Mantenha seu corpo e mente afiados.", person: "Weerdman", velocity: 50), Dialogue(text: "Antes de ir, com o que esse cristal se parece?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Você saberá quando vê-lo. Seu brilho pode ser visto pelos reinos como o Bombardeamento Celeste na era de Skyrise. Boa sorte!", person: "Weerdman", velocity: 50)]
+            )
+            
+            let spriteFriendly = weerdman.spriteComponent.sprite
+            let friendlyWidth = spriteFriendly.size.width
+            let friendlyHeight = spriteFriendly.size.height
+            
+            spriteFriendly.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: friendlyWidth, height: friendlyHeight))
+            spriteFriendly.physicsBody?.categoryBitMask = PhysicCategory.enemy
+            spriteFriendly.physicsBody?.collisionBitMask = PhysicCategory.character
+            spriteFriendly.physicsBody?.contactTestBitMask = PhysicCategory.character
+            spriteFriendly.physicsBody?.affectedByGravity = false
+            spriteFriendly.physicsBody?.isDynamic = false
+            spriteFriendly.physicsBody?.allowsRotation = false
+            
+            friendlySystem.friendlies.append(weerdman)
+            self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
         }
+        
+        excludeAll(name)
     }
     
     override func keyUp(with event: NSEvent) {
@@ -201,18 +230,19 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupCheckpoint () {
-        //self.checkpoint = Checkpoint(xPosition: 1000, yPosition: 100, nextScene: GameScene(size: self.size, enemies: [], itens: [], friendlies: []))
-        //checkpoint?.addToScene(self)
-        
-        let checkPoint = childNode(withName: "checkpoint") as? SKSpriteNode
-        guard let checkPoint else {print("Não existe o checkpoint");return}
-        
-        checkPoint.physicsBody = SKPhysicsBody(rectangleOf: checkPoint.size)
-        checkPoint.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
-        checkPoint.physicsBody?.collisionBitMask = PhysicCategory.character
-        checkPoint.physicsBody?.contactTestBitMask = PhysicCategory.character
-        checkPoint.physicsBody?.affectedByGravity = false
-        checkPoint.physicsBody?.isDynamic = false // não se move
+        for child in children {
+            if let childName = child.name {
+                if childName.starts(with: "checkpoint") {
+                    child.physicsBody = SKPhysicsBody(rectangleOf: child.frame.size)
+                    child.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
+                    child.physicsBody?.collisionBitMask = PhysicCategory.character
+                    child.physicsBody?.contactTestBitMask = PhysicCategory.character
+                    child.physicsBody?.affectedByGravity = false
+                    child.physicsBody?.isDynamic = false // não se move
+                }
+            }
+            
+        }
     }
     
     
@@ -249,37 +279,38 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
-        /*
+        
         let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
         if collidedWithDoorNextScene {
-            if User.singleton.inventoryComponent.itens.contains(where: { item in
-                item.consumableComponent?.nome == "Chaves"
-            }) {
-                goNextScene()
-            } else {
-                self.dialogSystem.inputDialog("Preciso da chave para entrar aqui...", person: "You", velocity: 20)
-                dialogSystem.nextDialogue()
+            // se dependendo do nome do checkpoint, é possível redirecionar o usuário para a cena correta.
+            if segundoBody.node?.name == "checkpoint_HallOfRelics" {
+                goNextScene(.HALL_OF_RELICS)
+            }
+            if segundoBody.node?.name == "checkpoint_Dungeon" {
+                goNextScene(.DUNGEON)
+            }
+            if segundoBody.node?.name == "checkpoint_MainHall" {
+                goNextScene(.MAIN_HALL_SCENE)
             }
         }
-         */
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
     }
      
     
-    internal func goNextScene () {
+    internal func goNextScene (_ scene : GamePhase) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
         // primeiramente a gente descobre em qual fase ele tá.
         let nextScene : SKScene?
-        switch User.singleton.phase {
+        switch scene {
         case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
-            User.singleton.phase = .HALL_OF_RELICS
-        case .HALL_OF_RELICS:
-            nextScene = SKScene(fileNamed: "Dungeon.sks")
-            User.singleton.phase = .DUNGEON
+            nextScene = SKScene(fileNamed: "MainHallScene.sks")
+            User.singleton.currentPhase = .HALL_OF_RELICS
         case .DUNGEON:
-            nextScene = YouWinScene()
+            nextScene = SKScene(fileNamed: "Dungeon.sks")
+            User.singleton.currentPhase = .DUNGEON
+        case .HALL_OF_RELICS:
+            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
         }
         nextScene?.scaleMode = .aspectFill
         //nextScene?.size = view!.frame.size
