@@ -253,7 +253,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                )
 
             let spriteFriendly = weerdman.spriteComponent.sprite
-            spriteFriendly.scale(to: node.size)
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
