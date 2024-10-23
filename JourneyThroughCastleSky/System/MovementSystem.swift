@@ -91,7 +91,7 @@ class MovementSystem {
     func updateCameraPosition () {
         let playerSprite = User.singleton.spriteComponent.sprite
         var cameraPosition = playerSprite.position
-        let cameraHalfSize = gameScene.size.half
+        let cameraHalfSize = gameScene.frame.size.half
         let bounds = gameScene.bounds
         
         // Limitar o movimento da câmera nos eixos X e Y
@@ -103,9 +103,6 @@ class MovementSystem {
         
         cameraPosition.x = Math
             .clamp(value: cameraPosition.x, minV: minX, maxV: maxX)
-        
-        
-        print(gameScene.size)
         
         cameraPosition.y = Math
             .clamp(value: cameraPosition.y, minV: minY, maxV: maxY)

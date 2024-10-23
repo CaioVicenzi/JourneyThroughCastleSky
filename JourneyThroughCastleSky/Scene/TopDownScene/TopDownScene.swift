@@ -7,6 +7,74 @@
 import Foundation
 import SpriteKit
 
+
+class Door: SKSpriteNode {
+    
+    var enabled = true
+    
+    var destiny: String {
+        return self.userData?.value(forKey: "destiny") as! String
+    }
+    
+    var spawnDirection: CGVector {
+        let directionString = self.userData?.value(forKey: "spawnDirection") as! String
+        
+        switch(directionString) {
+            case "up":
+                return .init(dx: 0, dy: 1)
+            case "left":
+                return .init(dx: -1, dy: 0)
+            case "right":
+                return .init(dx: 1, dy: 0)
+            case "down":
+                return .init(dx: 0, dy: -1)
+            default:
+                return .init(dx: 0, dy: 1)
+        }
+    }
+    
+    var destintyDoorName: String {
+        return self.userData?.value(forKey: "doorDestiny") as! String
+    }
+    
+    var destinyPhase: GamePhase? {
+        return GamePhase(rawValue: self.destiny)
+    }
+    
+    public func handleNodeContact(node: SKNode) {
+        if (!enabled) {
+            return
+        }
+        
+        
+        if node == User.singleton.spriteComponent.sprite {
+            
+            let nodeScene = node.scene as! TopDownScene
+            
+            if let gamePhase = destinyPhase {
+                nodeScene
+                    .goNextScene(
+                        gamePhase,
+                        destinyDoorName: self.destintyDoorName
+                    )
+            }
+            
+        }
+    }
+    
+    public func enable() {
+        
+        enabled = true
+        
+    }
+    
+    public func disable() {
+        enabled = false
+    }
+    
+    
+}
+
 /// Classe genérica que vai conter todos os atributos e métodos que são compartilhados por todas as cenas que contém o modo TopDown de exploração de ambiente.
 /// - parameters
 ///   - enemies: são uma lista contendo todos os inimigos que se deseja colocar dentro da cena;
@@ -23,8 +91,22 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
     }
     
+    var doors: [Door] {
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return []
+        }
+        
+        let doors = doorsNode.children as! [Door]
+        
+        return doors
+    }
+    
+    var spawnLocation: CGPoint?
+    
     var enemies : [Enemy]
     var inventoryItemSelected = 0
+    
+    var integerMaster = 0
     
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
@@ -51,6 +133,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var useItemLabel : SKLabelNode?
     
+    
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         self.enemies = []
@@ -72,7 +155,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupTileColliders()
         
         setupWalls()
-        setupCheckpoint()
+        setupDoors()
+
+        
         
         // se não existir um GameSceneData
         if GameSceneData.shared == nil {
@@ -83,8 +168,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             populateDataFromGameSceneData()
         }
         movementSystem.updateCameraPosition()
-
+        
+      
     }
+    
+   
     
     private func populateDataFromGameSceneData () {
         guard let shared = GameSceneData.shared else {return}
@@ -157,17 +245,21 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupFriendly(_ name: String, spriteName: String) {
-        self.enumerateChildNodes(withName: name) { [self] node, _ in
-            guard node is SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            
-            let weerdman = Friendly(
-                spriteName: spriteName,
-                xPosition: Int(465.311),
-                yPosition: Int(-40.816),
-                dialogs: [Dialogue(text: "Irmão!", person: "Weerdman", velocity: 50), Dialogue(text: "Eu não sou seu irmão.", person: "O Desconhecido", velocity: 50),Dialogue(text: "É o meu jeito de me expressar.", person: "Weerdman", velocity: 50),Dialogue(text: "Certo... Quem é você?", person: "O Desconhecido", velocity: 50),Dialogue(text: "Weerdman, à sua disposição. O que um soldado com uma bela e brilhante armadura está fazendo aqui nas ruínas esquecidas desse antigo mundo?", person: "Weerdman", velocity: 50),Dialogue(text: "Eu não sei.", person: "O Desconhecido", velocity: 50),Dialogue(text: "Você não sabe?", person: "Weerdman", velocity: 50),Dialogue(text: "Eu não me lembro… Eu não me lembro de nada…", person: "O Desconhecido", velocity: 50),Dialogue(text: "Interessante! Memorance, talvez… Sim, sim… Memorance! Posso ver os seus olhos brilharem com a corrupção blasfema de Leville. Ela te envolve como um véu invisível. Fascinante!", person: "Weerdman", velocity: 50),Dialogue(text: "O que é isso?.", person: "O Desconhecido", velocity: 50),Dialogue(text: "Ah… Memorance! Maldito feitiço! Apaga sua memória. É como o vento soprando grãos de areia. Faz com que seu cérebro se torne um quebra-cabeças a ser desvendado. Um sussurro etéreo distante nas profundezas do seu ser. Apenas eu posso desfazê-lo!", person: "Weerdman", velocity: 50), Dialogue(text: "Você?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Sim! Quem mais? Mas… Preciso de um favor, ou melhor, favores em troca.", person: "Weerdman", velocity: 50), Dialogue(text: "E se eu não aceitar?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Bom… então vague por essas terras sozinho. E procure por alguém gentil o suficiente para ajudá-lo. Não creio que encontrará, irmão. Tolo é aquele que tem uma joia rara nas mãos e sai para procurar pedras.", person: "Weerdman", velocity: 50),Dialogue(text: "Hum… e você acha que eu vou conseguir realizar esses favores para você?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Olha para você! Quase um herói de armadura! Parece que veio diretamente de um conto de fadas.", person: "Weerdman", velocity: 50), Dialogue(text: "De que favores estamos falando?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Preciso que recupere cristais. Pedras antigas de uma era distante!", person: "Weerdman", velocity: 50), Dialogue(text: "Entendo… Parece ser uma troca justa.", person: "O Desconhecido", velocity: 50), Dialogue(text: "Esse é o espírito! Ah, mas esteja avisado. Não sou nenhum tolo. Existem quatro cristais. A cada cristal que pegar, eu tiro um pouco da corrupção. No final, será novinho em folha! He he…", person: "Weerdman", velocity: 50), Dialogue(text: "Entendo. Por onde eu começo?", person: "O Desconhecido", velocity: 50), Dialogue(text: "O primeiro cristal está no calabouço. Mas tome cuidado… Mítico é o herói que busca o perigo sem se importar com sua reputação, armado apenas com bravura e caráter e a vontade de mudar o mundo. E no seu caso… uma espada!", person: "Weerdman", velocity: 50), Dialogue(text: "Certo?...", person: "O Desconhecido", velocity: 50), Dialogue(text: "Vá com cuidado, irmão! Mantenha seu corpo e mente afiados.", person: "Weerdman", velocity: 50), Dialogue(text: "Antes de ir, com o que esse cristal se parece?", person: "O Desconhecido", velocity: 50), Dialogue(text: "Você saberá quando vê-lo. Seu brilho pode ser visto pelos reinos como o Bombardeamento Celeste na era de Skyrise. Boa sorte!", person: "Weerdman", velocity: 50)]
-            )
-            
+
+        guard let node = self.childNode(withName: name) as? SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
+        //self.enumerateChildNodes(withName: name) { [self] node, _ in
+        
+        let weerdman = Friendly(
+                   spriteName: "weerdman",
+                   xPosition: Int(465.311),
+                   yPosition: Int(-40.816),
+                   dialogs: [],
+                   dialogsTwo: [],
+                   dialogsThree: []
+               )
+
             let spriteFriendly = weerdman.spriteComponent.sprite
+            spriteFriendly.scale(to: node.size)
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
@@ -178,13 +270,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             spriteFriendly.physicsBody?.affectedByGravity = false
             spriteFriendly.physicsBody?.isDynamic = false
             spriteFriendly.physicsBody?.allowsRotation = false
-            
+
             friendlySystem.friendlies.append(weerdman)
+
             self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
-        }
-        
-        excludeAll(name)
     }
+
+    
     
     override func keyUp(with event: NSEvent) {
         movementSystem.keyUp(event)
@@ -217,6 +309,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
             
+            createdItem.spriteComponent.sprite.scale(to: node.size)
+            
             self.itemSystem.items.append(createdItem)
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
         }
@@ -236,20 +330,24 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func setupCheckpoint () {
-        for child in children {
-            if let childName = child.name {
-                if childName.starts(with: "checkpoint") {
-                    child.physicsBody = SKPhysicsBody(rectangleOf: child.frame.size)
-                    child.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
-                    child.physicsBody?.collisionBitMask = PhysicCategory.character
-                    child.physicsBody?.contactTestBitMask = PhysicCategory.character
-                    child.physicsBody?.affectedByGravity = false
-                    child.physicsBody?.isDynamic = false // não se move
-                }
-            }
-            
+    private func setupDoors () {
+        
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return
         }
+        
+        let doors = doorsNode.children
+        
+        for door in doors {
+            door.physicsBody = SKPhysicsBody(rectangleOf: door.frame.size)
+            door.physicsBody?.categoryBitMask = PhysicCategory.door
+            door.physicsBody?.collisionBitMask = PhysicCategory.character
+            door.physicsBody?.contactTestBitMask = PhysicCategory.character
+            door.physicsBody?.affectedByGravity = false
+            door.physicsBody?.isDynamic = false
+        }
+        
+       
     }
     
     
@@ -287,49 +385,44 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
         
-        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
+        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.door
+        
         if collidedWithDoorNextScene {
-            // se dependendo do nome do checkpoint, é possível redirecionar o usuário para a cena correta.
-            if segundoBody.node?.name == "checkpoint_HallOfRelics" {
-                goNextScene(.HALL_OF_RELICS)
-            }
-            if segundoBody.node?.name == "checkpoint_Dungeon" {
-                goNextScene(.DUNGEON)
-            }
-            if segundoBody.node?.name == "checkpoint_MainHall" {
-                goNextScene(.MAIN_HALL_SCENE)
+            if let door = segundoBody.node as? Door {
+                door.handleNodeContact(node: primeiroBody.node!)
             }
         }
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
     }
      
-    
-    internal func goNextScene (_ scene : GamePhase) {
+    internal func goNextScene (_ scene : GamePhase, destinyDoorName: String) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
-        // primeiramente a gente descobre em qual fase ele tá.
-        let nextScene : SKScene?
-        switch scene {
-        case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "MainHallScene.sks")
-            User.singleton.currentPhase = .MAIN_HALL_SCENE
-        case .DUNGEON:
-            nextScene = SKScene(fileNamed: "Dungeon.sks")
-            User.singleton.currentPhase = .DUNGEON
-        case .HALL_OF_RELICS:
-            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
-            User.singleton.currentPhase = .HALL_OF_RELICS
-        }
-        nextScene?.scaleMode = .aspectFill
-        //nextScene?.size = view!.frame.size
-
-        // preparar user
+        let sceneName = scene.rawValue + ".sks"
+        
+        let nextScene = SKScene(fileNamed: sceneName) as! TopDownScene
+        
+        let destinyDoor = nextScene.doors.first { door in
+            door.name == destinyDoorName
+        }!
+        
+        let distanceFromSpawn = 100.0
+        
+        nextScene.spawnLocation = destinyDoor.parent!
+            .convert(destinyDoor.position, to: nextScene)
+        
+        nextScene.spawnLocation!.x += distanceFromSpawn * destinyDoor.spawnDirection.dx
+        nextScene.spawnLocation!.y += distanceFromSpawn * destinyDoor.spawnDirection.dy
+        
+        User.singleton.currentPhase = scene
+        
+        nextScene.scaleMode = .aspectFill
         User.singleton.spriteComponent.sprite.removeFromParent()
         self.removeAllChilds(self)
         
-        if let nextScene {
-            self.view?.presentScene(nextScene, transition: transition)
-        }
+
+        self.view?.presentScene(nextScene, transition: transition)
+        
     }
     
     private func removeAllChilds (_ scene : SKScene) {
@@ -439,6 +532,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         movementSystem.movePlayer()
         itemSystem.showCatchLabel()
         if gameState == .INVENTORY {

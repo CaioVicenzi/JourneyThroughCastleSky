@@ -173,7 +173,7 @@ extension BatalhaScene{
         
         // calcular percentual vida
         let lifePercentage : CGFloat = CGFloat(User.singleton.healthComponent.health) / CGFloat(User.singleton.healthComponent.maxHealth)
-        let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 0.2)//SKAction.scale(to: lifePercentage, duration: 1.0)
+        let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 0.2)
         
         healthBar?.run(scaleAction)
     }
