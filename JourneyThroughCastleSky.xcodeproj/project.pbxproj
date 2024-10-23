@@ -40,6 +40,8 @@
 		986032962CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */; };
 		986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986032A82CB8689300D8ECD2 /* CGSize.swift */; };
 		986032AA2CB8689800D8ECD2 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986032A82CB8689300D8ECD2 /* CGSize.swift */; };
+		987320E92CC94D2C00A1155E /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987320E82CC94D2A00A1155E /* CGVector.swift */; };
+		987320EA2CC94D2C00A1155E /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987320E82CC94D2A00A1155E /* CGVector.swift */; };
 		98838C262CA486C600709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C2E2CA4A65C00709648 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C2D2CA4A65C00709648 /* Skill.swift */; };
 		98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */; };
@@ -178,6 +180,7 @@
 		986032912CB7194E00D8ECD2 /* PlaceholderTileset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTileset.jpg; sourceTree = "<group>"; };
 		986032942CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = PlaceholderTilesetRed.jpg; sourceTree = "<group>"; };
 		986032A82CB8689300D8ECD2 /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		987320E82CC94D2A00A1155E /* CGVector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
 		98838C252CA486C600709648 /* CombatSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombatSystem.swift; sourceTree = "<group>"; };
 		98838C2D2CA4A65C00709648 /* Skill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		98838C302CA4A72300709648 /* IncreaseStrengthSkill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncreaseStrengthSkill.swift; sourceTree = "<group>"; };
@@ -289,6 +292,7 @@
 		986032A72CB8688C00D8ECD2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				987320E82CC94D2A00A1155E /* CGVector.swift */,
 				986032A82CB8689300D8ECD2 /* CGSize.swift */,
 			);
 			path = Extensions;
@@ -661,6 +665,7 @@
 				98838C762CA5E09800709648 /* ItemSystem.swift in Sources */,
 				98838C602CA5DC8600709648 /* User.swift in Sources */,
 				98838C5B2CA5DC8000709648 /* Skill.swift in Sources */,
+				987320E92CC94D2C00A1155E /* CGVector.swift in Sources */,
 				98838C5C2CA5DC8000709648 /* IncreaseStrengthSkill.swift in Sources */,
 				98838C4D2CA5DC6100709648 /* FightAIComponent.swift in Sources */,
 				98838C4E2CA5DC6100709648 /* FighterComponent.swift in Sources */,
@@ -733,6 +738,7 @@
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
 				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
 				FDE3CF2B2CA5FD7900D88620 /* Checkpoint.swift in Sources */,
+				987320EA2CC94D2C00A1155E /* CGVector.swift in Sources */,
 				FD932AFF2C9B56EE0047B5B7 /* SpriteComponent.swift in Sources */,
 				FDAD41F62C9CB7D40053A4B0 /* MovementSystem.swift in Sources */,
 				FDAD41F82C9CBA230053A4B0 /* ItemSystem.swift in Sources */,
@@ -953,7 +959,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -980,7 +986,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";

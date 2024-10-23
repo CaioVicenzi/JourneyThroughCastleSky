@@ -13,5 +13,6 @@ class SpriteComponent: Component {
     
     init(_ spriteName: String) {
         self.sprite = SKSpriteNode(imageNamed: spriteName)
+        
     }
 }
