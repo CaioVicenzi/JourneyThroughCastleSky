@@ -22,9 +22,7 @@ class ViewController: NSViewController {
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
             view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-            view.showsPhysics = true
+           
         }
     }
 }
