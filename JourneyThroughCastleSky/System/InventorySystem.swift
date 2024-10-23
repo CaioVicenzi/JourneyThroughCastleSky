@@ -24,7 +24,7 @@ class InventorySystem {
         
         ItemSystem.useItem(item)
             
-        if item.consumableComponent?.effect.type == .NONE {
+        if item.consumableComponent?.effect.type == .NONE || item.consumableComponent?.effect.type == .UP_LEVEL {
             //não é pra remover
             gameScene.dialogSystem.inputDialog("I can't consume this item...", person: "You", velocity: 20)
         } else {

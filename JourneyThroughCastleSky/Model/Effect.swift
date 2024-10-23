@@ -22,4 +22,5 @@ enum EffectType {
     case DAMAGE
     case STAMINE
     case NONE
+    case UP_LEVEL
 }
