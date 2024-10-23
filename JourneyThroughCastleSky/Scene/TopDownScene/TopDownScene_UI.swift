@@ -126,7 +126,6 @@ extension TopDownScene {
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
         
-        sprite.scale(to: scale)
         addChild(sprite)
     }
     

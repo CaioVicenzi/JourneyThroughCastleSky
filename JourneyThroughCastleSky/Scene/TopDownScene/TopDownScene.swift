@@ -238,8 +238,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
         self.enumerateChildNodes(withName: name) { [self] node, _ in
-            guard node is SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
-            
+            guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
             let weerdman = Friendly(
                 spriteName: spriteName,
                 xPosition: Int(465.311),
@@ -248,6 +247,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             )
             
             let spriteFriendly = weerdman.spriteComponent.sprite
+            spriteFriendly.scale(to: node.size)
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
@@ -295,6 +295,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             
             
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
+            
+            createdItem.spriteComponent.sprite.scale(to: node.size)
             
             self.itemSystem.items.append(createdItem)
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
