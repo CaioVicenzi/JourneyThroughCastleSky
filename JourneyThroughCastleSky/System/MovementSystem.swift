@@ -104,9 +104,6 @@ class MovementSystem {
         cameraPosition.x = Math
             .clamp(value: cameraPosition.x, minV: minX, maxV: maxX)
         
-        
-        print(gameScene.size)
-        
         cameraPosition.y = Math
             .clamp(value: cameraPosition.y, minV: minY, maxV: maxY)
       
