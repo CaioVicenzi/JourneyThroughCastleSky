@@ -16,10 +16,14 @@ class Friendly{
     let spriteComponent : SpriteComponent
     let positionComponent : PositionComponent
     let dialogueComponent : DialogueComponent
+    let dialogueComponentTwo : DialogueComponent
+    let dialogueComponentThree : DialogueComponent
     
-    init(spriteName: String, xPosition: Int, yPosition : Int, dialogs : [Dialogue]) {
+    init(spriteName: String, xPosition: Int, yPosition : Int, dialogs : [Dialogue], dialogsTwo : [Dialogue], dialogsThree : [Dialogue]) {
         self.spriteComponent = SpriteComponent(spriteName)
         self.dialogueComponent = DialogueComponent(dialogs: dialogs)
+        self.dialogueComponentTwo = DialogueComponent(dialogs: dialogsTwo)
+        self.dialogueComponentThree = DialogueComponent(dialogs: dialogsThree)
         self.positionComponent = PositionComponent(xPosition: xPosition, yPosition: yPosition)
     }
 }
