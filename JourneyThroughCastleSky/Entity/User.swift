@@ -45,20 +45,34 @@ class User: Entity {
         getComponent(SkillComponent.self) as! SkillComponent
     }
     
+    var levelComponent : LevelComponent {
+        getComponent(LevelComponent.self) as! LevelComponent
+    }
+    
     override init() {
         self.currentPhase = .MAIN_HALL_SCENE
         super.init()
         addComponent(HealthComponent(health: 100))
         addComponent(InventoryComponent())
         addComponent(MovementComponent(velocity: 3))
-        addComponent(StaminaComponent(stamina: 100))
+        addComponent(StaminaComponent(stamina: 100, maxStamina: 100))
         addComponent(SpriteComponent("sprite"))
         addComponent(FighterComponent(damage: 5))
         addComponent(AffectedByEffect())
         addComponent(PositionComponent(xPosition: 100, yPosition: 100))
         addComponent(SkillComponent())
+        addComponent(LevelComponent(0))
     }
     
+    /// Função para aumentar o level do user, ele aumenta o level, a saúde máxima, a saúde, além de maximizar a estamina, além de aumentar o dano do usuário.
+    func upLevel () {
+        levelComponent.level += 1
+        self.healthComponent.maxHealth += 10
+        self.healthComponent.health = self.healthComponent.maxHealth
+        self.staminaComponent.maxStamina += 10
+        self.staminaComponent.stamina = self.staminaComponent.maxStamina
+        self.fighterComponent.damage += 10
+    }
 }
 
 /*

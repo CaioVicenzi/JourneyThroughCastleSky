@@ -7,6 +7,74 @@
 import Foundation
 import SpriteKit
 
+
+class Door: SKSpriteNode {
+    
+    var enabled = true
+    
+    var destiny: String {
+        return self.userData?.value(forKey: "destiny") as! String
+    }
+    
+    var spawnDirection: CGVector {
+        let directionString = self.userData?.value(forKey: "spawnDirection") as! String
+        
+        switch(directionString) {
+            case "up":
+                return .init(dx: 0, dy: 1)
+            case "left":
+                return .init(dx: -1, dy: 0)
+            case "right":
+                return .init(dx: 1, dy: 0)
+            case "down":
+                return .init(dx: 0, dy: -1)
+            default:
+                return .init(dx: 0, dy: 1)
+        }
+    }
+    
+    var destintyDoorName: String {
+        return self.userData?.value(forKey: "doorDestiny") as! String
+    }
+    
+    var destinyPhase: GamePhase? {
+        return GamePhase(rawValue: self.destiny)
+    }
+    
+    public func handleNodeContact(node: SKNode) {
+        if (!enabled) {
+            return
+        }
+        
+        
+        if node == User.singleton.spriteComponent.sprite {
+            
+            let nodeScene = node.scene as! TopDownScene
+            
+            if let gamePhase = destinyPhase {
+                nodeScene
+                    .goNextScene(
+                        gamePhase,
+                        destinyDoorName: self.destintyDoorName
+                    )
+            }
+            
+        }
+    }
+    
+    public func enable() {
+        
+        enabled = true
+        
+    }
+    
+    public func disable() {
+        enabled = false
+    }
+    
+    
+}
+
 /// Classe genérica que vai conter todos os atributos e métodos que são compartilhados por todas as cenas que contém o modo TopDown de exploração de ambiente.
 /// - parameters
 ///   - enemies: são uma lista contendo todos os inimigos que se deseja colocar dentro da cena;
@@ -22,6 +90,18 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return boundsNode.frame
         
     }
+    
+    var doors: [Door] {
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return []
+        }
+        
+        let doors = doorsNode.children as! [Door]
+        
+        return doors
+    }
+    
+    var spawnLocation: CGPoint?
     
     var enemies : [Enemy]
     var inventoryItemSelected = 0
@@ -53,6 +133,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var useItemLabel : SKLabelNode?
     
+    
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         self.enemies = []
@@ -74,7 +155,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupTileColliders()
         
         setupWalls()
-        setupCheckpoint()
+        setupDoors()
+
+        
         
         
         if GameSceneData.shared == nil {
@@ -85,8 +168,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             populateDataFromGameSceneData()
         }
         movementSystem.updateCameraPosition()
-
+        
+      
     }
+    
+   
     
     private func populateDataFromGameSceneData () {
         guard let shared = GameSceneData.shared else {return}
@@ -153,6 +239,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupFriendly(_ name: String, spriteName: String) {
+
         guard self.childNode(withName: name) != nil  else {print("A gente nao conseguiu identificar o friendly"); return}
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
@@ -166,6 +253,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                )
 
             let spriteFriendly = weerdman.spriteComponent.sprite
+            spriteFriendly.scale(to: node.size)
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
@@ -190,11 +278,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     /// Função que posiciona todos os itens dentro da lista de itens dentro do mapa.
     internal func setupItems () {
-        
         setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
         setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
         setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
         setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
+        setupItem("cristal", spriteName: "cristal", effect: Effect(type: .UP_LEVEL, amount: 0))
     }
     
     private func setupItem (_ name : String, spriteName : String, effect : Effect) {
@@ -209,10 +297,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                 case .DAMAGE: nameItem = "Balão de guerra"; descriptionItem = "Um balão que aumenta seu ataque em 10"
                 case .STAMINE: nameItem = "Maçã de diamante"; descriptionItem = "Uma maçã que aumenta sua estamina em 10"
                 case .NONE: nameItem = "Chaves"; descriptionItem = "Uma chave misteriosa"
+                case .UP_LEVEL: nameItem = "Cristal"; descriptionItem = "Um cristal misterioso"
             }
             
             
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
+            
+            createdItem.spriteComponent.sprite.scale(to: node.size)
             
             self.itemSystem.items.append(createdItem)
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
@@ -233,20 +324,24 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    private func setupCheckpoint () {
-        for child in children {
-            if let childName = child.name {
-                if childName.starts(with: "checkpoint") {
-                    child.physicsBody = SKPhysicsBody(rectangleOf: child.frame.size)
-                    child.physicsBody?.categoryBitMask = PhysicCategory.checkpoint
-                    child.physicsBody?.collisionBitMask = PhysicCategory.character
-                    child.physicsBody?.contactTestBitMask = PhysicCategory.character
-                    child.physicsBody?.affectedByGravity = false
-                    child.physicsBody?.isDynamic = false // não se move
-                }
-            }
-            
+    private func setupDoors () {
+        
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return
         }
+        
+        let doors = doorsNode.children
+        
+        for door in doors {
+            door.physicsBody = SKPhysicsBody(rectangleOf: door.frame.size)
+            door.physicsBody?.categoryBitMask = PhysicCategory.door
+            door.physicsBody?.collisionBitMask = PhysicCategory.character
+            door.physicsBody?.contactTestBitMask = PhysicCategory.character
+            door.physicsBody?.affectedByGravity = false
+            door.physicsBody?.isDynamic = false
+        }
+        
+       
     }
     
     
@@ -284,51 +379,45 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         let collidedWithEnemy = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.enemy
         
         
-        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.checkpoint
+        let collidedWithDoorNextScene = primeiroBody.categoryBitMask == PhysicCategory.character && segundoBody.categoryBitMask == PhysicCategory.door
+        
         if collidedWithDoorNextScene {
-            // se dependendo do nome do checkpoint, é possível redirecionar o usuário para a cena correta.
-            if segundoBody.node?.name == "checkpoint_HallOfRelics" {
-                goNextScene(.HALL_OF_RELICS)
-            }
-            if segundoBody.node?.name == "checkpoint_Dungeon" {
-                goNextScene(.DUNGEON)
-            }
-            if segundoBody.node?.name == "checkpoint_MainHall" {
-                goNextScene(.MAIN_HALL_SCENE)
+            if let door = segundoBody.node as? Door {
+                door.handleNodeContact(node: primeiroBody.node!)
             }
         }
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
     }
      
-    
-    internal func goNextScene (_ scene : GamePhase) {
+    internal func goNextScene (_ scene : GamePhase, destinyDoorName: String) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
-        // primeiramente a gente descobre em qual fase ele tá.
-        let nextScene : SKScene?
-        switch scene {
-        case .MAIN_HALL_SCENE:
-            nextScene = SKScene(fileNamed: "MainHallScene.sks")
-            User.singleton.currentPhase = .HALL_OF_RELICS
-        case .DUNGEON:
-            nextScene = SKScene(fileNamed: "Dungeon.sks")
-            User.singleton.currentPhase = .DUNGEON
-        case .HALL_OF_RELICS:
-            nextScene = SKScene(fileNamed: "HallOfRelics.sks")
-        }
-        nextScene?.scaleMode = .aspectFill
-        //nextScene?.size = view!.frame.size
+        let sceneName = scene.rawValue + ".sks"
+        
+        let nextScene = SKScene(fileNamed: sceneName) as! TopDownScene
+        
+        let destinyDoor = nextScene.doors.first { door in
+            door.name == destinyDoorName
+        }!
+        
+        let distanceFromSpawn = 100.0
+        
+        nextScene.spawnLocation = destinyDoor.parent!
+            .convert(destinyDoor.position, to: nextScene)
+        
+        nextScene.spawnLocation!.x += distanceFromSpawn * destinyDoor.spawnDirection.dx
+        nextScene.spawnLocation!.y += distanceFromSpawn * destinyDoor.spawnDirection.dy
+        
+        User.singleton.currentPhase = scene
+        
+        nextScene.scaleMode = .aspectFill
 
-        // preparar user
-        #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
-        User.singleton.positionComponent.xPosition = 10
-        User.singleton.positionComponent.yPosition = 50
         User.singleton.spriteComponent.sprite.removeFromParent()
         self.removeAllParents(self)
         
-        if let nextScene {
-            self.view?.presentScene(nextScene, transition: transition)
-        }
+
+        self.view?.presentScene(nextScene, transition: transition)
+        
     }
     
     private func removeAllParents (_ scene : SKScene) {
@@ -438,6 +527,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         movementSystem.movePlayer()
         itemSystem.showCatchLabel()
         if gameState == .INVENTORY {

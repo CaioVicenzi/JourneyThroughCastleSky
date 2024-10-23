@@ -62,8 +62,8 @@
             filePath = "JourneyThroughCastleSky/System/ItemSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "showCatchLabel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "JourneyThroughCastleSky/System/ItemSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "showCatchLabel()"
             landmarkType = "7">
          </BreakpointContent>
@@ -94,9 +94,9 @@
             filePath = "JourneyThroughCastleSky/Scene/TopDownScene/TopDownScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
-            landmarkName = "goNextScene(_:)"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
