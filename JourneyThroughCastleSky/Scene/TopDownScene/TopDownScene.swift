@@ -74,7 +74,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupWalls()
         setupCheckpoint()
         
-        
+        // se não existir um GameSceneData
         if GameSceneData.shared == nil {
             setupEnemies()
             setupItems()
@@ -102,14 +102,17 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         excludeAll("friendlyGuy")
         
         for enemy in shared.enemies {
+            //enemy.spriteComponent.sprite.removeFromParent()
             addChild(enemy.spriteComponent.sprite)
         }
         
         for friendly in shared.friendlies {
+            //friendly.spriteComponent.sprite.removeFromParent()
             addChild(friendly.spriteComponent.sprite)
         }
         
         for item in shared.items {
+            //item.spriteComponent.sprite.removeFromParent()
             addChild(item.spriteComponent.sprite)
         }
     }
@@ -138,6 +141,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             spriteInimigo.physicsBody?.isDynamic = false
             spriteInimigo.physicsBody?.allowsRotation = false
             
+            if spriteInimigo.parent != nil {
+                self.removeFromParent()
+            }
             self.enemies.append(enemyCriado)
             self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 200))
         }
@@ -318,18 +324,15 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         //nextScene?.size = view!.frame.size
 
         // preparar user
-        #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
-        User.singleton.positionComponent.xPosition = 10
-        User.singleton.positionComponent.yPosition = 50
         User.singleton.spriteComponent.sprite.removeFromParent()
-        self.removeAllParents(self)
+        self.removeAllChilds(self)
         
         if let nextScene {
             self.view?.presentScene(nextScene, transition: transition)
         }
     }
     
-    private func removeAllParents (_ scene : SKScene) {
+    private func removeAllChilds (_ scene : SKScene) {
         for child in scene.children {
             if let childName = child.name, childName.contains("Enemy") {
                 child.removeFromParent()

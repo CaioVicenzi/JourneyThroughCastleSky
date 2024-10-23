@@ -30,7 +30,7 @@ class MovementSystem {
         // Atualiza a posição do sprite com base nas teclas pressionadas
         var moveX: CGFloat = 0
         var moveY: CGFloat = 0
-        let playerSpeed = 150.0
+        let playerSpeed = 300.0
 
         switch mostRecentMove.last {
             case .UP: moveY += playerSpeed

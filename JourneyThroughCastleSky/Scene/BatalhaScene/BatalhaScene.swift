@@ -35,6 +35,7 @@ class BatalhaScene : SKScene {
     internal var gameChooseState : chooseState = .CHOOSE_BUTTON
     private var positionItemSelected = 0
     private var enemyDodge = false
+    var reward : Item? = nil
     
     var actionDescription : SKShapeNode? = nil
     var healthBar : SKSpriteNode? = nil
@@ -75,9 +76,10 @@ class BatalhaScene : SKScene {
         setupEnemyLifeBar()
     }
     
-    func config (enemy : Enemy) {
+    func config (enemy : Enemy, reward : Item? = nil) {
         battleSystem.enemy = enemy
         self.enemy = enemy
+        self.reward = reward
     }
     
     // MARK: LÓGICA
@@ -351,6 +353,11 @@ class BatalhaScene : SKScene {
         MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
             inimigo.id == self.enemy.id
         })
+        
+        // recebe a recompensa
+        if let reward {
+            User.singleton.inventoryComponent.itens.append(reward)
+        }
         
         
         if let nextScene {
