@@ -10,12 +10,66 @@ import SpriteKit
 
 class Door: SKSpriteNode {
     
+    var enabled = true
+    
     var destiny: String {
         return self.userData?.value(forKey: "destiny") as! String
     }
     
+    var spawnDirection: CGVector {
+        let directionString = self.userData?.value(forKey: "spawnDirection") as! String
+        
+        switch(directionString) {
+            case "up":
+                return .init(dx: 0, dy: 1)
+            case "left":
+                return .init(dx: -1, dy: 0)
+            case "right":
+                return .init(dx: 1, dy: 0)
+            case "down":
+                return .init(dx: 0, dy: -1)
+            default:
+                return .init(dx: 0, dy: 1)
+        }
+    }
+    
+    var destintyDoorName: String {
+        return self.userData?.value(forKey: "doorDestiny") as! String
+    }
+    
     var destinyPhase: GamePhase? {
         return GamePhase(rawValue: self.destiny)
+    }
+    
+    public func handleNodeContact(node: SKNode) {
+        if (!enabled) {
+            return
+        }
+        
+        
+        if node == User.singleton.spriteComponent.sprite {
+            
+            let nodeScene = node.scene as! TopDownScene
+            
+            if let gamePhase = destinyPhase {
+                nodeScene
+                    .goNextScene(
+                        gamePhase,
+                        destinyDoorName: self.destintyDoorName
+                    )
+            }
+            
+        }
+    }
+    
+    public func enable() {
+        
+        enabled = true
+        
+    }
+    
+    public func disable() {
+        enabled = false
     }
     
     
@@ -36,6 +90,18 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return boundsNode.frame
         
     }
+    
+    var doors: [Door] {
+        guard let doorsNode = self.childNode(withName: "doors") else {
+            return []
+        }
+        
+        let doors = doorsNode.children as! [Door]
+        
+        return doors
+    }
+    
+    var spawnLocation: CGPoint?
     
     var enemies : [Enemy]
     var inventoryItemSelected = 0
@@ -65,6 +131,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var useItemLabel : SKLabelNode?
     
+    
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         self.enemies = []
@@ -87,6 +154,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         setupWalls()
         setupDoors()
+
+        
         
         
         if GameSceneData.shared == nil {
@@ -97,8 +166,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             populateDataFromGameSceneData()
         }
         movementSystem.updateCameraPosition()
-
+        
+      
     }
+    
+   
     
     private func populateDataFromGameSceneData () {
         guard let shared = GameSceneData.shared else {return}
@@ -302,34 +374,41 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         if collidedWithDoorNextScene {
             if let door = segundoBody.node as? Door {
-                if let gamePhase = door.destinyPhase {
-                    goNextScene(gamePhase)
-                }
+                door.handleNodeContact(node: primeiroBody.node!)
             }
         }
         if collidedWithEnemy { collideWithEnemy(segundoBody) }
     }
      
-    
-    internal func goNextScene (_ scene : GamePhase) {
+    internal func goNextScene (_ scene : GamePhase, destinyDoorName: String) {
         let transition = SKTransition.fade(withDuration: 1.0)
         
         let sceneName = scene.rawValue + ".sks"
         
-        let nextScene = SKScene(fileNamed: sceneName)
+        let nextScene = SKScene(fileNamed: sceneName) as! TopDownScene
+        
+        let destinyDoor = nextScene.doors.first { door in
+            door.name == destinyDoorName
+        }!
+        
+        let distanceFromSpawn = 100.0
+        
+        nextScene.spawnLocation = destinyDoor.parent!
+            .convert(destinyDoor.position, to: nextScene)
+        
+        nextScene.spawnLocation!.x += distanceFromSpawn * destinyDoor.spawnDirection.dx
+        nextScene.spawnLocation!.y += distanceFromSpawn * destinyDoor.spawnDirection.dy
+        
         User.singleton.currentPhase = scene
         
-        nextScene?.scaleMode = .aspectFill
+        nextScene.scaleMode = .aspectFill
 
-        #warning("Isso aqui não é muito bom, a posição do usuário pode ser ajustada de outra forma.")
-        User.singleton.positionComponent.xPosition = 10
-        User.singleton.positionComponent.yPosition = 50
         User.singleton.spriteComponent.sprite.removeFromParent()
         self.removeAllParents(self)
         
-        if let nextScene {
-            self.view?.presentScene(nextScene, transition: transition)
-        }
+
+        self.view?.presentScene(nextScene, transition: transition)
+        
     }
     
     private func removeAllParents (_ scene : SKScene) {
@@ -439,6 +518,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
         movementSystem.movePlayer()
         itemSystem.showCatchLabel()
         if gameState == .INVENTORY {
