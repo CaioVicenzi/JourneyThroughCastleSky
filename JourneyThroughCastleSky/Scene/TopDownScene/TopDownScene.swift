@@ -240,7 +240,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
 
-        guard self.childNode(withName: name) != nil  else {print("A gente nao conseguiu identificar o friendly"); return}
+        guard let node = self.childNode(withName: name) as? SKSpriteNode  else {print("A gente nao conseguiu identificar o friendly"); return}
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
@@ -256,6 +256,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
+            spriteFriendly.scale(to: node.size)
             spriteFriendly.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: friendlyWidth, height: friendlyHeight))
             spriteFriendly.physicsBody?.categoryBitMask = PhysicCategory.enemy
             spriteFriendly.physicsBody?.collisionBitMask = PhysicCategory.character
@@ -268,8 +269,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
 
             self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
     }
-
-    
     
     override func keyUp(with event: NSEvent) {
         movementSystem.keyUp(event)
@@ -339,8 +338,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             door.physicsBody?.affectedByGravity = false
             door.physicsBody?.isDynamic = false
         }
-        
-       
     }
     
     
