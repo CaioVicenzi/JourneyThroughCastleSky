@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FriendlySystem {
+class FriendlySystem: System {
     var gameScene : TopDownScene? = nil
     var friendlies : [Friendly] = []
     var integerMaster : Int = 0

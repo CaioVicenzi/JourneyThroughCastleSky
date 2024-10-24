@@ -19,11 +19,9 @@ import SpriteKit
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var bounds: CGRect {
-        
         let boundsNode = self.childNode(withName: "bounds")!
         
         return boundsNode.frame
-        
     }
     
     var doors: [Door] {

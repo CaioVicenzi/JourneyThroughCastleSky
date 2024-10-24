@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class ItemSystem {
+class ItemSystem: System {
     var gameScene : TopDownScene!
     var items : [Item]
     

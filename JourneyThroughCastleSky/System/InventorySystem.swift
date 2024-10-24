@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 /// Toda a lógica envolvida com o inventário será desenvolvida aqui dentro dessa classe
-class InventorySystem {
+class InventorySystem: System {
     var gameScene : TopDownScene!
     
     func config (_ gameScene : TopDownScene) {

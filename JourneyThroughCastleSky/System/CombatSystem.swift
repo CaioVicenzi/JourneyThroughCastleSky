@@ -4,7 +4,7 @@ struct AttackResult {
 }
 
 
-class CombatSystem {
+class CombatSystem: System {
     var enemyDodge = false
     var enemy: Enemy!
  

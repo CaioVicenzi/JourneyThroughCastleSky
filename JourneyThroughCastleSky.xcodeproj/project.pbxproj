@@ -19,6 +19,8 @@
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		982388BE2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
 		982388BF2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
+		982388C12CCADCAA00BE2D74 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388C02CCADCA900BE2D74 /* System.swift */; };
+		982388C22CCADCAA00BE2D74 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388C02CCADCA900BE2D74 /* System.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
@@ -171,6 +173,7 @@
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
 		982388BD2CCADBE700BE2D74 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		982388C02CCADCA900BE2D74 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
 		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
@@ -367,6 +370,7 @@
 		FD932AEF2C9B55A80047B5B7 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				982388C02CCADCA900BE2D74 /* System.swift */,
 				98838C252CA486C600709648 /* CombatSystem.swift */,
 				FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */,
 				FDAD41F92C9E02540053A4B0 /* DialogSystem.swift */,
@@ -668,6 +672,7 @@
 				98838C752CA5E09800709648 /* CombatSystem.swift in Sources */,
 				98838C762CA5E09800709648 /* ItemSystem.swift in Sources */,
 				98838C602CA5DC8600709648 /* User.swift in Sources */,
+				982388C22CCADCAA00BE2D74 /* System.swift in Sources */,
 				98838C5B2CA5DC8000709648 /* Skill.swift in Sources */,
 				987320E92CC94D2C00A1155E /* CGVector.swift in Sources */,
 				98838C5C2CA5DC8000709648 /* IncreaseStrengthSkill.swift in Sources */,
@@ -723,6 +728,7 @@
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
 				982388BE2CCADBE700BE2D74 /* Door.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
+				982388C12CCADCAA00BE2D74 /* System.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				98DAD01B2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */,

@@ -10,7 +10,7 @@ import SpriteKit
 
 
 /// Uma classe onde toda a lógica relacionada ao movimento dentro de uma TopDownScene está contida.
-class MovementSystem {
+class MovementSystem: System {
     var gameScene : TopDownScene!
     
     // essa variável é um array de todas as teclas que estão pressionadas, a mais recente é a que vai valer, isso faz com que o movimento do usuário seja igual a outros jogos.

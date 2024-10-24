@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MenuSystem {
+class MenuSystem: System {
     var gameScene : TopDownScene!
     
     func config (_ gameScene : TopDownScene) {
