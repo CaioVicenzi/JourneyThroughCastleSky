@@ -407,11 +407,12 @@ class BatalhaScene : SKScene {
     internal func refreshItemState () {
         for i in 0 ..< User.singleton.inventoryComponent.itens.count {
 
-            let node = self.childNode(withName: "itemRow\(i)") as! SKShapeNode
-            if i == positionItemSelected {
-                node.fillColor = .blue
-            } else {
-                node.fillColor = .gray
+            if let node = self.childNode(withName: "itemRow\(i)") as? SKShapeNode {
+                if i == positionItemSelected {
+                    node.fillColor = .blue
+                } else {
+                    node.fillColor = .gray
+                }
             }
         }
     }

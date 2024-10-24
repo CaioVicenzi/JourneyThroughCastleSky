@@ -7,74 +7,6 @@
 import Foundation
 import SpriteKit
 
-
-class Door: SKSpriteNode {
-    
-    var enabled = true
-    
-    var destiny: String {
-        return self.userData?.value(forKey: "destiny") as! String
-    }
-    
-    var spawnDirection: CGVector {
-        let directionString = self.userData?.value(forKey: "spawnDirection") as! String
-        
-        switch(directionString) {
-            case "up":
-                return .init(dx: 0, dy: 1)
-            case "left":
-                return .init(dx: -1, dy: 0)
-            case "right":
-                return .init(dx: 1, dy: 0)
-            case "down":
-                return .init(dx: 0, dy: -1)
-            default:
-                return .init(dx: 0, dy: 1)
-        }
-    }
-    
-    var destintyDoorName: String {
-        return self.userData?.value(forKey: "doorDestiny") as! String
-    }
-    
-    var destinyPhase: GamePhase? {
-        return GamePhase(rawValue: self.destiny)
-    }
-    
-    public func handleNodeContact(node: SKNode) {
-        if (!enabled) {
-            return
-        }
-        
-        
-        if node == User.singleton.spriteComponent.sprite {
-            
-            let nodeScene = node.scene as! TopDownScene
-            
-            if let gamePhase = destinyPhase {
-                nodeScene
-                    .goNextScene(
-                        gamePhase,
-                        destinyDoorName: self.destintyDoorName
-                    )
-            }
-            
-        }
-    }
-    
-    public func enable() {
-        
-        enabled = true
-        
-    }
-    
-    public func disable() {
-        enabled = false
-    }
-    
-    
-}
-
 /// Classe genérica que vai conter todos os atributos e métodos que são compartilhados por todas as cenas que contém o modo TopDown de exploração de ambiente.
 /// - parameters
 ///   - enemies: são uma lista contendo todos os inimigos que se deseja colocar dentro da cena;
@@ -395,6 +327,14 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
      
     internal func goNextScene (_ scene : GamePhase, destinyDoorName: String) {
+        let showDialogsNotGoThere = scene == .HALL_OF_RELICS && GameProgressionSystem.singleton.estage != 1 || scene == .DUNGEON && GameProgressionSystem.singleton.estage != 2
+        
+        if showDialogsNotGoThere {
+            dialogSystem.inputDialog("Ei cara, por aí não!", person: "Weerdman")
+            dialogSystem.nextDialogue()
+            return
+        }
+        
         let transition = SKTransition.fade(withDuration: 1.0)
         
         let sceneName = scene.rawValue + ".sks"
