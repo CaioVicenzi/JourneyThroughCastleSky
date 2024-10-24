@@ -46,6 +46,9 @@ class ItemSystem {
         
         if userHasKey {
             // ir para o boss (a nossa jornada para o boss começa agora
+            User.singleton.inventoryComponent.itens.removeAll { item in
+                item.consumableComponent?.nome == "Chaves"
+            }
             gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
 
         } else {
