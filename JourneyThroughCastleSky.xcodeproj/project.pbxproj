@@ -17,6 +17,8 @@
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
+		982388BE2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
+		982388BF2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
@@ -168,6 +170,7 @@
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
+		982388BD2CCADBE700BE2D74 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
 		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
@@ -389,6 +392,7 @@
 		FDAC55062C9B554200E90E17 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				982388BD2CCADBE700BE2D74 /* Door.swift */,
 				98838C2F2CA4A68B00709648 /* Skills */,
 				FD932B082C9B57AA0047B5B7 /* User.swift */,
 				FD932B0C2C9B591A0047B5B7 /* Enemy.swift */,
@@ -692,6 +696,7 @@
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
 				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* MainHallScene.swift in Sources */,
+				982388BF2CCADBE700BE2D74 /* Door.swift in Sources */,
 				986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
 				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
@@ -716,6 +721,7 @@
 				FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */,
 				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
+				982388BE2CCADBE700BE2D74 /* Door.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
