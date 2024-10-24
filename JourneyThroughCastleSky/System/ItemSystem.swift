@@ -46,12 +46,8 @@ class ItemSystem {
         
         if userHasKey {
             // ir para o boss (a nossa jornada para o boss começa agora
-            let batalhaScene = BatalhaScene(size: gameScene.size)
-            batalhaScene.config(enemy: Enemy(x: 0, y: 0, damage: 100, health: 100, spriteName: "zyroth"), reward: crystal)
-            let transition = SKTransition.fade(withDuration: 1.0)
-            batalhaScene.enemy.spriteComponent.sprite.scale(to: CGSize(width: 100, height: 200))
-            gameScene.view?.presentScene(batalhaScene, transition: transition)
-            
+            gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
+
         } else {
             gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
         }
