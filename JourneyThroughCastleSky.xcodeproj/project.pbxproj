@@ -17,6 +17,38 @@
 		43F007702CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
 		43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
 		43F007722CA72DDA0049590D /* MainSceneScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */; };
+		982388892CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */; };
+		9823888A2CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9823887F2CCABF2500BE2D74 /* Spriteworm-0001 1.png */; };
+		9823888B2CCABF2500BE2D74 /* Protag.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 982388832CCABF2500BE2D74 /* Protag.pdf */; };
+		9823888C2CCABF2500BE2D74 /* bricks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9823887C2CCABF2500BE2D74 /* bricks.jpg */; };
+		9823888D2CCABF2500BE2D74 /* dungeon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388752CCABF2500BE2D74 /* dungeon.jpg */; };
+		9823888E2CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388812CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png */; };
+		9823888F2CCABF2500BE2D74 /* cobblestone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9823887D2CCABF2500BE2D74 /* cobblestone.jpg */; };
+		982388902CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388792CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png */; };
+		982388912CCABF2500BE2D74 /* Protag.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388842CCABF2500BE2D74 /* Protag.png */; };
+		982388922CCABF2500BE2D74 /* hallofrelics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388762CCABF2500BE2D74 /* hallofrelics.jpg */; };
+		982388932CCABF2500BE2D74 /* Protag.zip in Resources */ = {isa = PBXBuildFile; fileRef = 982388852CCABF2500BE2D74 /* Protag.zip */; };
+		982388942CCABF2500BE2D74 /* Worm.zip in Resources */ = {isa = PBXBuildFile; fileRef = 982388872CCABF2500BE2D74 /* Worm.zip */; };
+		982388952CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9823887A2CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png */; };
+		982388962CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388802CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png */; };
+		982388972CCABF2500BE2D74 /* Worm.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388862CCABF2500BE2D74 /* Worm.png */; };
+		982388982CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */; };
+		982388992CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9823887F2CCABF2500BE2D74 /* Spriteworm-0001 1.png */; };
+		9823889A2CCABF2500BE2D74 /* Protag.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 982388832CCABF2500BE2D74 /* Protag.pdf */; };
+		9823889B2CCABF2500BE2D74 /* bricks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9823887C2CCABF2500BE2D74 /* bricks.jpg */; };
+		9823889C2CCABF2500BE2D74 /* dungeon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388752CCABF2500BE2D74 /* dungeon.jpg */; };
+		9823889D2CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388812CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png */; };
+		9823889E2CCABF2500BE2D74 /* cobblestone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9823887D2CCABF2500BE2D74 /* cobblestone.jpg */; };
+		9823889F2CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388792CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png */; };
+		982388A02CCABF2500BE2D74 /* Protag.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388842CCABF2500BE2D74 /* Protag.png */; };
+		982388A12CCABF2500BE2D74 /* hallofrelics.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388762CCABF2500BE2D74 /* hallofrelics.jpg */; };
+		982388A22CCABF2500BE2D74 /* Protag.zip in Resources */ = {isa = PBXBuildFile; fileRef = 982388852CCABF2500BE2D74 /* Protag.zip */; };
+		982388A32CCABF2500BE2D74 /* Worm.zip in Resources */ = {isa = PBXBuildFile; fileRef = 982388872CCABF2500BE2D74 /* Worm.zip */; };
+		982388A42CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9823887A2CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png */; };
+		982388A52CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388802CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png */; };
+		982388A62CCABF2500BE2D74 /* Worm.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388862CCABF2500BE2D74 /* Worm.png */; };
+		982388A82CCAC52300BE2D74 /* Ceiling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388A72CCAC52300BE2D74 /* Ceiling.jpg */; };
+		982388A92CCAC52300BE2D74 /* Ceiling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388A72CCAC52300BE2D74 /* Ceiling.jpg */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD3E22CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
 		985DD4072CB997DE00E58612 /* calabouço.webp in Resources */ = {isa = PBXBuildFile; fileRef = 985DD4052CB997DE00E58612 /* calabouço.webp */; };
@@ -168,6 +200,22 @@
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
+		982388752CCABF2500BE2D74 /* dungeon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dungeon.jpg; sourceTree = "<group>"; };
+		982388762CCABF2500BE2D74 /* hallofrelics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hallofrelics.jpg; sourceTree = "<group>"; };
+		982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteprotag-0001 1.png"; sourceTree = "<group>"; };
+		982388792CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteprotag-0001 1@2x.png"; sourceTree = "<group>"; };
+		9823887A2CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteprotag-0001 1@3x.png"; sourceTree = "<group>"; };
+		9823887C2CCABF2500BE2D74 /* bricks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bricks.jpg; sourceTree = "<group>"; };
+		9823887D2CCABF2500BE2D74 /* cobblestone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cobblestone.jpg; sourceTree = "<group>"; };
+		9823887F2CCABF2500BE2D74 /* Spriteworm-0001 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteworm-0001 1.png"; sourceTree = "<group>"; };
+		982388802CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteworm-0001 1@2x.png"; sourceTree = "<group>"; };
+		982388812CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteworm-0001 1@3x.png"; sourceTree = "<group>"; };
+		982388832CCABF2500BE2D74 /* Protag.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Protag.pdf; sourceTree = "<group>"; };
+		982388842CCABF2500BE2D74 /* Protag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Protag.png; sourceTree = "<group>"; };
+		982388852CCABF2500BE2D74 /* Protag.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Protag.zip; sourceTree = "<group>"; };
+		982388862CCABF2500BE2D74 /* Worm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Worm.png; sourceTree = "<group>"; };
+		982388872CCABF2500BE2D74 /* Worm.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Worm.zip; sourceTree = "<group>"; };
+		982388A72CCAC52300BE2D74 /* Ceiling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ceiling.jpg; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
 		985DD4062CB997DE00E58612 /* hall-de-reliquias.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hall-de-reliquias.webp"; sourceTree = "<group>"; };
@@ -276,6 +324,61 @@
 			children = (
 			);
 			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		982388772CCABF2500BE2D74 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				982388752CCABF2500BE2D74 /* dungeon.jpg */,
+				982388762CCABF2500BE2D74 /* hallofrelics.jpg */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		9823887B2CCABF2500BE2D74 /* Protag */ = {
+			isa = PBXGroup;
+			children = (
+				982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */,
+				982388792CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png */,
+				9823887A2CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png */,
+			);
+			path = Protag;
+			sourceTree = "<group>";
+		};
+		9823887E2CCABF2500BE2D74 /* Tileset */ = {
+			isa = PBXGroup;
+			children = (
+				9823887C2CCABF2500BE2D74 /* bricks.jpg */,
+				982388A72CCAC52300BE2D74 /* Ceiling.jpg */,
+				9823887D2CCABF2500BE2D74 /* cobblestone.jpg */,
+			);
+			path = Tileset;
+			sourceTree = "<group>";
+		};
+		982388822CCABF2500BE2D74 /* Worm */ = {
+			isa = PBXGroup;
+			children = (
+				9823887F2CCABF2500BE2D74 /* Spriteworm-0001 1.png */,
+				982388802CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png */,
+				982388812CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png */,
+			);
+			path = Worm;
+			sourceTree = "<group>";
+		};
+		982388882CCABF2500BE2D74 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				982388772CCABF2500BE2D74 /* Maps */,
+				9823887B2CCABF2500BE2D74 /* Protag */,
+				9823887E2CCABF2500BE2D74 /* Tileset */,
+				982388822CCABF2500BE2D74 /* Worm */,
+				982388832CCABF2500BE2D74 /* Protag.pdf */,
+				982388842CCABF2500BE2D74 /* Protag.png */,
+				982388852CCABF2500BE2D74 /* Protag.zip */,
+				982388862CCABF2500BE2D74 /* Worm.png */,
+				982388872CCABF2500BE2D74 /* Worm.zip */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		986032852CB717AC00D8ECD2 /* Editor */ = {
@@ -472,6 +575,7 @@
 				FDF1E0912C91B752006D4EA0 /* Assets.xcassets */,
 				FDF1E0932C91B752006D4EA0 /* Main.storyboard */,
 				FDF1E0962C91B752006D4EA0 /* JourneyThroughCastleSky.entitlements */,
+				982388882CCABF2500BE2D74 /* Assets */,
 			);
 			path = JourneyThroughCastleSky;
 			sourceTree = "<group>";
@@ -605,6 +709,22 @@
 				985DD4182CB9A60B00E58612 /* Dungeon.sks in Resources */,
 				985DD40F2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4102CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */,
+				982388892CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */,
+				9823888A2CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */,
+				9823888B2CCABF2500BE2D74 /* Protag.pdf in Resources */,
+				9823888C2CCABF2500BE2D74 /* bricks.jpg in Resources */,
+				9823888D2CCABF2500BE2D74 /* dungeon.jpg in Resources */,
+				9823888E2CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png in Resources */,
+				9823888F2CCABF2500BE2D74 /* cobblestone.jpg in Resources */,
+				982388A92CCAC52300BE2D74 /* Ceiling.jpg in Resources */,
+				982388902CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png in Resources */,
+				982388912CCABF2500BE2D74 /* Protag.png in Resources */,
+				982388922CCABF2500BE2D74 /* hallofrelics.jpg in Resources */,
+				982388932CCABF2500BE2D74 /* Protag.zip in Resources */,
+				982388942CCABF2500BE2D74 /* Worm.zip in Resources */,
+				982388952CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png in Resources */,
+				982388962CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png in Resources */,
+				982388972CCABF2500BE2D74 /* Worm.png in Resources */,
 				986032962CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
 				985DD4152CB9987400E58612 /* HallOfRelics.sks in Resources */,
 				986032922CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
@@ -626,10 +746,26 @@
 				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
 				985DD40E2CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */,
+				982388982CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */,
+				982388992CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */,
+				9823889A2CCABF2500BE2D74 /* Protag.pdf in Resources */,
+				9823889B2CCABF2500BE2D74 /* bricks.jpg in Resources */,
+				9823889C2CCABF2500BE2D74 /* dungeon.jpg in Resources */,
+				9823889D2CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png in Resources */,
+				9823889E2CCABF2500BE2D74 /* cobblestone.jpg in Resources */,
+				9823889F2CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png in Resources */,
+				982388A02CCABF2500BE2D74 /* Protag.png in Resources */,
+				982388A12CCABF2500BE2D74 /* hallofrelics.jpg in Resources */,
+				982388A22CCABF2500BE2D74 /* Protag.zip in Resources */,
+				982388A32CCABF2500BE2D74 /* Worm.zip in Resources */,
+				982388A42CCABF2500BE2D74 /* Spriteprotag-0001 1@3x.png in Resources */,
+				982388A52CCABF2500BE2D74 /* Spriteworm-0001 1@2x.png in Resources */,
+				982388A62CCABF2500BE2D74 /* Worm.png in Resources */,
 				985DD4092CB997DE00E58612 /* calabouço.webp in Resources */,
 				985DD40A2CB997DE00E58612 /* hall-de-reliquias.webp in Resources */,
 				FDF1E08A2C91B750006D4EA0 /* GameScene.sks in Resources */,
 				FDF1E0922C91B752006D4EA0 /* Assets.xcassets in Resources */,
+				982388A82CCAC52300BE2D74 /* Ceiling.jpg in Resources */,
 				FDF1E08C2C91B750006D4EA0 /* Actions.sks in Resources */,
 				986032932CB7194E00D8ECD2 /* PlaceholderTileset.jpg in Resources */,
 				FDF1E0952C91B752006D4EA0 /* Base in Resources */,

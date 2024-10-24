@@ -240,7 +240,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
 
-        guard self.childNode(withName: name) != nil  else {print("A gente nao conseguiu identificar o friendly"); return}
+        guard let node = self
+            .childNode(withName: name) as? SKSpriteNode  else {
+            print("A gente nao conseguiu identificar o friendly"); return
+        }
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
@@ -253,7 +256,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                )
 
             let spriteFriendly = weerdman.spriteComponent.sprite
-            spriteFriendly.scale(to: node.size)
+        spriteFriendly.scale(to: node.size)
             let friendlyWidth = spriteFriendly.size.width
             let friendlyHeight = spriteFriendly.size.height
             
