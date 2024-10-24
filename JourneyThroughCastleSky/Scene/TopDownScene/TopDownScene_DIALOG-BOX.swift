@@ -20,7 +20,7 @@ extension TopDownScene {
         dialogueBox.position.x = -(size.width / 2.5)
 
         
-        dialogueBox.fillColor = .gray.withAlphaComponent(0.9)
+        dialogueBox.fillColor = .black
         dialogueBox.strokeColor = .white
         dialogueBox.zPosition = 3
         
@@ -38,20 +38,26 @@ extension TopDownScene {
         
         // setup da label do autor do diálogo.
         let author = SKLabelNode(text: dialog.person)
-        author.position = CGPoint(x: 50, y: 75)
+        author.position = CGPoint(x: 25, y: 70)
         author.horizontalAlignmentMode = .left
+        author.fontName = "comicSansMS"
+        author.fontSize = 10
         
         // setup da label do texto do diálogo.
         let textLabel = SKLabelNode(text: "")
         textLabel.position = CGPoint(x: 50, y: author.position.y - 50)
         textLabel.fontSize = 12
         textLabel.horizontalAlignmentMode = .left
+        
+        // adicionando os dois dentro da dialogueBox.
+        dialogueBox.addChild(author)
+        
+        let multilineLabel = SKMultilineLabel(text: dialog.text, labelWidth: 700, pos: CGPoint(x: 25, y: 80))
         DialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: textLabel) { [weak self] in
             self?.gameState = .DIALOG_FINISHED
         }
+        
+        dialogueBox.addChild(multilineLabel)
 
-        // adicionando os dois dentro da dialogueBox.
-        dialogueBox.addChild(author)
-        dialogueBox.addChild(textLabel)
     }
 }
