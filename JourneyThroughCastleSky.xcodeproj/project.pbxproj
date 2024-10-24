@@ -11,6 +11,8 @@
 		43841E6D2CA72CB1009496B2 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E6B2CA72CB1009496B2 /* Component.swift */; };
 		43841E722CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
 		43841E732CA72CDB009496B2 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43841E712CA72CDB009496B2 /* Entity.swift */; };
+		439100F82CCAC0DB00EA9F1B /* MultilineLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439100F72CCAC0DB00EA9F1B /* MultilineLabelComponent.swift */; };
+		439100F92CCAC0DB00EA9F1B /* MultilineLabelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439100F72CCAC0DB00EA9F1B /* MultilineLabelComponent.swift */; };
 		43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
 		43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */; };
 		43F0076F2CA72D8C0049590D /* PhysicCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */; };
@@ -167,6 +169,7 @@
 /* Begin PBXFileReference section */
 		43841E6B2CA72CB1009496B2 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		43841E712CA72CDB009496B2 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		439100F72CCAC0DB00EA9F1B /* MultilineLabelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultilineLabelComponent.swift; sourceTree = "<group>"; };
 		43A88D462CB452E7008ACC2E /* CutsceneComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneComponent.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
@@ -337,6 +340,7 @@
 				FD932AFA2C9B56C10047B5B7 /* HealthComponent.swift */,
 				FD932AFC2C9B56D90047B5B7 /* StaminaComponent.swift */,
 				FD932AFE2C9B56EE0047B5B7 /* SpriteComponent.swift */,
+				439100F72CCAC0DB00EA9F1B /* MultilineLabelComponent.swift */,
 				FD932B002C9B57180047B5B7 /* InteractableComponent.swift */,
 				FD932B022C9B572E0047B5B7 /* DialogueComponent.swift */,
 				FD932B042C9B57620047B5B7 /* AffectedByEffect.swift */,
@@ -684,6 +688,7 @@
 				98838C532CA5DC6100709648 /* SpriteComponent.swift in Sources */,
 				98838C542CA5DC6100709648 /* ReadableComponent.swift in Sources */,
 				98838C552CA5DC6100709648 /* SkillComponent.swift in Sources */,
+				439100F92CCAC0DB00EA9F1B /* MultilineLabelComponent.swift in Sources */,
 				98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */,
 				98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */,
@@ -718,6 +723,7 @@
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,
+				439100F82CCAC0DB00EA9F1B /* MultilineLabelComponent.swift in Sources */,
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				98DAD01B2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
@@ -959,7 +965,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = LF887LSVNZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -986,7 +992,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = LF887LSVNZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
