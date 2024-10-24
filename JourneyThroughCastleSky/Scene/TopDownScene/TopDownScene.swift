@@ -159,7 +159,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
 
         
         
-        
+        // se não existir um GameSceneData
+        // O GameSceneData só é usado quando o usuário vai trocar de tela para ir para um combate
         if GameSceneData.shared == nil {
             setupEnemies()
             setupItems()
@@ -168,8 +169,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             populateDataFromGameSceneData()
         }
         movementSystem.updateCameraPosition()
-        
-      
     }
     
    
@@ -188,16 +187,20 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         excludeAll("estamina")
         excludeAll("key")
         excludeAll("friendlyGuy")
+        excludeAll("crystal")
         
         for enemy in shared.enemies {
+            //enemy.spriteComponent.sprite.removeFromParent()
             addChild(enemy.spriteComponent.sprite)
         }
         
         for friendly in shared.friendlies {
+            //friendly.spriteComponent.sprite.removeFromParent()
             addChild(friendly.spriteComponent.sprite)
         }
         
         for item in shared.items {
+            //item.spriteComponent.sprite.removeFromParent()
             addChild(item.spriteComponent.sprite)
         }
     }
@@ -226,6 +229,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             spriteInimigo.physicsBody?.isDynamic = false
             spriteInimigo.physicsBody?.allowsRotation = false
             
+            if spriteInimigo.parent != nil {
+                self.removeFromParent()
+            }
             self.enemies.append(enemyCriado)
             self.setupSpritePosition(enemyCriado.spriteComponent, enemyCriado.positionComponent, scale: CGSize(width: 100, height: 200))
         }
@@ -240,7 +246,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
 
-        guard self.childNode(withName: name) != nil  else {print("A gente nao conseguiu identificar o friendly"); return}
+        guard let node = self.childNode(withName: name) as? SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
@@ -268,8 +274,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
 
             self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
     }
-
-    
     
     override func keyUp(with event: NSEvent) {
         movementSystem.keyUp(event)
@@ -281,7 +285,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
         setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
         setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
-        setupItem("cristal", spriteName: "cristal", effect: Effect(type: .UP_LEVEL, amount: 0))
+        setupItem("crystal", spriteName: "cristal", effect: Effect(type: .UP_LEVEL, amount: 0))
     }
     
     private func setupItem (_ name : String, spriteName : String, effect : Effect) {
@@ -306,9 +310,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             
             self.itemSystem.items.append(createdItem)
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))
+            
+            node.removeFromParent()
         }
         
-        excludeAll(name)
+        //excludeAll(name)
     }
     
     private func excludeAll (_ spriteName : String) {
@@ -410,16 +416,17 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         User.singleton.currentPhase = scene
         
         nextScene.scaleMode = .aspectFill
-
         User.singleton.spriteComponent.sprite.removeFromParent()
-        self.removeAllParents(self)
+        self.removeAllChilds(self)
         
+        // é importante matar a GameSceneData
+        GameSceneData.shared = nil
 
         self.view?.presentScene(nextScene, transition: transition)
         
     }
     
-    private func removeAllParents (_ scene : SKScene) {
+    private func removeAllChilds (_ scene : SKScene) {
         for child in scene.children {
             if let childName = child.name, childName.contains("Enemy") {
                 child.removeFromParent()
@@ -440,25 +447,33 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     private func collideWithEnemy (_ enemyPhysicsBody : SKPhysicsBody) {
         self.enemies.forEach { enemy in
             if enemy.spriteComponent.sprite.physicsBody == enemyPhysicsBody {
-                populateGameSceneData()
-                
-                // Troca para a cena da batalha
-                let nextScene = BatalhaScene(size: size)
-                nextScene.config(enemy: enemy)
-                nextScene.position = .zero
-                enemy.spriteComponent.sprite.removeFromParent()
-                nextScene.scaleMode = .aspectFill
-                
-                let transition = SKTransition.fade(withDuration: 1.0)
-                nextScene.config(self)
-                nextScene.zPosition = 100
-                self.view?.presentScene(nextScene, transition: transition)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.removeAllChilds()
-                })
-                
+                goBattleEnemy(enemy)
             }
         }
+    }
+    
+    func goBattleEnemy (_ enemy : Enemy, reward : Item? = nil) {
+        populateGameSceneData()
+        
+        // Troca para a cena da batalha
+        let nextScene = BatalhaScene(size: size)
+        
+        nextScene.config(enemy: enemy, reward: reward)
+
+        nextScene.position = .zero
+        enemy.spriteComponent.sprite.removeFromParent()
+        nextScene.scaleMode = .aspectFill
+        
+        let escala = 250 / nextScene.enemy.spriteComponent.sprite.size.height
+        nextScene.enemy.spriteComponent.sprite.setScale(escala)
+        
+        let transition = SKTransition.fade(withDuration: 1.0)
+        nextScene.config(self)
+        nextScene.zPosition = 100
+        self.view?.presentScene(nextScene, transition: transition)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.removeAllChilds()
+        })
     }
     
     private func setupNodesInList () {

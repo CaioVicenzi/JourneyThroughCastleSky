@@ -35,6 +35,7 @@ class BatalhaScene : SKScene {
     internal var gameChooseState : chooseState = .CHOOSE_BUTTON
     private var positionItemSelected = 0
     private var enemyDodge = false
+    var reward : Item? = nil
     
     var actionDescription : SKShapeNode? = nil
     var healthBar : SKSpriteNode? = nil
@@ -75,9 +76,10 @@ class BatalhaScene : SKScene {
         setupEnemyLifeBar()
     }
     
-    func config (enemy : Enemy) {
+    func config (enemy : Enemy, reward : Item? = nil) {
         battleSystem.enemy = enemy
         self.enemy = enemy
+        self.reward = reward
     }
     
     // MARK: LÓGICA
@@ -328,34 +330,46 @@ class BatalhaScene : SKScene {
         switch User.singleton.currentPhase {
         case .MAIN_HALL_SCENE:
             sksFileName = "MainHallScene.sks"
+            
         case .HALL_OF_RELICS:
             sksFileName = "HallOfRelics.sks"
         case .DUNGEON:
             sksFileName = "Dungeon.sks"
         }
+        print(sksFileName)
         
         // agora a gente chama essa cena e volta ao normal.
         let nextScene =  SKScene(fileNamed: sksFileName)
         
         nextScene?.scaleMode = .aspectFill
         let transition = SKTransition.fade(withDuration: 1.0)
-        //nextScene?.size = view!.frame.size
+        //nextScene?.size = view!.frwewwwwwwwwame.size
         
         // remover o spawn para evitar do user nascer lá
-        if let nextScene = nextScene as? TopDownScene {
-            let spawn = nextScene.childNode(withName: "spawn")
-            spawn?.removeFromParent()
+        guard let nextScene = nextScene as? TopDownScene else {print("A próxima scene não é uma TopDownScene."); return}
+        let spawn = nextScene.childNode(withName: "spawn")
+        spawn?.removeFromParent()
+        
+        // se o inimigo for o boss é diferente a situação.
+        // eu coloquei para verificar se existe uma recompensa na batalha, se existe uma recompensa na batalha, então é um boss, aí eu achei satisfatório usar isso como condição.
+        let isEnemyBoss = self.reward != nil
+        if isEnemyBoss {
+            // recebe a recompensa.
+            if let reward {
+                User.singleton.inventoryComponent.itens.append(reward)
+                
+                TopDownScene.GameSceneData.shared?.items.removeAll(where: { item in
+                    item.id == reward.id
+                })
+            }
+        } else {
+            // mata o inimigo.
+            MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
+                inimigo.id == self.enemy.id
+            })
         }
         
-        // mata o inimigo.
-        MainHallScene.GameSceneData.shared?.enemies.removeAll(where: { inimigo in
-            inimigo.id == self.enemy.id
-        })
-        
-        
-        if let nextScene {
-            self.view?.presentScene(nextScene, transition: transition)
-        }
+        self.view?.presentScene(nextScene, transition: transition)
     }
     
     private func showItems () {

@@ -25,25 +25,34 @@ class ItemSystem {
         items.forEach { item in
             let itemNearUser = PositionSystem.isOtherNearPlayer(item.positionComponent, range: 50)
             if itemNearUser{
-                
+                // verifica se é um cristal, se for um cristal é outra parada.
                 let isCrystal = item.consumableComponent?.effect.type == .UP_LEVEL
                 
-                let userHasKey = User.singleton.inventoryComponent.itens.contains { item in
-                    item.consumableComponent?.nome == "Chaves"
-                }
-                
                 if isCrystal {
-                    if userHasKey {
-                        catchItem(item)
-                    } else {
-                        gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
-                    }
+                    useCrystal(item)
                 } else {
                     catchItem(item)
                 }
                 
                 gameScene.dialogSystem.nextDialogue()
             }
+        }
+    }
+    
+    private func useCrystal (_ crystal : Item) {
+        let userHasKey = User.singleton.inventoryComponent.itens.contains { item in
+            item.consumableComponent?.nome == "Chaves"
+        }
+        
+        if userHasKey {
+            // ir para o boss (a nossa jornada para o boss começa agora
+            User.singleton.inventoryComponent.itens.removeAll { item in
+                item.consumableComponent?.nome == "Chaves"
+            }
+            gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
+
+        } else {
+            gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
         }
     }
     
