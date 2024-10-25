@@ -95,6 +95,9 @@
 		98DAD01C2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */; };
 		FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
 		FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
+		FD4D264B2CCADF5400A52B73 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264A2CCADF5300A52B73 /* Door.swift */; };
+		FD4D264D2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */; };
+		FD4D264E2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */; };
 		FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
 		FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */; };
 		FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */; };
@@ -193,6 +196,8 @@
 		98DAD0062CC18E3C0020DFAC /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallOfRelics.swift; sourceTree = "<group>"; };
 		FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
+		FD4D264A2CCADF5300A52B73 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
+		FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressionSystem.swift; sourceTree = "<group>"; };
 		FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -376,6 +381,7 @@
 				FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */,
 				FDD5F9982CB45CB600A1647B /* InventorySystem.swift */,
 				FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */,
+				FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				FDE3CF2A2CA5FD7900D88620 /* Checkpoint.swift */,
 				FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */,
 				FDB27A412CADC163002B2848 /* PauseMenu.swift */,
+				FD4D264A2CCADF5300A52B73 /* Door.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -678,6 +685,7 @@
 				98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */,
 				98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */,
+				FD4D264E2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */,
 				98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */,
 				98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
 				98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */,
@@ -743,6 +751,7 @@
 				FDD5F99C2CB45D6600A1647B /* PositionSystem.swift in Sources */,
 				FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */,
 				FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */,
+				FD4D264B2CCADF5400A52B73 /* Door.swift in Sources */,
 				FDE3CF2B2CA5FD7900D88620 /* Checkpoint.swift in Sources */,
 				987320EA2CC94D2C00A1155E /* CGVector.swift in Sources */,
 				FD932AFF2C9B56EE0047B5B7 /* SpriteComponent.swift in Sources */,
@@ -754,6 +763,7 @@
 				FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */,
 				FDC1FCFF2C94B9A500791D58 /* UIBatalhaScene.swift in Sources */,
 				FDAD41FA2C9E02540053A4B0 /* DialogSystem.swift in Sources */,
+				FD4D264D2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */,
 				986032AA2CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				FDD5F99A2CB45CB600A1647B /* InventorySystem.swift in Sources */,
 				FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */,
