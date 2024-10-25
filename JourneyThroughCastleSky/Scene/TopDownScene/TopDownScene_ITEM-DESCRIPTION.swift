@@ -70,7 +70,7 @@ extension TopDownScene {
     }
     
     /// Função que elimina todos os componentes da descrição do item.
-    func unshowItemDescription () {
+    func cleanItemDescription () {
         guard let viewItemDescription else {return}
         let fadeOut = SKAction.fadeOut(withDuration: 0.2)
         let removeNode = SKAction.removeFromParent()

@@ -58,23 +58,7 @@ class InventorySystem: System {
     
     private func closeInventory () {
         guard let inventory = gameScene.inventory else {print("não temos inventory"); return}
-        /*
-        // Cria o efeito de fadeIn para poder adicionar ele dentro dos componentes do inventory.
-        let fadeOut = SKAction.fadeOut(withDuration: 0.5)
-        let removeAction = SKAction.removeFromParent()
-        let fadeOutAndRemove = SKAction.sequence([fadeOut, removeAction])
-        
-        
-        gameScene.inventory?.children.forEach({ node in
-            node.run(fadeOutAndRemove)
-            node.removeFromParent()
-        })
-        
-        inventory.run(fadeOutAndRemove)
-
-         */
         gameScene.gameState = .NORMAL
-
         gameScene.inventory?.children.forEach({ node in
             node.removeFromParent()
         })
