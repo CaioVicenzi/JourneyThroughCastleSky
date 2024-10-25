@@ -8,15 +8,11 @@
 import Foundation
 import SpriteKit
 
-class DialogSystem {
-    var gameScene : TopDownScene!
+class DialogSystem: System {
     private var dialogsToPass : [Dialogue] = []
+
     
-    init() {}
-    
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
+
     
     func nextDialogue () {
         gameScene.movementSystem.mostRecentMove = []

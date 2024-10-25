@@ -8,72 +8,7 @@ import Foundation
 import SpriteKit
 
 
-class Door: SKSpriteNode {
-    
-    var enabled = true
-    
-    var destiny: String {
-        return self.userData?.value(forKey: "destiny") as! String
-    }
-    
-    var spawnDirection: CGVector {
-        let directionString = self.userData?.value(forKey: "spawnDirection") as! String
-        
-        switch(directionString) {
-            case "up":
-                return .init(dx: 0, dy: 1)
-            case "left":
-                return .init(dx: -1, dy: 0)
-            case "right":
-                return .init(dx: 1, dy: 0)
-            case "down":
-                return .init(dx: 0, dy: -1)
-            default:
-                return .init(dx: 0, dy: 1)
-        }
-    }
-    
-    var destintyDoorName: String {
-        return self.userData?.value(forKey: "doorDestiny") as! String
-    }
-    
-    var destinyPhase: GamePhase? {
-        return GamePhase(rawValue: self.destiny)
-    }
-    
-    public func handleNodeContact(node: SKNode) {
-        if (!enabled) {
-            return
-        }
-        
-        
-        if node == User.singleton.spriteComponent.sprite {
-            
-            let nodeScene = node.scene as! TopDownScene
-            
-            if let gamePhase = destinyPhase {
-                nodeScene
-                    .goNextScene(
-                        gamePhase,
-                        destinyDoorName: self.destintyDoorName
-                    )
-            }
-            
-        }
-    }
-    
-    public func enable() {
-        
-        enabled = true
-        
-    }
-    
-    public func disable() {
-        enabled = false
-    }
-    
-    
-}
+
 
 /// Classe genérica que vai conter todos os atributos e métodos que são compartilhados por todas as cenas que contém o modo TopDown de exploração de ambiente.
 /// - parameters
@@ -84,11 +19,9 @@ class Door: SKSpriteNode {
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var bounds: CGRect {
-        
         let boundsNode = self.childNode(withName: "bounds")!
         
         return boundsNode.frame
-        
     }
     
     var doors: [Door] {
@@ -117,13 +50,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     internal var cameraNode : SKCameraNode!
     
-    internal let movementSystem : MovementSystem
-    internal let itemSystem : ItemSystem
-    internal let dialogSystem : DialogSystem
-    internal let friendlySystem : FriendlySystem
-    internal let menuSystem : MenuSystem
-    internal let positionSystem : PositionSystem
-    internal let inventorySystem : InventorySystem
     
     var descriptionsToPass : [DescriptionToPass] = []
     
@@ -134,17 +60,38 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var useItemLabel : SKLabelNode?
     
     
+    var movementSystem: MovementSystem {
+        return getSystem()!
+    }
+    var itemSystem : ItemSystem {
+        return getSystem()!
+    }
+    var dialogSystem : DialogSystem {
+        return getSystem()!
+    }
+    var friendlySystem : FriendlySystem {
+        return getSystem()!
+    }
+    var menuSystem : MenuSystem {
+        return getSystem()!
+    }
+    var inventorySystem : InventorySystem {
+        return getSystem()!
+    }
+    
+    var systems: [System] = [
+        MovementSystem(),
+        DialogSystem(),
+        FriendlySystem(friendlies: []),
+        ItemSystem(items: []),
+        MenuSystem(),
+        PositionSystem(),
+        InventorySystem(),
+        DialogSystem(),
+    ]
+    
     required init?(coder aDecoder: NSCoder) {
-        //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         self.enemies = []
-        self.movementSystem = MovementSystem()
-        self.dialogSystem = DialogSystem()
-        self.friendlySystem = FriendlySystem(friendlies: [])
-        self.itemSystem = ItemSystem(items: [])
-        self.menuSystem = MenuSystem()
-        self.positionSystem = PositionSystem()
-        self.inventorySystem = InventorySystem()
-        
         super.init(coder: aDecoder)
     }
     
@@ -158,8 +105,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupDoors()
 
         
-        
-        
         if GameSceneData.shared == nil {
             setupEnemies()
             setupItems()
@@ -167,11 +112,19 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         } else {
             populateDataFromGameSceneData()
         }
-        movementSystem.updateCameraPosition()
         
       
     }
     
+    
+    public func getSystem<T: System>() -> T? {
+        for system in systems {
+            if system is T {
+                return system as? T
+            }
+        }
+        return nil
+    }
    
     
     private func populateDataFromGameSceneData () {
@@ -352,13 +305,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
         
-        // configurando os systems
-        dialogSystem.config(self)
-        movementSystem.config(self)
-        itemSystem.config(self)
-        friendlySystem.config(self)
-        menuSystem.config(self)
-        inventorySystem.config(self)
+        for system in systems {
+            system.config(self)
+        }
+    
         
         // inicializando o cameraNode.
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
@@ -531,8 +481,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        movementSystem.movePlayer()
-        itemSystem.showCatchLabel()
+        for system in systems {
+            system.update()
+        }
+        
         if gameState == .INVENTORY {
             updateInventorySquares()
         }
