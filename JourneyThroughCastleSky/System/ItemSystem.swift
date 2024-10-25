@@ -83,7 +83,7 @@ class ItemSystem: System {
     
     
     /// Função que verifica se vai exibir o botão de pegar o item
-    func showCatchLabel () {
+    override func update () {
         // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
         if PositionSystem.isAnyNearPlayer(items.map({ item in item.positionComponent})) && gameScene.gameState == .NORMAL {
             if self.gameScene.catchLabel?.parent == nil {

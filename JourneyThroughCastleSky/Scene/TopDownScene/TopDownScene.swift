@@ -75,9 +75,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var menuSystem : MenuSystem {
         return getSystem()!
     }
-    var positionSystem : PositionSystem {
-        return getSystem()!
-    }
     var inventorySystem : InventorySystem {
         return getSystem()!
     }
@@ -484,8 +481,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        movementSystem.movePlayer()
-        itemSystem.showCatchLabel()
+        for system in systems {
+            system.update()
+        }
+        
         if gameState == .INVENTORY {
             updateInventorySquares()
         }

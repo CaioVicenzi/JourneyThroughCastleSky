@@ -19,7 +19,7 @@ class MovementSystem: System {
     }
     
     
-    func movePlayer () {
+    override func update () {
 
         
         // Atualiza a posição do sprite com base nas teclas pressionadas
