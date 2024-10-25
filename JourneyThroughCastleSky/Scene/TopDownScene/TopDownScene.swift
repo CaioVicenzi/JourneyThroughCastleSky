@@ -139,11 +139,22 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     /// Função que posiciona todos os inimigos dentro da lista de enemies dentro do mapa.
     internal func setupEnemies () {
-        setupEnemy("strongEnemy", spriteName: "papyrus")
-        setupEnemy("weakEnemy", spriteName: "monster")
+        
+        if User.singleton.currentPhase == .DUNGEON {
+            setupEnemy("strongEnemy", spriteName: "larva")
+            setupEnemy("weakEnemy", spriteName: "cryptomorph")
+        }
+        
+        if User.singleton.currentPhase == .HALL_OF_RELICS {
+            #warning("Toda honra e toda a glória ao Nosso Senhor Jesus Cristo de Nazaré")
+            setupEnemy("strongEnemy", spriteName: "cogumelinton")
+            setupEnemy("weakEnemy", spriteName: "eslekton")
+        }
+        
     }
     
     private func setupEnemy (_ name : String, spriteName : String) {
+#warning("Deus é fiel!")
         self.enumerateChildNodes(withName: name) { node, _ in
             guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
             
@@ -152,6 +163,9 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             let spriteInimigo = enemyCriado.spriteComponent.sprite
             let enemyWidth = spriteInimigo.size.width
             let enemyHeight = spriteInimigo.size.height
+            
+            let escala = 100 / enemyHeight
+            spriteInimigo.setScale(escala)
             
             spriteInimigo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: enemyWidth, height: enemyHeight))
             spriteInimigo.physicsBody?.categoryBitMask  = PhysicCategory.enemy
@@ -178,7 +192,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
 
-        guard let node = self.childNode(withName: name) as? SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
+        guard self.childNode(withName: name) is SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
@@ -190,21 +204,24 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                    dialogsThree: []
                )
 
-            let spriteFriendly = weerdman.spriteComponent.sprite
-            let friendlyWidth = spriteFriendly.size.width
-            let friendlyHeight = spriteFriendly.size.height
+        let spriteFriendly = weerdman.spriteComponent.sprite
+        let friendlyWidth = spriteFriendly.size.width
+        let friendlyHeight = spriteFriendly.size.height
+        
+        let escala = 100 / friendlyHeight
+        spriteFriendly.setScale(escala)
             
-            spriteFriendly.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: friendlyWidth, height: friendlyHeight))
-            spriteFriendly.physicsBody?.categoryBitMask = PhysicCategory.enemy
-            spriteFriendly.physicsBody?.collisionBitMask = PhysicCategory.character
-            spriteFriendly.physicsBody?.contactTestBitMask = PhysicCategory.character
-            spriteFriendly.physicsBody?.affectedByGravity = false
-            spriteFriendly.physicsBody?.isDynamic = false
-            spriteFriendly.physicsBody?.allowsRotation = false
+        spriteFriendly.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: friendlyWidth, height: friendlyHeight))
+        spriteFriendly.physicsBody?.categoryBitMask = PhysicCategory.enemy
+        spriteFriendly.physicsBody?.collisionBitMask = PhysicCategory.character
+        spriteFriendly.physicsBody?.contactTestBitMask = PhysicCategory.character
+        spriteFriendly.physicsBody?.affectedByGravity = false
+        spriteFriendly.physicsBody?.isDynamic = false
+        spriteFriendly.physicsBody?.allowsRotation = false
 
-            friendlySystem.friendlies.append(weerdman)
+        friendlySystem.friendlies.append(weerdman)
 
-            self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
+        self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
     }
     
     override func keyUp(with event: NSEvent) {
@@ -327,7 +344,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
      
     internal func goNextScene (_ scene : GamePhase, destinyDoorName: String) {
-        let showDialogsNotGoThere = scene == .HALL_OF_RELICS && GameProgressionSystem.singleton.estage != 1 || scene == .DUNGEON && GameProgressionSystem.singleton.estage != 2
+        let showDialogsNotGoThere = scene == .HALL_OF_RELICS && GameProgressionSystem.singleton.estage != 2 || scene == .DUNGEON && GameProgressionSystem.singleton.estage != 1
         
         if showDialogsNotGoThere {
             dialogSystem.inputDialog("Ei cara, por aí não!", person: "Weerdman")
@@ -404,7 +421,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         enemy.spriteComponent.sprite.removeFromParent()
         nextScene.scaleMode = .aspectFill
         
-        let escala = 250 / nextScene.enemy.spriteComponent.sprite.size.height
+        let escala = 250 / enemy.spriteComponent.sprite.size.height
         nextScene.enemy.spriteComponent.sprite.setScale(escala)
         
         let transition = SKTransition.fade(withDuration: 1.0)
