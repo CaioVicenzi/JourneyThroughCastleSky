@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 
 /*
 A GameProgressionSystem é um fenômeno, porque ela serve para controlar em qual estágio do jogo o usuário está, os estágios são os seguintes:
@@ -19,7 +19,7 @@ A GameProgressionSystem é um fenômeno, porque ela serve para controlar em qual
  -> 3 - Acabou o jogo basicamente.
 */
 class GameProgressionSystem {
-    var estage : Int = 0
+    @AppStorage("estage") var estage : Int = 0
     static let singleton : GameProgressionSystem = GameProgressionSystem()
     
     func upStage () {
@@ -34,5 +34,9 @@ class GameProgressionSystem {
     
     func isMaxStage () -> Bool {
         return estage >= 3
+    }
+    
+    func resetProgress () {
+        estage = 0
     }
 }
