@@ -9,16 +9,13 @@ import Foundation
 import SpriteKit
 
 class ItemSystem: System {
-    var gameScene : TopDownScene!
     var items : [Item]
     
     init(items: [Item]) {
         self.items = items
     }
     
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
+
     
     /// função que pega o item mais próximo.
     func catchNearestItem (){

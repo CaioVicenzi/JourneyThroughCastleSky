@@ -8,11 +8,7 @@
 import Foundation
 
 class MenuSystem: System {
-    var gameScene : TopDownScene!
-    
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
+
     
     func togglePause () {
         let gameState = gameScene.gameState
