@@ -32,4 +32,7 @@ class GameProgressionSystem {
         }
     }
     
+    func isMaxStage () -> Bool {
+        return estage >= 3
+    }
 }

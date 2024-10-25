@@ -52,10 +52,11 @@ extension TopDownScene {
         // adicionando os dois dentro da dialogueBox.
         dialogueBox.addChild(author)
         
-        let multilineLabel = SKMultilineLabel(text: dialog.text, labelWidth: 700, pos: CGPoint(x: 25, y: 80))
-        DialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: textLabel) { [weak self] in
+        let multilineLabel = SKMultilineLabel(text: "", labelWidth: 700, pos: CGPoint(x: 25, y: 40))
+        DialogSystem.typeEffect(dialog.text, velocity: dialog.velocity, label: multilineLabel) { [weak self] in
             self?.gameState = .DIALOG_FINISHED
         }
+        
         
         dialogueBox.addChild(multilineLabel)
 

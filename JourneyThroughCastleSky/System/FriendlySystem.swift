@@ -59,7 +59,10 @@ class FriendlySystem {
             User.singleton.inventoryComponent.itens.removeAll { item in item.consumableComponent?.effect.type == .UP_LEVEL}
             dialogue()
             GameProgressionSystem.singleton.upStage()
-
+            
+            if GameProgressionSystem.singleton.isMaxStage() {
+                gameScene?.endGame()
+            }
         } else {
             print("Não tem cristal para entregar")
         }

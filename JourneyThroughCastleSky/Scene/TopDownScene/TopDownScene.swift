@@ -146,7 +146,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
         
         if User.singleton.currentPhase == .HALL_OF_RELICS {
-            #warning("Toda honra e toda a glória ao Nosso Senhor Jesus Cristo de Nazaré")
             setupEnemy("strongEnemy", spriteName: "cogumelinton")
             setupEnemy("weakEnemy", spriteName: "eslekton")
         }
@@ -154,7 +153,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupEnemy (_ name : String, spriteName : String) {
-#warning("Deus é fiel!")
         self.enumerateChildNodes(withName: name) { node, _ in
             guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
             
@@ -192,7 +190,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     private func setupFriendly(_ name: String, spriteName: String) {
 
-        guard self.childNode(withName: name) is SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
+        guard let node = self.childNode(withName: name) as? SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
         //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
@@ -222,6 +220,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         friendlySystem.friendlies.append(weerdman)
 
         self.setupSpritePosition(weerdman.spriteComponent, weerdman.positionComponent, scale: CGSize(width: 100, height: 100))
+        node.removeFromParent()
     }
     
     override func keyUp(with event: NSEvent) {
@@ -505,5 +504,19 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             updateInventorySquares()
         }
         updateSelectedItemLabels()
+    }
+    
+    func endGame () {
+        let nextScene = YouWinScene()
+        nextScene.scaleMode = .aspectFill
+        User.singleton.spriteComponent.sprite.removeFromParent()
+        self.removeAllChilds(self)
+        
+        // é importante matar a GameSceneData
+        GameSceneData.shared = nil
+        
+        let transition = SKTransition.fade(withDuration: 2.0)
+
+        self.view?.presentScene(nextScene, transition: transition)
     }
 }
