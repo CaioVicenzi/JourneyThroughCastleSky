@@ -48,8 +48,8 @@ class FriendlySystem {
         if GameProgressionSystem.singleton.estage > 0 {
             delieverCrystal()
         } else {
-            GameProgressionSystem.singleton.upStage()
             dialogue()
+            GameProgressionSystem.singleton.upStage()
         }
     }
     

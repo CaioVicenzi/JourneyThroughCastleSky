@@ -49,7 +49,14 @@ class ItemSystem {
             User.singleton.inventoryComponent.itens.removeAll { item in
                 item.consumableComponent?.nome == "Chaves"
             }
-            gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
+            
+            if User.singleton.currentPhase == .DUNGEON {
+                gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
+            }
+            
+            if User.singleton.currentPhase == .HALL_OF_RELICS {
+                gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "relicHallBoss"), reward: crystal)
+            }
 
         } else {
             gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
