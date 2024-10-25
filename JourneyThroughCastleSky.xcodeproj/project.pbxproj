@@ -51,8 +51,6 @@
 		982388A62CCABF2500BE2D74 /* Worm.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388862CCABF2500BE2D74 /* Worm.png */; };
 		982388A82CCAC52300BE2D74 /* Ceiling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388A72CCAC52300BE2D74 /* Ceiling.jpg */; };
 		982388A92CCAC52300BE2D74 /* Ceiling.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 982388A72CCAC52300BE2D74 /* Ceiling.jpg */; };
-		982388BE2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
-		982388BF2CCADBE700BE2D74 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388BD2CCADBE700BE2D74 /* Door.swift */; };
 		982388C12CCADCAA00BE2D74 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388C02CCADCA900BE2D74 /* System.swift */; };
 		982388C22CCADCAA00BE2D74 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982388C02CCADCA900BE2D74 /* System.swift */; };
 		985DD3E12CB86DD600E58612 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985DD3E02CB86DD400E58612 /* Math.swift */; };
@@ -226,7 +224,6 @@
 		982388862CCABF2500BE2D74 /* Worm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Worm.png; sourceTree = "<group>"; };
 		982388872CCABF2500BE2D74 /* Worm.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = Worm.zip; sourceTree = "<group>"; };
 		982388A72CCAC52300BE2D74 /* Ceiling.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ceiling.jpg; sourceTree = "<group>"; };
-		982388BD2CCADBE700BE2D74 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		982388C02CCADCA900BE2D74 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		985DD3E02CB86DD400E58612 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		985DD4052CB997DE00E58612 /* calabouço.webp */ = {isa = PBXFileReference; lastKnownFileType = file; path = "calabouço.webp"; sourceTree = "<group>"; };
@@ -509,7 +506,6 @@
 		FDAC55062C9B554200E90E17 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				982388BD2CCADBE700BE2D74 /* Door.swift */,
 				98838C2F2CA4A68B00709648 /* Skills */,
 				FD932B082C9B57AA0047B5B7 /* User.swift */,
 				FD932B0C2C9B591A0047B5B7 /* Enemy.swift */,
@@ -850,7 +846,6 @@
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
 				43A88D482CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				98838C6B2CA5DC9500709648 /* MainHallScene.swift in Sources */,
-				982388BF2CCADBE700BE2D74 /* Door.swift in Sources */,
 				986032A92CB8689800D8ECD2 /* CGSize.swift in Sources */,
 				98838C612CA5DC8C00709648 /* DescriptionToPass.swift in Sources */,
 				FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */,
@@ -875,7 +870,6 @@
 				FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */,
 				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
-				982388BE2CCADBE700BE2D74 /* Door.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				982388C12CCADCAA00BE2D74 /* System.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,
@@ -1123,7 +1117,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -1150,7 +1144,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2XQLYL986B;
+				DEVELOPMENT_TEAM = M67J2XKW43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
