@@ -13,4 +13,16 @@ class ConfigurationsScene: SKScene{
     override func didMove(to view: SKView) {
         self.backgroundColor = .red
     }
+    
+    func setupOverallVolume(){
+        
+    }
+    
+    func setupEffectsVolume(){
+        
+    }
+    
+    func setupLanguage(){
+        
+    }
 }
