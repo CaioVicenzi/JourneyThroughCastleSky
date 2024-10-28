@@ -253,6 +253,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4377B8592CAF173800FDD2B9 /* CutsceneScene */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CutsceneScene; sourceTree = "<group>"; };
+		43F229AF2CD009FB008CEDB4 /* Configurations */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Configurations; sourceTree = "<group>"; };
 		98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = JourneyThroughCastleSkyTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -493,6 +494,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				43F229AF2CD009FB008CEDB4 /* Configurations */,
 				98DAD0192CC1A48D0020DFAC /* HallOfHelics */,
 				98DAD0052CC18E330020DFAC /* Dungeon */,
 				986032852CB717AC00D8ECD2 /* Editor */,
@@ -534,6 +536,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
+				43F229AF2CD009FB008CEDB4 /* Configurations */,
 				98838C3D2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 			);
 			name = JourneyThroughCastleSkyTests;
@@ -557,6 +560,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
+				43F229AF2CD009FB008CEDB4 /* Configurations */,
 			);
 			name = JourneyThroughCastleSky;
 			productName = JourneyThroughCastleSky;
