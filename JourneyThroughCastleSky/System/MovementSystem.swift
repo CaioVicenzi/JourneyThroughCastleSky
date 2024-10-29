@@ -10,9 +10,7 @@ import SpriteKit
 
 
 /// Uma classe onde toda a lógica relacionada ao movimento dentro de uma TopDownScene está contida.
-class MovementSystem {
-    var gameScene : TopDownScene!
-    
+class MovementSystem: System {
     // essa variável é um array de todas as teclas que estão pressionadas, a mais recente é a que vai valer, isso faz com que o movimento do usuário seja igual a outros jogos.
     var mostRecentMove : [Move] = []
     
@@ -20,11 +18,8 @@ class MovementSystem {
         case UP, DOWN, LEFT, RIGHT
     }
     
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
     
-    func movePlayer () {
+    override func update () {
 
         
         // Atualiza a posição do sprite com base nas teclas pressionadas

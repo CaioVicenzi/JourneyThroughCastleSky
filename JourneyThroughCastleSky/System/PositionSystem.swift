@@ -8,7 +8,7 @@
 import Foundation
 
 /// Toda a lógica das telas de TopDown que tem relação ao posicionamento dos elementos
-class PositionSystem {
+class PositionSystem: System {
     static func calcDistanceFromUser (_ positionComponent : PositionComponent) -> CGFloat {
         let xPlayer = User.singleton.positionComponent.xPosition
         let yPlayer = User.singleton.positionComponent.yPosition

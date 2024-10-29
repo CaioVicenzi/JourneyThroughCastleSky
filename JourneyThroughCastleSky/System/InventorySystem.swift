@@ -9,12 +9,8 @@ import Foundation
 import SpriteKit
 
 /// Toda a lógica envolvida com o inventário será desenvolvida aqui dentro dessa classe
-class InventorySystem {
-    var gameScene : TopDownScene!
-    
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
+class InventorySystem: System {
+
     
     /// Função criada para que a partir de um inteiro que representa a posição de um elemento dentro do inventário, é possível você usar um item.
     func useItemFromInventory (in position : Int) {
