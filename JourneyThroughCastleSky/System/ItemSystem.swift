@@ -8,17 +8,14 @@
 import Foundation
 import SpriteKit
 
-class ItemSystem {
-    var gameScene : TopDownScene!
+class ItemSystem: System {
     var items : [Item]
     
     init(items: [Item]) {
         self.items = items
     }
     
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
+
     
     /// função que pega o item mais próximo.
     func catchNearestItem (){
@@ -102,7 +99,7 @@ class ItemSystem {
     
     
     /// Função que verifica se vai exibir o botão de pegar o item
-    func showCatchLabel () {
+    override func update () {
         // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
         if PositionSystem.isAnyNearPlayer(items.map({ item in item.positionComponent})) && gameScene.gameState == .NORMAL {
             if self.gameScene.catchLabel?.parent == nil {

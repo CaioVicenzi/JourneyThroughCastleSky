@@ -16,11 +16,9 @@ import SpriteKit
 class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var bounds: CGRect {
-        
         let boundsNode = self.childNode(withName: "bounds")!
         
         return boundsNode.frame
-        
     }
     
     var doors: [Door] {
@@ -49,13 +47,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     internal var cameraNode : SKCameraNode!
     
-    internal let movementSystem : MovementSystem
-    internal let itemSystem : ItemSystem
-    internal let dialogSystem : DialogSystem
-    internal let friendlySystem : FriendlySystem
-    internal let menuSystem : MenuSystem
-    internal let positionSystem : PositionSystem
-    internal let inventorySystem : InventorySystem
     
     var descriptionsToPass : [DescriptionToPass] = []
     
@@ -66,17 +57,38 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var useItemLabel : SKLabelNode?
     
     
+    var movementSystem: MovementSystem {
+        return getSystem()!
+    }
+    var itemSystem : ItemSystem {
+        return getSystem()!
+    }
+    var dialogSystem : DialogSystem {
+        return getSystem()!
+    }
+    var friendlySystem : FriendlySystem {
+        return getSystem()!
+    }
+    var menuSystem : MenuSystem {
+        return getSystem()!
+    }
+    var inventorySystem : InventorySystem {
+        return getSystem()!
+    }
+    
+    var systems: [System] = [
+        MovementSystem(),
+        DialogSystem(),
+        FriendlySystem(friendlies: []),
+        ItemSystem(items: []),
+        MenuSystem(),
+        PositionSystem(),
+        InventorySystem(),
+        DialogSystem(),
+    ]
+    
     required init?(coder aDecoder: NSCoder) {
-        //fatalError("init?(coder aDecoder : NSCoder) não implementado")
         self.enemies = []
-        self.movementSystem = MovementSystem()
-        self.dialogSystem = DialogSystem()
-        self.friendlySystem = FriendlySystem(friendlies: [])
-        self.itemSystem = ItemSystem(items: [])
-        self.menuSystem = MenuSystem()
-        self.positionSystem = PositionSystem()
-        self.inventorySystem = InventorySystem()
-        
         super.init(coder: aDecoder)
     }
     
@@ -100,9 +112,19 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         } else {
             populateDataFromGameSceneData()
         }
-        movementSystem.updateCameraPosition()
+        
+      
     }
     
+    
+    public func getSystem<T: System>() -> T? {
+        for system in systems {
+            if system is T {
+                return system as? T
+            }
+        }
+        return nil
+    }
    
     
     private func populateDataFromGameSceneData () {
@@ -302,13 +324,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
         
-        // configurando os systems
-        dialogSystem.config(self)
-        movementSystem.config(self)
-        itemSystem.config(self)
-        friendlySystem.config(self)
-        menuSystem.config(self)
-        inventorySystem.config(self)
+        for system in systems {
+            system.config(self)
+        }
+    
         
         // inicializando o cameraNode.
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
@@ -498,8 +517,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        movementSystem.movePlayer()
-        itemSystem.showCatchLabel()
+        for system in systems {
+            system.update()
+        }
+        
         if gameState == .INVENTORY {
             updateInventorySquares()
         }

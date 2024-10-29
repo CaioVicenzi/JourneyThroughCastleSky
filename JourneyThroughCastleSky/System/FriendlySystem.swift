@@ -7,8 +7,7 @@
 
 import Foundation
 
-class FriendlySystem {
-    var gameScene : TopDownScene? = nil
+class FriendlySystem: System {
     var friendlies : [Friendly] = []
     var integerMaster : Int = 0
     
@@ -16,9 +15,6 @@ class FriendlySystem {
         self.friendlies = friendlies
     }
     
-    func config (_ gameScene : TopDownScene) {
-        self.gameScene = gameScene
-    }
     
     func isFriendlyNearUser (_ friendly : Friendly) -> Bool {
         return PositionSystem.isOtherNearPlayer(friendly.positionComponent, range: 50)
