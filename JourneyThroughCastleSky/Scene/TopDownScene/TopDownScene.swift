@@ -76,6 +76,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return getSystem()!
     }
     
+    var cutsceneSystem : CutsceneSystem {
+        return CutsceneSystem()
+    }
+    
     var systems: [System] = [
         MovementSystem(),
         DialogSystem(),
@@ -101,8 +105,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupWalls()
         setupDoors()
 
-        
-        
         // se não existir um GameSceneData
         // O GameSceneData só é usado quando o usuário vai trocar de tela para ir para um combate
         if GameSceneData.shared == nil {
@@ -112,8 +114,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         } else {
             populateDataFromGameSceneData()
         }
-        
-      
     }
     
     
@@ -504,10 +504,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
-            
-            
         }
-        
     }
     
     internal func setupNodes () {

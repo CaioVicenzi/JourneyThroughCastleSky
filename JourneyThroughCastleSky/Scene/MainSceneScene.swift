@@ -51,12 +51,16 @@ class MainMenuScene : SKScene {
         let clickedNode = self.atPoint(location)
         
         if clickedNode.name == "startGameButton" {
+
             if let scene = SKScene(fileNamed: "MainHallScene") as? MainHallScene {
                 scene.scaleMode = .aspectFill
                 let transition = SKTransition.fade(withDuration: 1.0)
-                self.view?.presentScene(scene, transition: transition)
+                let cutsceneView = CutsceneScenes(size: self.size)
+                let cutsceneHelper = CutsceneHelper()
+                cutsceneView.config(scene, scenes: cutsceneHelper.cutsceneOne)
+                self.view?.presentScene(cutsceneView, transition: transition)
             } else {
-                print("Failed to load MainHallScene.")
+                print("Failed to load Cutscene.")
             }
         }
         else if clickedNode.name == "configurationsGameButton" {

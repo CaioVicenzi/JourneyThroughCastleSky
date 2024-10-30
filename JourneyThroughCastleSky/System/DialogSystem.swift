@@ -11,9 +11,6 @@ import SpriteKit
 class DialogSystem: System {
     private var dialogsToPass : [Dialogue] = []
 
-    
-
-    
     func nextDialogue () {
         // troca o gameState e o mostRecentMove para um array vazio para fazer o usuário instantaneamente parar
         gameScene.movementSystem.mostRecentMove = []
@@ -37,6 +34,10 @@ class DialogSystem: System {
                 gameScene.showItemDescription(description)
                 gameScene.descriptionsToPass.removeFirst()
             } else {
+                if let cutscene = gameScene.cutsceneSystem.cutscenes.first {
+                    gameScene.cutsceneSystem.nextCutscene()
+                }
+                
                 gameScene.gameState = .NORMAL
             }
         }

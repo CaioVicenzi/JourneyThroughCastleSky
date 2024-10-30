@@ -10,60 +10,40 @@ import SpriteKit
 
 class CutsceneScenes: SKScene{
     
-    var countCutscene: Int = 0
+    var countCutscene: Int = 1
     var cutscene: CutsceneComponent?
     var cutsceneTimer: Timer?
+    var previousScene : TopDownScene? = nil
+    var scenes : [Cutscene] = []
+    
+    func config (_ previousScene : TopDownScene, scenes : [Cutscene]) {
+        self.previousScene = previousScene
+        self.scenes = scenes
+    }
     
     override func didMove(to view: SKView) {
-        cutsceneTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(displayNextCutscene), userInfo: nil, repeats: true)
+        cutsceneTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(displayNextCutscene), userInfo: nil, repeats: true)
+        displayNextCutscene()
     }
     
     @objc func displayNextCutscene(){
-        if countCutscene == 0{
-            setupFirstCutscene()
-        }
-        else if countCutscene == 1{
-            setupSecondCutscene()
-        }
-        else if countCutscene == 2{
-            setupThirdCutscene()
-        }
+        setupCutscene()
     }
     
-    func setupFirstCutscene(){
-        let backgroundNode = SKSpriteNode(imageNamed: "Cutscene1")
+    private func setupCutscene () {
+        guard let firstScene = scenes.first else {
+            cutsceneTimer?.invalidate()
+            goBackToScene()
+            return
+        }
         
-        let initialSubtitles = "A long time ago..."
+        let backgroundNode = firstScene.background
+        let subtitle = firstScene.displayText
         
-        cutscene = CutsceneComponent(background: backgroundNode, subtitles: initialSubtitles)
-        
-        cutscene?.displayCutscene(scene: self)
-        
-        countCutscene += 1
-    }
-    
-    func setupSecondCutscene(){
-        let backgroundNode = SKSpriteNode(imageNamed: "Cutscene2")
-        
-        let initialSubtitles = "In a galaxy far far away"
-        
-        cutscene = CutsceneComponent(background: backgroundNode, subtitles: initialSubtitles)
+        cutscene = CutsceneComponent(background: backgroundNode, subtitles: subtitle)
         
         cutscene?.displayCutscene(scene: self)
-        
-        countCutscene += 1
-    }
-    
-    func setupThirdCutscene(){
-        let backgroundNode = SKSpriteNode(imageNamed: "Cutscene3")
-        
-        let initialSubtitles = "Tan tan tan tan..."
-        
-        cutscene = CutsceneComponent(background: backgroundNode, subtitles: initialSubtitles)
-        
-        cutscene?.displayCutscene(scene: self)
-        
-        countCutscene += 1
+        scenes.removeFirst()
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -73,6 +53,10 @@ class CutsceneScenes: SKScene{
     override func willMove(from view: SKView) {
         cutsceneTimer?.invalidate()
         cutsceneTimer = nil
+    }
+    
+    private func goBackToScene () {
+        self.view?.presentScene(previousScene)
     }
     
 }

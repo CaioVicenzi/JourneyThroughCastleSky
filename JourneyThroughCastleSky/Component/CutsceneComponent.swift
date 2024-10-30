@@ -8,6 +8,7 @@
 import Foundation
 import SpriteKit
 
+/// Componente Cutscene.
 class CutsceneComponent: Component{
     var background: SKSpriteNode
     var subtitles: String
@@ -25,7 +26,8 @@ class CutsceneComponent: Component{
     func displayCutscene(scene: SKScene){
         scene.removeAllChildren()
         
-        background.position = CGPoint(x: scene.size.width, y: scene.size.height)
+        background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
+        background.scale(to: scene.size)
         scene.addChild(background)
         
         let subtitleLabel = SKLabelNode(text: subtitles)
