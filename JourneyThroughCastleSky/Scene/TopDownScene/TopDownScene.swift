@@ -77,7 +77,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     var cutsceneSystem : CutsceneSystem {
-        return CutsceneSystem()
+        return getSystem()!
     }
     
     var systems: [System] = [
@@ -89,6 +89,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         PositionSystem(),
         InventorySystem(),
         DialogSystem(),
+        CutsceneSystem()
     ]
     
     required init?(coder aDecoder: NSCoder) {
@@ -104,6 +105,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         setupWalls()
         setupDoors()
+        
 
         // se não existir um GameSceneData
         // O GameSceneData só é usado quando o usuário vai trocar de tela para ir para um combate
@@ -366,7 +368,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         if showDialogsNotGoThere {
             dialogSystem.inputDialog("Ei cara, por aí não!", person: "Weerdman")
-            dialogSystem.nextDialogue()
+            dialogSystem.next()
             return
         }
         

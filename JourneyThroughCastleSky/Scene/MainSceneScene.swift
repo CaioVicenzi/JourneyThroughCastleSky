@@ -55,10 +55,7 @@ class MainMenuScene : SKScene {
             if let scene = SKScene(fileNamed: "MainHallScene") as? MainHallScene {
                 scene.scaleMode = .aspectFill
                 let transition = SKTransition.fade(withDuration: 1.0)
-                let cutsceneView = CutsceneScenes(size: self.size)
-                let cutsceneHelper = CutsceneHelper()
-                cutsceneView.config(scene, scenes: cutsceneHelper.cutsceneOne)
-                self.view?.presentScene(cutsceneView, transition: transition)
+                self.view?.presentScene(scene, transition: transition)
             } else {
                 print("Failed to load Cutscene.")
             }

@@ -10,8 +10,9 @@ import SpriteKit
 
 class DialogSystem: System {
     private var dialogsToPass : [Dialogue] = []
+    private var dialogsToPassAfterCutscene : [Dialogue] = []
 
-    func nextDialogue () {
+    func next () {
         // troca o gameState e o mostRecentMove para um array vazio para fazer o usuário instantaneamente parar
         gameScene.movementSystem.mostRecentMove = []
         gameScene.gameState = .NORMAL
@@ -20,26 +21,16 @@ class DialogSystem: System {
         cleanDialogBox()
         gameScene.cleanItemDescription()
         
-        // dialogs
-        if let dialog = self.dialogsToPass.first {
-            gameScene.gameState = .WAITING_DIALOG
-            if gameScene.dialogueBox?.parent == nil {
-                gameScene.setupDialogBox()
-            }
-            gameScene.addDialogToDialogBox(dialog)
-            self.dialogsToPass.removeFirst()
+        if self.gameScene.dialogSystem.dialogsToPass.first != nil {
+            nextDialog()
+        } else if self.gameScene.descriptionsToPass.first != nil {
+            nextItemDescription()
+        } else if self.gameScene.cutsceneSystem.cutscenes.first != nil {
+            nextCutscene()
+        } else if self.gameScene.dialogSystem.dialogsToPassAfterCutscene.first != nil {
+            nextDialogAfterCutscene()
         } else {
-            if let description = gameScene.descriptionsToPass.first {
-                gameScene.gameState = .WAITING_DIALOG
-                gameScene.showItemDescription(description)
-                gameScene.descriptionsToPass.removeFirst()
-            } else {
-                if let cutscene = gameScene.cutsceneSystem.cutscenes.first {
-                    gameScene.cutsceneSystem.nextCutscene()
-                }
-                
-                gameScene.gameState = .NORMAL
-            }
+            self.gameScene.gameState = .NORMAL
         }
     }
     
@@ -56,6 +47,46 @@ class DialogSystem: System {
     
     func inputDialogs (_ dialogues: [Dialogue]) {
         self.dialogsToPass.append(contentsOf: dialogues)
+    }
+    
+    func inputDialogsAfterCutscene (_ dialogues : [Dialogue]) {
+        self.dialogsToPass.append(contentsOf: dialogues)
+    }
+    
+    func nextDialog() {
+        if let firstDialogue = dialogsToPass.first {
+            gameScene.gameState = .WAITING_DIALOG
+            if gameScene.dialogueBox?.parent == nil {
+                gameScene.setupDialogBox()
+            }
+            gameScene.addDialogToDialogBox(firstDialogue)
+            self.dialogsToPass.removeFirst()
+        }
+    }
+    
+    func nextItemDescription () {
+        if let description = gameScene.descriptionsToPass.first {
+            gameScene.gameState = .WAITING_DIALOG
+            gameScene.showItemDescription(description)
+            gameScene.descriptionsToPass.removeFirst()
+        }
+    }
+    
+    func nextCutscene () {
+        if let cutscene = gameScene.cutsceneSystem.cutscenes.first {
+            gameScene.cutsceneSystem.nextCutscene()
+        }
+    }
+    
+    func nextDialogAfterCutscene () {
+        if let firstDialogue = gameScene.dialogSystem.dialogsToPassAfterCutscene.first {
+            gameScene.gameState = .WAITING_DIALOG
+            if gameScene.dialogueBox?.parent == nil {
+                gameScene.setupDialogBox()
+            }
+            gameScene.addDialogToDialogBox(firstDialogue)
+            self.dialogsToPassAfterCutscene.removeFirst()
+        }
     }
     
     func inputDialog (_ text : String, person : String, velocity : Int = 10) {
@@ -101,7 +132,7 @@ class DialogSystem: System {
         let isEnterKey = keyCode == 36
 
         if isEnterKey {
-            nextDialogue()
+            next()
         }
     }
 }

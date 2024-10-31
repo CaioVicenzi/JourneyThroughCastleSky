@@ -74,7 +74,7 @@ class FriendlySystem: System {
         default:
             break
         }
-        gameScene?.dialogSystem.nextDialogue()
+        gameScene?.dialogSystem.next()
     }
     
     private func firstInteraction () {

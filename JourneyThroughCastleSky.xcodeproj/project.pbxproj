@@ -605,7 +605,6 @@
 				FDF1E0932C91B752006D4EA0 /* Main.storyboard */,
 				FDF1E0962C91B752006D4EA0 /* JourneyThroughCastleSky.entitlements */,
 				982388882CCABF2500BE2D74 /* Assets */,
-				FD4D26CE2CD1579300A52B73 /* DialogHelper.swift */,
 			);
 			path = JourneyThroughCastleSky;
 			sourceTree = "<group>";
@@ -613,6 +612,7 @@
 		FDF1E09C2C91B803006D4EA0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				FD4D26CE2CD1579300A52B73 /* DialogHelper.swift */,
 				985DD3E02CB86DD400E58612 /* Math.swift */,
 				FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */,
 				FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */,

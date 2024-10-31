@@ -8,29 +8,25 @@
 import Foundation
 import SpriteKit
 
-class CutsceneSystem : System {
-    var cutscenes : [[Cutscene]] = []
-    
-    override func config(_ gameScene: TopDownScene) {
-        self.gameScene = gameScene
-    }
+class CutsceneSystem: System {
+    var cutscenes : [Cutscene] = []
     
     func addCutscene (_ cutscenes : [Cutscene]) {
-        self.cutscenes.append(cutscenes)
+        self.gameScene.cutsceneSystem.cutscenes.append(contentsOf: cutscenes)
     }
     
     func nextCutscene () {
         // primeiro passo: pegar a próxima lista de cenas das cutscenes
-        guard let firstCutscene = cutscenes.first, !firstCutscene.isEmpty else {
+        guard let firstCutscene = cutscenes.first else {
             return
         }
         
         
         let cutscene = CutsceneScenes(size: gameScene.size)
-        cutscene.config(gameScene, scenes: firstCutscene)
+        cutscene.config(gameScene, scenes: cutscenes)
         gameScene.view?.presentScene(cutscene, transition: SKTransition.fade(withDuration: 2.0))
         
-        self.cutscenes.removeFirst()
+        self.gameScene.cutsceneSystem.cutscenes.removeAll()
     }
     
 }
