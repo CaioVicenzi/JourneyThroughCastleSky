@@ -25,9 +25,9 @@ class MainHallScene: TopDownScene {
         super.didMove(to: view)
         if !jaMostrou {
             let cutsceneHelper = CutsceneHelper()
-            self.cutsceneSystem.addCutscene(cutsceneHelper.cutsceneOne) //.addCutscene(cutsceneHelper.cutsceneOne)
+            self.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneOne) //.addCutscene(cutsceneHelper.cutsceneOne)
             
-            self.cutsceneSystem.nextCutscene()
+            self.cutsceneSystem.nextCutscenes()
             jaMostrou = true
         }
         

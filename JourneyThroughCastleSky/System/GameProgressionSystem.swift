@@ -19,7 +19,7 @@ A GameProgressionSystem é um fenômeno, porque ela serve para controlar em qual
  -> 3 - Acabou o jogo basicamente.
 */
 class GameProgressionSystem {
-    @AppStorage("estage6") var estage : Int = 0
+    @AppStorage("estage") var estage : Int = 0
     static let singleton : GameProgressionSystem = GameProgressionSystem()
     
     func upStage () {

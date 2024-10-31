@@ -15,10 +15,12 @@ class CutsceneScenes: SKScene{
     var cutsceneTimer: Timer?
     var previousScene : TopDownScene? = nil
     var scenes : [Cutscene] = []
+    var dialogsAfterCutscene : [Dialogue] = []
     
-    func config (_ previousScene : TopDownScene, scenes : [Cutscene]) {
+    func config (_ previousScene : TopDownScene, scenes : [Cutscene], dialogsAfterCutscene : [Dialogue]) {
         self.previousScene = previousScene
         self.scenes = scenes
+        self.dialogsAfterCutscene = dialogsAfterCutscene
     }
     
     override func didMove(to view: SKView) {
@@ -56,7 +58,24 @@ class CutsceneScenes: SKScene{
     }
     
     private func goBackToScene () {
-        self.view?.presentScene(previousScene)
+        if GameProgressionSystem.singleton.isMaxStage() {
+            let youFinishedScene = YouWinScene(size: self.size)
+            youFinishedScene.scaleMode = .aspectFill
+            self.view?.presentScene(youFinishedScene)
+        } else {
+            if let previousScene {
+                let positionComponent = User.singleton.positionComponent
+                let cgPoint = CGPoint(x: CGFloat(positionComponent.xPosition), y: CGFloat(positionComponent.yPosition))
+                previousScene.spawnLocation = cgPoint
+                
+                self.view?.presentScene(previousScene, transition: SKTransition.fade(withDuration: 2.0))
+                let spawn = previousScene.childNode(withName: "spawn")
+                spawn?.removeFromParent()
+            } else {
+                print("Não tem cena anterior.")
+            }
+            //previousScene?.configDialogs(self.dialogsAfterCutscene)
+        }
     }
     
 }

@@ -10,7 +10,7 @@ import SpriteKit
 
 class DialogSystem: System {
     private var dialogsToPass : [Dialogue] = []
-    private var dialogsToPassAfterCutscene : [Dialogue] = []
+    var dialogsToPassAfterCutscene : [Dialogue] = []
 
     func next () {
         // troca o gameState e o mostRecentMove para um array vazio para fazer o usuário instantaneamente parar
@@ -50,7 +50,7 @@ class DialogSystem: System {
     }
     
     func inputDialogsAfterCutscene (_ dialogues : [Dialogue]) {
-        self.dialogsToPass.append(contentsOf: dialogues)
+        self.dialogsToPassAfterCutscene.append(contentsOf: dialogues)
     }
     
     func nextDialog() {
@@ -74,7 +74,7 @@ class DialogSystem: System {
     
     func nextCutscene () {
         if let cutscene = gameScene.cutsceneSystem.cutscenes.first {
-            gameScene.cutsceneSystem.nextCutscene()
+            gameScene.cutsceneSystem.nextCutscenes()
         }
     }
     

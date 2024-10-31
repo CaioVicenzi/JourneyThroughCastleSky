@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class MainMenuScene : SKScene {
     let titleLabel : SKLabelNode = SKLabelNode(text: "Journey Through Castle Sky")
@@ -14,6 +15,7 @@ class MainMenuScene : SKScene {
     
     let titleLabelTwo : SKLabelNode = SKLabelNode(text: "Configurations")
     var configurationsGameButton : SKShapeNode? = nil
+    @AppStorage("estage") var estage : Int = 0
     
     override func didMove(to view: SKView) {
         titleLabel.position = PositionHelper.singleton.centralizeQuarterUp(titleLabel)
@@ -65,6 +67,13 @@ class MainMenuScene : SKScene {
             configurationsScene.scaleMode = .aspectFill
             let transition = SKTransition.fade(withDuration: 1.0)
             self.view?.presentScene(configurationsScene, transition: transition)
+        }
+    }
+    
+    override func keyDown(with event: NSEvent) {
+        if event.keyCode == 51 {
+            self.estage = 0
+            print("Estágio resetado")
         }
     }
 }

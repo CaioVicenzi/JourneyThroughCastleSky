@@ -57,10 +57,6 @@ class FriendlySystem: System {
             User.singleton.inventoryComponent.itens.removeAll { item in item.consumableComponent?.effect.type == .UP_LEVEL}
             dialogue()
             GameProgressionSystem.singleton.upStage()
-            
-            if GameProgressionSystem.singleton.isMaxStage() {
-                gameScene?.endGame()
-            }
         } else {
             print("Não tem cristal para entregar")
         }
@@ -79,18 +75,18 @@ class FriendlySystem: System {
     
     private func firstInteraction () {
         self.gameScene.dialogSystem.inputDialogs(dialogueHelper.firstDialogs)
-        self.gameScene.cutsceneSystem.addCutscene(cutsceneHelper.cutsceneOne)
     }
     
     private func secondInteraction () {
         self.gameScene.dialogSystem.inputDialogs(dialogueHelper.secondDialogs)
-        self.gameScene.cutsceneSystem.addCutscene(cutsceneHelper.cutsceneTwo)
-        
+        self.gameScene.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneTwo)
+        self.gameScene.dialogSystem.inputDialogsAfterCutscene(dialogueHelper.secondDialogsAfterCutscene)
     }
     
     private func thirdDialogue () {
         self.gameScene.dialogSystem.inputDialogs(dialogueHelper.thirdDialogs)
-        self.gameScene.cutsceneSystem.addCutscene(cutsceneHelper.cutsceneThree)
+        self.gameScene.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneThree)
+        self.gameScene.dialogSystem.inputDialogsAfterCutscene(dialogueHelper.thirdDialogsAfterCutscene)
     }
     
     func changeDialogueMaster() {

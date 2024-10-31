@@ -116,6 +116,12 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         } else {
             populateDataFromGameSceneData()
         }
+        
+        self.dialogSystem.next()
+    }
+    
+    func configDialogs (_ dialogs : [Dialogue]) {
+        self.dialogSystem.inputDialogs(dialogs)
     }
     
     

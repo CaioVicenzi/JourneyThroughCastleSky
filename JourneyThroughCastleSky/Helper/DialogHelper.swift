@@ -10,10 +10,40 @@ import Foundation
 class DialogHelper {
     let firstDialogs : [Dialogue] = [
         Dialogue(text: "Irmão!", person: "Weerdman"),
-        
+        /*
+        Dialogue(text: "Eu não sou seu irmão.", person: "Você"),
+        Dialogue(text: "É o meu jeito de me expressar.", person: "Weerdman"),
+        Dialogue(text: "Certo… Quem é você?", person: "Você"),
+        Dialogue(text: "Weerdman, à sua disposição. O que um soldado com uma bela e brilhante armadura está fazendo aqui nas ruínas esquecidas desse antigo mundo?", person: "Weerdman"),
+        Dialogue(text: "Eu não sei.", person: "Você"),
+        Dialogue(text: "Você não sabe?", person: "Weerdman"),
+        Dialogue(text: "Eu não me lembro… Eu não me lembro de nada…", person: "Você"),
+        Dialogue(text: "Interessante! Memerance, talvez… Sim, sim… Memerance! Posso ver os seus olhos brilharem com a corrupção blasfema de Leville. Ela te envolve como um véu invisível. Fascinante!", person: "Weerdman"),
+        Dialogue(text: "O que é isso?", person: "Você"),
+        Dialogue(text: "Ah… Memerance! Maldito feitiço! Apaga sua memória. É como o vento soprando grãos de areia. Faz com que seu cérebro se torne um quebra-cabeças a ser desvendado. Um sussurro etéreo distante nas profundezas do seu ser. Apenas eu posso desfazê-lo!", person: "Weerdman"),
+        Dialogue(text: "Você?", person: "Você"),
+        Dialogue(text: "Sim! Quem mais? Mas… Preciso de um favor, ou melhor, favores em troca.", person: "Weerdman"),
+        Dialogue(text: "E se eu não aceitar?", person: "Você"),
+        Dialogue(text: "Bom… então vague por essas terras sozinho. E procure por alguém gentil o suficiente para ajudá-lo. Não creio que encontrará, irmão. Tolo é aquele que tem uma joia rara nas mãos e sai para procurar pedras.", person: "Weerdman"),
+        Dialogue(text: "Hum… e você acha que eu vou conseguir realizar esses favores para você?", person: "Você"),
+        Dialogue(text: "Olha para você! Quase um herói de armadura! Parece que veio diretamente de um conto de fadas.", person: "Weerdman"),
+        Dialogue(text: "De que favores estamos falando?", person: "Você"),
+        Dialogue(text: "Preciso que recupere cristais. Pedras antigas de uma era distante!", person: "Weerdman"),
+        Dialogue(text: "Entendo… Parece ser uma troca justa.", person: "Você"),
+        Dialogue(text: "Esse é o espírito! Ah, mas esteja avisado. Não sou nenhum tolo. Existem quatro cristais. A cada cristal que pegar, eu tiro um pouco da corrupção. No final, será novinho em folha! He he…", person: "Weerdman"),
+        Dialogue(text: "Entendo. Por onde eu começo?", person: "Você"),
+        Dialogue(text: "O primeiro cristal está no calabouço. Mas tome cuidado… Mítico é o herói que busca o perigo sem se importar com sua reputação, armado apenas com bravura e caráter e a vontade de mudar o mundo. E no seu caso… uma espada!", person: "Weerdman"),
+        Dialogue(text: "Certo?...", person: "Você"),
+        Dialogue(text: "Vá com cuidado, irmão! Mantenha seu corpo e mente afiados.", person: "Weerdman"),
+        Dialogue(text: "Antes de ir, com o que esse cristal se parece?", person: "Você"),
+        Dialogue(text: "Você saberá quando vê-lo. Seu brilho pode ser visto pelos reinos como o Bombardeamento Celeste na era de Skyrise. Boa sorte!", person: "Weerdman")
+         */
     ]
+        
+        
     let secondDialogs : [Dialogue] = [
         Dialogue(text: "O soldado errante retorna! He he", person: "Weerdman"),
+        /*
         Dialogue(text: "Não esperava que eu conseguisse?", person: "Você"),
         Dialogue(text: "Claro que esperava. Já disse, você parece ter vindo direto de um conto de fadas. Não se lembra?", person: "Weerdman"),
         Dialogue(text: "Hum…", person: "Você"),
@@ -37,10 +67,12 @@ class DialogHelper {
         Dialogue(text: "Eu sou um sábio em uma terra desolada. Eu não converso com ninguém há muito tempo. O que espera de mim?", person: "Weerdman"),
         Dialogue(text: "Hum…", person: "Você"),
         Dialogue(text: "Me esqueci que você é um homem de poucas palavras. E agora… hora da mágica. Está pronto?", person: "Weerdman")
+         */
     ]
 
     let secondDialogsAfterCutscene : [Dialogue] = [
         Dialogue(text: "O que viu?", person: "Weerdman"),
+        /*
         Dialogue(text: "Parece que fui capturado… por soldados.", person: "Você"),
         Dialogue(text: "Eu sinto muito por isso.", person: "Weerdman"),
         Dialogue(text: "Eu acho que tinha uma filha… eles… me levaram para longe dela.", person: "Você"),
@@ -60,10 +92,12 @@ class DialogHelper {
         Dialogue(text: "Você é apressado, irmão. Mas eu não te culpo. Afinal de contas, perder a memória é uma péssima experiência. Teve uma vez em um pub que eu…", person: "Weerdman"),
         Dialogue(text: "UHUM!", person: "Weerdman"),
         Dialogue(text: "Ok. Ok. Lá vamos nós!", person: "Weerdman")
+         */
     ]
 
     let thirdDialogs : [Dialogue] = [
         Dialogue(text: "Bom trabalho, irmão!", person: "Weerdman"),
+        /*
         Dialogue(text: "Aqui está.", person: "Você"),
         Dialogue(text: "Você encontrou alguém ao longo do caminho?", person: "Weerdman"),
         Dialogue(text: "Não. Eu deveria?", person: "Você"),
@@ -72,10 +106,12 @@ class DialogHelper {
         Dialogue(text: "Você é apressado, irmão. Mas eu não te culpo. Afinal de contas, perder a memória é uma péssima experiência. Teve uma vez em um pub que eu…", person: "Weerdman"),
         Dialogue(text: "UHUM!", person: "Weerdman"),
         Dialogue(text: "Ok. Ok. Lá vamos nós!", person: "Weerdman")
+         */
     ]
 
     let thirdDialogsAfterCutscene : [Dialogue] = [
         Dialogue(text: "E aí, irmão?", person: "Weerdman"),
+        /*
         Dialogue(text: "Prefiro não falar o que vi.", person: "Você"),
         Dialogue(text: "Tudo bem, irmão.", person: "Weerdman"),
         Dialogue(text: "Eu preciso saber mais. Onde está o próximo fragmento?", person: "Você"),
@@ -87,6 +123,7 @@ class DialogHelper {
         Dialogue(text: "Certo! Você tem mais alguma coisa para me dizer?", person: "Você"),
         Dialogue(text: "Sim! Aquele lugar não costuma ser o que era. Tome muito cuidado, irmão. Se perder lá é fácil. Em outras palavras. Preste muita atenção para onde está andando…", person: "Weerdman"),
         Dialogue(text: "Ok.", person: "Você")
+         */
     ]
 }
 
