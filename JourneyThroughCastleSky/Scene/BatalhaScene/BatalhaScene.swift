@@ -37,7 +37,7 @@ class BatalhaScene : SKScene {
     private var enemyDodge = false
     var reward : Item? = nil
     
-    var actionDescription : SKShapeNode? = nil
+    var actionDescription : SKSpriteNode? = nil
     var healthBar : SKSpriteNode? = nil
     var staminaBar : SKShapeNode? = nil
     var enemyLifeBar : SKSpriteNode? = nil
@@ -64,6 +64,7 @@ class BatalhaScene : SKScene {
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         setupNodes()
+        self.scaleMode = .fill
         self.gameChooseState = .CHOOSE_BUTTON
     }
     

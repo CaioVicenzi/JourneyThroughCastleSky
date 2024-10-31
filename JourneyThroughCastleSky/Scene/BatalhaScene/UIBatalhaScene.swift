@@ -12,20 +12,15 @@ extension BatalhaScene{
     
     // MARK: SETUP UI
     
-    func setupEnemyScreen(){
-        //let enemyScreen = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.45))
-        let enemyScreen = SKShapeNode(rectOf: CGSize(width: self.size.width*0.925, height: self.size.height*0.45))
-        enemyScreen.position = .zero
-        enemyScreen.position.y += (enemyScreen.frame.height / 2)
-        
-        enemyScreen.fillColor = .black
-        enemyScreen.strokeColor = .black
+    func setupEnemyScreen() {
+        let enemyScreen = SKSpriteNode(imageNamed: "BG-Battle")
+        enemyScreen.size = CGSize(width: self.size.width, height: self.size.height*0.48)
+        enemyScreen.position = CGPoint(x:  self.size.width/6400, y: self.size.height/3.75)
         
         let enemySprite = enemy.spriteComponent.sprite.copy() as! SKSpriteNode
         enemySprite.physicsBody = nil
         enemySprite.position = .zero
         enemyScreen.addChild(enemySprite)
-        
         
         addChild(enemyScreen)
     }
@@ -124,24 +119,24 @@ extension BatalhaScene{
         }
     }
         
-    func setupActionDescription(){
-        actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
+    func setupActionDescription() {
+        // Create the sprite node with a named image file
+        actionDescription = SKSpriteNode(imageNamed: "textbox") // Replace "actionDescriptionBackground" with the actual file name
+        actionDescription?.size = CGSize(width: 1121, height: 496)
+        actionDescription?.position = CGPoint(x: 240, y: -self.size.height * 0.225)
+
+        guard let actionDescription else { return }
         
-        guard let actionDescription else {return}
-            
-        actionDescription.fillColor = .black
-        actionDescription.strokeColor = .black
-        
-        descriptionLabel = SKLabelNode()
-        guard let descriptionLabel else {return}
-        descriptionLabel.text = "init"
-        descriptionLabel.position = .zero
-        descriptionLabel.position.x += actionDescription.frame.width / 2 + descriptionLabel.frame.width / 2
-        descriptionLabel.position.y -= actionDescription.frame.height / 2 + descriptionLabel.frame.height / 2
+        // Create and configure the description label
+        descriptionLabel = SKLabelNode(text: "init")
+        guard let descriptionLabel else { return }
         descriptionLabel.fontSize = 12
+        descriptionLabel.position = CGPoint(x: descriptionLabel.frame.width / 2, y: -descriptionLabel.frame.height / 2)
+        
+        // Add the label as a child of the action description sprite
         actionDescription.addChild(descriptionLabel)
         
-            
+        // Add the action description to the scene
         addChild(actionDescription)
     }
         
