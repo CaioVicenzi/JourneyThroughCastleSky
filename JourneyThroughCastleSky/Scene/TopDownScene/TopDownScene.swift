@@ -45,9 +45,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var titleSelectedItem : SKLabelNode?
     var descriptionSelectedItem : SKLabelNode?
     
-    internal var cameraNode : SKCameraNode!
-    
-    
+    var cameraNode : SKCameraNode!
+
     var descriptionsToPass : [DescriptionToPass] = []
     
     var gameState : GameState = .NORMAL

@@ -42,7 +42,7 @@ class FriendlySystem: System {
     
     private func talkToFriendly (_ friendly : Friendly) {
         if GameProgressionSystem.singleton.estage > 0 {
-            delieverCrystal()
+            delieverCrystal ()
         } else {
             dialogue()
             GameProgressionSystem.singleton.upStage()
