@@ -25,6 +25,12 @@
 		981801D72CD54CAC00A43454 /* hallprincipalcolider@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801D12CD54CAC00A43454 /* hallprincipalcolider@3x.jpg */; };
 		981801D82CD54CAC00A43454 /* hallprincipalcoliderhallprincipal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801D22CD54CAC00A43454 /* hallprincipalcoliderhallprincipal.jpg */; };
 		981801D92CD54CAC00A43454 /* hallprincipalcolider@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801D02CD54CAC00A43454 /* hallprincipalcolider@2x.jpg */; };
+		981801DE2CD553C200A43454 /* hallreliquias01 1@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DC2CD553C200A43454 /* hallreliquias01 1@3x.jpg */; };
+		981801DF2CD553C200A43454 /* hallreliquias01 1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DB2CD553C200A43454 /* hallreliquias01 1@2x.jpg */; };
+		981801E02CD553C200A43454 /* hallreliquias01 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DA2CD553C200A43454 /* hallreliquias01 1.jpg */; };
+		981801E12CD553C200A43454 /* hallreliquias01 1@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DC2CD553C200A43454 /* hallreliquias01 1@3x.jpg */; };
+		981801E22CD553C200A43454 /* hallreliquias01 1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DB2CD553C200A43454 /* hallreliquias01 1@2x.jpg */; };
+		981801E32CD553C200A43454 /* hallreliquias01 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 981801DA2CD553C200A43454 /* hallreliquias01 1.jpg */; };
 		982388892CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */; };
 		9823888A2CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9823887F2CCABF2500BE2D74 /* Spriteworm-0001 1.png */; };
 		9823888B2CCABF2500BE2D74 /* Protag.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 982388832CCABF2500BE2D74 /* Protag.pdf */; };
@@ -224,6 +230,9 @@
 		981801D02CD54CAC00A43454 /* hallprincipalcolider@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hallprincipalcolider@2x.jpg"; sourceTree = "<group>"; };
 		981801D12CD54CAC00A43454 /* hallprincipalcolider@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hallprincipalcolider@3x.jpg"; sourceTree = "<group>"; };
 		981801D22CD54CAC00A43454 /* hallprincipalcoliderhallprincipal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hallprincipalcoliderhallprincipal.jpg; sourceTree = "<group>"; };
+		981801DA2CD553C200A43454 /* hallreliquias01 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hallreliquias01 1.jpg"; sourceTree = "<group>"; };
+		981801DB2CD553C200A43454 /* hallreliquias01 1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hallreliquias01 1@2x.jpg"; sourceTree = "<group>"; };
+		981801DC2CD553C200A43454 /* hallreliquias01 1@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "hallreliquias01 1@3x.jpg"; sourceTree = "<group>"; };
 		982388752CCABF2500BE2D74 /* dungeon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dungeon.jpg; sourceTree = "<group>"; };
 		982388762CCABF2500BE2D74 /* hallofrelics.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hallofrelics.jpg; sourceTree = "<group>"; };
 		982388782CCABF2500BE2D74 /* Spriteprotag-0001 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spriteprotag-0001 1.png"; sourceTree = "<group>"; };
@@ -368,9 +377,20 @@
 			path = "Main Hall";
 			sourceTree = "<group>";
 		};
+		981801DD2CD553C200A43454 /* Hall of Relics */ = {
+			isa = PBXGroup;
+			children = (
+				981801DA2CD553C200A43454 /* hallreliquias01 1.jpg */,
+				981801DB2CD553C200A43454 /* hallreliquias01 1@2x.jpg */,
+				981801DC2CD553C200A43454 /* hallreliquias01 1@3x.jpg */,
+			);
+			path = "Hall of Relics";
+			sourceTree = "<group>";
+		};
 		982388772CCABF2500BE2D74 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				981801DD2CD553C200A43454 /* Hall of Relics */,
 				981801D32CD54CAC00A43454 /* Main Hall */,
 				982388752CCABF2500BE2D74 /* dungeon.jpg */,
 				982388762CCABF2500BE2D74 /* hallofrelics.jpg */,
@@ -775,6 +795,9 @@
 				982388912CCABF2500BE2D74 /* Protag.png in Resources */,
 				982388922CCABF2500BE2D74 /* hallofrelics.jpg in Resources */,
 				982388932CCABF2500BE2D74 /* Protag.zip in Resources */,
+				981801DE2CD553C200A43454 /* hallreliquias01 1@3x.jpg in Resources */,
+				981801DF2CD553C200A43454 /* hallreliquias01 1@2x.jpg in Resources */,
+				981801E02CD553C200A43454 /* hallreliquias01 1.jpg in Resources */,
 				981801D72CD54CAC00A43454 /* hallprincipalcolider@3x.jpg in Resources */,
 				981801D82CD54CAC00A43454 /* hallprincipalcoliderhallprincipal.jpg in Resources */,
 				981801D92CD54CAC00A43454 /* hallprincipalcolider@2x.jpg in Resources */,
@@ -808,6 +831,9 @@
 				9823889A2CCABF2500BE2D74 /* Protag.pdf in Resources */,
 				9823889B2CCABF2500BE2D74 /* bricks.jpg in Resources */,
 				9823889C2CCABF2500BE2D74 /* dungeon.jpg in Resources */,
+				981801E12CD553C200A43454 /* hallreliquias01 1@3x.jpg in Resources */,
+				981801E22CD553C200A43454 /* hallreliquias01 1@2x.jpg in Resources */,
+				981801E32CD553C200A43454 /* hallreliquias01 1.jpg in Resources */,
 				9823889D2CCABF2500BE2D74 /* Spriteworm-0001 1@3x.png in Resources */,
 				9823889E2CCABF2500BE2D74 /* cobblestone.jpg in Resources */,
 				9823889F2CCABF2500BE2D74 /* Spriteprotag-0001 1@2x.png in Resources */,
