@@ -38,7 +38,7 @@ class BatalhaScene : SKScene {
     var reward : Item? = nil
     
     var actionDescription : SKSpriteNode? = nil
-    var healthBar : SKSpriteNode? = nil
+    var healthBar : SKShapeNode? = nil
     var staminaBar : SKShapeNode? = nil
     var enemyLifeBar : SKSpriteNode? = nil
     var descriptionLabel : SKLabelNode? = nil
@@ -70,7 +70,7 @@ class BatalhaScene : SKScene {
     
     func setupNodes () {
         setupEnemyScreen()
-        setupRows()
+//        setupRows()
         setupStaminaBar()
         setupHealthBar()
         setupActionDescription()
