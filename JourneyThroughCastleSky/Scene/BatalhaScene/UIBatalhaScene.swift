@@ -30,18 +30,12 @@ extension BatalhaScene{
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
         
-        var rowNodes: [SKShapeNode] = []
+        var rowNodes: [SKSpriteNode] = []
         
         for i in 0..<numberOfRows {
-            let individualRow = SKShapeNode(rect: CGRect(x: -(self.size.width * 0.925) / 2,
-                                                         y: (-self.size.height * 0.45)/5 - (CGFloat(i) * rowHeight),
-                                                         width: self.size.width * 0.4625,
-                                                         height: rowHeight))
-            
-            individualRow.fillColor = .gray
-            individualRow.strokeColor = .black
-            
-            //individualRow.isUserInteractionEnabled = true
+            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+        
+            individualRow.position = CGPoint(x: 1000, y: 100)
             
             individualRow.name = "rowButton\(i)"
             
@@ -64,9 +58,9 @@ extension BatalhaScene{
         
         var i = 0
         for item in User.singleton.inventoryComponent.itens {
-            var rowNodes: [SKShapeNode] = []
+            var rowNodes: [SKSpriteNode] = []
             
-            let individualRow = SKShapeNode(rectOf: CGSize(width: actionDescription.frame.width, height: 100))
+            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
             individualRow.position = .zero
             
             individualRow.position.x += (individualRow.frame.width / 2) - 3
@@ -75,10 +69,6 @@ extension BatalhaScene{
             if i != 0 {
                 individualRow.position.y -= 2
             }
-            
-            individualRow.fillColor = .gray
-            individualRow.strokeColor = .black
-                
                 
             individualRow.name = "itemRow\(i)"
                 

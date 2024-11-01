@@ -70,7 +70,7 @@ class BatalhaScene : SKScene {
     
     func setupNodes () {
         setupEnemyScreen()
-//        setupRows()
+        setupRows()
         setupStaminaBar()
         setupHealthBar()
         setupActionDescription()
@@ -106,21 +106,20 @@ class BatalhaScene : SKScene {
     internal func updateColorChooseOption () {
         if gameChooseState == .NONE || gameChooseState == .SELECTED {
             for index in 0 ..< 4 {
-                let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
-                rowButton.fillColor = .gray
+                let rowButton = childNode(withName: "rowButton\(index)") as! SKSpriteNode
             }
             return
         }
         
         for index in 0 ..< 4 {
-            let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
+            let rowButton = childNode(withName: "rowButton\(index)") as! SKSpriteNode
             
             
-            if index == buttonSelected.rawValue {
-                rowButton.fillColor = .blue
-            } else {
-                rowButton.fillColor = .gray
-            }
+//            if index == buttonSelected.rawValue {
+//                rowButton.fillColor = .blue
+//            } else {
+//                rowButton.fillColor = .gray
+//            }
         }
     }
     
