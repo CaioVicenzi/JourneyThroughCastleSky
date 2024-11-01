@@ -31,11 +31,14 @@ extension TopDownScene {
         
         
         let xSize = sprite.size.width / 2
-        let ySize = sprite.size.height / 2
+        let ySize = sprite.size.height / 4
         
         sprite.zPosition = 10
         
-        sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: xSize, height: ySize))
+        sprite.physicsBody = SKPhysicsBody(
+            rectangleOf: .init(width: xSize, height: ySize),
+            center: .init(x: 0, y: -sprite.size.height / 2 + ySize / 2)
+        )
         sprite.physicsBody?.categoryBitMask  = PhysicCategory.character
         sprite.physicsBody?.collisionBitMask = PhysicCategory.wall
         sprite.physicsBody?.contactTestBitMask = PhysicCategory.wall

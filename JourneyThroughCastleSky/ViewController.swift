@@ -22,7 +22,7 @@ class ViewController: NSViewController {
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
             view.ignoresSiblingOrder = true
-           
+            
         }
     }
 }
