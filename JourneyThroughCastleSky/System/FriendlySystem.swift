@@ -10,6 +10,8 @@ import Foundation
 class FriendlySystem: System {
     var friendlies : [Friendly] = []
     var integerMaster : Int = 0
+    let dialogueHelper = DialogHelper()
+    let cutsceneHelper = CutsceneHelper()
     
     init(friendlies: [Friendly]) {
         self.friendlies = friendlies
@@ -55,31 +57,36 @@ class FriendlySystem: System {
             User.singleton.inventoryComponent.itens.removeAll { item in item.consumableComponent?.effect.type == .UP_LEVEL}
             dialogue()
             GameProgressionSystem.singleton.upStage()
-            
-            if GameProgressionSystem.singleton.isMaxStage() {
-                gameScene?.endGame()
-            }
         } else {
             print("Não tem cristal para entregar")
         }
     }
     
     private func dialogue () {
-        var dialogueSequence : [Dialogue] = []
-        
         switch GameProgressionSystem.singleton.estage {
-        case 0:
-            dialogueSequence = [Dialogue(text: "Primeiro diálogo: vai pegar o cristal", person: "Weerdman", velocity: 50)]
-        case 1:
-            dialogueSequence = [Dialogue(text: "Segundo diálogo, vai pegar mais um cristal para mim", person: "Weerdman", velocity: 50)]
-        case 2:
-            dialogueSequence = [Dialogue(text: "Terceiro diálogo, obrigado pelos cristais, otário", person: "Weerdman", velocity: 50)]
+            case 0: firstInteraction()
+            case 1: secondInteraction()
+            case 2: thirdDialogue()
         default:
             break
         }
-        
-        self.gameScene?.dialogSystem.inputDialogs(dialogueSequence)
-        gameScene?.dialogSystem.nextDialogue()
+        gameScene?.dialogSystem.next()
+    }
+    
+    private func firstInteraction () {
+        self.gameScene.dialogSystem.inputDialogs(dialogueHelper.firstDialogs)
+    }
+    
+    private func secondInteraction () {
+        self.gameScene.dialogSystem.inputDialogs(dialogueHelper.secondDialogs)
+        self.gameScene.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneTwo)
+        self.gameScene.dialogSystem.inputDialogsAfterCutscene(dialogueHelper.secondDialogsAfterCutscene)
+    }
+    
+    private func thirdDialogue () {
+        self.gameScene.dialogSystem.inputDialogs(dialogueHelper.thirdDialogs)
+        self.gameScene.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneThree)
+        self.gameScene.dialogSystem.inputDialogsAfterCutscene(dialogueHelper.thirdDialogsAfterCutscene)
     }
     
     func changeDialogueMaster() {

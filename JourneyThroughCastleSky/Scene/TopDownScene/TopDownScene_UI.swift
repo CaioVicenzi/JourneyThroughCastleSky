@@ -22,12 +22,8 @@ extension TopDownScene {
             if let spawn = childNode(withName: "spawn") {
                 User.singleton.positionComponent.xPosition = Int(spawn.position.x)
                 User.singleton.positionComponent.yPosition = Int(spawn.position.y)
-                
             }
         }
-        
-        
-        
         
         setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent)
         
@@ -58,7 +54,9 @@ extension TopDownScene {
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
         
-        addChild(sprite)
+        if sprite.parent == nil {
+            addChild(sprite)
+        }
     }
     
     // MARK: FUNÇÕES QUE FAZEM O SETUP DE OUTROS ELEMENTOS DENTRO DO MAPA.

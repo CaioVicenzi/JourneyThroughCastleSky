@@ -75,6 +75,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return getSystem()!
     }
     
+    var cutsceneSystem : CutsceneSystem {
+        return getSystem()!
+    }
+    
     var systems: [System] = [
         MovementSystem(),
         DialogSystem(),
@@ -84,6 +88,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         PositionSystem(),
         InventorySystem(),
         DialogSystem(),
+        CutsceneSystem()
     ]
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,9 +104,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         setupWalls()
         setupDoors()
+        
 
-        
-        
         // se não existir um GameSceneData
         // O GameSceneData só é usado quando o usuário vai trocar de tela para ir para um combate
         if GameSceneData.shared == nil {
@@ -112,7 +116,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             populateDataFromGameSceneData()
         }
         
-      
+        self.dialogSystem.next()
+    }
+    
+    func configDialogs (_ dialogs : [Dialogue]) {
+        self.dialogSystem.inputDialogs(dialogs)
     }
     
     
@@ -365,7 +373,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         if showDialogsNotGoThere {
             dialogSystem.inputDialog("Ei cara, por aí não!", person: "Weerdman")
-            dialogSystem.nextDialogue()
+            dialogSystem.next()
             return
         }
         
@@ -503,10 +511,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
-            
-            
         }
-        
     }
     
     internal func setupNodes () {

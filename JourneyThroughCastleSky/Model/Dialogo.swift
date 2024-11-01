@@ -11,4 +11,10 @@ struct Dialogue {
     var text : String
     var person : String
     var velocity : Int
+    
+    init(text: String, person: String, velocity: Int = 50) {
+        self.text = text
+        self.person = person
+        self.velocity = velocity
+    }
 }
