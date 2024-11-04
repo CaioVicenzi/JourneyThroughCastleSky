@@ -7,16 +7,20 @@
 
 import Foundation
 import SpriteKit
-import SwiftUI
 
 class MainMenuScene : SKScene {
-    @AppStorage("estage") var estage : Int = 0
     var selectedButton : Int = 0
     let warning = WarningNewGame()
+    var menuState : MenuState = .CHOOSE_OPTION
+    
+    // uma enum que representa o estado do menu, eu coloquei somente dois, o primeiro é o que você escolhe a opção do menu e a CONFIRM_RESET é quando aparece o popup para você confirmar sua decisão de resetar o jogo.
+    enum MenuState {
+        case CHOOSE_OPTION
+        case CONFIRM_RESET
+    }
     
     override func didMove(to view: SKView) {
         warning.config(self)
-
         setupNodes()
     }
     
@@ -63,6 +67,15 @@ class MainMenuScene : SKScene {
     
     
     override func keyDown(with event: NSEvent) {
+        switch menuState {
+        case .CHOOSE_OPTION:
+            chooseOption(event)
+        case .CONFIRM_RESET:
+            warning.keyDown(event)
+        }
+    }
+    
+    private func chooseOption (_ event : NSEvent) {
         if event.keyCode == 0x7E { // seta para cima
             if selectedButton > 0 {
                 self.selectedButton -= 1
@@ -73,16 +86,6 @@ class MainMenuScene : SKScene {
             if selectedButton < 2 {
                 self.selectedButton += 1
             }
-        }
-        
-        if event.keyCode == 0x7B {// esquerda
-            self.warning.down()
-            warning.updateButtonColors()
-        }
-        
-        if event.keyCode == 0x7C { // direita
-            self.warning.up()
-            warning.updateButtonColors()
         }
         
         if event.keyCode == 36 {
@@ -101,6 +104,7 @@ class MainMenuScene : SKScene {
     
     private func newGame () {
         warning.warning()
+        self.menuState = .CONFIRM_RESET
         //estage = 0
         //goMainHallScene()
     }
