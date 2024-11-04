@@ -210,6 +210,8 @@
 		FDF1E0A32C921D16006D4EA0 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */; };
 		FDF1E0A52C923540006D4EA0 /* BatalhaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0A42C923540006D4EA0 /* BatalhaScene.swift */; };
 		FDF1E0AC2C938531006D4EA0 /* YouWinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */; };
+		FDFF95E82CD5749A00DDA419 /* WarningNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */; };
+		FDFF95E92CD5749A00DDA419 /* WarningNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +336,7 @@
 		FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		FDF1E0A42C923540006D4EA0 /* BatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatalhaScene.swift; sourceTree = "<group>"; };
 		FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouWinScene.swift; sourceTree = "<group>"; };
+		FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningNewGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -664,6 +667,7 @@
 		FDF1E09F2C921CF5006D4EA0 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				FDFF95E62CD5521100DDA419 /* MainScene */,
 				43F229AF2CD009FB008CEDB4 /* Configurations */,
 				98DAD0192CC1A48D0020DFAC /* HallOfHelics */,
 				98DAD0052CC18E330020DFAC /* Dungeon */,
@@ -674,7 +678,6 @@
 				FDF1E0AD2C94B7CF006D4EA0 /* BatalhaScene */,
 				FDF1E0A22C921D16006D4EA0 /* GameOverScene.swift */,
 				FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */,
-				FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -686,6 +689,15 @@
 				FDC1FCFE2C94B9A500791D58 /* UIBatalhaScene.swift */,
 			);
 			path = BatalhaScene;
+			sourceTree = "<group>";
+		};
+		FDFF95E62CD5521100DDA419 /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */,
+				FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */,
+			);
+			path = MainScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -915,6 +927,7 @@
 				98838C562CA5DC6100709648 /* InteractableComponent.swift in Sources */,
 				98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C572CA5DC6100709648 /* InventoryComponent.swift in Sources */,
+				FDFF95E92CD5749A00DDA419 /* WarningNewGame.swift in Sources */,
 				98838C582CA5DC6100709648 /* DialogueComponent.swift in Sources */,
 				98838C592CA5DC6100709648 /* HealthComponent.swift in Sources */,
 				98838C5A2CA5DC6100709648 /* MovementComponent.swift in Sources */,
@@ -1007,6 +1020,7 @@
 				43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				FD4D26DB2CD1A6C200A52B73 /* CutsceneSystem.swift in Sources */,
 				FD932B052C9B57620047B5B7 /* AffectedByEffect.swift in Sources */,
+				FDFF95E82CD5749A00DDA419 /* WarningNewGame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
