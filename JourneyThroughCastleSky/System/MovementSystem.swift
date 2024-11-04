@@ -36,6 +36,11 @@ class MovementSystem: System {
         }
         
         User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: moveX, dy: moveY)
+        let sinal = sign(User.singleton.spriteComponent.sprite.physicsBody!.velocity.dx)
+        if (sinal != 0) {
+            User.singleton.spriteComponent.sprite.xScale = sinal * -1
+        }
+        
         updateUserPosition()
         updateCameraPosition()
     }
