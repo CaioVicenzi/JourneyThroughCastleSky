@@ -37,8 +37,8 @@ class BatalhaScene : SKScene {
     private var enemyDodge = false
     var reward : Item? = nil
     
-    var actionDescription : SKShapeNode? = nil
-    var healthBar : SKSpriteNode? = nil
+    var actionDescription : SKSpriteNode? = nil
+    var healthBar : SKShapeNode? = nil
     var staminaBar : SKShapeNode? = nil
     var enemyLifeBar : SKSpriteNode? = nil
     var descriptionLabel : SKLabelNode? = nil
@@ -64,6 +64,7 @@ class BatalhaScene : SKScene {
     override func didMove(to view: SKView) {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         setupNodes()
+        self.scaleMode = .fill
         self.gameChooseState = .CHOOSE_BUTTON
     }
     
@@ -102,27 +103,6 @@ class BatalhaScene : SKScene {
         }
     }
     
-    internal func updateColorChooseOption () {
-        if gameChooseState == .NONE || gameChooseState == .SELECTED {
-            for index in 0 ..< 4 {
-                let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
-                rowButton.fillColor = .gray
-            }
-            return
-        }
-        
-        for index in 0 ..< 4 {
-            let rowButton = childNode(withName: "rowButton\(index)") as! SKShapeNode
-            
-            
-            if index == buttonSelected.rawValue {
-                rowButton.fillColor = .blue
-            } else {
-                rowButton.fillColor = .gray
-            }
-        }
-    }
-    
     private func chooseButton (_ keyCode : UInt16) {
         switch keyCode {
         case 126: // Seta para cima
@@ -139,8 +119,6 @@ class BatalhaScene : SKScene {
                 } else {
                     buttonSelected = proximoButton
                 }
-                 
-                updateColorChooseOption()
             }
             
             
@@ -157,8 +135,6 @@ class BatalhaScene : SKScene {
                 } else {
                     buttonSelected = proximoButton
                 }
-                
-                updateColorChooseOption()
             }
         case 36: // Enter
             var result: ActionResult = ActionResult()
@@ -186,9 +162,6 @@ class BatalhaScene : SKScene {
                 self.buttonSelected = ButtonSelected(rawValue: 0) ?? .ATTACK
                 enemyTurn()
             }
-            
-            updateColorChooseOption()
-            
         default:
             return
         }
@@ -225,7 +198,6 @@ class BatalhaScene : SKScene {
         }
         myLifeLabel.text = "Life: \(User.singleton.healthComponent.health)"
         removeAllItemRows()
-        updateColorChooseOption()
     }
     
     private func enemyTurn() {
@@ -284,8 +256,6 @@ class BatalhaScene : SKScene {
                     self.addChild(self.buttonUseItem)
                     self.gameChooseState = .CHOOSE_BUTTON
                 }
-                
-                self?.updateColorChooseOption()
             })
         })
     }
@@ -407,11 +377,11 @@ class BatalhaScene : SKScene {
     internal func refreshItemState () {
         for i in 0 ..< User.singleton.inventoryComponent.itens.count {
 
-            if let node = self.childNode(withName: "itemRow\(i)") as? SKShapeNode {
+            if self.childNode(withName: "itemRow\(i)") is SKSpriteNode {
                 if i == positionItemSelected {
-                    node.fillColor = .blue
+                    let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
                 } else {
-                    node.fillColor = .gray
+                    let individualRow = SKSpriteNode(imageNamed: "buttonSelected")
                 }
             }
         }

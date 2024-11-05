@@ -12,20 +12,15 @@ extension BatalhaScene{
     
     // MARK: SETUP UI
     
-    func setupEnemyScreen(){
-        //let enemyScreen = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.925, height: self.size.height*0.45))
-        let enemyScreen = SKShapeNode(rectOf: CGSize(width: self.size.width*0.925, height: self.size.height*0.45))
-        enemyScreen.position = .zero
-        enemyScreen.position.y += (enemyScreen.frame.height / 2)
-        
-        enemyScreen.fillColor = .black
-        enemyScreen.strokeColor = .black
+    func setupEnemyScreen() {
+        let enemyScreen = SKSpriteNode(imageNamed: "BG-Battle")
+        enemyScreen.size = CGSize(width: self.size.width, height: self.size.height*0.48)
+        enemyScreen.position = CGPoint(x:  self.size.width/6400, y: self.size.height/3.75)
         
         let enemySprite = enemy.spriteComponent.sprite.copy() as! SKSpriteNode
         enemySprite.physicsBody = nil
         enemySprite.position = .zero
         enemyScreen.addChild(enemySprite)
-        
         
         addChild(enemyScreen)
     }
@@ -34,170 +29,133 @@ extension BatalhaScene{
         let numberOfRows = 4
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
-        
-        var rowNodes: [SKShapeNode] = []
+        let offsetY: CGFloat = -180
+        let startingY = totalHeightAvailable / 2 + offsetY// Start from top of the available area
         
         for i in 0..<numberOfRows {
-            let individualRow = SKShapeNode(rect: CGRect(x: -(self.size.width * 0.925) / 2,
-                                                         y: (-self.size.height * 0.45)/5 - (CGFloat(i) * rowHeight),
-                                                         width: self.size.width * 0.4625,
-                                                         height: rowHeight))
+            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
             
-            individualRow.fillColor = .gray
-            individualRow.strokeColor = .black
+            individualRow.size = CGSize(width: 300, height: rowHeight)
             
-            //individualRow.isUserInteractionEnabled = true
+            // Calculate the y-position for each row, spacing them evenly
+            let yPosition = startingY - (CGFloat(i) * rowHeight) - rowHeight / 2
+            individualRow.position = CGPoint(x: -320, y: yPosition)
             
             individualRow.name = "rowButton\(i)"
             
             let label = SKLabelNode(text: returnButtonLabel(i))
+            label.position = CGPoint(x: 0, y: -label.frame.height / 2)
             
-            label.position.x = 0 - (individualRow.frame.width / 2)
-            label.position.y = 0 - (individualRow.frame.height / 2) - (label.frame.height / 2)
-            label.position.y -= CGFloat(Int(rowHeight) * i)
-
             individualRow.addChild(label)
             
             addChild(individualRow)
-            rowNodes.append(individualRow)
         }
-        updateColorChooseOption()
     }
-    
-    func setupItemRows () {
-        guard let actionDescription else {return}
-        
-        var i = 0
-        for item in User.singleton.inventoryComponent.itens {
-            var rowNodes: [SKShapeNode] = []
-            
-            let individualRow = SKShapeNode(rectOf: CGSize(width: actionDescription.frame.width, height: 100))
-            individualRow.position = .zero
-            
-            individualRow.position.x += (individualRow.frame.width / 2) - 3
-            individualRow.position.y -= (individualRow.frame.height / 2)
-            individualRow.position.y -= (individualRow.frame.height) * CGFloat(i)
-            if i != 0 {
-                individualRow.position.y -= 2
-            }
-            
-            individualRow.fillColor = .gray
-            individualRow.strokeColor = .black
-                
-                
-            individualRow.name = "itemRow\(i)"
-                
-            let label = SKLabelNode(text: item.consumableComponent?.nome)
-                
-            label.position.x = .zero
-            label.position.y = .zero
 
-            individualRow.addChild(label)
-                
+    func setupItemRows() {
+        guard actionDescription != nil else { return }
+        
+        for (i, item) in User.singleton.inventoryComponent.itens.enumerated() {
+            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+            
+            let xPosition = self.size.width * 0.25
+            let yPosition = self.size.height * 0.5 - CGFloat(i) * 60
+            individualRow.position = CGPoint(x: xPosition, y: yPosition)
+            
+            individualRow.name = "itemRow\(i)"
+            
+            if let itemName = item.consumableComponent?.nome {
+                let labelSprite = SKSpriteNode(texture: SKTexture(imageNamed: itemName))
+                labelSprite.position = .zero
+                individualRow.addChild(labelSprite)
+            }
             addChild(individualRow)
-            rowNodes.append(individualRow)
-            i += 1
         }
         
         refreshItemState()
     }
-    
-    func removeAllItemRows () {
+
+    func removeAllItemRows() {
         for child in children {
-            if let name = child.name {
-                if name.starts(with: "itemRow") {
-                    child.removeFromParent()
-                }
+            if let name = child.name, name.starts(with: "itemRow") {
+                child.removeFromParent()
             }
         }
     }
-    
-    func returnButtonLabel (_ index : Int) -> String {
-        if index == 0 {
+
+    func returnButtonLabel(_ index: Int) -> String {
+        switch index {
+        case 0:
             return "Attack"
-        } else if index == 1 {
+        case 1:
             return "Items"
-        } else if index == 2 {
+        case 2:
             return "Dodge"
-        } else {
+        default:
             return "Skill"
         }
     }
         
     func setupActionDescription(){
-        actionDescription = SKShapeNode(rect: CGRect(x: (self.size.width*0.925)/2, y: -self.size.height*0.45, width: -self.size.width*0.4625, height: self.size.height*0.45))
+        actionDescription = SKSpriteNode(imageNamed: "textbox")
+        actionDescription?.size = CGSize(width: self.size.width*0.6, height: self.size.height*0.4)
+        actionDescription?.position = CGPoint(x: 190, y: -self.size.height * 0.225)
+
+        guard let actionDescription else { return }
         
-        guard let actionDescription else {return}
-            
-        actionDescription.fillColor = .black
-        actionDescription.strokeColor = .black
-        
-        descriptionLabel = SKLabelNode()
-        guard let descriptionLabel else {return}
-        descriptionLabel.text = "init"
-        descriptionLabel.position = .zero
-        descriptionLabel.position.x += actionDescription.frame.width / 2 + descriptionLabel.frame.width / 2
-        descriptionLabel.position.y -= actionDescription.frame.height / 2 + descriptionLabel.frame.height / 2
+        descriptionLabel = SKLabelNode(text: "init")
+        guard let descriptionLabel else { return }
         descriptionLabel.fontSize = 12
+        descriptionLabel.position = CGPoint(x: descriptionLabel.frame.width / 2, y: -descriptionLabel.frame.height / 2)
+        
         actionDescription.addChild(descriptionLabel)
         
-            
         addChild(actionDescription)
     }
         
-    internal func setupHealthBar(){
-        //let backgroundHealthBar = SKShapeNode(rect: CGRect(x: -(self.size.width*0.925)/2, y: 0, width: self.size.width*0.4625, height: self.size.height*0.045))
-        let backgroundHealthBar = SKShapeNode(rectOf: CGSize(width: self.size.width * 0.4625, height: self.size.height*0.045))
+    internal func setupHealthBar() {
+        let backgroundHealthBar = SKSpriteNode(imageNamed: "lifeBar")
         
-        backgroundHealthBar.position = .zero
-        backgroundHealthBar.position.x -= backgroundHealthBar.frame.width / 2
-        backgroundHealthBar.position.y += backgroundHealthBar.frame.height / 2
-            
-        backgroundHealthBar.fillColor = .darkGray
-        backgroundHealthBar.strokeColor = .black
-            
+        backgroundHealthBar.size = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.05)
+        backgroundHealthBar.position = CGPoint(x: 30, y: -30)
+        backgroundHealthBar.zPosition = 100
+        
         addChild(backgroundHealthBar)
         
-        healthBar = SKSpriteNode(color: .green, size: CGSize(width: backgroundHealthBar.frame.width - 4, height: backgroundHealthBar.frame.height - 4))
-        guard let healthBar else {return}
+        healthBar = SKShapeNode(rectOf: CGSize(width: backgroundHealthBar.size.width - 4, height: backgroundHealthBar.size.height - 4), cornerRadius: 100)
+        guard let healthBar else { return }
         
-        healthBar.position = .zero
-        healthBar.position.x -= (healthBar.frame.width / 2)
-        //healthBar.position.y -= (healthBar.frame.height / 2)
-        healthBar.anchorPoint = CGPoint(x: 0, y: 0.5)
+        healthBar.fillColor = .green
+        healthBar.strokeColor = .clear
+        healthBar.position = CGPoint(x: backgroundHealthBar.position.x - 30, y: backgroundHealthBar.position.y + 30)
         
         backgroundHealthBar.addChild(healthBar)
     }
     
     internal func updateHealthBar () {
         
-        // calcular percentual vida
         let lifePercentage : CGFloat = CGFloat(User.singleton.healthComponent.health) / CGFloat(User.singleton.healthComponent.maxHealth)
         let scaleAction = SKAction.scaleX(to: lifePercentage, duration: 0.2)
         
         healthBar?.run(scaleAction)
     }
         
-    func setupStaminaBar(){
-        let staminaBackgroundBar = SKShapeNode(rectOf: CGSize(width: (self.size.width*0.925) / 2, height: self.size.height*0.045))
+    internal func setupStaminaBar() {
+        // Carrega o fundo da barra de estamina a partir de um arquivo .sks
+        let staminaBackgroundBar = SKSpriteNode(imageNamed: "staminaBar") // Substitua "staminaBarBackground" pelo nome do seu arquivo
         
-        staminaBackgroundBar.position = .zero
-        staminaBackgroundBar.position.x += staminaBackgroundBar.frame.width / 2
-        staminaBackgroundBar.position.y += staminaBackgroundBar.frame.height / 2
-        staminaBackgroundBar.fillColor = .darkGray
-        staminaBackgroundBar.strokeColor = .black
+        staminaBackgroundBar.size = CGSize(width: self.size.width * 0.2, height: self.size.height * 0.05)
+        staminaBackgroundBar.position = CGPoint(x: 300, y: -30)
         
         addChild(staminaBackgroundBar)
         
-        staminaBar = SKShapeNode(rect: staminaBackgroundBar.frame)
-        staminaBar?.position = .zero
-        guard let staminaBar else {return}
-
-        staminaBar.position.y -= staminaBar.frame.height / 2
-        staminaBar.position.x -= staminaBar.frame.width / 2
-        
+        // Configura a barra de estamina como um SKShapeNode menor dentro do SKSpriteNode de fundo
+        staminaBar = SKShapeNode(rectOf: CGSize(width: staminaBackgroundBar.size.width - 4, height: staminaBackgroundBar.size.height - 4), cornerRadius: 10)
+        guard let staminaBar else { return }
         
         staminaBar.fillColor = .purple
+        staminaBar.strokeColor = .clear
+        staminaBar.position = CGPoint(x: staminaBackgroundBar.position.x - 300, y: staminaBackgroundBar.position.y + 30)
         
         staminaBackgroundBar.addChild(staminaBar)
     }
@@ -210,20 +168,16 @@ extension BatalhaScene{
     }
     
     func setupEnemyLifeBar () {
-        let backgroundEnemyLifeBar : SKShapeNode = SKShapeNode(rectOf: CGSize(width: 300, height: 30))
+        let backgroundEnemyLifeBar = SKSpriteNode(imageNamed: "lifeBar")
         
-        backgroundEnemyLifeBar.position.y = (size.height / 2)  - 100
-        backgroundEnemyLifeBar.position.x = (size.width / 2)  - 205
-        backgroundEnemyLifeBar.fillColor = .darkGray
+        backgroundEnemyLifeBar.position = CGPoint(x: 400, y: 500)
         
         addChild(backgroundEnemyLifeBar)
         
         enemyLifeBar = SKSpriteNode(color: .red, size: CGSize(width: backgroundEnemyLifeBar.frame.width - 4, height: backgroundEnemyLifeBar.frame.height - 4))
         guard let enemyLifeBar else {return}
-        enemyLifeBar.position = .zero
-        enemyLifeBar.position.x -= enemyLifeBar.frame.width / 2
-        enemyLifeBar.zPosition = 10
-        enemyLifeBar.anchorPoint = CGPoint(x: 0, y: 0.5)
+        enemyLifeBar.position = CGPoint(x: backgroundEnemyLifeBar.position.x, y: backgroundEnemyLifeBar.position.y)
+
         backgroundEnemyLifeBar.addChild(enemyLifeBar)
     }
     
