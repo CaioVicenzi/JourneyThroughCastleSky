@@ -196,7 +196,7 @@ extension BatalhaScene{
             case .ATTACK:
                 newText = "Ataque o seu inimigo causando \(User.singleton.fighterComponent.damage) de dano"
             case .USE_ITEM:
-                newText = ""
+                newText = "Usar um item"
             case .DODGE:
                 newText = "Desviar do inimigo na próxima rodada."
             case .SKILL:

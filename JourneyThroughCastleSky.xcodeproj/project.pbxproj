@@ -212,6 +212,9 @@
 		FDF1E0AC2C938531006D4EA0 /* YouWinScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */; };
 		FDFF95E82CD5749A00DDA419 /* WarningNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */; };
 		FDFF95E92CD5749A00DDA419 /* WarningNewGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */; };
+		FDFF96D02CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF96CF2CDAA02800DDA419 /* BackgroundMusicHelper.swift */; };
+		FDFF96D12CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFF96CF2CDAA02800DDA419 /* BackgroundMusicHelper.swift */; };
+		FDFF96D32CDAA20600DDA419 /* MainHallMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDFF96D22CDAA20600DDA419 /* MainHallMusic.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,6 +340,8 @@
 		FDF1E0A42C923540006D4EA0 /* BatalhaScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatalhaScene.swift; sourceTree = "<group>"; };
 		FDF1E0AB2C938531006D4EA0 /* YouWinScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouWinScene.swift; sourceTree = "<group>"; };
 		FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningNewGame.swift; sourceTree = "<group>"; };
+		FDFF96CF2CDAA02800DDA419 /* BackgroundMusicHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMusicHelper.swift; sourceTree = "<group>"; };
+		FDFF96D22CDAA20600DDA419 /* MainHallMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainHallMusic.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -631,6 +636,7 @@
 		FDF1E0862C91B750006D4EA0 /* JourneyThroughCastleSky */ = {
 			isa = PBXGroup;
 			children = (
+				FDFF96D42CDAA20E00DDA419 /* Music */,
 				986032A72CB8688C00D8ECD2 /* Extensions */,
 				FDE3CF292CA5FD5C00D88620 /* UIComponents */,
 				FD932AEF2C9B55A80047B5B7 /* System */,
@@ -660,6 +666,7 @@
 				FDE3CF252CA4AD0700D88620 /* PhysicCategory.swift */,
 				FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */,
 				FD4D26DC2CD1AA9A00A52B73 /* CutsceneHelper.swift */,
+				FDFF96CF2CDAA02800DDA419 /* BackgroundMusicHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -698,6 +705,14 @@
 				FDFF95E72CD5749A00DDA419 /* WarningNewGame.swift */,
 			);
 			path = MainScene;
+			sourceTree = "<group>";
+		};
+		FDFF96D42CDAA20E00DDA419 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				FDFF96D22CDAA20600DDA419 /* MainHallMusic.mp3 */,
+			);
+			path = Music;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -837,6 +852,7 @@
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
+				FDFF96D32CDAA20600DDA419 /* MainHallMusic.mp3 in Resources */,
 				985DD40E2CB9981E00E58612 /* hall-de-reliquias.jpeg in Resources */,
 				982388982CCABF2500BE2D74 /* Spriteprotag-0001 1.png in Resources */,
 				982388992CCABF2500BE2D74 /* Spriteworm-0001 1.png in Resources */,
@@ -878,6 +894,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDFF96D02CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */,
 				98838C4B2CA5DB8300709648 /* Enemy.swift in Sources */,
 				98838C5D2CA5DC8600709648 /* Item.swift in Sources */,
 				98838C6E2CA5DC9E00709648 /* YouWinScene.swift in Sources */,
@@ -1016,6 +1033,7 @@
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
+				FDFF96D12CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,
 				43A88D472CB452E7008ACC2E /* CutsceneComponent.swift in Sources */,
 				FD4D26DB2CD1A6C200A52B73 /* CutsceneSystem.swift in Sources */,
@@ -1209,7 +1227,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
@@ -1237,7 +1255,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LF887LSVNZ;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
