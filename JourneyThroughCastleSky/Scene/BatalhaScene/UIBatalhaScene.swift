@@ -29,87 +29,74 @@ extension BatalhaScene{
         let numberOfRows = 4
         let totalHeightAvailable = self.size.height * 0.45
         let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
-        
-        var rowNodes: [SKSpriteNode] = []
+        let offsetY: CGFloat = -180
+        let startingY = totalHeightAvailable / 2 + offsetY// Start from top of the available area
         
         for i in 0..<numberOfRows {
             let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
-        
-            individualRow.position = CGPoint(x: 1000, y: 100)
+            
+            individualRow.size = CGSize(width: 300, height: rowHeight)
+            
+            // Calculate the y-position for each row, spacing them evenly
+            let yPosition = startingY - (CGFloat(i) * rowHeight) - rowHeight / 2
+            individualRow.position = CGPoint(x: -320, y: yPosition)
             
             individualRow.name = "rowButton\(i)"
             
             let label = SKLabelNode(text: returnButtonLabel(i))
+            label.position = CGPoint(x: 0, y: -label.frame.height / 2)
             
-            label.position.x = 0 - (individualRow.frame.width / 2)
-            label.position.y = 0 - (individualRow.frame.height / 2) - (label.frame.height / 2)
-            label.position.y -= CGFloat(Int(rowHeight) * i)
-
             individualRow.addChild(label)
             
             addChild(individualRow)
-            rowNodes.append(individualRow)
         }
-        updateColorChooseOption()
     }
-    
-    func setupItemRows () {
-        guard let actionDescription else {return}
-        
-        var i = 0
-        for item in User.singleton.inventoryComponent.itens {
-            var rowNodes: [SKSpriteNode] = []
-            
-            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
-            individualRow.position = .zero
-            
-            individualRow.position.x += (individualRow.frame.width / 2) - 3
-            individualRow.position.y -= (individualRow.frame.height / 2)
-            individualRow.position.y -= (individualRow.frame.height) * CGFloat(i)
-            if i != 0 {
-                individualRow.position.y -= 2
-            }
-                
-            individualRow.name = "itemRow\(i)"
-                
-            let label = SKLabelNode(text: item.consumableComponent?.nome)
-                
-            label.position.x = .zero
-            label.position.y = .zero
 
-            individualRow.addChild(label)
-                
+    func setupItemRows() {
+        guard actionDescription != nil else { return }
+        
+        for (i, item) in User.singleton.inventoryComponent.itens.enumerated() {
+            let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+            
+            let xPosition = self.size.width * 0.25
+            let yPosition = self.size.height * 0.5 - CGFloat(i) * 60
+            individualRow.position = CGPoint(x: xPosition, y: yPosition)
+            
+            individualRow.name = "itemRow\(i)"
+            
+            if let itemName = item.consumableComponent?.nome {
+                let labelSprite = SKSpriteNode(texture: SKTexture(imageNamed: itemName))
+                labelSprite.position = .zero
+                individualRow.addChild(labelSprite)
+            }
             addChild(individualRow)
-            rowNodes.append(individualRow)
-            i += 1
         }
         
         refreshItemState()
     }
-    
-    func removeAllItemRows () {
+
+    func removeAllItemRows() {
         for child in children {
-            if let name = child.name {
-                if name.starts(with: "itemRow") {
-                    child.removeFromParent()
-                }
+            if let name = child.name, name.starts(with: "itemRow") {
+                child.removeFromParent()
             }
         }
     }
-    
-    func returnButtonLabel (_ index : Int) -> String {
-        if index == 0 {
+
+    func returnButtonLabel(_ index: Int) -> String {
+        switch index {
+        case 0:
             return "Attack"
-        } else if index == 1 {
+        case 1:
             return "Items"
-        } else if index == 2 {
+        case 2:
             return "Dodge"
-        } else {
+        default:
             return "Skill"
         }
     }
         
-    func setupActionDescription() {
+    func setupActionDescription(){
         actionDescription = SKSpriteNode(imageNamed: "textbox")
         actionDescription?.size = CGSize(width: self.size.width*0.6, height: self.size.height*0.4)
         actionDescription?.position = CGPoint(x: 190, y: -self.size.height * 0.225)
