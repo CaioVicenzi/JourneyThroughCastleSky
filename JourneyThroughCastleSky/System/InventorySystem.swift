@@ -29,7 +29,7 @@ class InventorySystem: System {
         }
             
         gameScene.inventoryItemSelected = 0
-        gameScene.dialogSystem.nextDialogue()
+        gameScene.dialogSystem.next()
         closeInventory()
     }
     

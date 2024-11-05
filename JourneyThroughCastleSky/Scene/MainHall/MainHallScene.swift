@@ -18,6 +18,18 @@ class Consumable: Command {
     }
 }
 
+var jaMostrou : Bool = false
+
 class MainHallScene: TopDownScene {
-    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        if !jaMostrou {
+            let cutsceneHelper = CutsceneHelper()
+            self.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneOne) //.addCutscene(cutsceneHelper.cutsceneOne)
+            
+            self.cutsceneSystem.nextCutscenes()
+            jaMostrou = true
+        }
+        
+    }
 }

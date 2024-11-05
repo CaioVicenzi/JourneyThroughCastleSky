@@ -20,6 +20,7 @@ extension TopDownScene {
         let ponto = CGPoint(x: xPosition, y: yPosition)
         
         self.viewItemDescription = SKShapeNode(rect: CGRect(origin: ponto, size: self.size))
+        
         guard let viewItemDescription else {return}
         
         // faz o setup desse node.
@@ -27,7 +28,7 @@ extension TopDownScene {
         viewItemDescription.strokeColor = .black.withAlphaComponent(0.6)
         viewItemDescription.name = "cover"
         viewItemDescription.zPosition = 9
-        viewItemDescription.alpha = 0
+        viewItemDescription.alpha = 1
         
         // Cria o efeito de fadeIn para poder adicionar ele dentro dos componentes do viewItemDescription.
         let fadeIn = SKAction.fadeIn(withDuration: 0.5)

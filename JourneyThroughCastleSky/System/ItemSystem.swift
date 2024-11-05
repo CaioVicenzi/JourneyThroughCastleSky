@@ -31,7 +31,7 @@ class ItemSystem: System {
                     catchItem(item)
                 }
                 
-                gameScene.dialogSystem.nextDialogue()
+                gameScene.dialogSystem.next()
             }
         }
     }

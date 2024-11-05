@@ -22,12 +22,8 @@ extension TopDownScene {
             if let spawn = childNode(withName: "spawn") {
                 User.singleton.positionComponent.xPosition = Int(spawn.position.x)
                 User.singleton.positionComponent.yPosition = Int(spawn.position.y)
-                
             }
         }
-        
-        
-        
         
         setupSpritePosition(User.singleton.spriteComponent, User.singleton.positionComponent)
         
@@ -35,11 +31,14 @@ extension TopDownScene {
         
         
         let xSize = sprite.size.width / 2
-        let ySize = sprite.size.height / 2
+        let ySize = sprite.size.height / 4
         
         sprite.zPosition = 10
         
-        sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: xSize, height: ySize))
+        sprite.physicsBody = SKPhysicsBody(
+            rectangleOf: .init(width: xSize, height: ySize),
+            center: .init(x: 0, y: -sprite.size.height / 2 + ySize / 2)
+        )
         sprite.physicsBody?.categoryBitMask  = PhysicCategory.character
         sprite.physicsBody?.collisionBitMask = PhysicCategory.wall
         sprite.physicsBody?.contactTestBitMask = PhysicCategory.wall
@@ -55,7 +54,9 @@ extension TopDownScene {
         sprite.position.y = CGFloat(positionComponent.yPosition)
         sprite.position.x = CGFloat(positionComponent.xPosition)
         
-        addChild(sprite)
+        if sprite.parent == nil {
+            addChild(sprite)
+        }
     }
     
     // MARK: FUNÇÕES QUE FAZEM O SETUP DE OUTROS ELEMENTOS DENTRO DO MAPA.
