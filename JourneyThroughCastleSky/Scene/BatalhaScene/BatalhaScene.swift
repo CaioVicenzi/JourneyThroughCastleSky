@@ -38,8 +38,8 @@ class BatalhaScene : SKScene {
     var reward : Item? = nil
     
     var actionDescription : SKSpriteNode? = nil
-    var healthBar : SKShapeNode? = nil
-    var staminaBar : SKShapeNode? = nil
+    var healthBar : SKSpriteNode? = nil
+    var staminaBar : SKSpriteNode? = nil
     var enemyLifeBar : SKSpriteNode? = nil
     var descriptionLabel : SKLabelNode? = nil
     
@@ -377,18 +377,27 @@ class BatalhaScene : SKScene {
     internal func refreshItemState () {
         for i in 0 ..< User.singleton.inventoryComponent.itens.count {
 
-            if self.childNode(withName: "itemRow\(i)") is SKSpriteNode {
+            if let child = self.childNode(withName: "itemRow\(i)") as? SKSpriteNode {
+                let individualRow : SKSpriteNode
+                
                 if i == positionItemSelected {
-                    let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+                    individualRow = SKSpriteNode(imageNamed: "buttonSelected")
                 } else {
-                    let individualRow = SKSpriteNode(imageNamed: "buttonSelected")
+                    individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
                 }
+                
+                individualRow.scale(to: CGSize(width: child.frame.width, height: child.frame.height))
+                addChild(individualRow)
+                individualRow.position = child.position
+                individualRow.name = child.name
+                child.removeFromParent()
             }
         }
     }
     
     override func update(_ currentTime: TimeInterval) {
         updateDescriptionLabel()
+        updateButtonsState()
     }
 }
 

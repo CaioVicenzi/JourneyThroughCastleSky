@@ -21,6 +21,7 @@ extension BatalhaScene{
         enemySprite.physicsBody = nil
         enemySprite.position = .zero
         enemyScreen.addChild(enemySprite)
+        enemySprite.zPosition = 5
         
         addChild(enemyScreen)
     }
@@ -35,20 +36,25 @@ extension BatalhaScene{
         for i in 0..<numberOfRows {
             let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
             
-            individualRow.size = CGSize(width: 300, height: rowHeight)
+            let proporcao = (rowHeight - 50) / individualRow.frame.height
+            individualRow.setScale(proporcao)
             
             // Calculate the y-position for each row, spacing them evenly
             let yPosition = startingY - (CGFloat(i) * rowHeight) - rowHeight / 2
             individualRow.position = CGPoint(x: -320, y: yPosition)
             
             individualRow.name = "rowButton\(i)"
+
             
             let label = SKLabelNode(text: returnButtonLabel(i))
             label.position = CGPoint(x: 0, y: -label.frame.height / 2)
+            label.zPosition = 5
             
             individualRow.addChild(label)
             
             addChild(individualRow)
+            
+            updateButtonsState()
         }
     }
 
@@ -62,6 +68,8 @@ extension BatalhaScene{
             let yPosition = self.size.height * 0.5 - CGFloat(i) * 60
             individualRow.position = CGPoint(x: xPosition, y: yPosition)
             
+            let proportion =  200 / individualRow.frame.width
+            individualRow.setScale(proportion)
             individualRow.name = "itemRow\(i)"
             
             if let itemName = item.consumableComponent?.nome {
@@ -122,13 +130,14 @@ extension BatalhaScene{
         
         addChild(backgroundHealthBar)
         
-        healthBar = SKShapeNode(rectOf: CGSize(width: backgroundHealthBar.size.width - 4, height: backgroundHealthBar.size.height - 4), cornerRadius: 100)
+        // Configura a barra de estamina como um SKShapeNode menor dentro do SKSpriteNode de fundo
+        let rect = CGSize(width: backgroundHealthBar.size.width - 20, height: backgroundHealthBar.size.height - 10)
+        
+        healthBar = SKSpriteNode(color: .wine, size: rect)
+        healthBar?.anchorPoint = CGPoint(x: 0, y: 0.5)
         guard let healthBar else { return }
-        
-        healthBar.fillColor = .green
-        healthBar.strokeColor = .clear
-        healthBar.position = CGPoint(x: backgroundHealthBar.position.x - 30, y: backgroundHealthBar.position.y + 30)
-        
+        healthBar.position = CGPoint(x: -(backgroundHealthBar.size.width / 2) + 10, y: 0) // Ajuste de posição para alinhar à esquerda
+
         backgroundHealthBar.addChild(healthBar)
     }
     
@@ -150,13 +159,14 @@ extension BatalhaScene{
         addChild(staminaBackgroundBar)
         
         // Configura a barra de estamina como um SKShapeNode menor dentro do SKSpriteNode de fundo
-        staminaBar = SKShapeNode(rectOf: CGSize(width: staminaBackgroundBar.size.width - 4, height: staminaBackgroundBar.size.height - 4), cornerRadius: 10)
+        let rect = CGSize(width: staminaBackgroundBar.size.width - 20, height: staminaBackgroundBar.size.height - 10)
+        //guard let rect else {print("erro, não conseguimos fazer o rect do BatalheScenem na barra de estamina"); return}
+        
+        staminaBar = SKSpriteNode(color: .darkGold, size: rect)
+        staminaBar?.anchorPoint = CGPoint(x: 0, y: 0.5)
         guard let staminaBar else { return }
-        
-        staminaBar.fillColor = .purple
-        staminaBar.strokeColor = .clear
-        staminaBar.position = CGPoint(x: staminaBackgroundBar.position.x - 300, y: staminaBackgroundBar.position.y + 30)
-        
+        staminaBar.position = CGPoint(x: -(staminaBackgroundBar.size.width / 2) + 10, y: 0) // Ajuste de posição para alinhar à esquerda
+
         staminaBackgroundBar.addChild(staminaBar)
     }
     
@@ -171,13 +181,15 @@ extension BatalhaScene{
         let backgroundEnemyLifeBar = SKSpriteNode(imageNamed: "lifeBar")
         
         backgroundEnemyLifeBar.position = CGPoint(x: 400, y: 500)
+        backgroundEnemyLifeBar.zPosition = 5
         
         addChild(backgroundEnemyLifeBar)
         
-        enemyLifeBar = SKSpriteNode(color: .red, size: CGSize(width: backgroundEnemyLifeBar.frame.width - 4, height: backgroundEnemyLifeBar.frame.height - 4))
+        enemyLifeBar = SKSpriteNode(color: .wine, size: CGSize(width: backgroundEnemyLifeBar.frame.width - 4, height: backgroundEnemyLifeBar.frame.height - 4))
         guard let enemyLifeBar else {return}
         enemyLifeBar.position = CGPoint(x: backgroundEnemyLifeBar.position.x, y: backgroundEnemyLifeBar.position.y)
 
+        
         backgroundEnemyLifeBar.addChild(enemyLifeBar)
     }
     
@@ -205,5 +217,38 @@ extension BatalhaScene{
         }
         
         self.descriptionLabel?.text = newText
+    }
+    
+    internal func updateButtonsState () {
+        for i in 0 ..< 4 {
+            if let child = self.childNode(withName: "rowButton\(i)") as? SKSpriteNode {
+                let individualRow : SKSpriteNode
+
+                if gameChooseState == .SELECTED {
+                    individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+                } else {
+                    if i == buttonSelected.rawValue {
+                        individualRow = SKSpriteNode(imageNamed: "buttonSelected")
+                    } else {
+                        individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+                    }
+                }
+                
+                addChild(individualRow)
+                for childChild in child.children {
+                    childChild.removeFromParent()
+                    individualRow.addChild(childChild)
+                }
+                
+                let numberOfRows = 4
+                let totalHeightAvailable = self.size.height * 0.45
+                let rowHeight = totalHeightAvailable / CGFloat(numberOfRows)
+                let proporcao = (rowHeight) / individualRow.frame.height
+                individualRow.setScale(proporcao)
+                individualRow.position = child.position
+                individualRow.name = child.name
+                child.removeFromParent()
+            }
+        }
     }
 }
