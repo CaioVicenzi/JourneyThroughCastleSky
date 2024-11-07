@@ -24,46 +24,61 @@ class MainMenuScene : SKScene {
         setupNodes()
     }
     
-    override func update(_ currentTime: TimeInterval) {
-        updateButtonColors()
-    }
-    
     private func setupNodes () {
         setupTitleLabel()
-        setupButton("Novo Jogo", nodeName: "button0", yPosition: 0)
-        setupButton("Carregar jogo", nodeName: "button1", yPosition: 75)
-        setupButton("Configurations", nodeName: "button2", yPosition: 150)
+        setupButton("Novo Jogo", yPosition: 50, number: 0)
+        setupButton("Carregar jogo", yPosition: 90, number: 1)
+        setupButton("Configurações", yPosition: 130, number: 2)
     }
     
     private func setupTitleLabel () {
-        let titleLabel = SKLabelNode()
-        titleLabel.text = "Memorance"
-        titleLabel.fontSize = 32
-        titleLabel.fontName = "Helvetica-Bold"
-        titleLabel.position = PositionHelper.singleton.centralizeQuarterUp(titleLabel)
-        titleLabel.position.y += 50
-        titleLabel.position.x += titleLabel.frame.width / 2
-        addChild(titleLabel)
+        let mainMenuBackground = SKSpriteNode(imageNamed: "cutscene1_2")
+        mainMenuBackground.position = PositionHelper.singleton.centralize(SKNode())
+        mainMenuBackground.zPosition = -2
+        
+        let scale = size.width / mainMenuBackground.size.width
+        mainMenuBackground.setScale(scale)
+        addChild(mainMenuBackground)
+        
+        let escurecidoBackground = SKSpriteNode(imageNamed: "EscurecimentoBackgroundMainMenu")
+        escurecidoBackground.size = self.size
+        escurecidoBackground.position = PositionHelper.singleton.centralize(SKNode())
+        escurecidoBackground.zPosition = -1
+        addChild(escurecidoBackground)
+        
+        let mainMenuTitle = SKSpriteNode(imageNamed: "MainMenuTitle2")
+        
+        let proportion = self.frame.width / mainMenuTitle.frame.width
+        mainMenuTitle.setScale(proportion)
+        
+        let yPosition = self.size.height - (mainMenuTitle.size.height / 1.5) // Ajusta para alinhar pelo topo
+        mainMenuTitle.position = CGPoint(x: self.size.width / 2, y: yPosition)
+        
+        //mainMenuTitle.position = PositionHelper.singleton.centralizeQuarterUp(SKNode())
+        addChild(mainMenuTitle)
+        
     }
     
-    private func setupButton (_ text : String, nodeName : String, yPosition : CGFloat) {
-        let newGameButton = SKShapeNode(rectOf: CGSize(width: 200, height: 50))
-        newGameButton.fillColor = .lightGray
-        newGameButton.strokeColor = .black
-        newGameButton.position = PositionHelper.singleton.centralize(SKLabelNode())
-        newGameButton.position.y -= yPosition
-        newGameButton.name = nodeName
+    private func setupButton (_ text : String, yPosition : CGFloat, number : Int) {
         
-        let newGameButtonLabel = SKLabelNode(text: text)
-        newGameButtonLabel.position = .zero
-        newGameButtonLabel.fontSize = 20
-        newGameButtonLabel.fontName = "Helvetica-Bold"
-        newGameButtonLabel.position.y -= newGameButtonLabel.frame.height / 2
-        newGameButton.addChild(newGameButtonLabel)
+        let label = SKLabelNode(text: text)
+        label.position = PositionHelper.singleton.centralize(SKLabelNode())
+        label.position.y -= yPosition
+        label.fontName = "Lora-Medium"
+        label.fontSize = 20
+        self.addChild(label)
         
-        
-        addChild(newGameButton)
+        let littleButtonOnTheLeft = SKSpriteNode(imageNamed: "seta")
+        littleButtonOnTheLeft.name = "seta\(number)"
+        littleButtonOnTheLeft.position.x = label.position.x - label.frame.width / 1.5
+        littleButtonOnTheLeft.position.y = label.position.y + (label.frame.height / 2.5)
+        let proportion = 25 / littleButtonOnTheLeft.frame.width
+        littleButtonOnTheLeft.setScale(proportion)
+        addChild(littleButtonOnTheLeft)
+         
     }
+    
+    
     
     
     override func keyDown(with event: NSEvent) {
@@ -105,8 +120,6 @@ class MainMenuScene : SKScene {
     private func newGame () {
         warning.warning()
         self.menuState = .CONFIRM_RESET
-        //estage = 0
-        //goMainHallScene()
     }
     
     private func goConfiguration () {
@@ -126,13 +139,21 @@ class MainMenuScene : SKScene {
         }
     }
     
-    private func updateButtonColors () {
-        for i in 0 ..< 3 {
-            let child = childNode(withName: "button\(i)") as? SKShapeNode
-            child?.fillColor = .lightGray
+    private func updateSetas () {
+        for child in children {
+            if let childName = child.name {
+                if childName.starts(with: "seta") {
+                    if childName == "seta\(selectedButton)" {
+                        child.isHidden = false
+                    } else {
+                        child.isHidden = true
+                    }
+                }
+            }
         }
-        
-        let button = childNode(withName: "button\(selectedButton)") as? SKShapeNode
-        button?.fillColor = .red
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        updateSetas()
     }
 }

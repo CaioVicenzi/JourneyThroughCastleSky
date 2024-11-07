@@ -16,6 +16,7 @@ class CutsceneScenes: SKScene{
     var previousScene : TopDownScene? = nil
     var scenes : [Cutscene] = []
     var dialogsAfterCutscene : [Dialogue] = []
+    var timerCount = 0
     
     func config (_ previousScene : TopDownScene, scenes : [Cutscene], dialogsAfterCutscene : [Dialogue]) {
         self.previousScene = previousScene
@@ -24,8 +25,13 @@ class CutsceneScenes: SKScene{
     }
     
     override func didMove(to view: SKView) {
-        cutsceneTimer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(displayNextCutscene), userInfo: nil, repeats: true)
-        displayNextCutscene()
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
+            self?.timerCount += 1
+            
+            if self?.timerCount == 2 {
+                self?.displayNextCutscene()
+            }
+        }
     }
     
     @objc func displayNextCutscene(){
@@ -48,8 +54,11 @@ class CutsceneScenes: SKScene{
         scenes.removeFirst()
     }
     
-    override func mouseDown(with event: NSEvent) {
-        displayNextCutscene()
+    override func keyDown(with event: NSEvent) {
+        if event.keyCode == 49 {
+            displayNextCutscene()
+            timerCount = 0
+        }
     }
     
     override func willMove(from view: SKView) {

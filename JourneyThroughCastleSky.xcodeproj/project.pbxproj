@@ -151,6 +151,22 @@
 		FD4D26DB2CD1A6C200A52B73 /* CutsceneSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D26D92CD1A6C200A52B73 /* CutsceneSystem.swift */; };
 		FD4D26DD2CD1AA9A00A52B73 /* CutsceneHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D26DC2CD1AA9A00A52B73 /* CutsceneHelper.swift */; };
 		FD4D26DE2CD1AA9A00A52B73 /* CutsceneHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D26DC2CD1AA9A00A52B73 /* CutsceneHelper.swift */; };
+		FD75E3C52CDC032E00DBC287 /* Lora-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C02CDC032E00DBC287 /* Lora-Medium.ttf */; };
+		FD75E3C62CDC032E00DBC287 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C22CDC032E00DBC287 /* Lora-Regular.ttf */; };
+		FD75E3C72CDC032E00DBC287 /* Lora-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BF2CDC032E00DBC287 /* Lora-Italic.ttf */; };
+		FD75E3C82CDC032E00DBC287 /* Lora-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C12CDC032E00DBC287 /* Lora-MediumItalic.ttf */; };
+		FD75E3C92CDC032E00DBC287 /* Lora-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BE2CDC032E00DBC287 /* Lora-BoldItalic.ttf */; };
+		FD75E3CA2CDC032E00DBC287 /* Lora-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C32CDC032E00DBC287 /* Lora-SemiBold.ttf */; };
+		FD75E3CB2CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C42CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf */; };
+		FD75E3CC2CDC032E00DBC287 /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BD2CDC032E00DBC287 /* Lora-Bold.ttf */; };
+		FD75E3CD2CDC032E00DBC287 /* Lora-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C02CDC032E00DBC287 /* Lora-Medium.ttf */; };
+		FD75E3CE2CDC032E00DBC287 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C22CDC032E00DBC287 /* Lora-Regular.ttf */; };
+		FD75E3CF2CDC032E00DBC287 /* Lora-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BF2CDC032E00DBC287 /* Lora-Italic.ttf */; };
+		FD75E3D02CDC032E00DBC287 /* Lora-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C12CDC032E00DBC287 /* Lora-MediumItalic.ttf */; };
+		FD75E3D12CDC032E00DBC287 /* Lora-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BE2CDC032E00DBC287 /* Lora-BoldItalic.ttf */; };
+		FD75E3D22CDC032E00DBC287 /* Lora-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C32CDC032E00DBC287 /* Lora-SemiBold.ttf */; };
+		FD75E3D32CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3C42CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf */; };
+		FD75E3D42CDC032E00DBC287 /* Lora-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD75E3BD2CDC032E00DBC287 /* Lora-Bold.ttf */; };
 		FD932AF12C9B55C70047B5B7 /* PositionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */; };
 		FD932AF32C9B55F20047B5B7 /* MovementComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */; };
 		FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */; };
@@ -283,6 +299,15 @@
 		FD4D26D62CD1661A00A52B73 /* Cutscene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cutscene.swift; sourceTree = "<group>"; };
 		FD4D26D92CD1A6C200A52B73 /* CutsceneSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneSystem.swift; sourceTree = "<group>"; };
 		FD4D26DC2CD1AA9A00A52B73 /* CutsceneHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutsceneHelper.swift; sourceTree = "<group>"; };
+		FD75E3BD2CDC032E00DBC287 /* Lora-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Bold.ttf"; sourceTree = "<group>"; };
+		FD75E3BE2CDC032E00DBC287 /* Lora-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-BoldItalic.ttf"; sourceTree = "<group>"; };
+		FD75E3BF2CDC032E00DBC287 /* Lora-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Italic.ttf"; sourceTree = "<group>"; };
+		FD75E3C02CDC032E00DBC287 /* Lora-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Medium.ttf"; sourceTree = "<group>"; };
+		FD75E3C12CDC032E00DBC287 /* Lora-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-MediumItalic.ttf"; sourceTree = "<group>"; };
+		FD75E3C22CDC032E00DBC287 /* Lora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Regular.ttf"; sourceTree = "<group>"; };
+		FD75E3C32CDC032E00DBC287 /* Lora-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-SemiBold.ttf"; sourceTree = "<group>"; };
+		FD75E3C42CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		FD75E3D62CDC03FC00DBC287 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FD932AF02C9B55C70047B5B7 /* PositionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionComponent.swift; sourceTree = "<group>"; };
 		FD932AF22C9B55F20047B5B7 /* MovementComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementComponent.swift; sourceTree = "<group>"; };
 		FD932AF42C9B561B0047B5B7 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
@@ -537,6 +562,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		FD75E3BC2CDC02A800DBC287 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				FD75E3D52CDC033200DBC287 /* Lora */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		FD75E3D52CDC033200DBC287 /* Lora */ = {
+			isa = PBXGroup;
+			children = (
+				FD75E3BD2CDC032E00DBC287 /* Lora-Bold.ttf */,
+				FD75E3BE2CDC032E00DBC287 /* Lora-BoldItalic.ttf */,
+				FD75E3BF2CDC032E00DBC287 /* Lora-Italic.ttf */,
+				FD75E3C02CDC032E00DBC287 /* Lora-Medium.ttf */,
+				FD75E3C12CDC032E00DBC287 /* Lora-MediumItalic.ttf */,
+				FD75E3C22CDC032E00DBC287 /* Lora-Regular.ttf */,
+				FD75E3C32CDC032E00DBC287 /* Lora-SemiBold.ttf */,
+				FD75E3C42CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf */,
+			);
+			path = Lora;
+			sourceTree = "<group>";
+		};
 		FD932AEF2C9B55A80047B5B7 /* System */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +684,8 @@
 		FDF1E0862C91B750006D4EA0 /* JourneyThroughCastleSky */ = {
 			isa = PBXGroup;
 			children = (
+				FD75E3D62CDC03FC00DBC287 /* Info.plist */,
+				FD75E3BC2CDC02A800DBC287 /* Font */,
 				FDFF96D42CDAA20E00DDA419 /* Music */,
 				986032A72CB8688C00D8ECD2 /* Extensions */,
 				FDE3CF292CA5FD5C00D88620 /* UIComponents */,
@@ -838,6 +888,14 @@
 				9860328F2CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				986032892CB717DE00D8ECD2 /* MainHall.sks in Resources */,
 				985DD4072CB997DE00E58612 /* calabouço.webp in Resources */,
+				FD75E3CD2CDC032E00DBC287 /* Lora-Medium.ttf in Resources */,
+				FD75E3CE2CDC032E00DBC287 /* Lora-Regular.ttf in Resources */,
+				FD75E3CF2CDC032E00DBC287 /* Lora-Italic.ttf in Resources */,
+				FD75E3D02CDC032E00DBC287 /* Lora-MediumItalic.ttf in Resources */,
+				FD75E3D12CDC032E00DBC287 /* Lora-BoldItalic.ttf in Resources */,
+				FD75E3D22CDC032E00DBC287 /* Lora-SemiBold.ttf in Resources */,
+				FD75E3D32CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf in Resources */,
+				FD75E3D42CDC032E00DBC287 /* Lora-Bold.ttf in Resources */,
 				985DD4082CB997DE00E58612 /* hall-de-reliquias.webp in Resources */,
 				FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */,
 			);
@@ -850,6 +908,14 @@
 				986032952CB71B7500D8ECD2 /* PlaceholderTilesetRed.jpg in Resources */,
 				986032902CB7185500D8ECD2 /* MyTileSet.sks in Resources */,
 				FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */,
+				FD75E3C52CDC032E00DBC287 /* Lora-Medium.ttf in Resources */,
+				FD75E3C62CDC032E00DBC287 /* Lora-Regular.ttf in Resources */,
+				FD75E3C72CDC032E00DBC287 /* Lora-Italic.ttf in Resources */,
+				FD75E3C82CDC032E00DBC287 /* Lora-MediumItalic.ttf in Resources */,
+				FD75E3C92CDC032E00DBC287 /* Lora-BoldItalic.ttf in Resources */,
+				FD75E3CA2CDC032E00DBC287 /* Lora-SemiBold.ttf in Resources */,
+				FD75E3CB2CDC032E00DBC287 /* Lora-SemiBoldItalic.ttf in Resources */,
+				FD75E3CC2CDC032E00DBC287 /* Lora-Bold.ttf in Resources */,
 				985DD40D2CB9981E00E58612 /* calabouço.jpeg in Resources */,
 				985DD4192CB9A60B00E58612 /* Dungeon.sks in Resources */,
 				FDFF96D32CDAA20600DDA419 /* MainHallMusic.mp3 in Resources */,
@@ -1230,6 +1296,7 @@
 				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JourneyThroughCastleSky/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -1258,6 +1325,7 @@
 				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JourneyThroughCastleSky/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
