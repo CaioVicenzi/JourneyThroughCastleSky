@@ -31,6 +31,18 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return doors
     }
     
+    var colliders: [SKNode] {
+        
+        let collidersParent = childNode(withName: "colliders")
+        
+        if let collidersParent {
+            return collidersParent.children
+        } else {
+            return []
+        }
+        
+    }
+    
     var spawnLocation: CGPoint?
     
     var enemies : [Enemy]
@@ -101,6 +113,16 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         config()
         setupNodes()
         setupTileColliders()
+        
+        for collider in colliders {
+            collider.physicsBody = SKPhysicsBody(rectangleOf: collider.frame.size)
+            
+            collider.physicsBody?.categoryBitMask = PhysicCategory.wall
+            collider.physicsBody?.collisionBitMask = PhysicCategory.character
+            collider.physicsBody?.contactTestBitMask = PhysicCategory.character
+            collider.physicsBody?.affectedByGravity = false
+            collider.physicsBody?.isDynamic = false // não se move
+        }
         
         setupWalls()
         setupDoors()
