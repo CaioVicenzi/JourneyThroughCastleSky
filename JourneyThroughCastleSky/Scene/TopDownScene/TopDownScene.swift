@@ -516,7 +516,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     internal func setupNodes () {
         self.camera = cameraNode
-        setupSprite()
+        setupPlayer()
     }
     
     override func update(_ currentTime: TimeInterval) {
