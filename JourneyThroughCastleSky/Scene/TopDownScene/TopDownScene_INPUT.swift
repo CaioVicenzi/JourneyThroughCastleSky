@@ -27,7 +27,7 @@ extension TopDownScene {
                 menuSystem.togglePause()
             }
         } else if gameState == .INVENTORY {
-            inventorySystem.input(event.keyCode)
+            inventory?.input(Int(event.keyCode))
         } else if gameState == .PAUSE {
             menuSystem.input(event.keyCode)
         } else if gameState == .DIALOG_FINISHED {
@@ -39,3 +39,4 @@ extension TopDownScene {
         }
     }
 }
+

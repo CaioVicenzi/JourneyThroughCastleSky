@@ -121,7 +121,6 @@
 		98838C642CA5DC8C00709648 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41FB2C9E05FE0053A4B0 /* GameState.swift */; };
 		98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */; };
 		98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C482CA5D8E300709648 /* TopDownScene.swift */; };
-		98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */; };
 		98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */; };
 		98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */; };
 		98838C6A2CA5DC9000709648 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -205,11 +204,11 @@
 		FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
 		FDDCF34D2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDCF34E2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
+		FDDFF12D2CDD394100502BD1 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF12C2CDD394100502BD1 /* Inventory.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
 		FDE3CF0E2CA4899400D88620 /* TopDownScene_INPUT.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */; };
-		FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */; };
 		FDE3CF122CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */; };
 		FDE3CF142CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */; };
 		FDE3CF282CA5F56400D88620 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF272CA5F56400D88620 /* Wall.swift */; };
@@ -339,11 +338,11 @@
 		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
 		FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhase.swift; sourceTree = "<group>"; };
+		FDDFF12C2CDD394100502BD1 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
 		FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_INPUT.swift; sourceTree = "<group>"; };
-		FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_INVENTORY.swift; sourceTree = "<group>"; };
 		FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopDownScene_DIALOG-BOX.swift"; sourceTree = "<group>"; };
 		FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopDownScene_ITEM-DESCRIPTION.swift"; sourceTree = "<group>"; };
 		FDE3CF232CA4A9AA00D88620 /* MainSceneScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSceneScene.swift; sourceTree = "<group>"; };
@@ -637,13 +636,20 @@
 			path = GameplaySks;
 			sourceTree = "<group>";
 		};
+		FDDFF12B2CDD393200502BD1 /* Inventory */ = {
+			isa = PBXGroup;
+			children = (
+				FDDFF12C2CDD394100502BD1 /* Inventory.swift */,
+			);
+			path = Inventory;
+			sourceTree = "<group>";
+		};
 		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
 			isa = PBXGroup;
 			children = (
 				98838C482CA5D8E300709648 /* TopDownScene.swift */,
 				FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */,
 				FDE3CF0D2CA4899400D88620 /* TopDownScene_INPUT.swift */,
-				FDE3CF0F2CA48A1400D88620 /* TopDownScene_INVENTORY.swift */,
 				FDE3CF112CA48ABB00D88620 /* TopDownScene_DIALOG-BOX.swift */,
 				FDE3CF132CA48B6200D88620 /* TopDownScene_ITEM-DESCRIPTION.swift */,
 			);
@@ -653,6 +659,7 @@
 		FDE3CF292CA5FD5C00D88620 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				FDDFF12B2CDD393200502BD1 /* Inventory */,
 				FDE3CF272CA5F56400D88620 /* Wall.swift */,
 				FDE3CF2A2CA5FD7900D88620 /* Checkpoint.swift */,
 				FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */,
@@ -992,7 +999,6 @@
 				98838C502CA5DC6100709648 /* AffectedByEffect.swift in Sources */,
 				98838C652CA5DC9000709648 /* TopDownScene_DIALOG-BOX.swift in Sources */,
 				98838C662CA5DC9000709648 /* TopDownScene.swift in Sources */,
-				98838C672CA5DC9000709648 /* TopDownScene_INVENTORY.swift in Sources */,
 				FD4D264E2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */,
 				98838C682CA5DC9000709648 /* TopDownScene_INPUT.swift in Sources */,
 				98838C692CA5DC9000709648 /* TopDownScene_ITEM-DESCRIPTION.swift in Sources */,
@@ -1037,7 +1043,6 @@
 				FD932AF52C9B561B0047B5B7 /* InventoryComponent.swift in Sources */,
 				FD932B012C9B57180047B5B7 /* InteractableComponent.swift in Sources */,
 				FD932AFD2C9B56D90047B5B7 /* StaminaComponent.swift in Sources */,
-				FDE3CF102CA48A1400D88620 /* TopDownScene_INVENTORY.swift in Sources */,
 				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
@@ -1098,6 +1103,7 @@
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
+				FDDFF12D2CDD394100502BD1 /* Inventory.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
 				FDFF96D12CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,

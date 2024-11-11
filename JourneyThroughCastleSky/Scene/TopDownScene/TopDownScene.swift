@@ -34,16 +34,14 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var spawnLocation: CGPoint?
     
     var enemies : [Enemy]
-    var inventoryItemSelected = 0
     
     var integerMaster = 0
     
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
-    var inventory : SKShapeNode?
+    var inventory : Inventory?
     var catchLabel : SKLabelNode?
-    var titleSelectedItem : SKLabelNode?
-    var descriptionSelectedItem : SKLabelNode?
+
     
     var cameraNode : SKCameraNode!
 
@@ -326,15 +324,15 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
        
     }
     
-    
     internal func config () {
+        inventory = Inventory(gameScene: self)
+        
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
         
         for system in systems {
             system.config(self)
         }
-    
         
         // inicializando o cameraNode.
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
@@ -520,15 +518,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
-        
         for system in systems {
             system.update()
         }
         
         if gameState == .INVENTORY {
-            updateInventorySquares()
+            inventory?.update()
         }
-        updateSelectedItemLabels()
     }
     
     func endGame () {

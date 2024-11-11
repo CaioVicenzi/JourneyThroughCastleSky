@@ -10,8 +10,6 @@ import SpriteKit
 
 /// Toda a lógica envolvida com o inventário será desenvolvida aqui dentro dessa classe
 class InventorySystem: System {
-
-    
     /// Função criada para que a partir de um inteiro que representa a posição de um elemento dentro do inventário, é possível você usar um item.
     func useItemFromInventory (in position : Int) {
         guard let item = InventorySystem.getInventoryItem(position) else {
@@ -28,9 +26,9 @@ class InventorySystem: System {
             InventorySystem.removeItemFromInventory(item)
         }
             
-        gameScene.inventoryItemSelected = 0
+        gameScene.inventory?.optionSelected = 0
         gameScene.dialogSystem.next()
-        closeInventory()
+        gameScene.inventory?.closeInventory()
     }
     
     static func removeItemFromInventory(_ item : Item) {
@@ -49,46 +47,42 @@ class InventorySystem: System {
     
     func inventoryButtonPressed () {
         if gameScene.gameState == .NORMAL {
-            gameScene.setupInventory()
+            gameScene.inventory?.setupInventory()
             gameScene.gameState = .INVENTORY
         } else {
-            closeInventory()
+            gameScene.inventory?.closeInventory()
         }
     }
     
-    private func closeInventory () {
-        guard let inventory = gameScene.inventory else {print("não temos inventory"); return}
-        gameScene.gameState = .NORMAL
-        gameScene.inventory?.children.forEach({ node in
-            node.removeFromParent()
-        })
-        inventory.removeFromParent()
-    }
+    
     
     func selectItemInventory (_ keyCode : UInt16) {
+        /*
+        guard let inventory = gameScene.inventory else {return}
+        
         // quantidade de itens que tem dentro do inventário personagem.
+        let inventoryItemSelected = inventory.inventoryItemSelected
+         */
         let inventoryItemsCount = User.singleton.inventoryComponent.itens.count
-        let inventoryItemSelected = gameScene.inventoryItemSelected
+
+        guard let option = gameScene.inventory?.optionSelected else {
+            return
+        }
         
         switch keyCode {
             case 0x7B:  // LEFT key
-            if inventoryItemSelected > 0 {
-                gameScene.inventoryItemSelected -= 1
-                }
-            case 0x7C:  // RIGHT key
-            if inventoryItemSelected < inventoryItemsCount - 1  {
-                gameScene.inventoryItemSelected += 1
+            
+            if option > 0 {
+                gameScene.inventory?.optionSelected -= 1
             }
+            
+            
+            case 0x7C:  // RIGHT key
+                if option < inventoryItemsCount - 1 {
+                    gameScene.inventory?.optionSelected += 1
+                }
             default: break
         }
-    }
-    
-    func input (_ keyCode : UInt16) {
-        let isEnterKey = keyCode == 36
-        
-        selectItemInventory(keyCode)
-        if isEnterKey {
-            self.useItemFromInventory(in: gameScene.inventoryItemSelected)
-        }
+         
     }
 }
