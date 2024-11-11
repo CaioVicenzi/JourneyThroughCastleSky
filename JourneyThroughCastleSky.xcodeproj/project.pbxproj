@@ -205,6 +205,7 @@
 		FDDCF34D2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDCF34E2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDFF12D2CDD394100502BD1 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF12C2CDD394100502BD1 /* Inventory.swift */; };
+		FDDFF61B2CE236B800502BD1 /* OptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
 		FDE3CF0C2CA4860C00D88620 /* TopDownScene_UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */; };
@@ -339,6 +340,7 @@
 		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
 		FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhase.swift; sourceTree = "<group>"; };
 		FDDFF12C2CDD394100502BD1 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenu.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
 		FDE3CF0B2CA4860C00D88620 /* TopDownScene_UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene_UI.swift; sourceTree = "<group>"; };
@@ -640,6 +642,7 @@
 			isa = PBXGroup;
 			children = (
 				FDDFF12C2CDD394100502BD1 /* Inventory.swift */,
+				FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1044,6 +1047,7 @@
 				FD932B012C9B57180047B5B7 /* InteractableComponent.swift in Sources */,
 				FD932AFD2C9B56D90047B5B7 /* StaminaComponent.swift in Sources */,
 				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
+				FDDFF61B2CE236B800502BD1 /* OptionsMenu.swift in Sources */,
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				982388C12CCADCAA00BE2D74 /* System.swift in Sources */,

@@ -33,7 +33,7 @@ extension TopDownScene {
         let xSize = sprite.size.width / 2
         let ySize = sprite.size.height / 4
         
-        sprite.zPosition = 10
+        sprite.zPosition = 2
         
         sprite.physicsBody = SKPhysicsBody(
             rectangleOf: .init(width: xSize, height: ySize),

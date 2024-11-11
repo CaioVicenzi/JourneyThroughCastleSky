@@ -12,7 +12,6 @@ class Inventory {
     var gameScene : TopDownScene
     var inventory : SKShapeNode?
     var topBarNode : SKSpriteNode?
-    //var inventoryItemSelected : Int = 0
     var optionSelected = 1
     var optionsOptionsSelected = 1
     
@@ -21,12 +20,18 @@ class Inventory {
     
     var inventoryState : InventoryState = .NORMAL
     
+    var itemsBackground : SKShapeNode?
+    var optionsBackground : SKShapeNode?
+    var creditsBackground : SKShapeNode?
+    
     enum InventoryState {
-        case NORMAL, OPTIONS, CREDIT, ITEMS
+        case NORMAL, OPTIONS, CREDIT, ITEMS, CONFIRM_EXIT_GAME
     }
     
     init(gameScene: TopDownScene) {
         self.gameScene = gameScene
+        
+        
     }
     
     func setupInventory () {
@@ -35,7 +40,7 @@ class Inventory {
         guard let backgroundInventory = inventory else {
             return
         }
-        backgroundInventory.fillColor = .black.withAlphaComponent(0.95)
+        backgroundInventory.fillColor = .black.withAlphaComponent(0.90)
         backgroundInventory.position = .zero
         backgroundInventory.strokeColor = .clear
         backgroundInventory.zPosition = 5
@@ -56,46 +61,10 @@ class Inventory {
         setupTopButton("ITENS", topBarNode: topBarNode, number: 1)
         setupTopButton("OPÇÕES", topBarNode: topBarNode, number: 2)
         setupTopButton("CRÉDITOS", topBarNode: topBarNode, number: 3)
-
         
-        
-        
-        
-        /*
-        
-        
-        // Definir o tamanho do inventário (80% da largura e 80% da altura da tela)
-        let inventorySize = CGSize(width: gameScene.size.width * 0.5, height: gameScene.size.height * 0.6)
-                
-        // Cria o inventário como um SKShapeNode (um retângulo com bordas arredondadas)
-        inventory = SKShapeNode(rectOf: inventorySize, cornerRadius: 20)
-        guard let inventory else {return}
-        
-        // Configura a cor do inventário
-        inventory.fillColor = .gray
-        inventory.strokeColor = .white
-        inventory.lineWidth = 5
-        inventory.zPosition = 15
-                
-        // Centraliza o inventário na tela
-        inventory.position = .zero
-        inventory.name = "inventory"
-                
-        // Adiciona o inventário à cena
-        gameScene.cameraNode.addChild(inventory)
-        
-        // LABEL DO INVENTÓRIO
-        let inventoryLabel = SKLabelNode(text: "Inventário")
-        inventoryLabel.position = .zero
-        inventoryLabel.position.y += (inventory.frame.height / 2) - 70
-        inventory.addChild(inventoryLabel)
-        
-                
-        // Adiciona alguns itens ao inventário
-        addInventoryItems()
-        
-        setupDetailItem()
-         */
+        setupItems()
+        setupCredits()
+        setupOptions()
     }
     
     private func setupTopButton (_ label : String, topBarNode : SKNode, number : Int) {
@@ -173,32 +142,7 @@ class Inventory {
         base.position.y = inventory.position.y - (inventory.frame.height / 3)
         
         inventory.addChild(base)
-        
-        //setupSelectedItemLabels(base)
     }
-    /*
-    func setupSelectedItemLabels (_ base : SKShapeNode) {
-        
-        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
-
-        titleSelectedItem = SKLabelNode(text: item?.consumableComponent?.nome)
-        descriptionSelectedItem = SKLabelNode(text: item?.readableComponent.readableDescription)
-        
-        titleSelectedItem?.fontSize = 20
-        titleSelectedItem?.position = .zero
-        
-        descriptionSelectedItem?.fontSize = 14
-        descriptionSelectedItem?.position = .zero
-        descriptionSelectedItem?.position.y -= 40
-        
-        
-        // é certeza que eles existe, afinal de contas, se a execução do código foi parar aqui, quer dizer que deu certo...
-        base.addChild(titleSelectedItem!)
-        base.addChild(descriptionSelectedItem!)
-        
-        
-    }
-     */
     
     func input(_ keyCode : Int) {
         let isEnterKey = keyCode == 36
@@ -222,6 +166,15 @@ class Inventory {
                 }
                 updateDownPart()
             }
+            
+            if isEnterKey {
+                switch optionSelected {
+                case 1: inventoryState = .ITEMS
+                case 2: inventoryState = .OPTIONS
+                case 3: inventoryState = .CREDIT
+                default: inventoryState = .NORMAL
+                }
+            }
         }
         
         if self.inventoryState == .OPTIONS {
@@ -240,20 +193,77 @@ class Inventory {
             if isEscKey {
                 self.inventoryState = .NORMAL
             }
-        }
-        
-        
-        
-        //selectItemInventory(keyCode)
-        if isEnterKey {
-            switch optionSelected {
-            case 1: inventoryState = .ITEMS
-            case 2: inventoryState = .OPTIONS
-            case 3: inventoryState = .CREDIT
-            default: inventoryState = .NORMAL
+            
+            if isEnterKey {
+                switch optionsOptionsSelected {
+                    case 1: titleScreenButtonPressed()
+                    case 2: exitGameButtonPressed()
+                    case 3: configurationsButtonPressed()
+                    default: break
+                }
             }
         }
     }
+    
+    private func titleScreenButtonPressed() {
+        // tem certeza que quer sair do jogo?
+        
+        
+        
+    }
+    
+    private func exitGameButtonPressed () {
+        guard let optionsBackground else {
+            print("oi")
+            return
+        }
+        
+        let confirmLeaveBackground = SKShapeNode(rectOf: CGSize(width: optionsBackground.frame.width / 1.5, height: 300))
+        confirmLeaveBackground.fillColor = .blue
+        confirmLeaveBackground.position = .zero
+        confirmLeaveBackground.zPosition = 20
+        
+        self.optionsBackground?.addChild(confirmLeaveBackground)
+        
+        let leaveLabel = SKLabelNode(text: "Tem certeza que deseja sair do jogo?")
+        leaveLabel.fontName = "Lora-Medium"
+        leaveLabel.position = .zero
+        leaveLabel.position.y += 20
+        leaveLabel.fontSize = 20
+        confirmLeaveBackground.addChild(leaveLabel)
+        
+        let noOption = SKLabelNode(text: "Não")
+        noOption.fontName = "Lora-Medium"
+        noOption.position = .zero
+        noOption.position.y -= 60
+        noOption.position.x -= 60
+        confirmLeaveBackground.addChild(noOption)
+        
+        let noArrow = SKSpriteNode(imageNamed: "seta2")
+        let scale = 50 / gameScene.size.height
+        noArrow.setScale(scale)
+        noArrow.position = noOption.position
+        noArrow.position.x -= 60
+        confirmLeaveBackground.addChild(noArrow)
+        
+        let yesOption = SKLabelNode(text: "Sim")
+        yesOption.fontName = "Lora-Medium"
+        yesOption.position = .zero
+        yesOption.position.y -= 60
+        yesOption.position.x += 60
+        confirmLeaveBackground.addChild(yesOption)
+        
+        let yesArrow = SKSpriteNode(imageNamed: "seta2")
+        yesArrow.setScale(scale)
+        yesArrow.position = yesOption.position
+        yesArrow.position.x -= 10
+        confirmLeaveBackground.addChild(yesArrow)
+    }
+    
+    private func configurationsButtonPressed () {
+        
+    }
+    
     
     func updateSelectedOptionArrow () {
         guard let topNode = topBarNode else {
@@ -272,30 +282,6 @@ class Inventory {
             }
         }
     }
-    /*
-    func updateSelectedItemLabels () {
-        /*
-        guard let titleSelectedItem, let descriptionSelectedItem else {
-            return
-        }
-        
-        let item = InventorySystem.getInventoryItem(inventoryItemSelected)
-        titleSelectedItem.text = item?.consumableComponent?.nome
-        descriptionSelectedItem.text = item?.readableComponent.readableDescription
-         */
-    }
-    
-    func updateInventorySquares () {
-        /*
-        let itemAmount = User.singleton.inventoryComponent.itens.count
-        
-        for i in 0 ..< itemAmount {
-            let filho = inventory?.childNode(withName: "inventorySquare\(i)") as? SKShapeNode
-            filho?.fillColor = i == inventoryItemSelected ? .blue : .gray
-        }
-         */
-    }
-     */
     
     func closeInventory () {
         gameScene.gameState = .NORMAL
@@ -312,103 +298,58 @@ class Inventory {
     }
     
     private func setupItems () {
-        
-    }
-    
-    private func setupOptions () {
-        setupLittleButton ("TELA DE TÍTULO", number: 1)
-        setupLittleButton ("SAIR DO JOGO", number: 2)
-        setupLittleButton ("CONFIGURAÇÕES", number: 3)
-        
-        
-        func setupLittleButton (_ title : String, number : Int) {
-            let baseButton = SKSpriteNode(imageNamed: "buttonUnselected")
-            baseButton.position = .zero
-            let yPosition : Double
-            
-            switch number {
-                case 1: yPosition = 100
-                case 2: yPosition = .zero
-                case 3: yPosition = -100
-                default: yPosition = .zero
-            }
-            
-            baseButton.position.y = yPosition
-            baseButton.zPosition = 6
-            baseButton.name = "optionButton\(number)"
-            
-            let proportion = 75 / baseButton.frame.height
-            baseButton.setScale(proportion)
-            if let inventoryBackground = gameScene.cameraNode.childNode(withName: "inventory") {
-                inventoryBackground.addChild(baseButton)
-            }
-            
-            let buttonText = SKLabelNode(text: title)
-            buttonText.fontName = "Lora-Medium"
-            buttonText.fontSize = 32
-            buttonText.fontColor = .black
-            buttonText.position = .zero
-            buttonText.position.y -= baseButton.frame.height / 5
-            buttonText.zPosition = 7
-            baseButton.addChild(buttonText)
-            
-            
+        itemsBackground = SKShapeNode(rectOf: CGSize(width: gameScene.size.width / 1.2, height: gameScene.size.height / 1.8))
+        itemsBackground?.position = .zero
+        itemsBackground?.fillColor = .yellow
+        itemsBackground?.position.y -= 50
+        if let itemsBackground {
+            inventory?.addChild(itemsBackground)
         }
+        
+        itemsBackground?.isHidden = true
     }
-    
-    
     
     private func setupCredits () {
+        creditsBackground = SKShapeNode(rectOf: CGSize(width: gameScene.size.width / 1.2, height: gameScene.size.height / 1.8))
+        creditsBackground?.position = .zero
+        creditsBackground?.fillColor = .blue
+        creditsBackground?.position.y -= 50
+        if let creditsBackground {
+            inventory?.addChild(creditsBackground)
+        }
         
+        creditsBackground?.isHidden  = true
     }
     
     
     func updateDownPart () {
         switch self.optionSelected {
-            case 1: setupItems()
-            case 2: setupOptions()
-            case 3: setupCredits()
-            default: setupItems()
+            case 1:
+                showItems()
+            case 2:
+                showOptions()
+            case 3:
+                showCredits()
+        default: showItems()
         }
     }
     
-    func updateOptions () {
-        guard let inventory = inventory else {
-            print("Não temos inventory no Inventory")
-            return
-        }
-        
-        for child in inventory.children {
-            if let childName = child.name {
-                if childName.starts(with: "optionButton") {
-                    if childName == "optionButton\(self.optionsOptionsSelected)" {
-                        let novoButton = SKSpriteNode(imageNamed: "buttonSelected")
-                        novoButton.size = child.frame.size
-                        novoButton.position = child.position
-                        novoButton.name = childName
-                        child.removeFromParent()
-                        for childChildren in child.children {
-                            childChildren.removeFromParent()
-                            novoButton.addChild(childChildren)
-                        }
-
-                        inventory.addChild(novoButton)
-                    } else {
-                        let novoButton = SKSpriteNode(imageNamed: "buttonUnselected")
-                        novoButton.size = child.frame.size
-                        novoButton.position = child.position
-                        novoButton.name = childName
-                        child.removeFromParent()
-                        for childChildren in child.children {
-                            childChildren.removeFromParent()
-                            novoButton.addChild(childChildren)
-                        }
-
-                        inventory.addChild(novoButton)
-                    }
-                }
-            }
-        }
+    func showCredits () {
+        creditsBackground?.isHidden = false
+        itemsBackground?.isHidden = true
+        optionsBackground?.isHidden = true
+    }
+    
+    func showItems () {
+        creditsBackground?.isHidden = true
+        itemsBackground?.isHidden = false
+        optionsBackground?.isHidden = true
+    }
+    
+    func showOptions () {
+        creditsBackground?.isHidden = true
+        itemsBackground?.isHidden = true
+        optionsBackground?.isHidden = false
     }
     
     func update () {
