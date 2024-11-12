@@ -302,7 +302,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                 case .UP_LEVEL: nameItem = "Cristal"; descriptionItem = "Um cristal misterioso"
             }
             
-            
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
             
             createdItem.spriteComponent.sprite.scale(to: node.size)
@@ -312,8 +311,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             
             node.removeFromParent()
         }
-        
-        //excludeAll(name)
     }
     
     private func excludeAll (_ spriteName : String) {
