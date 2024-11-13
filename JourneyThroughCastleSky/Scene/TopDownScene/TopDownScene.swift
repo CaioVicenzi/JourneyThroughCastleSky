@@ -139,6 +139,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
         
         self.dialogSystem.next()
+        
+        let audioName = BackgroundMusicHelper.singleton.audioFileName
+        if (audioName != "MainHallMusic") {
+            BackgroundMusicHelper.singleton.stopMusic()
+            BackgroundMusicHelper.singleton.playMusic("MainHallMusic")
+        }
+        
     }
     
     func configDialogs (_ dialogs : [Dialogue]) {

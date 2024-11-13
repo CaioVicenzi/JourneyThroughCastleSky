@@ -25,6 +25,7 @@ class CutsceneScenes: SKScene{
     }
     
     override func didMove(to view: SKView) {
+        BackgroundMusicHelper.singleton.stopMusic()
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
             self?.timerCount += 1
             
