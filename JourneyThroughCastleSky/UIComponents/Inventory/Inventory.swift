@@ -14,6 +14,7 @@ class Inventory {
     var topBarNode : SKSpriteNode?
     var optionSelected = 1
     var optionsOptionsSelected = 1
+    var exitGameSelection = 1
     
     var titleSelectedItem : SKLabelNode?
     var descriptionSelectedItem : SKLabelNode?
@@ -30,8 +31,6 @@ class Inventory {
     
     init(gameScene: TopDownScene) {
         self.gameScene = gameScene
-        
-        
     }
     
     func setupInventory () {
@@ -203,13 +202,22 @@ class Inventory {
                 }
             }
         }
+        
+        if self.inventoryState == .CONFIRM_EXIT_GAME {
+            if isRightArrow {
+                if exitGameSelection == 1 {
+                    exitGameSelection += 1
+                }
+            } else if isLeftArrow {
+                if exitGameSelection == 2 {
+                    exitGameSelection -= 1
+                }
+            }
+        }
     }
     
     private func titleScreenButtonPressed() {
         // tem certeza que quer sair do jogo?
-        
-        
-        
     }
     
     private func exitGameButtonPressed () {
@@ -240,10 +248,11 @@ class Inventory {
         confirmLeaveBackground.addChild(noOption)
         
         let noArrow = SKSpriteNode(imageNamed: "seta2")
-        let scale = 50 / gameScene.size.height
+        let scale = 35 / noArrow.frame.height
         noArrow.setScale(scale)
         noArrow.position = noOption.position
-        noArrow.position.x -= 60
+        noArrow.position.x -= noOption.frame.width
+        noArrow.position.y -= 10
         confirmLeaveBackground.addChild(noArrow)
         
         let yesOption = SKLabelNode(text: "Sim")
@@ -256,7 +265,8 @@ class Inventory {
         let yesArrow = SKSpriteNode(imageNamed: "seta2")
         yesArrow.setScale(scale)
         yesArrow.position = yesOption.position
-        yesArrow.position.x -= 10
+        yesArrow.position.x -= yesOption.frame.width
+        yesArrow.position.y += yesOption.frame.height / 6
         confirmLeaveBackground.addChild(yesArrow)
     }
     
@@ -283,6 +293,10 @@ class Inventory {
         }
     }
     
+    private func updateExitGameSelection () {
+        
+    }
+    
     func closeInventory () {
         gameScene.gameState = .NORMAL
         
@@ -300,13 +314,107 @@ class Inventory {
     private func setupItems () {
         itemsBackground = SKShapeNode(rectOf: CGSize(width: gameScene.size.width / 1.2, height: gameScene.size.height / 1.8))
         itemsBackground?.position = .zero
-        itemsBackground?.fillColor = .yellow
+        itemsBackground?.fillColor = .clear
+        itemsBackground?.strokeColor = .clear
         itemsBackground?.position.y -= 50
         if let itemsBackground {
             inventory?.addChild(itemsBackground)
         }
         
-        itemsBackground?.isHidden = true
+        setupBar("Vida")
+        setupBar("Vigor")
+        
+        setupButton("Consumíveis")
+        setupButton("Acervo")
+        
+        setupItemsInventory()
+        
+        itemsBackground?.isHidden = false
+    }
+    
+    private func setupBar (_ content : String) {
+        guard let itemsBackground else {return}
+        let backgroundBar = SKSpriteNode(imageNamed: "\(content.lowercased())-tag")
+        backgroundBar.position = .zero
+        
+        //let scale = 200 / backgroundBar.frame.width
+        backgroundBar.setScale(0.65)
+        backgroundBar.position.x -= itemsBackground.frame.width / 3
+        backgroundBar.position.y = .zero
+        backgroundBar.zPosition += 2
+        
+        if content == "Vida" {
+            backgroundBar.position.y += itemsBackground.frame.height / 2.25
+        } else if content == "Vigor" {
+            backgroundBar.position.y += (((itemsBackground.frame.height / 2.25) - backgroundBar.frame.height) - 30)
+        }
+        
+        
+        let label = SKLabelNode(text: content)
+        label.fontName = "Lora-Medium"
+        label.position = .zero
+        label.position.y += 10
+        label.position.x -= backgroundBar.frame.width / 3
+        label.fontColor = .black
+        label.zPosition += 1
+        backgroundBar.addChild(label)
+        
+        let size = CGSize(width: (backgroundBar.frame.width * 1.4), height: backgroundBar.frame.height / 1.55)
+        let bar = SKSpriteNode(color: content == "Vida" ? .wine : .darkGold, size: size)
+        bar.position = .zero
+        bar.position.x -= bar.frame.width / 2
+        bar.position.y -= backgroundBar.frame.height / 2.25
+        bar.zPosition -= 1
+        bar.anchorPoint = CGPoint(x: 0, y: 0.5)
+
+        backgroundBar.addChild(bar)
+        
+        let lifePercentage : CGFloat = CGFloat(User.singleton.healthComponent.health) / CGFloat(User.singleton.healthComponent.maxHealth)
+        bar.xScale = lifePercentage
+        
+        
+        self.itemsBackground?.addChild(backgroundBar)
+    }
+    
+    private func setupButton (_ content : String) {
+        guard let itemsBackground else {return}
+        let buttonSprite = SKSpriteNode(imageNamed: "buttonUnselected")
+        buttonSprite.position = .zero
+        buttonSprite.position.x -= itemsBackground.frame.width / 3
+        let scale = 70 / buttonSprite.size.height
+        buttonSprite.setScale(scale)
+        
+        if content == "Consumíveis" {
+            buttonSprite.position.y -= itemsBackground.frame.height / 6
+        }
+        
+        if content == "Acervo" {
+            buttonSprite.position.y -= ((itemsBackground.frame.height / 6) + buttonSprite.frame.height + 30)
+        }
+        
+        itemsBackground.addChild(buttonSprite)
+        
+        let label = SKLabelNode(text: content)
+        label.fontName = "Lora-Medium"
+        label.position = .zero
+        label.fontColor = .black
+        label.position.y -= buttonSprite.frame.height / 6
+        label.zPosition += 1
+        buttonSprite.addChild(label)
+        label.fontSize = 28
+        
+    }
+    
+    private func setupItemsInventory () {
+        guard let itemsBackground else {
+            return
+        }
+        
+        let itemsInventory = SKSpriteNode(imageNamed: "itemsInventory")
+        itemsInventory.setScale(0.55)
+        itemsInventory.position = .zero
+        itemsInventory.position.x += itemsBackground.frame.width / 4
+        self.itemsBackground?.addChild(itemsInventory)
     }
     
     private func setupCredits () {
