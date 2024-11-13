@@ -20,8 +20,6 @@ class BackgroundMusicHelper {
             return
         }
         
-
-        
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.numberOfLoops = -1
@@ -34,6 +32,7 @@ class BackgroundMusicHelper {
     
     func stopMusic() {
         audioPlayer?.stop()
+        audioFileName = nil 
     }
     
     func pauseMusic () {
