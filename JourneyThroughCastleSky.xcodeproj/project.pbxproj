@@ -213,6 +213,7 @@
 		98838C752CA5E09800709648 /* CombatSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98838C252CA486C600709648 /* CombatSystem.swift */; };
 		98838C762CA5E09800709648 /* ItemSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAD41F72C9CBA230053A4B0 /* ItemSystem.swift */; };
 		98838C772CA5E0A900709648 /* PositionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF1E09D2C91B811006D4EA0 /* PositionHelper.swift */; };
+		98B835B62CE52A7A0091B1F6 /* BattleMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 98B835B52CE52A7A0091B1F6 /* BattleMusic.mp3 */; };
 		98DAD0072CC18E3E0020DFAC /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD0062CC18E3C0020DFAC /* Dungeon.swift */; };
 		98DAD0082CC18E3E0020DFAC /* Dungeon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD0062CC18E3C0020DFAC /* Dungeon.swift */; };
 		98DAD01B2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */; };
@@ -407,6 +408,7 @@
 		98838C322CA5CE4A00709648 /* SkillComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillComponent.swift; sourceTree = "<group>"; };
 		98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JourneyThroughCastleSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98838C482CA5D8E300709648 /* TopDownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopDownScene.swift; sourceTree = "<group>"; };
+		98B835B52CE52A7A0091B1F6 /* BattleMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BattleMusic.mp3; sourceTree = "<group>"; };
 		98DAD0062CC18E3C0020DFAC /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallOfRelics.swift; sourceTree = "<group>"; };
 		FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
@@ -917,6 +919,7 @@
 			isa = PBXGroup;
 			children = (
 				FDFF96D22CDAA20600DDA419 /* MainHallMusic.mp3 */,
+				98B835B52CE52A7A0091B1F6 /* BattleMusic.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -1153,6 +1156,7 @@
 				9864A79C2CDE8E59003A1FD4 /* main-hall-lightning-4@2x.png in Resources */,
 				9864A79D2CDE8E59003A1FD4 /* main-hall-doors@3x.png in Resources */,
 				9864A79E2CDE8E59003A1FD4 /* main-hall-floor@2x.png in Resources */,
+				98B835B62CE52A7A0091B1F6 /* BattleMusic.mp3 in Resources */,
 				9864A79F2CDE8E59003A1FD4 /* main-hall-lightning-1@2x.png in Resources */,
 				9864A7A02CDE8E59003A1FD4 /* main-hall-skeletons-1@2x.png in Resources */,
 				9864A7A12CDE8E59003A1FD4 /* main-hall-lightning-2@3x.png in Resources */,
