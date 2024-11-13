@@ -28,7 +28,7 @@ class InventorySystem: System {
             
         gameScene.inventory?.optionSelected = 0
         gameScene.dialogSystem.next()
-        gameScene.inventory?.closeInventory()
+        gameScene.inventory?.closePause()
     }
     
     static func removeItemFromInventory(_ item : Item) {
@@ -47,10 +47,10 @@ class InventorySystem: System {
     
     func inventoryButtonPressed () {
         if gameScene.gameState == .NORMAL {
-            gameScene.inventory?.setupInventory()
+            gameScene.inventory?.setupPause()
             gameScene.gameState = .INVENTORY
         } else {
-            gameScene.inventory?.closeInventory()
+            gameScene.inventory?.closePause()
         }
     }
     

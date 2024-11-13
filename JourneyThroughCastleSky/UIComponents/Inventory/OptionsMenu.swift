@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-extension Inventory {
+extension Pause {
     func setupOptions () {
         optionsBackground = SKShapeNode(rectOf: CGSize(width: gameScene.size.width / 1.2, height: gameScene.size.height / 1.8))
         optionsBackground?.position = .zero
@@ -17,7 +17,7 @@ extension Inventory {
         optionsBackground?.position.y -= 50
 
         if let optionsBackground {
-            inventory?.addChild(optionsBackground)
+            pause?.addChild(optionsBackground)
         }
         
         optionsBackground?.isHidden = true

@@ -140,6 +140,7 @@
 		98DAD01C2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */; };
 		FD189C2F2CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
 		FD189C302CB06E21008EDA53 /* MainHallScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */; };
+		FD291B0F2CE5215D009A0A77 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD291B0E2CE5215D009A0A77 /* Inventory.swift */; };
 		FD4D264B2CCADF5400A52B73 /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264A2CCADF5300A52B73 /* Door.swift */; };
 		FD4D264D2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */; };
 		FD4D264E2CCAE03600A52B73 /* GameProgressionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */; };
@@ -204,7 +205,7 @@
 		FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
 		FDDCF34D2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDCF34E2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
-		FDDFF12D2CDD394100502BD1 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF12C2CDD394100502BD1 /* Inventory.swift */; };
+		FDDFF12D2CDD394100502BD1 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF12C2CDD394100502BD1 /* Pause.swift */; };
 		FDDFF61B2CE236B800502BD1 /* OptionsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */; };
 		FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF042CA3413100D88620 /* ReadableComponent.swift */; };
 		FDE3CF072CA3422C00D88620 /* DescriptionToPass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */; };
@@ -293,6 +294,7 @@
 		98DAD0062CC18E3C0020DFAC /* Dungeon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dungeon.swift; sourceTree = "<group>"; };
 		98DAD01A2CC1A49E0020DFAC /* HallOfRelics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HallOfRelics.swift; sourceTree = "<group>"; };
 		FD189C2E2CB06E21008EDA53 /* MainHallScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainHallScene.sks; sourceTree = "<group>"; };
+		FD291B0E2CE5215D009A0A77 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 		FD4D264A2CCADF5300A52B73 /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		FD4D264C2CCAE03600A52B73 /* GameProgressionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameProgressionSystem.swift; sourceTree = "<group>"; };
 		FD4D26CE2CD1579300A52B73 /* DialogHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogHelper.swift; sourceTree = "<group>"; };
@@ -339,7 +341,7 @@
 		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
 		FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhase.swift; sourceTree = "<group>"; };
-		FDDFF12C2CDD394100502BD1 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		FDDFF12C2CDD394100502BD1 /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenu.swift; sourceTree = "<group>"; };
 		FDE3CF042CA3413100D88620 /* ReadableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadableComponent.swift; sourceTree = "<group>"; };
 		FDE3CF062CA3422C00D88620 /* DescriptionToPass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionToPass.swift; sourceTree = "<group>"; };
@@ -641,8 +643,9 @@
 		FDDFF12B2CDD393200502BD1 /* Inventory */ = {
 			isa = PBXGroup;
 			children = (
-				FDDFF12C2CDD394100502BD1 /* Inventory.swift */,
+				FDDFF12C2CDD394100502BD1 /* Pause.swift */,
 				FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */,
+				FD291B0E2CE5215D009A0A77 /* Inventory.swift */,
 			);
 			path = Inventory;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				FDF1E09E2C91B811006D4EA0 /* PositionHelper.swift in Sources */,
 				98DAD01B2CC1A4AB0020DFAC /* HallOfRelics.swift in Sources */,
 				FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */,
+				FD291B0F2CE5215D009A0A77 /* Inventory.swift in Sources */,
 				FDF1E0902C91B750006D4EA0 /* ViewController.swift in Sources */,
 				FDAD41FE2C9E104E0053A4B0 /* Friendly.swift in Sources */,
 				43F007712CA72DDA0049590D /* MainSceneScene.swift in Sources */,
@@ -1107,7 +1111,7 @@
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
-				FDDFF12D2CDD394100502BD1 /* Inventory.swift in Sources */,
+				FDDFF12D2CDD394100502BD1 /* Pause.swift in Sources */,
 				FDF1E0882C91B750006D4EA0 /* AppDelegate.swift in Sources */,
 				FDFF96D12CDAA02800DDA419 /* BackgroundMusicHelper.swift in Sources */,
 				FD932B072C9B57860047B5B7 /* FightAIComponent.swift in Sources */,

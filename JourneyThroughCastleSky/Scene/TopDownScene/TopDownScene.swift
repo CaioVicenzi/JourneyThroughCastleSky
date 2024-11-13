@@ -39,7 +39,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var dialogueBox : SKShapeNode?
     var viewItemDescription : SKShapeNode?
-    var inventory : Inventory?
+    var inventory : Pause?
     var catchLabel : SKLabelNode?
 
     
@@ -325,7 +325,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     internal func config () {
-        inventory = Inventory(gameScene: self)
+        inventory = Pause(gameScene: self)
         
         // permite receber input do teclado
         self.view?.window?.makeFirstResponder(self)
