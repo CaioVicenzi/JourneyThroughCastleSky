@@ -10,7 +10,7 @@ import Foundation
 class DialogHelper {
     let firstDialogs : [Dialogue] = [
         Dialogue(text: "Irmão!", person: "Weerdman"),
-        /*
+       
         Dialogue(text: "Eu não sou seu irmão.", person: "Você"),
         Dialogue(text: "É o meu jeito de me expressar.", person: "Weerdman"),
         Dialogue(text: "Certo… Quem é você?", person: "Você"),
@@ -18,9 +18,9 @@ class DialogHelper {
         Dialogue(text: "Eu não sei.", person: "Você"),
         Dialogue(text: "Você não sabe?", person: "Weerdman"),
         Dialogue(text: "Eu não me lembro… Eu não me lembro de nada…", person: "Você"),
-        Dialogue(text: "Interessante! Memerance, talvez… Sim, sim… Memerance! Posso ver os seus olhos brilharem com a corrupção blasfema de Leville. Ela te envolve como um véu invisível. Fascinante!", person: "Weerdman"),
+        Dialogue(text: "Interessante! Memorance, talvez… Sim, sim… Memorance! Posso ver os seus olhos brilharem com a corrupção blasfema de Leville. Ela te envolve como um véu invisível. Fascinante!", person: "Weerdman"),
         Dialogue(text: "O que é isso?", person: "Você"),
-        Dialogue(text: "Ah… Memerance! Maldito feitiço! Apaga sua memória. É como o vento soprando grãos de areia. Faz com que seu cérebro se torne um quebra-cabeças a ser desvendado. Um sussurro etéreo distante nas profundezas do seu ser. Apenas eu posso desfazê-lo!", person: "Weerdman"),
+        Dialogue(text: "Ah… Memorance! Maldito feitiço! Apaga sua memória. É como o vento soprando grãos de areia. Faz com que seu cérebro se torne um quebra-cabeças a ser desvendado. Um sussurro etéreo distante nas profundezas do seu ser. Apenas eu posso desfazê-lo!", person: "Weerdman"),
         Dialogue(text: "Você?", person: "Você"),
         Dialogue(text: "Sim! Quem mais? Mas… Preciso de um favor, ou melhor, favores em troca.", person: "Weerdman"),
         Dialogue(text: "E se eu não aceitar?", person: "Você"),
@@ -37,7 +37,7 @@ class DialogHelper {
         Dialogue(text: "Vá com cuidado, irmão! Mantenha seu corpo e mente afiados.", person: "Weerdman"),
         Dialogue(text: "Antes de ir, com o que esse cristal se parece?", person: "Você"),
         Dialogue(text: "Você saberá quando vê-lo. Seu brilho pode ser visto pelos reinos como o Bombardeamento Celeste na era de Skyrise. Boa sorte!", person: "Weerdman")
-         */
+        
     ]
         
         
