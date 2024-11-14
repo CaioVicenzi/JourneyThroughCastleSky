@@ -43,7 +43,6 @@ class DialogHelper {
         
     let secondDialogs : [Dialogue] = [
         Dialogue(text: "O soldado errante retorna! He he", person: "Weerdman"),
-        /*
         Dialogue(text: "Não esperava que eu conseguisse?", person: "Você"),
         Dialogue(text: "Claro que esperava. Já disse, você parece ter vindo direto de um conto de fadas. Não se lembra?", person: "Weerdman"),
         Dialogue(text: "Hum…", person: "Você"),
@@ -67,12 +66,10 @@ class DialogHelper {
         Dialogue(text: "Eu sou um sábio em uma terra desolada. Eu não converso com ninguém há muito tempo. O que espera de mim?", person: "Weerdman"),
         Dialogue(text: "Hum…", person: "Você"),
         Dialogue(text: "Me esqueci que você é um homem de poucas palavras. E agora… hora da mágica. Está pronto?", person: "Weerdman")
-         */
     ]
 
     let secondDialogsAfterCutscene : [Dialogue] = [
         Dialogue(text: "O que viu?", person: "Weerdman"),
-        /*
         Dialogue(text: "Parece que fui capturado… por soldados.", person: "Você"),
         Dialogue(text: "Eu sinto muito por isso.", person: "Weerdman"),
         Dialogue(text: "Eu acho que tinha uma filha… eles… me levaram para longe dela.", person: "Você"),
@@ -92,12 +89,10 @@ class DialogHelper {
         Dialogue(text: "Você é apressado, irmão. Mas eu não te culpo. Afinal de contas, perder a memória é uma péssima experiência. Teve uma vez em um pub que eu…", person: "Weerdman"),
         Dialogue(text: "UHUM!", person: "Weerdman"),
         Dialogue(text: "Ok. Ok. Lá vamos nós!", person: "Weerdman")
-         */
     ]
 
     let thirdDialogs : [Dialogue] = [
         Dialogue(text: "Bom trabalho, irmão!", person: "Weerdman"),
-        /*
         Dialogue(text: "Aqui está.", person: "Você"),
         Dialogue(text: "Você encontrou alguém ao longo do caminho?", person: "Weerdman"),
         Dialogue(text: "Não. Eu deveria?", person: "Você"),
@@ -106,12 +101,10 @@ class DialogHelper {
         Dialogue(text: "Você é apressado, irmão. Mas eu não te culpo. Afinal de contas, perder a memória é uma péssima experiência. Teve uma vez em um pub que eu…", person: "Weerdman"),
         Dialogue(text: "UHUM!", person: "Weerdman"),
         Dialogue(text: "Ok. Ok. Lá vamos nós!", person: "Weerdman")
-         */
     ]
 
     let thirdDialogsAfterCutscene : [Dialogue] = [
         Dialogue(text: "E aí, irmão?", person: "Weerdman"),
-        /*
         Dialogue(text: "Prefiro não falar o que vi.", person: "Você"),
         Dialogue(text: "Tudo bem, irmão.", person: "Weerdman"),
         Dialogue(text: "Eu preciso saber mais. Onde está o próximo fragmento?", person: "Você"),
@@ -123,7 +116,6 @@ class DialogHelper {
         Dialogue(text: "Certo! Você tem mais alguma coisa para me dizer?", person: "Você"),
         Dialogue(text: "Sim! Aquele lugar não costuma ser o que era. Tome muito cuidado, irmão. Se perder lá é fácil. Em outras palavras. Preste muita atenção para onde está andando…", person: "Weerdman"),
         Dialogue(text: "Ok.", person: "Você")
-         */
     ]
 }
 
