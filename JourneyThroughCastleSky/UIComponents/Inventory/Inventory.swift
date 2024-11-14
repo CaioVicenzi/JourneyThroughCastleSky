@@ -106,12 +106,102 @@ extension Pause {
         
     }
     
+    private func setupItemsInventory () {
+        guard let itemsBackground else {
+            return
+        }
+        
+        let itemsInventory = SKSpriteNode(imageNamed: "itemsInventory")
+        itemsInventory.setScale(0.55)
+        itemsInventory.position = .zero
+        itemsInventory.position.x += itemsBackground.frame.width / 4
+        itemsInventory.name = "itemsBackground"
+        addInventoryItems(itemsInventory, categoryItem: .CONSUMIVEIS)
+        
+        self.itemsBackground?.addChild(itemsInventory)
+    }
+    
+    func inputItems (_ keyCode : Int) {
+        let isEnterKey = keyCode == 36
+        let isEscKey = keyCode == 53
+        let isLeftArrow = keyCode == 123
+        let isRightArrow = keyCode == 124
+        let isUpArrow = keyCode == 126
+        let isDownArrow = keyCode == 125
+        
+        let itemAmount = User.singleton.inventoryComponent.itens.count
+        
+        if isLeftArrow {
+            if inventoryItemSelected > 1 {
+                inventoryItemSelected -= 1
+            }
+        }
+        
+        if isRightArrow {
+            if inventoryItemSelected < itemAmount {
+                inventoryItemSelected += 1
+            }
+        }
+        
+        if isUpArrow {
+            if inventoryItemSelected - 4 > 0 {
+                inventoryItemSelected -= 4
+            }
+         }
+        
+        if isDownArrow {
+            if inventoryItemSelected + 4 < itemAmount - 1 {
+                inventoryItemSelected += 4
+            }
+        }
+        
+        if isEnterKey {
+            gameScene.inventorySystem.useItemFromInventory(in: inventoryItemSelected - 1)
+        }
+        
+        if isEscKey {
+            self.pauseState = .ITEMS
+            cleanItemsArrows()
+        }
+    }
+    
+    internal func updateItemsThroughCategories () {
+        cleanItems()
+        
+        if let itemsBackground = self.itemsBackground?.childNode(withName: "itemsBackground") as? SKSpriteNode {
+            
+            if inventoryCategorySelected == 1 {
+                addInventoryItems(itemsBackground, categoryItem: .CONSUMIVEIS)
+            } else {
+                addInventoryItems(itemsBackground, categoryItem: .ACERVO)
+            }
+        }
+    }
+    
+    enum CategoryItem {
+        case CONSUMIVEIS
+        case ACERVO
+    }
+    
+    
     /// Função que adiciona os itens dentro do inventório.
-    internal func addInventoryItems (_ inventorySprite : SKSpriteNode) {
+    internal func addInventoryItems (_ inventorySprite : SKSpriteNode, categoryItem : CategoryItem) {
         var referencex = -(inventorySprite.frame.width / 2)
         var referencey = (inventorySprite.frame.height / 2)
         var index = 0
         User.singleton.inventoryComponent.itens.forEach({ item in
+            if categoryItem == .ACERVO {
+                if item.consumableComponent?.effect.type != .NONE {
+                    return
+                }
+            }
+            
+            if categoryItem == .CONSUMIVEIS {
+                if item.consumableComponent?.effect.type == .NONE {
+                    return
+                }
+            }
+            
             let node = item.spriteComponent.sprite
             //let scale = 30 / node.frame.width
             node.scale(to: CGSize(width: 100, height: node.frame.height * (100 / node.frame.height)))
@@ -151,69 +241,31 @@ extension Pause {
         })
     }
     
-    private func setupItemsInventory () {
-        guard let itemsBackground else {
-            return
-        }
-        
-        let itemsInventory = SKSpriteNode(imageNamed: "itemsInventory")
-        itemsInventory.setScale(0.55)
-        itemsInventory.position = .zero
-        itemsInventory.position.x += itemsBackground.frame.width / 4
-        addInventoryItems(itemsInventory)
-        
-        self.itemsBackground?.addChild(itemsInventory)
-    }
-    
-    func inputItems (_ keyCode : Int) {
-        let isEnterKey = keyCode == 36
-        let isEscKey = keyCode == 53
-        let isLeftArrow = keyCode == 123
-        let isRightArrow = keyCode == 124
-        let isUpArrow = keyCode == 126
-        let isDownArrow = keyCode == 125
-        
-        let itemAmount = User.singleton.inventoryComponent.itens.count
-        
-        if isLeftArrow {
-            if inventoryItemSelected > 1 {
-                inventoryItemSelected -= 1
+    private func cleanItemsArrows() {
+        for i in 1 ..< User.singleton.inventoryComponent.itens.count + 1 {
+            if let child = self.itemsBackground?.childNode(withName: "itemsBackground")?.childNode(withName: "arrow\(i)") as? SKSpriteNode {
+                child.isHidden = true
             }
-        }
-        
-        if isRightArrow {
-            if inventoryItemSelected < itemAmount - 1 {
-                inventoryItemSelected += 1
-            }
-        }
-        
-        if isUpArrow {
-            if inventoryItemSelected - 4 > 0 {
-                inventoryItemSelected -= 4
-            }
-         }
-        
-        if isDownArrow {
-            if inventoryItemSelected + 4 < itemAmount - 1 {
-                inventoryItemSelected += 4
-            }
-        }
-        
-        if isEnterKey {
-            // consume item
-            gameScene.inventorySystem.useItemFromInventory(in: inventoryItemSelected)
-            // sair do inventário
-            //gameScene.inventorySystem.inventoryButtonPressed()
         }
     }
     
-    func updateInventoryButtons () {
+    private func cleanItems () {
+        for _ in 1 ..< User.singleton.inventoryComponent.itens.count + 1 {
+            if let itemsBackground = self.itemsBackground?.childNode(withName: "itemsBackground") {
+                for child in itemsBackground.children {
+                    child.removeFromParent()
+                }
+            }
+        }
+    }
+    
+    func updateInventoryButtons (_ isCleaning : Bool = false) {
         for i in 1 ..< 3 {
 
             if let child = self.itemsBackground?.childNode(withName: "button\(i)") as? SKSpriteNode {
                 let individualRow : SKSpriteNode
                 
-                if i == inventoryCategorySelected {
+                if i == inventoryCategorySelected && isCleaning == false {
                     individualRow = SKSpriteNode(imageNamed: "buttonSelected")
                 } else {
                     individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
@@ -240,16 +292,23 @@ extension Pause {
             return
         }
         
-        for i in 0 ..< User.singleton.inventoryComponent.itens.count - 1 {
-            if let child = self.itemsBackground?.childNode(withName: "arrow\(i)") as? SKSpriteNode {
-                if i == inventoryItemSelected {
+        for i in 1 ..< User.singleton.inventoryComponent.itens.count + 1 {
+            if let child = self.itemsBackground?.childNode(withName: "itemsBackground")?.childNode(withName: "arrow\(i)") as? SKSpriteNode {
+                if i == self.inventoryItemSelected {
                     child.isHidden = false
                 } else {
                     child.isHidden = true
                 }
             }
-            
         }
+    }
+    
+    func cleanInput () {
+        self.optionSelected = 1
+        self.inventoryItemSelected = 1
+        self.optionsOptionsSelected = 1
+        self.pauseState = .NORMAL
+        self.inventoryCategorySelected = 1
     }
 
 }

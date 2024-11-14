@@ -141,8 +141,10 @@ class Pause {
             }
             
             if isEnterKey {
+                let itemAmount = User.singleton.inventoryComponent.itens.count
+                
                 switch optionSelected {
-                case 1: pauseState = .ITEMS
+                case 1: pauseState = itemAmount != 0 ? .ITEMS : .NORMAL
                 case 2: pauseState = .OPTIONS
                 case 3: pauseState = .CREDIT
                 default: pauseState = .NORMAL
@@ -193,12 +195,14 @@ class Pause {
             if isUpArrow {
                 if inventoryCategorySelected == 2 {
                     self.inventoryCategorySelected -= 1
+                    updateItemsThroughCategories()
                 }
             }
             
             if isDownArrow {
                 if inventoryCategorySelected == 1 {
                     self.inventoryCategorySelected += 1
+                    updateItemsThroughCategories()
                 }
             }
             
@@ -209,6 +213,7 @@ class Pause {
             if isEscKey {
                 pauseState = .NORMAL
                 //limpar todos as as opções
+                cleanItemCategoryButtons()
             }
         }
         
@@ -310,6 +315,11 @@ class Pause {
             node.removeFromParent()
         }
         inventory.removeFromParent()
+    }
+    
+    private func cleanItemCategoryButtons () {
+        self.inventoryCategorySelected = 1
+        updateInventoryButtons(true)
     }
     
     private func setupCredits () {

@@ -52,6 +52,8 @@ class InventorySystem: System {
         } else {
             gameScene.inventory?.closePause()
         }
+        
+        gameScene.inventory?.cleanInput()
     }
     
     
