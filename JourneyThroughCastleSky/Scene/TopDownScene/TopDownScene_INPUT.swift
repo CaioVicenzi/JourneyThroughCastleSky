@@ -30,7 +30,7 @@ extension TopDownScene {
             inventorySystem.input(event.keyCode)
         } else if gameState == .PAUSE {
             menuSystem.input(event.keyCode)
-        } else if gameState == .DIALOG_FINISHED {
+        } else if gameState == .DIALOG_FINISHED || gameState == .WAITING_DIALOG {
             dialogSystem.input(event.keyCode)
         }
         
