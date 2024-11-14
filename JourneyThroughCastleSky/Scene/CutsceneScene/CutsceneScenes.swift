@@ -10,7 +10,7 @@ import SpriteKit
 
 class CutsceneScenes: SKScene{
     
-    var countCutscene: Int = 1
+    var countCutscene: Int = 0
     var cutscene: CutsceneComponent?
     var cutsceneTimer: Timer?
     var previousScene : TopDownScene? = nil
@@ -18,7 +18,18 @@ class CutsceneScenes: SKScene{
     var dialogsAfterCutscene : [Dialogue] = []
     var timerCount = 0
     
+    var clickMessage: SKLabelNode = {
+        let label = SKLabelNode(text: "Clique na tela e aperte ESPAÇO para passar as cutscenes")
+    
+        
+        label.fontColor = .red
+        label.fontSize = 20
+        label.fontName = "Helvetica-Bold"
+        return label
+    }()
+    
     func config (_ previousScene : TopDownScene, scenes : [Cutscene], dialogsAfterCutscene : [Dialogue]) {
+        clickMessage.position = CGPoint(x: size.width/2, y: size.height - 100)
         self.previousScene = previousScene
         self.scenes = scenes
         self.dialogsAfterCutscene = dialogsAfterCutscene
@@ -26,7 +37,7 @@ class CutsceneScenes: SKScene{
     
     override func didMove(to view: SKView) {
         BackgroundMusicHelper.singleton.stopMusic()
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
+        Timer.scheduledTimer(withTimeInterval: 0.0, repeats: true) {[weak self] timer in
             self?.timerCount += 1
             
             if self?.timerCount == 2 {
@@ -51,11 +62,27 @@ class CutsceneScenes: SKScene{
         
         cutscene = CutsceneComponent(background: backgroundNode, subtitles: subtitle)
         
+        
         cutscene?.displayCutscene(scene: self)
+        
+        if (countCutscene == 0) {
+            
+            
+            addChild(clickMessage)
+        }
+        
         scenes.removeFirst()
+        countCutscene += 1
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        clickMessage.removeFromParent()
     }
     
     override func keyDown(with event: NSEvent) {
+        
+        
+        
         if event.keyCode == 49 {
             displayNextCutscene()
             timerCount = 0

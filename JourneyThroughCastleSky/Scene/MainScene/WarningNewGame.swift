@@ -113,6 +113,8 @@ class WarningNewGame {
         if let scene = SKScene(fileNamed: "MainHallScene") as? MainHallScene {
             scene.scaleMode = .aspectFill
             let transition = SKTransition.fade(withDuration: 1.0)
+            transition.pausesIncomingScene = false
+            transition.pausesOutgoingScene = false
             self.scene?.view?.presentScene(scene, transition: transition)
         } else {
             print("Failed to load Cutscene.")

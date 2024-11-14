@@ -11,6 +11,7 @@ import SpriteKit
 class Cutscene {
     var background : SKSpriteNode
     var displayText : String
+    var isFirst = false
     
     init(background: SKSpriteNode, displayText: String) {
         self.background = background

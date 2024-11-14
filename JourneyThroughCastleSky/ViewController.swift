@@ -21,7 +21,6 @@ class ViewController: NSViewController {
             gameScene.scaleMode = .aspectFill
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
-            view.ignoresSiblingOrder = true
             
         }
     }

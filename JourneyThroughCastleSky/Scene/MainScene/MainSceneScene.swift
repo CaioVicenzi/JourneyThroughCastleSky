@@ -78,9 +78,6 @@ class MainMenuScene : SKScene {
          
     }
     
-    
-    
-    
     override func keyDown(with event: NSEvent) {
         switch menuState {
         case .CHOOSE_OPTION:

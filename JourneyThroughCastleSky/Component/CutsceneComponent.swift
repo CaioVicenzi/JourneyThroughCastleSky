@@ -26,13 +26,19 @@ class CutsceneComponent: Component{
     func displayCutscene(scene: SKScene){
         scene.removeAllChildren()
         
+        
+        
         background.position = CGPoint(x: scene.size.width / 2, y: scene.size.height / 2)
         background.scale(to: scene.size)
         scene.addChild(background)
         
         let subtitleLabel = SKLabelNode(text: subtitles)
         subtitleLabel.fontSize = 20
+        subtitleLabel.fontColor = .black
         subtitleLabel.position = CGPoint(x: scene.size.width/2, y: scene.size.height/2)
+        subtitleLabel.fontName = "Helvetica-Bold"
         scene.addChild(subtitleLabel)
+        
+     
     }
 }
