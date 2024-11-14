@@ -141,8 +141,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         self.dialogSystem.next()
         
         let audioName = BackgroundMusicHelper.singleton.audioFileName
-        
-        
         if (audioName != "MainHallMusic") {
             
             BackgroundMusicHelper.singleton.playMusic("MainHallMusic")
@@ -255,8 +253,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         let weerdman = Friendly(
                    spriteName: "weerdman",
-                   xPosition: Int(465.311),
-                   yPosition: Int(-40.816),
+                   xPosition: Int(node.position.x),
+                   yPosition: Int(node.position.y),
                    dialogs: [],
                    dialogsTwo: [],
                    dialogsThree: []
@@ -276,6 +274,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         spriteFriendly.physicsBody?.affectedByGravity = false
         spriteFriendly.physicsBody?.isDynamic = false
         spriteFriendly.physicsBody?.allowsRotation = false
+        
+        spriteFriendly.zPosition = node.zPosition
 
         friendlySystem.friendlies.append(weerdman)
 
