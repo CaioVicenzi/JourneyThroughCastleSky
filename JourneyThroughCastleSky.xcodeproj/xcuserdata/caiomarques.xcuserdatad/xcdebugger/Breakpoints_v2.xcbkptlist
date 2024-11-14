@@ -540,8 +540,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Inventory/Pause.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
             landmarkName = "updateSelectedOptionArrow()"
             landmarkType = "7">
          </BreakpointContent>
@@ -572,8 +572,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Inventory/Pause.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "375"
-            endingLineNumber = "375"
+            startingLineNumber = "459"
+            endingLineNumber = "459"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -588,8 +588,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Inventory/Pause.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "update()"
             landmarkType = "7">
          </BreakpointContent>
@@ -604,8 +604,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Inventory/Pause.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "input(_:)"
             landmarkType = "7">
          </BreakpointContent>
