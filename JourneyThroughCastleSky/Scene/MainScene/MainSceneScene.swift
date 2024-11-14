@@ -28,7 +28,7 @@ class MainMenuScene : SKScene {
         setupTitleLabel()
         setupButton("Novo Jogo", yPosition: 50, number: 0)
         setupButton("Carregar jogo", yPosition: 90, number: 1)
-        setupButton("Configurações", yPosition: 130, number: 2)
+//        setupButton("Configurações", yPosition: 130, number: 2)
     }
     
     private func setupTitleLabel () {
@@ -98,7 +98,7 @@ class MainMenuScene : SKScene {
         }
         
         if event.keyCode == 0x7D { // seta para baixo
-            if selectedButton < 2 {
+            if selectedButton < 1 {
                 self.selectedButton += 1
             }
         }
