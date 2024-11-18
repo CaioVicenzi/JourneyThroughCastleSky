@@ -22,8 +22,6 @@ var jaMostrou : Bool = false
 
 class MainHallScene: TopDownScene {
     override func didMove(to view: SKView) {
-        BackgroundMusicHelper.singleton.stopMusic()
-        //BackgroundMusicHelper.singleton.playMusic("MainHallMusic")
         
         super.didMove(to: view)
         if !jaMostrou {

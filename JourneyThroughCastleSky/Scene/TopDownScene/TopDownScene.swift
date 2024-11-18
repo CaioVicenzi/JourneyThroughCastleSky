@@ -31,6 +31,18 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         return doors
     }
     
+    var colliders: [SKNode] {
+        
+        let collidersParent = childNode(withName: "colliders")
+        
+        if let collidersParent {
+            return collidersParent.children
+        } else {
+            return []
+        }
+        
+    }
+    
     var spawnLocation: CGPoint?
     
     var enemies : [Enemy]
@@ -100,6 +112,16 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupNodes()
         setupTileColliders()
         
+        for collider in colliders {
+            collider.physicsBody = SKPhysicsBody(rectangleOf: collider.frame.size)
+            
+            collider.physicsBody?.categoryBitMask = PhysicCategory.wall
+            collider.physicsBody?.collisionBitMask = PhysicCategory.character
+            collider.physicsBody?.contactTestBitMask = PhysicCategory.character
+            collider.physicsBody?.affectedByGravity = false
+            collider.physicsBody?.isDynamic = false // não se move
+        }
+        
         setupWalls()
         setupDoors()
         
@@ -115,6 +137,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         }
         
         self.dialogSystem.next()
+        
+        let audioName = BackgroundMusicHelper.singleton.audioFileName
+        if (audioName != "MainHallMusic") {
+            
+            BackgroundMusicHelper.singleton.playMusic("MainHallMusic")
+        }
+        
     }
     
     func configDialogs (_ dialogs : [Dialogue]) {
@@ -222,8 +251,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         let weerdman = Friendly(
                    spriteName: "weerdman",
-                   xPosition: Int(465.311),
-                   yPosition: Int(-40.816),
+                   xPosition: Int(node.position.x),
+                   yPosition: Int(node.position.y),
                    dialogs: [],
                    dialogsTwo: [],
                    dialogsThree: []
@@ -243,6 +272,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         spriteFriendly.physicsBody?.affectedByGravity = false
         spriteFriendly.physicsBody?.isDynamic = false
         spriteFriendly.physicsBody?.allowsRotation = false
+        
+        spriteFriendly.zPosition = node.zPosition
 
         friendlySystem.friendlies.append(weerdman)
 
@@ -278,7 +309,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
                 case .UP_LEVEL: nameItem = "Cristal"; descriptionItem = "Um cristal misterioso"
             }
             
-            
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
             
             createdItem.spriteComponent.sprite.scale(to: node.size)
@@ -288,8 +318,6 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             
             node.removeFromParent()
         }
-        
-        //excludeAll(name)
     }
     
     private func excludeAll (_ spriteName : String) {
@@ -514,7 +542,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     internal func setupNodes () {
         self.camera = cameraNode
-        setupSprite()
+        setupPlayer()
     }
     
     override func update(_ currentTime: TimeInterval) {

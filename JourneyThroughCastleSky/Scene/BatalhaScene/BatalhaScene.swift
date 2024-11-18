@@ -19,6 +19,7 @@ struct ActionResult {
 }
 
 class BatalhaScene : SKScene {
+    
     var enemy : Enemy!
     var buttonAttack = SKShapeNode()
     var buttonUseItem = SKShapeNode()
@@ -66,6 +67,7 @@ class BatalhaScene : SKScene {
         setupNodes()
         self.scaleMode = .fill
         self.gameChooseState = .CHOOSE_BUTTON
+        BackgroundMusicHelper.singleton.playMusic("BattleMusic")
     }
     
     func setupNodes () {

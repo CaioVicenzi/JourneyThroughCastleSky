@@ -12,7 +12,7 @@ import SpriteKit
 /// Como a TopDownScene estava ficando muito gigantesca e enorme, eu decidi dividir as partes que renderizam a UI do jogo para esse arquivo.
 extension TopDownScene {
     /// Função que faz o setup do sprite do usuário, posicionando ele dentro do mapa..
-    internal func setupSprite () {
+    internal func setupPlayer () {
         // descobrir onde está o spawn e colocar o usuário lá
         
         if let spawnLocation {
@@ -34,6 +34,7 @@ extension TopDownScene {
         let ySize = sprite.size.height / 4
         
         sprite.zPosition = 2
+
         
         sprite.physicsBody = SKPhysicsBody(
             rectangleOf: .init(width: xSize, height: ySize),
@@ -45,6 +46,7 @@ extension TopDownScene {
         sprite.physicsBody?.affectedByGravity = false
         sprite.physicsBody?.isDynamic = true // pode se mover
         sprite.physicsBody?.allowsRotation = false
+        sprite.zPosition = 8
         
     }
     

@@ -12,8 +12,12 @@ class PauseMenu : UIComponent {
     var selectedOption : Int = 0
     var base : SKShapeNode? = nil
     let buttonAmount = 2
+    var parentScene: SKScene?
     
     func addToScene(_ scene: SKScene) {
+        
+        parentScene = scene
+        
         self.base = SKShapeNode(rectOf: CGSize(width: scene.size.width / 2, height: scene.size.height / 2))
         guard let base else {print("alguma coisa deu muito errada na addToScene"); return}
         base.position = .zero
@@ -100,9 +104,15 @@ class PauseMenu : UIComponent {
     func pressEnterKey() {
         if selectedOption == 0 {
             print("Opção 1 escolhida")
+            if let parentScene = parentScene as? TopDownScene {
+                parentScene.gameState = .NORMAL
+            }
             self.base?.removeFromParent()
         } else {
             print("Opção 2 escolhida")
+            if let parentScene = parentScene as? TopDownScene {
+                parentScene.gameState = .NORMAL
+            }
             self.base?.removeFromParent()
         }
     }

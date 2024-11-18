@@ -22,7 +22,7 @@ extension TopDownScene {
         
         dialogueBox.fillColor = .black
         dialogueBox.strokeColor = .white
-        dialogueBox.zPosition = 3
+        dialogueBox.zPosition = 10
         
         if dialogueBox.parent == nil {
             cameraNode.addChild(dialogueBox)

@@ -12,6 +12,8 @@ class BackgroundMusicHelper {
     static let singleton = BackgroundMusicHelper()
     var audioPlayer : AVAudioPlayer?
     
+    var audioFileName: String?
+    
     func playMusic (_ filename : String) {
         guard let soundURL = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
             print("Arquivo não encontrado")
@@ -22,6 +24,7 @@ class BackgroundMusicHelper {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.numberOfLoops = -1
             audioPlayer?.play()
+            audioFileName = filename
         } catch {
             print("Erro ao inicializar o AVAudioPlayer")
         }
@@ -29,6 +32,7 @@ class BackgroundMusicHelper {
     
     func stopMusic() {
         audioPlayer?.stop()
+        audioFileName = nil 
     }
     
     func pauseMusic () {
