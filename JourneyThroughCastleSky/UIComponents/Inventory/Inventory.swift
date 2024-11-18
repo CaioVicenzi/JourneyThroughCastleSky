@@ -99,10 +99,10 @@ extension Pause {
         label.fontName = "Lora-Medium"
         label.position = .zero
         label.fontColor = .black
-        label.position.y -= buttonSprite.frame.height / 6
+        label.position.y -= buttonSprite.frame.height / 5
         label.zPosition += 1
         buttonSprite.addChild(label)
-        label.fontSize = 28
+        label.fontSize = 48
         
     }
     
