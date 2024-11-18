@@ -470,7 +470,7 @@
 		FDE3CF272CA5F56400D88620 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
 		FDE3CF2A2CA5FD7900D88620 /* Checkpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkpoint.swift; sourceTree = "<group>"; };
 		FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponent.swift; sourceTree = "<group>"; };
-		FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JourneyThroughCastleSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDF1E0842C91B750006D4EA0 /* Memorance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDF1E0872C91B750006D4EA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FDF1E0892C91B750006D4EA0 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FDF1E08B2C91B750006D4EA0 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -833,7 +833,7 @@
 		FDF1E0852C91B750006D4EA0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */,
+				FDF1E0842C91B750006D4EA0 /* Memorance.app */,
 				98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */,
 			);
 			name = Products;
@@ -952,9 +952,9 @@
 			productReference = 98838C3C2CA5D62D00709648 /* JourneyThroughCastleSkyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */ = {
+		FDF1E0832C91B750006D4EA0 /* Memorance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FDF1E0992C91B752006D4EA0 /* Build configuration list for PBXNativeTarget "JourneyThroughCastleSky" */;
+			buildConfigurationList = FDF1E0992C91B752006D4EA0 /* Build configuration list for PBXNativeTarget "Memorance" */;
 			buildPhases = (
 				FDF1E0802C91B750006D4EA0 /* Sources */,
 				FDF1E0812C91B750006D4EA0 /* Frameworks */,
@@ -968,9 +968,9 @@
 				4377B8592CAF173800FDD2B9 /* CutsceneScene */,
 				43F229AF2CD009FB008CEDB4 /* Configurations */,
 			);
-			name = JourneyThroughCastleSky;
+			name = Memorance;
 			productName = JourneyThroughCastleSky;
-			productReference = FDF1E0842C91B750006D4EA0 /* JourneyThroughCastleSky.app */;
+			productReference = FDF1E0842C91B750006D4EA0 /* Memorance.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1005,7 +1005,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */,
+				FDF1E0832C91B750006D4EA0 /* Memorance */,
 				98838C3B2CA5D62D00709648 /* JourneyThroughCastleSkyTests */,
 			);
 		};
@@ -1351,7 +1351,7 @@
 /* Begin PBXTargetDependency section */
 		98838C412CA5D62D00709648 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FDF1E0832C91B750006D4EA0 /* JourneyThroughCastleSky */;
+			target = FDF1E0832C91B750006D4EA0 /* Memorance */;
 			targetProxy = 98838C402CA5D62D00709648 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1531,10 +1531,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JourneyThroughCastleSky/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Memorance;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -1560,10 +1561,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = M67J2XKW43;
+				DEVELOPMENT_TEAM = 2XQLYL986B;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JourneyThroughCastleSky/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Memorance;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
@@ -1601,7 +1603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FDF1E0992C91B752006D4EA0 /* Build configuration list for PBXNativeTarget "JourneyThroughCastleSky" */ = {
+		FDF1E0992C91B752006D4EA0 /* Build configuration list for PBXNativeTarget "Memorance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FDF1E09A2C91B752006D4EA0 /* Debug */,
