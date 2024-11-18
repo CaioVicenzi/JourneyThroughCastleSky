@@ -11,7 +11,9 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        NSApplication.shared.windows.first?.toggleFullScreen(nil)
+        NSApplication.shared.windows.first?.isMovable = false
+        NSApplication.shared.windows.first?.styleMask.remove(.resizable)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
