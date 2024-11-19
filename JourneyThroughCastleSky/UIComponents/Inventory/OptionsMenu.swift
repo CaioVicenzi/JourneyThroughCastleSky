@@ -75,12 +75,12 @@ extension Pause {
                         novoButton.size = child.frame.size
                         novoButton.position = child.position
                         novoButton.name = childName
-                        child.removeFromParent()
                         for childChildren in child.children {
                             childChildren.removeFromParent()
                             novoButton.addChild(childChildren)
                         }
-
+                        
+                        child.removeFromParent()
                         inventory.addChild(novoButton)
                     } else {
                         let novoButton = SKSpriteNode(imageNamed: "buttonUnselected")
@@ -92,30 +92,11 @@ extension Pause {
                             childChildren.removeFromParent()
                             novoButton.addChild(childChildren)
                         }
-
+                        
                         inventory.addChild(novoButton)
                     }
                 }
             }
         }
-    }
-    
-    
-    
-    func setupConfigurations () {
-        
-        
-        /*
-        gameScene.childNode(withName: "optionButton1")?.removeFromParent()
-        gameScene.childNode(withName: "optionButton2")?.removeFromParent()
-        gameScene.childNode(withName: "optionButton3")?.removeFromParent()
-        
-        let configRectangle = SKSpriteNode(imageNamed: "itensSession")
-        let scale = (gameScene.size.width / 1.5) / configRectangle.frame.width
-        configRectangle.setScale(scale)
-        configRectangle.position = .zero
-        configRectangle.zPosition = 8
-        gameScene.addChild(configRectangle)
-         */
     }
 }

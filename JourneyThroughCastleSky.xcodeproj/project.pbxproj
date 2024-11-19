@@ -282,6 +282,7 @@
 		FDD5F99D2CB45D6600A1647B /* PositionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */; };
 		FDD5F9A02CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
 		FDD5F9A12CB86CFF00A1647B /* GameSceneData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */; };
+		FDD857542CEBD72C0010D4F8 /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD857532CEBD72C0010D4F8 /* Configurations.swift */; };
 		FDDCF34D2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDCF34E2CC6F2A400181ADE /* GamePhase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */; };
 		FDDFF12D2CDD394100502BD1 /* Pause.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDFF12C2CDD394100502BD1 /* Pause.swift */; };
@@ -459,6 +460,7 @@
 		FDD5F9982CB45CB600A1647B /* InventorySystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySystem.swift; sourceTree = "<group>"; };
 		FDD5F99B2CB45D6600A1647B /* PositionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionSystem.swift; sourceTree = "<group>"; };
 		FDD5F99F2CB86CFF00A1647B /* GameSceneData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSceneData.swift; sourceTree = "<group>"; };
+		FDD857532CEBD72C0010D4F8 /* Configurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		FDDCF34C2CC6F2A400181ADE /* GamePhase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhase.swift; sourceTree = "<group>"; };
 		FDDFF12C2CDD394100502BD1 /* Pause.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pause.swift; sourceTree = "<group>"; };
 		FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsMenu.swift; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */,
 				FDB27A412CADC163002B2848 /* PauseMenu.swift */,
 				FD4D264A2CCADF5300A52B73 /* Door.swift */,
+				FDD857532CEBD72C0010D4F8 /* Configurations.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				98838C492CA5D8EC00709648 /* TopDownScene.swift in Sources */,
 				FDDFF61B2CE236B800502BD1 /* OptionsMenu.swift in Sources */,
 				43841E732CA72CDB009496B2 /* Entity.swift in Sources */,
+				FDD857542CEBD72C0010D4F8 /* Configurations.swift in Sources */,
 				FDE3CF052CA3413100D88620 /* ReadableComponent.swift in Sources */,
 				982388C12CCADCAA00BE2D74 /* System.swift in Sources */,
 				FDB27A422CADC163002B2848 /* PauseMenu.swift in Sources */,

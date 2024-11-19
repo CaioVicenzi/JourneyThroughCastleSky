@@ -12,6 +12,7 @@ class Pause {
     var gameScene : TopDownScene
     var pause : SKShapeNode?
     var topBarNode : SKSpriteNode?
+    var configurations : Configurations?
     
     var optionSelected = 1
     var optionsOptionsSelected = 1
@@ -29,7 +30,7 @@ class Pause {
     var creditsBackground : SKShapeNode?
     
     enum InventoryState {
-        case NORMAL, OPTIONS, CREDIT, ITEMS, CONFIRM_EXIT_GAME, ITEM_SELECTION
+        case NORMAL, OPTIONS, CREDIT, ITEMS, CONFIRM_EXIT_GAME, ITEM_SELECTION, CONFIGURATIONS
     }
     
     init(gameScene: TopDownScene) {
@@ -45,7 +46,7 @@ class Pause {
         backgroundPause.fillColor = .black.withAlphaComponent(0.90)
         backgroundPause.position = .zero
         backgroundPause.strokeColor = .clear
-        backgroundPause.zPosition = 5
+        backgroundPause.zPosition = 100
         backgroundPause.name = "inventory"
         
         gameScene.cameraNode.addChild(backgroundPause)
@@ -84,7 +85,7 @@ class Pause {
         itemsLabel.fontName = "Lora-Medium"
         itemsLabel.fontSize = 40
         itemsLabel.position.y = .zero
-        itemsLabel.position.y -= topBarNode.frame.height / 8
+        itemsLabel.position.y -= topBarNode.frame.height / 7
         itemsLabel.position.x = xPosition
         itemsLabel.fontColor = .black
         itemsLabel.zPosition = 7
@@ -95,7 +96,7 @@ class Pause {
         let proportion = 40 / seta.frame.width
         seta.setScale(proportion)
         seta.position.y = .zero
-        seta.position.y += topBarNode.frame.height / 9
+        seta.position.y += seta.frame.height / 9
         seta.position.x = xPosition - (itemsLabel.frame.width / 2) - 40
         seta.zPosition = 7
         seta.name = "seta\(number)"
@@ -222,6 +223,9 @@ class Pause {
         else if self.pauseState == .ITEM_SELECTION {
             inputItems(keyCode)
         }
+        else if self.pauseState == .CONFIGURATIONS {
+            configurations?.input(keyCode)
+        }
     }
     
     // verifica se existe um item consumível dentro do inventário do usuário
@@ -301,7 +305,13 @@ class Pause {
     }
     
     private func configurationsButtonPressed () {
+        // tirar todos os botões.
         
+        // colocar as configurações
+        configurations = Configurations()
+        configurations?.config(self.gameScene, pause: self)
+        configurations?.setupConfigurations()
+        self.pauseState = .CONFIGURATIONS
     }
     
     
@@ -321,10 +331,6 @@ class Pause {
                 }
             }
         }
-    }
-    
-    private func updateExitGameSelection () {
-        
     }
     
     func closePause () {
@@ -368,6 +374,7 @@ class Pause {
         creditsTitle.position.y += creditsBackground2.frame.height / 1.9
         creditsTitle.fontSize = 72
         creditsTitle.zPosition += 1
+        creditsTitle.fontColor = .black
         creditsBackground2.addChild(creditsTitle)
         
         let developersTitle = SKLabelNode(text: "Developers")
@@ -376,6 +383,7 @@ class Pause {
         developersTitle.position.y += creditsBackground2.frame.height / 4
         developersTitle.position.x -= creditsBackground2.frame.width / 2
         developersTitle.zPosition += 1
+        developersTitle.fontColor = .black
         creditsBackground2.addChild(developersTitle)
         
         let developers = SKLabelNode()
@@ -391,6 +399,7 @@ class Pause {
         //developers.position.y -= creditsBackground2.frame.height / 6
         developers.zPosition += 1
         developers.fontSize = 20
+        developers.fontColor = .black
         creditsBackground2.addChild(developers)
         
         let designersTitle = SKLabelNode()
@@ -400,6 +409,7 @@ class Pause {
         designersTitle.position.y += creditsBackground2.frame.height / 4
         designersTitle.position.x += creditsBackground2.frame.width / 3
         designersTitle.zPosition += 1
+        designersTitle.fontColor = .black
         creditsBackground2.addChild(designersTitle)
 
         let designers = SKLabelNode()
@@ -410,6 +420,7 @@ class Pause {
         designers.position.x += creditsBackground2.frame.width / 2.8
         //designers.position.y -= creditsBackground2.frame.height / 4
         designers.zPosition += 1
+        designers.fontColor = .black
         designers.fontSize = 20
         creditsBackground2.addChild(designers)
         
