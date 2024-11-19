@@ -50,14 +50,16 @@ extension BatalhaScene{
         
         for i in 0..<numberOfRows {
             let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
-            
+            individualRow.anchorPoint = .init(x: 0, y: 1)
             let proporcao = (rowHeight - 50) / individualRow.frame.height
             individualRow.setScale(proporcao)
             
             // Calculate the y-position for each row, spacing them evenly
             let yPosition = startingY - (CGFloat(i) * rowHeight) - rowHeight / 2
-            individualRow.position = CGPoint(x: -320, y: yPosition)
-            
+            individualRow.position = CGPoint(
+                x: -320,
+                y: yPosition
+            )
             individualRow.name = "rowButton\(i)"
 
             
