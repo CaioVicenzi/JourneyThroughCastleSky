@@ -17,7 +17,23 @@ extension BatalhaScene{
         enemyScreen.size = CGSize(width: self.size.width, height: self.size.height*0.48)
         enemyScreen.position = CGPoint(x:  self.size.width/6400, y: self.size.height/3.75)
         
-        let enemySprite = enemy.spriteComponent.sprite.copy() as! SKSpriteNode
+        let enemySprite = enemy.spriteComponent.fighterSprite.copy() as! SKSpriteNode
+        
+        
+        
+        let enemyScreenSize = enemyScreen.calculateAccumulatedFrame().size
+        let inverseEnemySpriteAspectRatio = 1 / (enemySprite.size.width / enemySprite.size.height)
+        
+        let enemySpriteHeight = enemyScreenSize.height - 50
+        
+        let enemySpriteSize = CGSize(
+            width: enemySpriteHeight * inverseEnemySpriteAspectRatio,
+            height: enemySpriteHeight
+        )
+        
+        enemySprite.size = enemySpriteSize
+        
+        
         enemySprite.physicsBody = nil
         enemySprite.position = .zero
         enemyScreen.addChild(enemySprite)
