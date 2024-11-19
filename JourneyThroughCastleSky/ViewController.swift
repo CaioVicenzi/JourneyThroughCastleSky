@@ -17,7 +17,12 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     
         if let view = self.skView {
-            let gameScene = MainMenuScene(size: skView.frame.size)
+            let gameScene = BatalhaScene(size: skView.frame.size)
+            gameScene
+                .config(
+                    enemy: .init(x: 0, y: 0, damage: 100, health: 100, spriteName: "larva"),
+                    reward: .init(spriteName: "balloon", x: 0, y: 0, description: "Meu pau")
+                )
             gameScene.scaleMode = .aspectFill
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)
