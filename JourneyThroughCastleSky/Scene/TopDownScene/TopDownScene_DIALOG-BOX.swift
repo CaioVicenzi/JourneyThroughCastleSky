@@ -40,7 +40,7 @@ extension TopDownScene {
         let author = SKLabelNode(text: dialog.person)
         author.position = CGPoint(x: 25, y: 70)
         author.horizontalAlignmentMode = .left
-        author.fontName = "comicSansMS"
+        author.fontName = "Lora"
         author.fontSize = 10
         
         // setup da label do texto do diálogo.
@@ -59,6 +59,5 @@ extension TopDownScene {
         
         
         dialogueBox.addChild(multilineLabel)
-
     }
 }
