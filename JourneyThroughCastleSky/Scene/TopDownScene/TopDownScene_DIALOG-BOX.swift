@@ -48,6 +48,7 @@ extension TopDownScene {
         textLabel.position = CGPoint(x: 50, y: author.position.y - 50)
         textLabel.fontSize = 12
         textLabel.horizontalAlignmentMode = .left
+        textLabel.fontName = "Lora"
         
         // adicionando os dois dentro da dialogueBox.
         dialogueBox.addChild(author)
