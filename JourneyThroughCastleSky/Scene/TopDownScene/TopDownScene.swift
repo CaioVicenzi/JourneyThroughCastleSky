@@ -434,6 +434,13 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func goBackTitleScene () {
+        let menu = MainMenuScene(size: self.size)
+        menu.scaleMode = .aspectFill
+        let transition = SKTransition.fade(withDuration: 2.0)
+        self.view?.presentScene(menu, transition: transition)
+    }
+    
     private func removeAllChilds (_ scene : SKScene) {
         for child in scene.children {
             if let childName = child.name, childName.contains("Enemy") {

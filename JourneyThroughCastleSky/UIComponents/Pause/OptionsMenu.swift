@@ -184,7 +184,9 @@ class OptionsMenu {
     
     
     private func titleScreenButtonPressed() {
-        // tem certeza que quer sair do jogo?
+        
+        gameScene.goBackTitleScene()
+       // self.gameScene.view?.presentScene(mainMenu, transition: transition)
     }
     
     private func exitGameButtonPressed () {
