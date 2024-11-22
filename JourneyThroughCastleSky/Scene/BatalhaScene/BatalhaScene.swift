@@ -146,6 +146,7 @@ class BatalhaScene : SKScene {
                     gameChooseState = .SELECTED
                 case .USE_ITEM:
                     //showItems()
+                    
                     setupItemRows()
                     gameChooseState = .CHOOSE_ITEM
                 case .DODGE:
@@ -183,14 +184,15 @@ class BatalhaScene : SKScene {
                 positionItemSelected += 1
             }
             refreshItemState()
-        case 36:
+        case 36: // Enter
             useItem(User.singleton.inventoryComponent.itens[positionItemSelected])
             positionItemSelected = 0
             enemyTurn()
-            
         default:
             return
         }
+        
+        
     }
     
     private func useItem(_ item : Item) {
@@ -203,6 +205,14 @@ class BatalhaScene : SKScene {
     }
     
     private func enemyTurn() {
+        actionDescription?.children.forEach({ node in
+            if let name = node.name {
+                if (name.starts(with: "itemRow")) {
+                    node.removeFromParent()
+                }
+            }
+        })
+        
         battleSystem.enemyTurn()
         buttonSpare.removeFromParent()
         buttonAttack.removeFromParent()
@@ -257,6 +267,10 @@ class BatalhaScene : SKScene {
                     self.addChild(self.buttonAttack)
                     self.addChild(self.buttonUseItem)
                     self.gameChooseState = .CHOOSE_BUTTON
+                    
+                    if (User.singleton.inventoryComponent.itens.count == 0) {
+                        self.buttonSelected = .ATTACK
+                    }
                 }
             })
         })
@@ -377,22 +391,21 @@ class BatalhaScene : SKScene {
     }
     
     internal func refreshItemState () {
+        print("Refreshing")
         for i in 0 ..< User.singleton.inventoryComponent.itens.count {
-
-            if let child = self.childNode(withName: "itemRow\(i)") as? SKSpriteNode {
-                let individualRow : SKSpriteNode
+            
+            if let child = actionDescription!.childNode(
+                withName: "itemRow\(i)"
+            ) as? SKSpriteNode {child
+                let texture : SKTexture
                 
                 if i == positionItemSelected {
-                    individualRow = SKSpriteNode(imageNamed: "buttonSelected")
+                    texture = SKTexture(imageNamed: "buttonSelected")
                 } else {
-                    individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
+                    texture = SKTexture(imageNamed: "buttonUnselected")
                 }
                 
-                individualRow.scale(to: CGSize(width: child.frame.width, height: child.frame.height))
-                addChild(individualRow)
-                individualRow.position = child.position
-                individualRow.name = child.name
-                child.removeFromParent()
+                child.texture = texture
             }
         }
     }
@@ -402,4 +415,6 @@ class BatalhaScene : SKScene {
         updateButtonsState()
     }
 }
+
+
 

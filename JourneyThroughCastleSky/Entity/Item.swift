@@ -8,8 +8,19 @@
 import Foundation
 import SpriteKit
 
+class NameComponent: Component {
+    
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+}
+
 class Item : Identifiable{
     let id = UUID()
+    let nameComponent: NameComponent
     let interactableComponent = InteractableComponent()
     let dialogueComponent : DialogueComponent?
     let consumableComponent : ConsumableComponent?
@@ -23,13 +34,15 @@ class Item : Identifiable{
         self.spriteComponent = SpriteComponent(spriteName)
         self.positionComponent = PositionComponent(xPosition: x, yPosition: y)
         self.readableComponent = ReadableComponent(readableDescription: description)
+        nameComponent = NameComponent(name: name)
     }
     
-    init(spriteName: String, x: Int, y: Int, description : String) {
+    init(name: String, spriteName: String, x: Int, y: Int, description : String) {
         consumableComponent = nil
         dialogueComponent = nil
         self.spriteComponent = SpriteComponent(spriteName)
         self.positionComponent = PositionComponent(xPosition: x, yPosition: y)
         self.readableComponent = ReadableComponent(readableDescription: description)
+        nameComponent = NameComponent(name: name)
     }
 }

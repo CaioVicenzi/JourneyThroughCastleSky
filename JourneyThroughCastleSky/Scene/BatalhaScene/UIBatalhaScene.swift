@@ -32,7 +32,6 @@ extension BatalhaScene{
         
         enemySprite.size = enemySpriteSize
         
-        
         enemySprite.physicsBody = nil
         enemySprite.position = .zero
         enemyScreen.addChild(enemySprite)
@@ -80,21 +79,38 @@ extension BatalhaScene{
         
         for (i, item) in User.singleton.inventoryComponent.itens.enumerated() {
             let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
-            
-            let xPosition = self.size.width * 0.25
-            let yPosition = self.size.height * 0.5 - CGFloat(i) * 60
-            individualRow.position = CGPoint(x: xPosition, y: yPosition)
-            
             let proportion =  200 / individualRow.frame.width
             individualRow.setScale(proportion)
+            
+            let rowWidth = individualRow.calculateAccumulatedFrame().size.width
+            let rowHeight = individualRow.calculateAccumulatedFrame().size.height
+            
+            let xPosition = actionDescription!.calculateAccumulatedFrame().size.width * -0.5 + 10
+            let yPosition = actionDescription!.calculateAccumulatedFrame().size.height * 0.5 - 30 - CGFloat(
+                i
+            ) * (rowHeight + 5)
+            individualRow.anchorPoint = .init(x: 0, y: 1)
+            individualRow.position = CGPoint(x: xPosition, y: yPosition)
+            
             individualRow.name = "itemRow\(i)"
+            individualRow.zPosition = 100
+            
+            let label = SKLabelNode(text: item.nameComponent.name)
+            label.fontName = "Lora"
+            label.fontSize = 20
+            label.position = .init(
+                x: individualRow.frame.width,
+                y: (rowHeight + label.frame.size.height) * -1
+            )
+            
+            individualRow.addChild(label)
             
             if let itemName = item.consumableComponent?.nome {
                 let labelSprite = SKSpriteNode(texture: SKTexture(imageNamed: itemName))
                 labelSprite.position = .zero
                 individualRow.addChild(labelSprite)
             }
-            addChild(individualRow)
+            actionDescription!.addChild(individualRow)
         }
         
         refreshItemState()
@@ -231,6 +247,10 @@ extension BatalhaScene{
             case .SKILL:
                 newText = "Usar alguma habilidade"
             }
+        }
+        
+        if (gameChooseState == .CHOOSE_ITEM) {
+            newText = ""
         }
         
         self.descriptionLabel?.text = newText
