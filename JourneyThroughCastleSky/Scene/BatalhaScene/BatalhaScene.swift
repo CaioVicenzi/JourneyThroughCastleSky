@@ -88,10 +88,10 @@ class BatalhaScene : SKScene {
     // MARK: LÓGICA
     
     override func keyDown(with event: NSEvent) {
-        #warning("isso é apenas um cheat para teste.")
-        if event.keyCode == 13 {
-            getOutWinning()
-        }
+//        #warning("isso é apenas um cheat para teste.")
+//        if event.keyCode == 13 {
+//            getOutWinning()
+//        }
     
         switch gameChooseState {
         case .NONE:
