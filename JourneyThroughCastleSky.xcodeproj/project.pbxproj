@@ -262,6 +262,7 @@
 		FD932B0B2C9B58DC0047B5B7 /* FighterComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0A2C9B58DC0047B5B7 /* FighterComponent.swift */; };
 		FD932B0D2C9B591A0047B5B7 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0C2C9B591A0047B5B7 /* Enemy.swift */; };
 		FD932B0F2C9B5BCA0047B5B7 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD932B0E2C9B5BCA0047B5B7 /* Item.swift */; };
+		FDA9AD8F2CEFB4C700809CD4 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA9AD8E2CEFB4C700809CD4 /* Credits.swift */; };
 		FDAC55002C9A106300E90E17 /* Dialogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC54FF2C9A106300E90E17 /* Dialogo.swift */; };
 		FDAC75002CC81F6600D32638 /* LevelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */; };
 		FDAC75012CC81F6600D32638 /* LevelComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */; };
@@ -446,6 +447,7 @@
 		FD932B0A2C9B58DC0047B5B7 /* FighterComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FighterComponent.swift; sourceTree = "<group>"; };
 		FD932B0C2C9B591A0047B5B7 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		FD932B0E2C9B5BCA0047B5B7 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		FDA9AD8E2CEFB4C700809CD4 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		FDAC54FF2C9A106300E90E17 /* Dialogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogo.swift; sourceTree = "<group>"; };
 		FDAC74FF2CC81F6600D32638 /* LevelComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelComponent.swift; sourceTree = "<group>"; };
 		FDAD41F52C9CB7D40053A4B0 /* MovementSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
@@ -800,14 +802,15 @@
 			path = GameplaySks;
 			sourceTree = "<group>";
 		};
-		FDDFF12B2CDD393200502BD1 /* Inventory */ = {
+		FDDFF12B2CDD393200502BD1 /* Pause */ = {
 			isa = PBXGroup;
 			children = (
 				FDDFF12C2CDD394100502BD1 /* Pause.swift */,
 				FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */,
 				FD291B0E2CE5215D009A0A77 /* Inventory.swift */,
+				FDA9AD8E2CEFB4C700809CD4 /* Credits.swift */,
 			);
-			path = Inventory;
+			path = Pause;
 			sourceTree = "<group>";
 		};
 		FDE3CF0A2CA485F400D88620 /* TopDownScene */ = {
@@ -825,7 +828,7 @@
 		FDE3CF292CA5FD5C00D88620 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				FDDFF12B2CDD393200502BD1 /* Inventory */,
+				FDDFF12B2CDD393200502BD1 /* Pause */,
 				FDE3CF272CA5F56400D88620 /* Wall.swift */,
 				FDE3CF2A2CA5FD7900D88620 /* Checkpoint.swift */,
 				FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */,
@@ -1351,6 +1354,7 @@
 				FDD5F9972CB4577300A1647B /* MenuSystem.swift in Sources */,
 				98DAD0072CC18E3E0020DFAC /* Dungeon.swift in Sources */,
 				98838C312CA4A72300709648 /* IncreaseStrengthSkill.swift in Sources */,
+				FDA9AD8F2CEFB4C700809CD4 /* Credits.swift in Sources */,
 				FDB27A282CAB215A002B2848 /* FriendlySystem.swift in Sources */,
 				FDE3CF302CA5FE1400D88620 /* UIComponent.swift in Sources */,
 				FDDFF12D2CDD394100502BD1 /* Pause.swift in Sources */,

@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 
 class Configurations {
+    // VARIÁVEIS RECEBIDAS POR PARÂMETRO
     var skScene : TopDownScene?
     var pause : Pause?
     
@@ -18,10 +19,13 @@ class Configurations {
     
     var selectedBar : Int = 1
     
-    var configurationsSprite : SKSpriteNode?
+    var musicLevel : Int = 0
+    var effectsLevel : Int = 0
     
-    func config (_ skScene : TopDownScene, pause : Pause) {
-        self.skScene = skScene
+    var configurationsSprite : SKSpriteNode?
+        
+    init(_ pause: Pause) {
+        self.skScene = pause.gameScene
         self.pause = pause
     }
     
@@ -32,7 +36,7 @@ class Configurations {
         configurationsSprite.zPosition += 10
         configurationsSprite.position = .zero
         configurationsSprite.position.y -= 50
-        pause?.pause?.addChild(configurationsSprite)
+        pause?.pauseBackground?.addChild(configurationsSprite)
         setupConfigurationBars()
     }
     
@@ -60,7 +64,7 @@ class Configurations {
         musicBar.position.y += 120
         musicBar.name = "bar2"
         setupBarLabel(musicBar, label: "Música")
-        setupScale(musicBar)
+        setupScale(musicBar, number: 2)
         self.configurationsSprite?.addChild(musicBar)
         
         // efeitos
@@ -72,11 +76,12 @@ class Configurations {
         effectsBar.position = .zero
         effectsBar.position.y -= 30
         effectsBar.name = "bar3"
-        setupScale(effectsBar)
+        setupScale(effectsBar, number: 3)
         setupBarLabel(effectsBar, label: "Efeitos")
-        //effectsBar.position.y += 50
         self.configurationsSprite?.addChild(effectsBar)
         updateSelectedBar()
+        updatePin(2)
+        updatePin(3)
     }
     
     private func setupLanguageSelector () {
@@ -128,17 +133,19 @@ class Configurations {
         bar.addChild(labelNode)
     }
     
-    private func setupScale (_ bar : SKSpriteNode) {
+    private func setupScale (_ bar : SKSpriteNode, number : Int) {
         let configurationScale = SKSpriteNode(imageNamed: "configurationScale")
         //configurationScale.setScale(0.8)
         configurationScale.position = .zero
         configurationScale.position.x += configurationScale.frame.width / 4
+        configurationScale.name = "configurationScale\(number)"
         bar.addChild(configurationScale)
         
         let pin = SKSpriteNode(imageNamed: "configurationScalePin")
         pin.position = .zero
         pin.position.x -= configurationScale.frame.width / 4
         pin.position.x += 10
+        pin.name = "pin\(number.description)"
         bar.addChild(pin)
     }
     
@@ -164,7 +171,36 @@ class Configurations {
         }
         
         if isEscKey {
+            pause?.pauseState = .OPTIONS
             removeConfiguration()
+        }
+        
+        if isLeftArrow {
+            if selectedBar == 2 {
+                if musicLevel > 0 {
+                    self.musicLevel -= 1
+                }
+                updatePin(2)
+            } else if selectedBar == 3 {
+                if effectsLevel > 0 {
+                    self.effectsLevel -= 1
+                }
+                updatePin(3)
+            }
+        }
+        
+        if isRightArrow {
+            if selectedBar == 2 {
+                if musicLevel < 10 {
+                    self.musicLevel += 1
+                }
+                updatePin(2)
+            } else if selectedBar == 3 {
+                if effectsLevel < 10 {
+                    self.effectsLevel += 1
+                }
+                updatePin(3)
+            }
         }
         
         
@@ -186,6 +222,26 @@ class Configurations {
                 }
             })
         }
+        
+    }
+    
+    func updatePin (_ number : Int) {
+        let bar = configurationsSprite?.childNode(withName: "bar\(number)")
+        let pin = bar?.childNode(withName: "pin\(number)")
+        let configurationScale = bar?.childNode(withName: "configurationScale\(number)")
+        
+        guard let configurationScale, let pin else {
+            return
+        }
+        
+        var initialValue = CGFloat.zero
+        initialValue -= configurationScale.frame.width / 4
+        initialValue += 30
+        
+        pin.position.x = initialValue
+        pin.position.x += CGFloat((configurationScale.frame.width / 11.5) * CGFloat(number == 2 ? self.musicLevel : self.effectsLevel))
+        
+        
     }
     
     func removeConfiguration () {

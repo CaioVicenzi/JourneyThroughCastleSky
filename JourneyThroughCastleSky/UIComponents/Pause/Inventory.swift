@@ -8,15 +8,29 @@
 import Foundation
 import SpriteKit
 
-extension Pause {
-    internal func setupInventory () {
+class Inventory {
+    // VARIÁVEIS QUE VÃO SER RECEBIDAS COMO ARGUMENTO NO CONSTRUTOR
+    var pause : Pause
+    var itemsBackground : SKShapeNode?
+    var gameScene : TopDownScene
+    
+    // VARIÁVEIS DE SELEÇÃO DE INPUT
+    var inventoryItemSelected : Int = 1
+    var inventoryCategorySelected : Int = 1
+    
+    init(_ pause: Pause) {
+        self.pause = pause
+        self.gameScene = pause.gameScene
+    }
+    
+    func setupInventory () {
         itemsBackground = SKShapeNode(rectOf: CGSize(width: gameScene.size.width / 1.2, height: gameScene.size.height / 1.8))
         itemsBackground?.position = .zero
         itemsBackground?.fillColor = .clear
         itemsBackground?.strokeColor = .clear
         itemsBackground?.position.y -= 50
         if let itemsBackground {
-            pause?.addChild(itemsBackground)
+            pause.pauseBackground?.addChild(itemsBackground)
         }
         
         setupBar("Vida")
@@ -121,14 +135,75 @@ extension Pause {
         self.itemsBackground?.addChild(itemsInventory)
     }
     
-    func inputItems (_ keyCode : Int) {
+    func inputCategoryItemSelection(_ keyCode : Int) {
+        let isEnterKey = keyCode == 36
+        let isEscKey = keyCode == 53
+        let isUpArrow = keyCode == 126
+        let isDownArrow = keyCode == 125
+        
+        if isUpArrow {
+            if inventoryCategorySelected == 2 {
+                inventoryCategorySelected -= 1
+                updateItemsThroughCategories()
+            }
+        }
+        
+        if isDownArrow {
+            if inventoryCategorySelected == 1 {
+                inventoryCategorySelected += 1
+                updateItemsThroughCategories()
+            }
+        }
+        
+        if isEnterKey {
+            if (inventoryCategorySelected == 1 && consumableExists()) || (inventoryItemSelected == 2 && acervoExists()) {
+                pause.pauseState = .ITEM_SELECTION
+            }
+        }
+        
+        if isEscKey {
+            pause.pauseState = .NORMAL
+            //limpar todos as as opções
+            cleanItemCategoryButtons()
+        }
+    }
+    
+    private func cleanItemCategoryButtons () {
+        self.inventoryCategorySelected = 1
+        updateInventoryButtons(true)
+    }
+    
+    // verifica se existe um item no acervo do usuário, retorna true se existe e false se não existe.
+    private func acervoExists () -> Bool {
+        for item in User.singleton.inventoryComponent.itens {
+            if item.consumableComponent?.effect.type == .NONE {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    // verifica se existe um item consumível dentro do inventário do usuário
+    private func consumableExists () -> Bool {
+        for item in User.singleton.inventoryComponent.itens {
+            if item.consumableComponent?.effect.type != .NONE {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    
+    func inputItemSelection (_ keyCode : Int) {
         let isEnterKey = keyCode == 36
         let isEscKey = keyCode == 53
         let isLeftArrow = keyCode == 123
         let isRightArrow = keyCode == 124
         let isUpArrow = keyCode == 126
         let isDownArrow = keyCode == 125
-        
+    
         let itemAmount = User.singleton.inventoryComponent.itens.count
         
         if isLeftArrow {
@@ -160,9 +235,15 @@ extension Pause {
         }
         
         if isEscKey {
-            self.pauseState = .ITEMS
+            pause.pauseState = .ITEMS
             cleanItemsArrows()
         }
+    }
+    
+    func input (_ keyCode : Int) {
+        
+        
+        
     }
     
     internal func updateItemsThroughCategories () {
@@ -303,12 +384,6 @@ extension Pause {
         }
     }
     
-    func cleanInput () {
-        self.optionSelected = 1
-        self.inventoryItemSelected = 1
-        self.optionsOptionsSelected = 1
-        self.pauseState = .NORMAL
-        self.inventoryCategorySelected = 1
-    }
+    
 
 }
