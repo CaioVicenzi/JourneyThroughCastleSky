@@ -27,6 +27,8 @@ class Configurations {
     init(_ pause: Pause) {
         self.skScene = pause.gameScene
         self.pause = pause
+        
+        self.musicLevel = Int((BackgroundMusicHelper.singleton.audioPlayer?.volume ?? 1.0) * 10)
     }
     
     func setupConfigurations () {
@@ -38,6 +40,7 @@ class Configurations {
         configurationsSprite.position.y -= 50
         pause?.pauseBackground?.addChild(configurationsSprite)
         setupConfigurationBars()
+        
     }
     
     func setupConfigurationBars () {
@@ -66,6 +69,8 @@ class Configurations {
         setupBarLabel(musicBar, label: "Música")
         setupScale(musicBar, number: 2)
         self.configurationsSprite?.addChild(musicBar)
+        updatePin(2)
+        /*
         
         // efeitos
         effectsBar = SKSpriteNode(imageNamed: "configurationBarUnselected")
@@ -79,9 +84,10 @@ class Configurations {
         setupScale(effectsBar, number: 3)
         setupBarLabel(effectsBar, label: "Efeitos")
         self.configurationsSprite?.addChild(effectsBar)
-        updateSelectedBar()
-        updatePin(2)
         updatePin(3)
+         */
+        updateSelectedBar()
+
     }
     
     private func setupLanguageSelector () {
@@ -145,8 +151,12 @@ class Configurations {
         pin.position = .zero
         pin.position.x -= configurationScale.frame.width / 4
         pin.position.x += 10
+        pin.position.x += CGFloat((configurationScale.frame.width / 11.5) * CGFloat(number == 2 ? self.musicLevel : self.effectsLevel))
         pin.name = "pin\(number.description)"
         bar.addChild(pin)
+        
+        updatePin(2)
+        updatePin(3)
     }
     
     func input (_ keyCode : Int) {
@@ -164,7 +174,7 @@ class Configurations {
         }
         
         if isDownArrow {
-            if self.selectedBar < 3 {
+            if self.selectedBar < 2 {
                 self.selectedBar += 1
                 updateSelectedBar()
             }
@@ -181,6 +191,7 @@ class Configurations {
                     self.musicLevel -= 1
                 }
                 updatePin(2)
+                updateVolumeMusic()
             } else if selectedBar == 3 {
                 if effectsLevel > 0 {
                     self.effectsLevel -= 1
@@ -195,6 +206,7 @@ class Configurations {
                     self.musicLevel += 1
                 }
                 updatePin(2)
+                updateVolumeMusic()
             } else if selectedBar == 3 {
                 if effectsLevel < 10 {
                     self.effectsLevel += 1
@@ -247,6 +259,10 @@ class Configurations {
     func removeConfiguration () {
         configurationsSprite?.removeAllChildren()
         configurationsSprite?.removeFromParent()
+    }
+    
+    func updateVolumeMusic () {
+        BackgroundMusicHelper.singleton.audioPlayer?.volume = Float(self.musicLevel) / 10
     }
     
     

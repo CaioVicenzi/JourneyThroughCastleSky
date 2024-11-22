@@ -14,7 +14,6 @@ class Pause {
     var topBarNode : SKSpriteNode?
     
     var optionSelected = 1
-    var exitGameSelection = 1
     
     var titleSelectedItem : SKLabelNode?
     var descriptionSelectedItem : SKLabelNode?
@@ -40,7 +39,7 @@ class Pause {
         guard let backgroundPause = pauseBackground else {
             return
         }
-        backgroundPause.fillColor = .black.withAlphaComponent(0.90)
+        backgroundPause.fillColor = .black.withAlphaComponent(0.70)
         backgroundPause.position = .zero
         backgroundPause.strokeColor = .clear
         backgroundPause.zPosition = 100
@@ -153,20 +152,8 @@ class Pause {
             }
         }
         
-        else if self.pauseState == .OPTIONS {
+        else if self.pauseState == .OPTIONS || self.pauseState == .CONFIRM_EXIT_GAME {
             self.optionsMenu?.input(keyCode)
-        }
-        
-        else if self.pauseState == .CONFIRM_EXIT_GAME {
-            if isRightArrow {
-                if exitGameSelection == 1 {
-                    exitGameSelection += 1
-                }
-            } else if isLeftArrow {
-                if exitGameSelection == 2 {
-                    exitGameSelection -= 1
-                }
-            }
         }
         
         else if self.pauseState == .ITEMS {

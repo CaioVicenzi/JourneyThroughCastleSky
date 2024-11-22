@@ -48,7 +48,7 @@ class InventorySystem: System {
     func inventoryButtonPressed () {
         if gameScene.gameState == .NORMAL {
             gameScene.inventory?.setupPause()
-            gameScene.gameState = .INVENTORY
+            gameScene.gameState = .PAUSE
         } else {
             gameScene.inventory?.closePause()
         }

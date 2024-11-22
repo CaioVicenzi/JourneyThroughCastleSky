@@ -23,6 +23,7 @@ class BackgroundMusicHelper {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.numberOfLoops = -1
+            audioPlayer?.volume = 1
             audioPlayer?.play()
             audioFileName = filename
         } catch {

@@ -805,6 +805,7 @@
 		FDDFF12B2CDD393200502BD1 /* Pause */ = {
 			isa = PBXGroup;
 			children = (
+				FDD857532CEBD72C0010D4F8 /* Configurations.swift */,
 				FDDFF12C2CDD394100502BD1 /* Pause.swift */,
 				FDDFF61A2CE236B800502BD1 /* OptionsMenu.swift */,
 				FD291B0E2CE5215D009A0A77 /* Inventory.swift */,
@@ -834,7 +835,6 @@
 				FDE3CF2F2CA5FE1400D88620 /* UIComponent.swift */,
 				FDB27A412CADC163002B2848 /* PauseMenu.swift */,
 				FD4D264A2CCADF5300A52B73 /* Door.swift */,
-				FDD857532CEBD72C0010D4F8 /* Configurations.swift */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";

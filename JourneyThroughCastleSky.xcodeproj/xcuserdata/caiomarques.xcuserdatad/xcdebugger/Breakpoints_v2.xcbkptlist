@@ -69,22 +69,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "30ACDFEC-AA42-4810-AC29-0ADDEC3CC633"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "JourneyThroughCastleSky/Scene/TopDownScene/TopDownScene.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "setupFriendly(_:spriteName:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "D8120605-ED42-45F7-B413-EEF8CA1F7E64"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -668,8 +652,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "updateSelectedBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -684,8 +668,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "updateSelectedBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -700,8 +684,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "updateSelectedBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -716,8 +700,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "updateSelectedBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -732,8 +716,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "updateSelectedBar()"
             landmarkType = "7">
          </BreakpointContent>
@@ -748,8 +732,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "updatePin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -764,8 +748,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "updatePin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -780,8 +764,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "updatePin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -796,8 +780,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "updatePin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -812,8 +796,8 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "241"
-            endingLineNumber = "241"
+            startingLineNumber = "250"
+            endingLineNumber = "250"
             landmarkName = "updatePin(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -828,9 +812,41 @@
             filePath = "JourneyThroughCastleSky/UIComponents/Configurations.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
             landmarkName = "updatePin(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E8696ED-6185-4026-B9FE-6BAE7BF4A59B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JourneyThroughCastleSky/UIComponents/Pause/OptionsMenu.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "updateExitArrows()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA7D8A0F-36D5-4391-A313-E50452C9E14E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JourneyThroughCastleSky/UIComponents/Pause/OptionsMenu.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "input(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

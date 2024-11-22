@@ -15,6 +15,7 @@ class Credits {
         creditsBackground?.fillColor = .clear
         creditsBackground?.strokeColor = .clear
         creditsBackground?.position.y -= 50
+        
         if let creditsBackground {
             pause.pauseBackground?.addChild(creditsBackground)
         }
@@ -37,45 +38,36 @@ class Credits {
         let developersTitle = SKLabelNode(text: "Developers")
         developersTitle.fontName = "Lora-Bold"
         developersTitle.position = .zero
-        developersTitle.position.y += creditsBackground2.frame.height / 4
-        developersTitle.position.x -= creditsBackground2.frame.width / 2
+        developersTitle.position.y += creditsBackground2.frame.height / 3
         developersTitle.zPosition += 1
         developersTitle.fontColor = .black
         creditsBackground2.addChild(developersTitle)
         
         let developers = SKLabelNode()
-        developers.text = """
-            Caio Marques
-            João Ângelo
-            Chus
-        """
+        developers.text = "Caio Marques, João Ângelo,\n Chus"
         developers.position = .zero
-        developers.numberOfLines = 0
+        developers.position.y += creditsBackground2.frame.height / 6
         developers.fontName = "Lora-Medium"
-        developers.position.x -= creditsBackground2.frame.width / 2.2
-        //developers.position.y -= creditsBackground2.frame.height / 6
         developers.zPosition += 1
         developers.fontSize = 20
         developers.fontColor = .black
+        developers.horizontalAlignmentMode = .center
         creditsBackground2.addChild(developers)
         
         let designersTitle = SKLabelNode()
         designersTitle.text = "Designers"
         designersTitle.fontName = "Lora-Bold"
         designersTitle.position = .zero
-        designersTitle.position.y += creditsBackground2.frame.height / 4
-        designersTitle.position.x += creditsBackground2.frame.width / 3
         designersTitle.zPosition += 1
         designersTitle.fontColor = .black
         creditsBackground2.addChild(designersTitle)
 
         let designers = SKLabelNode()
-        designers.text = "Vanessa nessa\nSamuel Lima"
+        designers.text = "Vanessa nessa, Samuel Lima"
         designers.position = .zero
+        designers.position.y -= creditsBackground2.frame.height / 6
         designers.numberOfLines = 0
         designers.fontName = "Lora-Medium"
-        designers.position.x += creditsBackground2.frame.width / 2.8
-        //designers.position.y -= creditsBackground2.frame.height / 4
         designers.zPosition += 1
         designers.fontColor = .black
         designers.fontSize = 20

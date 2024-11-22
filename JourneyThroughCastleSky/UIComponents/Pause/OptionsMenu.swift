@@ -14,6 +14,12 @@ class OptionsMenu {
     var gameScene : TopDownScene
     var pause : Pause
     
+    // SETAS QUE CONTROLAM A CAIXA QUE VERIFICA SE O USUÁRIO TEM CERTEZA QUE QUER SAIR.
+    var exitYesArrow : SKSpriteNode? = nil
+    var exitNoArrow : SKSpriteNode? = nil
+    var exitOptionSelected : Int = 1
+    var confirmLeaveBackground : SKSpriteNode?
+    
     // VARIÁVEL DE CONTROLE DE INPUT
     var optionsSelected : Int = 1
     
@@ -42,6 +48,8 @@ class OptionsMenu {
         setupLittleButton ("TELA DE TÍTULO", number: 1, background: optionsBackground)
         setupLittleButton ("SAIR DO JOGO", number: 2, background: optionsBackground)
         setupLittleButton ("CONFIGURAÇÕES", number: 3, background: optionsBackground)
+        
+        updateOptions(true)
     }
     
     private func setupLittleButton (_ title : String, number : Int, background : SKShapeNode?) {
@@ -67,15 +75,15 @@ class OptionsMenu {
         
         let buttonText = SKLabelNode(text: title)
         buttonText.fontName = "Lora-Medium"
-        buttonText.fontSize = 32
+        buttonText.fontSize = 24
         buttonText.fontColor = .black
         buttonText.position = .zero
-        buttonText.position.y -= baseButton.frame.height / 5
+        buttonText.position.y -= baseButton.frame.height / 7
         buttonText.zPosition = 7
         baseButton.addChild(buttonText)
     }
     
-    func updateOptions () {
+    func updateOptions (_ isCleaning : Bool = false) {
         guard let inventory = self.optionsBackground else {
             print("Não temos inventory no Inventory")
             return
@@ -85,7 +93,7 @@ class OptionsMenu {
             if let childName = child.name {
                 if childName.starts(with: "optionButton") {
                     if childName == "optionButton\(self.optionsSelected)" {
-                        let novoButton = SKSpriteNode(imageNamed: "buttonSelected")
+                        let novoButton = SKSpriteNode(imageNamed: isCleaning ? "buttonUnselected" : "buttonSelected")
                         novoButton.size = child.frame.size
                         novoButton.position = child.position
                         novoButton.name = childName
@@ -119,6 +127,33 @@ class OptionsMenu {
         let isEscKey = keyCode == 53
         let isUpArrow = keyCode == 126
         let isDownArrow = keyCode == 125
+        let isLeftArrow = keyCode == 123
+        let isRightArrow = keyCode == 124
+        
+        if self.pause.pauseState == .CONFIRM_EXIT_GAME {
+            if isRightArrow {
+                if self.exitOptionSelected < 2 {
+                    self.exitOptionSelected += 1
+                    updateExitArrows()
+                }
+            }else if isLeftArrow {
+                if self.exitOptionSelected > 1 {
+                    self.exitOptionSelected -= 1
+                    updateExitArrows()
+                }
+            } else if isEnterKey {
+                if self.exitOptionSelected == 1 {
+                    self.confirmLeaveBackground?.removeAllChildren()
+                    self.confirmLeaveBackground?.removeFromParent()
+                    pause.pauseState = .OPTIONS
+                } else if exitOptionSelected == 2 {
+                    exit(1)
+                }
+            }
+            
+            return
+        }
+        
         
         if isUpArrow {
             if optionsSelected > 1 {
@@ -134,6 +169,7 @@ class OptionsMenu {
         
         if isEscKey {
             pause.pauseState = .NORMAL
+            updateOptions(true)
         }
         
         if isEnterKey {
@@ -152,58 +188,92 @@ class OptionsMenu {
     }
     
     private func exitGameButtonPressed () {
-        guard let optionsBackground else {
-            print("Não tem optionsBackground na OptionsMenu")
-            return
-        }
+        self.pause.pauseState = .CONFIRM_EXIT_GAME
         
-        let confirmLeaveBackground = SKShapeNode(rectOf: CGSize(width: optionsBackground.frame.width / 1.5, height: 300))
-        confirmLeaveBackground.fillColor = .blue
-        confirmLeaveBackground.position = .zero
+        confirmLeaveBackground = SKSpriteNode(imageNamed: "itensSession")
+        guard let confirmLeaveBackground else { return }
+        
         confirmLeaveBackground.zPosition = 20
+        confirmLeaveBackground.position = .zero
+        confirmLeaveBackground.setScale(0.5)
         
         self.optionsBackground?.addChild(confirmLeaveBackground)
         
         let leaveLabel = SKLabelNode(text: "Tem certeza que deseja sair do jogo?")
-        leaveLabel.fontName = "Lora-Medium"
+        leaveLabel.fontName = "Lora-Bold"
         leaveLabel.position = .zero
-        leaveLabel.position.y += 20
-        leaveLabel.fontSize = 20
+        leaveLabel.position.y += confirmLeaveBackground.frame.height / 2
+        leaveLabel.position.y -= 70
+        leaveLabel.fontColor = .black
+        leaveLabel.fontSize = 48
+        leaveLabel.preferredMaxLayoutWidth = confirmLeaveBackground.frame.width - 50
+        leaveLabel.horizontalAlignmentMode = .center
+        leaveLabel.numberOfLines = 2
         confirmLeaveBackground.addChild(leaveLabel)
         
         let noOption = SKLabelNode(text: "Não")
         noOption.fontName = "Lora-Medium"
         noOption.position = .zero
         noOption.position.y -= 60
-        noOption.position.x -= 60
+        noOption.position.x -= 140
+        noOption.fontSize = 48
+        noOption.fontColor = .black
         confirmLeaveBackground.addChild(noOption)
         
-        let noArrow = SKSpriteNode(imageNamed: "seta2")
-        let scale = 35 / noArrow.frame.height
-        noArrow.setScale(scale)
-        noArrow.position = noOption.position
-        noArrow.position.x -= noOption.frame.width
-        noArrow.position.y -= 10
-        confirmLeaveBackground.addChild(noArrow)
+        exitNoArrow = SKSpriteNode(imageNamed: "seta2")
+        
+        guard let exitNoArrow else {
+            return
+        }
+        
+        let scale = 40 / exitNoArrow.frame.height
+        exitNoArrow.setScale(scale)
+        exitNoArrow.position = noOption.position
+        exitNoArrow.position.x -= noOption.frame.width
+        exitNoArrow.position.y += noOption.frame.height / 4
+        exitNoArrow.isHidden = true
+        confirmLeaveBackground.addChild(exitNoArrow)
         
         let yesOption = SKLabelNode(text: "Sim")
         yesOption.fontName = "Lora-Medium"
+        yesOption.fontColor = .black
         yesOption.position = .zero
         yesOption.position.y -= 60
-        yesOption.position.x += 60
+        yesOption.position.x += 140
+        yesOption.fontSize = 48
+        
         confirmLeaveBackground.addChild(yesOption)
         
-        let yesArrow = SKSpriteNode(imageNamed: "seta2")
-        yesArrow.setScale(scale)
-        yesArrow.position = yesOption.position
-        yesArrow.position.x -= yesOption.frame.width
-        yesArrow.position.y += yesOption.frame.height / 6
-        confirmLeaveBackground.addChild(yesArrow)
+        exitYesArrow = SKSpriteNode(imageNamed: "seta2")
+        guard let exitYesArrow else {
+            return
+        }
+        
+        exitYesArrow.setScale(scale)
+        exitYesArrow.position = yesOption.position
+        exitYesArrow.position.x -= yesOption.frame.width
+        exitYesArrow.position.y += yesOption.frame.height / 4
+        exitYesArrow.isHidden = true
+        confirmLeaveBackground.addChild(exitYesArrow)
+        
+        updateExitArrows()
     }
     
     private func configurationsButtonPressed () {
         configurations = Configurations(self.pause)
         configurations?.setupConfigurations()
         pause.pauseState = .CONFIGURATIONS
+    }
+    
+    private func updateExitArrows () {
+        if self.exitOptionSelected == 1 {
+            self.exitNoArrow?.isHidden = false
+            self.exitYesArrow?.isHidden = true
+        } else if self.exitOptionSelected == 2 {
+            self.exitNoArrow?.isHidden = true
+            self.exitYesArrow?.isHidden = false
+        } else {
+            print("ERRO: O EXITOPTIONSELECTED É \(exitOptionSelected)")
+        }
     }
 }

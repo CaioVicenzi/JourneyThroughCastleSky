@@ -61,7 +61,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     var gameState : GameState = .NORMAL
     
-    let pauseUIComponent : PauseMenu = PauseMenu()
+    //let pauseUIComponent : PauseMenu = PauseMenu()
     
     var useItemLabel : SKLabelNode?
     
@@ -78,9 +78,11 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     var friendlySystem : FriendlySystem {
         return getSystem()!
     }
+    /*
     var menuSystem : MenuSystem {
         return getSystem()!
     }
+     */
     var inventorySystem : InventorySystem {
         return getSystem()!
     }
@@ -94,7 +96,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         DialogSystem(),
         FriendlySystem(friendlies: []),
         ItemSystem(items: []),
-        MenuSystem(),
+        //MenuSystem(),
         PositionSystem(),
         InventorySystem(),
         DialogSystem(),
@@ -245,9 +247,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     }
     
     private func setupFriendly(_ name: String, spriteName: String) {
-
         guard let node = self.childNode(withName: name) as? SKSpriteNode else {print("A gente nao conseguiu identificar o friendly"); return}
-        //self.enumerateChildNodes(withName: name) { [self] node, _ in
         
         let weerdman = Friendly(
                    spriteName: "weerdman",
@@ -465,7 +465,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         
         // Troca para a cena da batalha
         let nextScene = BatalhaScene(size: size)
-        
+                
         nextScene.config(enemy: enemy, reward: reward)
 
         nextScene.position = .zero
@@ -550,7 +550,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             system.update()
         }
         
-        if gameState == .INVENTORY {
+        if gameState == .PAUSE {
             inventory?.update()
         }
     }

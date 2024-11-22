@@ -24,12 +24,11 @@ extension TopDownScene {
                 itemSystem.catchNearestItem()
             }
             if isEscKey {// tecla Esc
-                menuSystem.togglePause()
+                //menuSystem.togglePause()
+                inventorySystem.inventoryButtonPressed()
             }
-        } else if gameState == .INVENTORY {
-            inventory?.input(Int(event.keyCode))
         } else if gameState == .PAUSE {
-            menuSystem.input(event.keyCode)
+            inventory?.input(Int(event.keyCode))
         } else if gameState == .DIALOG_FINISHED || gameState == .WAITING_DIALOG {
             dialogSystem.input(event.keyCode)
         }

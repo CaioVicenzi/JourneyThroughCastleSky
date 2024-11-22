@@ -33,8 +33,8 @@ class Inventory {
             pause.pauseBackground?.addChild(itemsBackground)
         }
         
-        setupBar("Vida")
-        setupBar("Vigor")
+        setupBar("VIDA")
+        setupBar("VIGOR")
         
         setupButton("Consumíveis")
         setupButton("Acervo")
@@ -56,9 +56,9 @@ class Inventory {
         backgroundBar.position.y = .zero
         backgroundBar.zPosition += 2
         
-        if content == "Vida" {
+        if content == "VIDA" {
             backgroundBar.position.y += itemsBackground.frame.height / 2.25
-        } else if content == "Vigor" {
+        } else if content == "VIGOR" {
             backgroundBar.position.y += (((itemsBackground.frame.height / 2.25) - backgroundBar.frame.height) - 30)
         }
         
@@ -73,7 +73,7 @@ class Inventory {
         backgroundBar.addChild(label)
         
         let size = CGSize(width: (backgroundBar.frame.width * 1.4), height: backgroundBar.frame.height / 1.55)
-        let bar = SKSpriteNode(color: content == "Vida" ? .wine : .darkGold, size: size)
+        let bar = SKSpriteNode(color: content == "VIDA" ? .wine : .darkGold, size: size)
         bar.position = .zero
         bar.position.x -= bar.frame.width / 2
         bar.position.y -= backgroundBar.frame.height / 2.25
@@ -240,13 +240,7 @@ class Inventory {
         }
     }
     
-    func input (_ keyCode : Int) {
-        
-        
-        
-    }
-    
-    internal func updateItemsThroughCategories () {
+    private func updateItemsThroughCategories () {
         cleanItems()
         
         if let itemsBackground = self.itemsBackground?.childNode(withName: "itemsBackground") as? SKSpriteNode {
