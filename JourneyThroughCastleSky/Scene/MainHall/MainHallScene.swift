@@ -22,8 +22,6 @@ var alreadyOpenCutscene : Bool = false
 
 class MainHallScene: TopDownScene {
     override func didMove(to view: SKView) {
-        
-        
         if !alreadyOpenCutscene {
             super.didMove(to: view)
 
@@ -33,11 +31,5 @@ class MainHallScene: TopDownScene {
             self.cutsceneSystem.nextCutscenes()
             alreadyOpenCutscene = true
         }
-         
-        
-        
-         
-
-        
     }
 }
