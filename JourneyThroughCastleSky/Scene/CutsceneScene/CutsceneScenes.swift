@@ -113,7 +113,7 @@ class CutsceneScenes: SKScene{
             } else {
                 print("Não tem cena anterior.")
             }
-            //previousScene?.configDialogs(self.dialogsAfterCutscene)
+            previousScene?.configDialogs(self.dialogsAfterCutscene)
         }
     }
     

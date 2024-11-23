@@ -13,8 +13,8 @@ import SpriteKit
 extension TopDownScene {
     override func keyDown(with event: NSEvent) {
         let isIKey = event.keyCode == 34
-        let isEscKey = event.keyCode == 53
-        let isEnterKey = event.keyCode == 36
+        let isEscKey = event.keyCode == 53 || event.keyCode == 6
+        let isEnterKey = event.keyCode == 36 || event.keyCode == 7
         
         if gameState == .NORMAL {
             movementSystem.input(event)

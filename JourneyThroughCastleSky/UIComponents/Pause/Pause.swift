@@ -122,7 +122,7 @@ class Pause {
     }
     
     func input(_ keyCode : Int) {
-        let isEnterKey = keyCode == 36
+        let isEnterKey = keyCode == 36 || keyCode == 7
         let isLeftArrow = keyCode == 123
         let isRightArrow = keyCode == 124
         

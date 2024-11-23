@@ -11,7 +11,7 @@ import SpriteKit
 // o cutsceneHelper vai ter alguns atributos dentro dele que serão a lista das cutscenes do jogo.
 class CutsceneHelper {
     let cutsceneOne = [
-        Cutscene(background: SKSpriteNode(imageNamed: "cutscene1_1"), displayText: "Olha só, acabei de acordar"),
+        Cutscene(background: SKSpriteNode(imageNamed: "cutscene1_1"), displayText: ""),
         Cutscene(background: SKSpriteNode(imageNamed: "cutscene1_2"), displayText: ""),
         Cutscene(background: SKSpriteNode(imageNamed: "cutscene1_3"), displayText: ""),
         Cutscene(background: SKSpriteNode(imageNamed: "cutscene1_4"), displayText: ""),

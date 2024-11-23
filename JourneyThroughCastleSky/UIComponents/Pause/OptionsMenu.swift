@@ -123,8 +123,8 @@ class OptionsMenu {
     }
     
     func input(_ keyCode : Int) {
-        let isEnterKey = keyCode == 36
-        let isEscKey = keyCode == 53
+        let isEnterKey = keyCode == 36 || keyCode == 7
+        let isEscKey = keyCode == 53 || keyCode == 6
         let isUpArrow = keyCode == 126
         let isDownArrow = keyCode == 125
         let isLeftArrow = keyCode == 123
