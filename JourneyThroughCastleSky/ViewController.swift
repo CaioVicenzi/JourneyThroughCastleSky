@@ -18,7 +18,6 @@ class ViewController: NSViewController {
     
         if let view = self.skView {
             let gameScene = MainMenuScene(size: skView.frame.size)
-//            guard let gameScene = SKScene(fileNamed: "MainHallScene") else {fatalError("oi")}
             gameScene.scaleMode = .aspectFill
             PositionHelper.singleton.config(gameScene)
             view.presentScene(gameScene)

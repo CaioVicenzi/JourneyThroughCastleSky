@@ -68,8 +68,6 @@ class CutsceneScenes: SKScene{
         cutscene?.displayCutscene(scene: self)
         
         if (countCutscene == 0) {
-            
-            
             addChild(clickMessage)
         }
         

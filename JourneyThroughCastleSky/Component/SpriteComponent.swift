@@ -10,9 +10,10 @@ import SpriteKit
 
 class SpriteComponent: Component {
     var sprite : SKSpriteNode
+    var fighterSprite : SKSpriteNode
     
     init(_ spriteName: String) {
         self.sprite = SKSpriteNode(imageNamed: spriteName)
-        
+        fighterSprite = SKSpriteNode(imageNamed: "\(spriteName)-fighter")
     }
 }
