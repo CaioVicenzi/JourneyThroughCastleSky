@@ -18,19 +18,26 @@ class Consumable: Command {
     }
 }
 
-var jaMostrou : Bool = false
+var alreadyOpenCutscene : Bool = false
 
 class MainHallScene: TopDownScene {
     override func didMove(to view: SKView) {
         
-        super.didMove(to: view)
-        if !jaMostrou {
+        
+        if !alreadyOpenCutscene {
+            super.didMove(to: view)
+
             let cutsceneHelper = CutsceneHelper()
             self.cutsceneSystem.addCutscenes(cutsceneHelper.cutsceneOne) //.addCutscene(cutsceneHelper.cutsceneOne)
             
             self.cutsceneSystem.nextCutscenes()
-            jaMostrou = true
+            alreadyOpenCutscene = true
         }
+         
+        
+        
+         
+
         
     }
 }

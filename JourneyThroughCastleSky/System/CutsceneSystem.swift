@@ -16,7 +16,6 @@ class CutsceneSystem: System {
     }
     
     func nextCutscenes () {
-        
         // primeiro passo: pegar a próxima lista de cenas das cutscenes
         guard cutscenes.first != nil else {
             return
@@ -28,7 +27,7 @@ class CutsceneSystem: System {
         let cutscene = CutsceneScenes(size: gameScene.size)
         cutscene.config(gameScene, scenes: cutscenes, dialogsAfterCutscene: self.gameScene.dialogSystem.dialogsToPassAfterCutscene)
         cutscenes[0].isFirst = true
-        self.gameScene.cutsceneSystem.cutscenes.removeAll()
+        //self.gameScene.cutsceneSystem.cutscenes.removeAll()
         let transition = SKTransition.fade(withDuration: 2.0)
         transition.pausesIncomingScene = false
         transition.pausesOutgoingScene = false

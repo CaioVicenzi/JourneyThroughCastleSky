@@ -127,7 +127,7 @@ class MainMenuScene : SKScene {
     }
     
     private func goMainHallScene () {
-        if let scene = SKScene(fileNamed: "MainHallScene") as? MainHallScene {
+        if let scene = SKScene(fileNamed: "MainHallScene.sks") {
             scene.scaleMode = .aspectFill
             let transition = SKTransition.fade(withDuration: 1.0)
             self.view?.presentScene(scene, transition: transition)

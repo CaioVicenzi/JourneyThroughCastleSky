@@ -38,7 +38,5 @@ class CutsceneComponent: Component{
 
         
         scene.addChild(subtitleLabel)
-        
-     
     }
 }

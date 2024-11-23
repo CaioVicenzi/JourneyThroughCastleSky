@@ -10,9 +10,9 @@ import SpriteKit
 
 class CutsceneScenes: SKScene{
     
-    var countCutscene: Int = 0
+    //var countCutscene: Int = 0
     var cutscene: CutsceneComponent?
-    var cutsceneTimer: Timer?
+    //var cutsceneTimer: Timer?
     var previousScene : TopDownScene? = nil
     var scenes : [Cutscene] = []
     var dialogsAfterCutscene : [Dialogue] = []
@@ -38,7 +38,7 @@ class CutsceneScenes: SKScene{
     override func didMove(to view: SKView) {
 
         BackgroundMusicHelper.singleton.stopMusic()
-        Timer.scheduledTimer(withTimeInterval: 0.0, repeats: true) {[weak self] timer in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
             self?.timerCount += 1
             
             if self?.timerCount == 3 {
@@ -54,7 +54,7 @@ class CutsceneScenes: SKScene{
     
     private func setupCutscene () {
         guard let firstScene = scenes.first else {
-            cutsceneTimer?.invalidate()
+            //cutsceneTimer?.invalidate()
             goBackToScene()
             return
         }
@@ -67,12 +67,12 @@ class CutsceneScenes: SKScene{
         
         cutscene?.displayCutscene(scene: self)
         
-        if (countCutscene == 0) {
-            addChild(clickMessage)
-        }
+        //if (countCutscene == 0) {
+            //addChild(clickMessage)
+        //}
         
         scenes.removeFirst()
-        countCutscene += 1
+        //countCutscene += 1
     }
     
     override func mouseDown(with event: NSEvent) {
@@ -90,8 +90,8 @@ class CutsceneScenes: SKScene{
     }
     
     override func willMove(from view: SKView) {
-        cutsceneTimer?.invalidate()
-        cutsceneTimer = nil
+        //cutsceneTimer?.invalidate()
+        //cutsceneTimer = nil
     }
     
     private func goBackToScene () {

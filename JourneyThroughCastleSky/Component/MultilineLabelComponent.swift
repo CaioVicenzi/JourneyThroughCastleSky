@@ -24,7 +24,7 @@ class SKMultilineLabel: SKNode {
     var rect:SKShapeNode?
     var labels:[SKLabelNode] = []
     
-    init(text:String, labelWidth:Int, pos:CGPoint, fontName:String="ChalkboardSE-Regular",fontSize:CGFloat=10,fontColor:SKColor=SKColor.black,leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .left, shouldShowBorder:Bool = false)
+    init(text:String, labelWidth:Int, pos:CGPoint, fontName:String="Lora-Medium",fontSize:CGFloat=10,fontColor:SKColor=SKColor.black,leading:Int=10, alignment:SKLabelHorizontalAlignmentMode = .left, shouldShowBorder:Bool = false)
     {
         self.text = text
         self.labelWidth = labelWidth
