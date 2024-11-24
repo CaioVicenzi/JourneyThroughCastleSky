@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Spriteworm-0001 1.png",
+      "filename" : "cryptomorph.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Spriteworm-0001 1@2x.png",
+      "filename" : "cryptomorph@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Spriteworm-0001 1@3x.png",
+      "filename" : "cryptomorph@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

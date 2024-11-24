@@ -199,8 +199,8 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     internal func setupEnemies () {
         
         if User.singleton.currentPhase == .DUNGEON {
-            setupEnemy("strongEnemy", spriteName: "larva")
-            setupEnemy("weakEnemy", spriteName: "cryptomorph")
+            setupEnemy("strongEnemy", spriteName: "cryptomorph")
+            setupEnemy("weakEnemy", spriteName: "larva")
         }
         
         if User.singleton.currentPhase == .HALL_OF_RELICS {
