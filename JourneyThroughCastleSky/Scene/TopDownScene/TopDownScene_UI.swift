@@ -65,8 +65,8 @@ extension TopDownScene {
     
     func setupCatchLabel () {
         self.catchLabel = SKLabelNode()
-        catchLabel?.text = "Press Enter to catch item"
-        catchLabel?.fontColor = .blue
+        catchLabel?.text = "Pressione Enter para pegar o item"
+        catchLabel?.fontColor = .white
         catchLabel?.fontName = "Helvetica-Bold"
         catchLabel?.fontSize = 12
         catchLabel?.position = CGPoint(x: -(self.size.width / 3.47), y: -(self.size.height / 3))
