@@ -223,7 +223,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             let escala = 100 / enemyHeight
 //            spriteInimigo.setScale(escala)
             
-            spriteInimigo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: enemyWidth, height: enemyHeight))
+            spriteInimigo.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: enemyWidth + 100, height: enemyHeight + 100))
             spriteInimigo.physicsBody?.categoryBitMask  = PhysicCategory.enemy
             spriteInimigo.physicsBody?.collisionBitMask = PhysicCategory.character
             spriteInimigo.physicsBody?.contactTestBitMask = PhysicCategory.character
