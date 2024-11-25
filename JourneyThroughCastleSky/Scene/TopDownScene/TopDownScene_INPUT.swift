@@ -29,7 +29,7 @@ extension TopDownScene {
             }
         } else if gameState == .PAUSE {
             inventory?.input(Int(event.keyCode))
-        } else if gameState == .DIALOG_FINISHED || gameState == .WAITING_DIALOG {
+        } else if gameState == .DIALOG_FINISHED {
             dialogSystem.input(event.keyCode)
         }
         
