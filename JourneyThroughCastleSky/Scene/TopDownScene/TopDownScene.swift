@@ -290,11 +290,15 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
         setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
         setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
         setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
-        setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0))
-        setupItem("crystal", spriteName: "cristal", effect: Effect(type: .UP_LEVEL, amount: 0))
+        setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0),hidden: false)
+        setupItem(
+            "crystal",
+            spriteName: "cristal",
+            effect: Effect(type: .UP_LEVEL, amount: 0)
+        )
     }
     
-    private func setupItem (_ name : String, spriteName : String, effect : Effect) {
+    private func setupItem (_ name : String, spriteName : String, effect : Effect, hidden: Bool = true) {
         enumerateChildNodes(withName: name) { node, _ in
             guard let node = node as? SKSpriteNode else {print("Erro na hora de inicializar o corpo físico dos elementos"); return}
             
@@ -312,6 +316,10 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
             let createdItem = Item(name: nameItem, spriteName: spriteName, effect: effect, x: Int(node.position.x), y: Int(node.position.y), description: descriptionItem)
             
             createdItem.spriteComponent.sprite.scale(to: node.size)
+            
+            if (hidden) {
+                createdItem.spriteComponent.sprite.alpha = 0
+            }
             
             self.itemSystem.items.append(createdItem)
             self.setupSpritePosition(createdItem.spriteComponent, createdItem.positionComponent, scale: CGSize(width: 75, height: 75))

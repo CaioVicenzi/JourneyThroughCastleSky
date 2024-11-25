@@ -85,6 +85,7 @@ class ItemSystem: System {
                 
         // adiciona também a descrição do item
         if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
+            sprite.alpha = 1
             gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
         }
                 
