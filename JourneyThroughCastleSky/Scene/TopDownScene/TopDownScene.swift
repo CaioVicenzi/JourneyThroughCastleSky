@@ -287,7 +287,7 @@ class TopDownScene : SKScene, SKPhysicsContactDelegate {
     
     /// Função que posiciona todos os itens dentro da lista de itens dentro do mapa.
     internal func setupItems () {
-        setupItem("cure", spriteName: "cupcake", effect: Effect(type: .CURE, amount: 10))
+        setupItem("cure", spriteName: "bread", effect: Effect(type: .CURE, amount: 10))
         setupItem("damage", spriteName: "balloon", effect: Effect(type: .DAMAGE, amount: 10))
         setupItem("estamina", spriteName: "diamondApple", effect: Effect(type: .STAMINE, amount: 10))
         setupItem("key", spriteName: "key", effect: Effect(type: .NONE, amount: 0),hidden: false)

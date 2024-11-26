@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "dczbojn-086adcd4-9b57-4d0b-9790-b62bd66c3027.png",
+      "filename" : "Property 1=item-cura.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Property 1=item-cura@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Property 1=item-cura@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
