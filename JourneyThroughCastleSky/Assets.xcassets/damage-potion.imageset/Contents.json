@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "pngtree-red-balloon-pixels-png-image_6580866.png",
+      "filename" : "Property 1=item-dano.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Property 1=item-dano@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "Property 1=item-dano@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
