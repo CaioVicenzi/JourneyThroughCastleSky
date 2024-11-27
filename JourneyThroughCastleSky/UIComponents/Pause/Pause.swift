@@ -122,11 +122,16 @@ class Pause {
     }
     
     func input(_ keyCode : Int) {
-        let isEnterKey = keyCode == 36 || keyCode == 7
+        let isEnterKey = keyCode == 36 || keyCode == 6
         let isLeftArrow = keyCode == 123
         let isRightArrow = keyCode == 124
-        
+        let isEscKey = keyCode == 53
+
         if self.pauseState == .NORMAL {
+            if isEscKey {
+                self.closePause()
+            }
+            
             if isLeftArrow {
                 if optionSelected > 1 {
                     self.optionSelected -= 1
@@ -141,11 +146,9 @@ class Pause {
                 updateDownPart()
             }
             
-            if isEnterKey {
-                let itemAmount = User.singleton.inventoryComponent.itens.count
-                
+            if isEnterKey {                
                 switch optionSelected {
-                case 1: pauseState = itemAmount != 0 ? .ITEMS : .NORMAL
+                case 1: pauseState = .ITEMS
                 case 2: pauseState = .OPTIONS
                 default: pauseState = .NORMAL
                 }

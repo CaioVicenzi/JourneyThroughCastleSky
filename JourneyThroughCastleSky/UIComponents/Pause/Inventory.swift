@@ -136,8 +136,8 @@ class Inventory {
     }
     
     func inputCategoryItemSelection(_ keyCode : Int) {
-        let isEnterKey = keyCode == 36 || keyCode == 7
-        let isEscKey = keyCode == 53 || keyCode == 6
+        let isEnterKey = keyCode == 36 || keyCode == 6
+        let isEscKey = keyCode == 53 || keyCode == 7
         let isUpArrow = keyCode == 126
         let isDownArrow = keyCode == 125
         
@@ -197,8 +197,8 @@ class Inventory {
     
     
     func inputItemSelection (_ keyCode : Int) {
-        let isEnterKey = keyCode == 36 || keyCode == 7
-        let isEscKey = keyCode == 53 || keyCode == 6
+        let isEnterKey = keyCode == 36 || keyCode == 6
+        let isEscKey = keyCode == 53 || keyCode == 7
         let isLeftArrow = keyCode == 123
         let isRightArrow = keyCode == 124
         let isUpArrow = keyCode == 126

@@ -160,7 +160,7 @@ class Configurations {
     }
     
     func input (_ keyCode : Int) {
-        let isEscKey = keyCode == 53
+        let isEscKey = keyCode == 53 || keyCode == 7
         let isLeftArrow = keyCode == 123
         let isRightArrow = keyCode == 124
         let isUpArrow = keyCode == 126
