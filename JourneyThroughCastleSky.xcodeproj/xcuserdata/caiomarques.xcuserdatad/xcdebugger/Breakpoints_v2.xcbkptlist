@@ -80,36 +80,6 @@
             endingLineNumber = "80"
             landmarkName = "setupItemRows()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "D8120605-ED42-45F7-B413-EEF8CA1F7E64 - 5ae28317c987959c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
-                  moduleName = "Memorance.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80">
-               </Location>
-               <Location
-                  uuid = "D8120605-ED42-45F7-B413-EEF8CA1F7E64 - 5ae28317c987959c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
-                  moduleName = "Memorance.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "80"
-                  endingLineNumber = "80">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,36 +96,6 @@
             endingLineNumber = "107"
             landmarkName = "setupActionDescription()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "28945249-48F5-4719-BEB8-515B3190E098 - 5ae28317c9879938"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
-                  moduleName = "Memorance.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108">
-               </Location>
-               <Location
-                  uuid = "28945249-48F5-4719-BEB8-515B3190E098 - 5ae28317c9879938"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
-                  moduleName = "Memorance.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "108"
-                  endingLineNumber = "108">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
