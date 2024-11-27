@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class CutsceneScenes: SKScene{
-    
+    var isFirstScene : Bool = true
     //var countCutscene: Int = 0
     var cutscene: CutsceneComponent?
     //var cutsceneTimer: Timer?
@@ -17,6 +17,7 @@ class CutsceneScenes: SKScene{
     var scenes : [Cutscene] = []
     var dialogsAfterCutscene : [Dialogue] = []
     var timerCount = 1
+
     
     var clickMessage: SKLabelNode = {
         let label = SKLabelNode(text: "Clique na tela e aperte ESPAÇO para passar as cutscenes")
@@ -38,7 +39,11 @@ class CutsceneScenes: SKScene{
     override func didMove(to view: SKView) {
 
         BackgroundMusicHelper.singleton.stopMusic()
+        self.displayNextCutscene()
+
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) {[weak self] timer in
+            
+            
             self?.timerCount += 1
             
             if self?.timerCount == 3 {
@@ -48,13 +53,13 @@ class CutsceneScenes: SKScene{
         }
     }
     
-    @objc func displayNextCutscene(){
-        setupCutscene()
+    @objc func displayNextCutscene(_ timer: Timer? = nil){
+        setupCutscene(timer)
     }
     
-    private func setupCutscene () {
+    private func setupCutscene (_ timer: Timer? = nil) {
         guard let firstScene = scenes.first else {
-            //cutsceneTimer?.invalidate()
+            timer?.invalidate()
             goBackToScene()
             return
         }

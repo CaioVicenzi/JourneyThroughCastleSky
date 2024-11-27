@@ -80,6 +80,36 @@
             endingLineNumber = "80"
             landmarkName = "setupItemRows()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D8120605-ED42-45F7-B413-EEF8CA1F7E64 - 5ae28317c987959c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
+                  moduleName = "Memorance.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80">
+               </Location>
+               <Location
+                  uuid = "D8120605-ED42-45F7-B413-EEF8CA1F7E64 - 5ae28317c987959c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
+                  moduleName = "Memorance.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -96,6 +126,36 @@
             endingLineNumber = "107"
             landmarkName = "setupActionDescription()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "28945249-48F5-4719-BEB8-515B3190E098 - 5ae28317c9879938"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
+                  moduleName = "Memorance.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108">
+               </Location>
+               <Location
+                  uuid = "28945249-48F5-4719-BEB8-515B3190E098 - 5ae28317c9879938"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Memorance.BatalhaScene.setupItemRows() -&gt; ()"
+                  moduleName = "Memorance.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/caiomarques/Desktop/JourneyThroughCastleSky/JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -364,10 +424,10 @@
             filePath = "JourneyThroughCastleSky/Scene/MainHall/MainHallScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "didMove(to:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -902,7 +962,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "76731432-3242-4FBC-B831-F6EA6251A405"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JourneyThroughCastleSky/Scene/MainScene/MainSceneScene.swift"
@@ -918,7 +978,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AD533AB0-68BC-42C1-9D5E-2B126DECADCC"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JourneyThroughCastleSky/Scene/MainScene/MainSceneScene.swift"
@@ -934,7 +994,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "609FF21C-756C-4461-8532-1F1F69C09EF0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JourneyThroughCastleSky/Scene/MainScene/MainSceneScene.swift"
@@ -950,7 +1010,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "64113C92-9DC8-483A-A487-AA800C0C9241"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JourneyThroughCastleSky/Scene/MainScene/MainSceneScene.swift"
@@ -959,6 +1019,22 @@
             startingLineNumber = "133"
             endingLineNumber = "133"
             landmarkName = "goMainHallScene()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "527EAF08-A858-47B0-8D4A-A3AE455A77B2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JourneyThroughCastleSky/Scene/CutsceneScene/CutsceneScenes.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "setupCutscene(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
