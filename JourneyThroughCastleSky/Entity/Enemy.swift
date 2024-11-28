@@ -22,5 +22,6 @@ class Enemy : Identifiable{
         fighterComponent = FighterComponent(damage: damage)
         spriteComponent = SpriteComponent(spriteName)
         healthComponent = HealthComponent(health: health)
+        healthComponent.maxHealth = health
     }
 }

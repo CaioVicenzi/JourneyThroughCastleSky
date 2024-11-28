@@ -13,7 +13,9 @@ extension BatalhaScene{
     // MARK: SETUP UI
     
     func setupEnemyScreen() {
-        let enemyScreen = SKSpriteNode(imageNamed: "BG-Battle")
+        self.enemyScreen = SKSpriteNode(imageNamed: "BG-Battle")
+        guard let enemyScreen else {return}
+        
         enemyScreen.size = CGSize(width: self.size.width, height: self.size.height*0.48)
         enemyScreen.position = CGPoint(x:  self.size.width/6400, y: self.size.height/3.75)
         
@@ -50,7 +52,7 @@ extension BatalhaScene{
         for i in 0..<numberOfRows {
             let individualRow = SKSpriteNode(imageNamed: "buttonUnselected")
             individualRow.anchorPoint = .init(x: 0, y: 1)
-            let proporcao = (rowHeight - 50) / individualRow.frame.height
+            let proporcao = (rowHeight - 70) / individualRow.frame.height
             individualRow.setScale(proporcao)
             
             // Calculate the y-position for each row, spacing them evenly
@@ -62,9 +64,12 @@ extension BatalhaScene{
             individualRow.name = "rowButton\(i)"
 
             
-            let label = SKLabelNode(text: returnButtonLabel(i))
+            let label = SKLabelNode(text: returnButtonLabel(i).uppercased())
             label.position = CGPoint(x: 0, y: -label.frame.height / 2)
             label.zPosition = 5
+            label.fontColor = .black
+            label.fontName = "Lora-Medium"
+            label.fontSize = 48
             
             individualRow.addChild(label)
             
@@ -82,7 +87,7 @@ extension BatalhaScene{
             let proportion =  200 / individualRow.frame.width
             individualRow.setScale(proportion)
             
-            let rowWidth = individualRow.calculateAccumulatedFrame().size.width
+            //let rowWidth = individualRow.calculateAccumulatedFrame().size.width
             let rowHeight = individualRow.calculateAccumulatedFrame().size.height
             
             let xPosition = actionDescription!.calculateAccumulatedFrame().size.width * -0.5 + 10
@@ -127,13 +132,13 @@ extension BatalhaScene{
     func returnButtonLabel(_ index: Int) -> String {
         switch index {
         case 0:
-            return "Attack"
+            return "Ataque"
         case 1:
-            return "Items"
+            return "Itens"
         case 2:
-            return "Dodge"
+            return "Esquivar"
         default:
-            return "Skill"
+            return "Habilidades"
         }
     }
         
@@ -146,8 +151,10 @@ extension BatalhaScene{
         
         descriptionLabel = SKLabelNode(text: "init")
         guard let descriptionLabel else { return }
-        descriptionLabel.fontSize = 12
+        descriptionLabel.fontSize = 24
         descriptionLabel.position = CGPoint(x: descriptionLabel.frame.width / 2, y: -descriptionLabel.frame.height / 2)
+        descriptionLabel.fontName = "Lora-Medium"
+        
         
         actionDescription.addChild(descriptionLabel)
         
@@ -170,8 +177,10 @@ extension BatalhaScene{
         healthBar?.anchorPoint = CGPoint(x: 0, y: 0.5)
         guard let healthBar else { return }
         healthBar.position = CGPoint(x: -(backgroundHealthBar.size.width / 2) + 10, y: 0) // Ajuste de posição para alinhar à esquerda
-
-        backgroundHealthBar.addChild(healthBar)
+        healthBar.position = backgroundHealthBar.position
+        healthBar.position.x -= healthBar.frame.width / 2
+        healthBar.zPosition = backgroundHealthBar.zPosition - 1
+        addChild(healthBar)
     }
     
     internal func updateHealthBar () {
@@ -198,9 +207,11 @@ extension BatalhaScene{
         staminaBar = SKSpriteNode(color: .darkGold, size: rect)
         staminaBar?.anchorPoint = CGPoint(x: 0, y: 0.5)
         guard let staminaBar else { return }
-        staminaBar.position = CGPoint(x: -(staminaBackgroundBar.size.width / 2) + 10, y: 0) // Ajuste de posição para alinhar à esquerda
+        staminaBar.position = staminaBackgroundBar.position // Ajuste de posição para alinhar à esquerda
+        staminaBar.position.x -= (staminaBar.frame.width / 2)
+        staminaBar.zPosition = staminaBackgroundBar.zPosition - 1
 
-        staminaBackgroundBar.addChild(staminaBar)
+        addChild(staminaBar)
     }
     
     internal func updateStamineBar () {
@@ -211,19 +222,31 @@ extension BatalhaScene{
     }
     
     func setupEnemyLifeBar () {
+        guard let enemyScreen else {
+            return
+        }
+        
         let backgroundEnemyLifeBar = SKSpriteNode(imageNamed: "lifeBar")
         
-        backgroundEnemyLifeBar.position = CGPoint(x: 400, y: 500)
+        backgroundEnemyLifeBar.setScale(0.5)
+        backgroundEnemyLifeBar.position = .zero
+        backgroundEnemyLifeBar.position.y += (enemyScreen.frame.height / 2) - (backgroundEnemyLifeBar.frame.height / 2) - 40
+        backgroundEnemyLifeBar.position.x += (enemyScreen.frame.width / 2) - (backgroundEnemyLifeBar.frame.width / 2) - 40
         backgroundEnemyLifeBar.zPosition = 5
         
-        addChild(backgroundEnemyLifeBar)
-        
-        enemyLifeBar = SKSpriteNode(color: .wine, size: CGSize(width: backgroundEnemyLifeBar.frame.width - 4, height: backgroundEnemyLifeBar.frame.height - 4))
+        enemyScreen.addChild(backgroundEnemyLifeBar)
+                
+        enemyLifeBar = SKSpriteNode(color: .wine, size: CGSize(width: (backgroundEnemyLifeBar.frame.width) - 30, height: backgroundEnemyLifeBar.frame.height - 3))
         guard let enemyLifeBar else {return}
-        enemyLifeBar.position = CGPoint(x: backgroundEnemyLifeBar.position.x, y: backgroundEnemyLifeBar.position.y)
+        enemyLifeBar.position = .zero
+        enemyLifeBar.position = backgroundEnemyLifeBar.position
+        
+        enemyLifeBar.position.x -= enemyLifeBar.frame.width / 2
+        enemyLifeBar.anchorPoint = CGPoint(x: 0, y: 0.5)
+        enemyLifeBar.zPosition = 4
 
         
-        backgroundEnemyLifeBar.addChild(enemyLifeBar)
+        enemyScreen.addChild(enemyLifeBar)
     }
     
     internal func updateEnemyLifeBar () {
@@ -231,6 +254,7 @@ extension BatalhaScene{
         let enemyLifePercentage : CGFloat = CGFloat(enemy.healthComponent.health) / CGFloat(enemy.healthComponent.maxHealth)
         let scaleAction = SKAction.scaleX(to: enemyLifePercentage, duration: 0.2)
         enemyLifeBar?.run(scaleAction)
+        enemyLifeBar?.zPosition = 4
     }
     
     internal func updateDescriptionLabel () {

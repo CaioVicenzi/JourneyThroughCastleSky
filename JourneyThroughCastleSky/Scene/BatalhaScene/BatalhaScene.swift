@@ -43,6 +43,7 @@ class BatalhaScene : SKScene {
     var staminaBar : SKSpriteNode? = nil
     var enemyLifeBar : SKSpriteNode? = nil
     var descriptionLabel : SKLabelNode? = nil
+    var enemyScreen : SKSpriteNode? = nil
     
     func config (_ scene : SKScene) {
         self.previousScene = scene
@@ -256,6 +257,7 @@ class BatalhaScene : SKScene {
             if let self {
                 label.position.x = -(self.size.width / 2) + 150
                 label.position.y = (self.size.height / 2) - 150
+                label.fontName = "Lora-Medium"
                 self.addChild(label)
             }
             
@@ -301,6 +303,7 @@ class BatalhaScene : SKScene {
             
         }
         
+        // se a vida do inimigo for menor ou igual a zero, saia ganhando da batalha
         if enemy.healthComponent.health <= 0 {
             getOutWinning()
         }

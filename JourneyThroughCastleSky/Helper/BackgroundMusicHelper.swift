@@ -24,7 +24,7 @@ class BackgroundMusicHelper {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
             audioPlayer?.numberOfLoops = -1
             audioPlayer?.volume = 1
-            audioPlayer?.play()
+            //audioPlayer?.play()
             audioFileName = filename
         } catch {
             print("Erro ao inicializar o AVAudioPlayer")

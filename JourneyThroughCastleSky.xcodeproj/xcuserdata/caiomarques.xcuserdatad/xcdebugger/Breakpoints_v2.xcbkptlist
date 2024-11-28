@@ -14,8 +14,8 @@
             filePath = "JourneyThroughCastleSky/Scene/BatalhaScene/BatalhaScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "423"
-            endingLineNumber = "423">
+            startingLineNumber = "424"
+            endingLineNumber = "424">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,8 +76,8 @@
             filePath = "JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "setupItemRows()"
             landmarkType = "7">
          </BreakpointContent>
@@ -92,9 +92,9 @@
             filePath = "JourneyThroughCastleSky/Scene/BatalhaScene/UIBatalhaScene.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "setupActionDescription()"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "setupItemRows()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -126,7 +126,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "401"
             endingLineNumber = "401"
-            landmarkName = "goNextScene(_:destinyDoorName:)"
+            landmarkName = "didBegin(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -254,7 +254,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "514"
             endingLineNumber = "514"
-            landmarkName = "setupTileColliders()"
+            landmarkName = "setupNodesInList()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -365,9 +365,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
-            endingLineNumber = "35"
-            landmarkName = "didMove(to:)"
-            landmarkType = "7">
+            endingLineNumber = "35">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
