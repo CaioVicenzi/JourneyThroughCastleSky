@@ -6,116 +6,136 @@
 //
 
 import Foundation
+import SpriteKit
 
-class ItemSystem {
-    var gameScene : GameScene!
-    var isInventoryOpen : Bool = false
+class ItemSystem: System {
+    var items : [Item]
     
-    
-    
-    func config (_ gameScene : GameScene) {
-        self.gameScene = gameScene
+    init(items: [Item]) {
+        self.items = items
     }
     
-    func inventoryButtonPressed () {
-        if isInventoryOpen {
-            gameScene.inventory?.removeFromParent()
-            gameScene.inventory?.children.forEach({ node in
-                node.removeFromParent()
-            })
-        } else {
-            gameScene.setupInventory()
-        
+
+    
+    /// função que pega o item mais próximo.
+    func catchNearestItem (){
+        items.forEach { item in
+            let itemNearUser = PositionSystem.isOtherNearPlayer(item.positionComponent, range: 50)
+            if itemNearUser{
+                // verifica se é um cristal, se for um cristal é outra parada.
+                let isCrystal = item.consumableComponent?.effect.type == .UP_LEVEL
+                
+                if isCrystal {
+                    useCrystal(item)
+                } else {
+                    catchItem(item)
+                }
+                
+                gameScene.dialogSystem.next()
+            }
+        }
+    }
+    
+    private func useCrystal (_ crystal : Item) {
+        let userHasKey = User.singleton.inventoryComponent.itens.contains { item in
+            item.consumableComponent?.nome == "Chaves"
         }
         
-        isInventoryOpen.toggle()
+        if userHasKey {
+            // ir para o boss (a nossa jornada para o boss começa agora
+            User.singleton.inventoryComponent.itens.removeAll { item in
+                item.consumableComponent?.nome == "Chaves"
+            }
+            
+            if User.singleton.currentPhase == .DUNGEON {
+                gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "zyroth"), reward: crystal)
+            }
+            
+            if User.singleton.currentPhase == .HALL_OF_RELICS {
+                gameScene.goBattleEnemy(Enemy(x: 0, y: 0, damage: 10, health: 100, spriteName: "relicHallBoss"), reward: crystal)
+            }
+
+        } else {
+            gameScene.dialogSystem.inputDialog("Não consigo pegar o cristal sem a chave...", person: "Você", velocity: 20)
+        }
     }
     
-    func catchItem (){
-        var nearestItem : Item? = nil
-        var nearestDistance : CGFloat = 0.0
-        
-        gameScene.itens.forEach { item in
-            if nearestItem == nil {
-                nearestItem = item
-                nearestDistance = calcDistanceItem(item)
-                
-            } else {
-                // calcular a distância
-                let distance = calcDistanceItem(item)
-                
-                if distance <= nearestDistance {
-                    nearestItem = item
-                    nearestDistance = distance
+    private func removeNearestItemSprite (_ name : String) {
+        gameScene.enumerateChildNodes(withName: name) { node, _ in
+            let positionComponent = PositionComponent(xPosition: Int(node.position.x), yPosition: Int(node.position.y))
+            if PositionSystem.isOtherNearPlayer(positionComponent, range: 50){
+                if node.parent != nil {
+                    node.removeFromParent()
                 }
             }
         }
-        
-        if let nearestItem {
-            catchItem(nearestItem)
-        }
     }
     
+    /// Essa função pega um item, exibe os diálogos e coloca no inventário
     private func catchItem (_ item : Item) {
-        // função para adicionar o balão ao inventário do usuário.
+        removeNearestItemSprite(item.consumableComponent!.nome)
+
+        // remover o item do mapa.
         item.spriteComponent.sprite.removeFromParent()
-        
-        item.dialogueComponent?.dialogs.forEach({ dialogue in
-            gameScene.dialogsToPass.append(dialogue)
-            
-            
-        })
-        
-        //item.positionComponent.yPosition = 4000
-        gameScene.buttonCatch?.removeFromParent()
+                
+        // adicionar os diálogos do item dentro da lista de diálogos para passar.
+        if let dialogs = item.dialogueComponent?.dialogs {
+            gameScene.dialogSystem.inputDialogs(dialogs)
+        }
+                
+        // adiciona também a descrição do item
+        if let sprite = item.spriteComponent.sprite.copy() as? SKSpriteNode {
+            sprite.alpha = 1
+            gameScene.descriptionsToPass.append(DescriptionToPass(sprite: sprite, description: item.readableComponent.readableDescription))
+        }
+                
+        gameScene.catchLabel?.removeFromParent()
         User.singleton.inventoryComponent.itens.append(item)
+                
+        items.removeAll { currentItem in
+            currentItem.id == item.id
+        }
     }
     
-    private func verifyItemIsNear (_ item : Item) -> Bool {
-        if item.spriteComponent.sprite.parent == nil {
-            return false
-        }
-        
-        if item.spriteComponent.sprite.parent?.name == "inventory" {
-            return false
-        }
-        
-        return calcDistanceItem(item) < 50
-    }
     
-    private func calcDistanceItem (_ item : Item) -> CGFloat {
-        let xPlayer = User.singleton.positionComponent.xPosition
-        let yPlayer = User.singleton.positionComponent.yPosition
-        
-        let xItem = item.positionComponent.xPosition
-        let yItem = item.positionComponent.yPosition
-        
-        let x = pow(CGFloat(xPlayer) - CGFloat(xItem), 2)
-        let y = pow(CGFloat(yPlayer) - CGFloat(yItem), 2)
-        
-        return sqrt(CGFloat(x) + CGFloat(y))
-    }
     
     /// Função que verifica se vai exibir o botão de pegar o item
-    func verifyButtonCatch () {
-        
-        // primeiro verifica se existe algum item perto do usuário e armazena na variável showButtonCatch
-        var showButtonCatch = false
-        gameScene.itens.forEach { item in
-            if verifyItemIsNear(item) {
-                showButtonCatch = true
-            }
-        }
-        
-        // se a showButtonCatch for verdadeira, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
-        if showButtonCatch {
-            if self.gameScene.buttonCatch?.parent == nil {
-                self.gameScene.setupButtonCatch()
+    override func update () {
+        // se a existe algum item perto do usuário, então adiciona o buttonCatch na gameScene, caso contrário, remove o buttonCatch da cena.
+        if PositionSystem.isAnyNearPlayer(items.map({ item in item.positionComponent})) && gameScene.gameState == .NORMAL {
+            if self.gameScene.catchLabel?.parent == nil {
+                self.gameScene.setupCatchLabel()
             }
         } else {
-            if self.gameScene.buttonCatch?.parent != nil {
-                self.gameScene.buttonCatch?.removeFromParent()
+            if self.gameScene.catchLabel?.parent != nil {
+                self.gameScene.catchLabel?.removeFromParent()
             }
+        }
+    }
+     
+    
+    static func useItem (_ item : Item) {
+        if let effect = item.consumableComponent?.effect {
+            switch effect.type {
+            case .CURE:
+                cure(item.consumableComponent!.effect.amount)
+            case .DAMAGE:
+                User.singleton.fighterComponent.damage += effect.amount
+            case .STAMINE:
+                User.singleton.staminaComponent.stamina += effect.amount
+            case .NONE:
+                break
+            case .UP_LEVEL:
+                User.singleton.upLevel()
+            }
+        }
+    }
+    
+    private static func cure (_ amount : Int) {
+        if User.singleton.healthComponent.health + amount >= 100 {
+            User.singleton.healthComponent.health = 100
+        } else {
+            User.singleton.healthComponent.health += amount
         }
     }
 }

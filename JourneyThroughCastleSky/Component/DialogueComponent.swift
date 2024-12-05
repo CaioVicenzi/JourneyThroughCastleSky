@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DialogueComponent {
+class DialogueComponent: Component {
     var dialogs : [Dialogue]
     
     init(dialogs: [Dialogue]) {

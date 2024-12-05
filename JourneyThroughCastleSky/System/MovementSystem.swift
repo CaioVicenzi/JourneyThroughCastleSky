@@ -8,133 +8,107 @@
 import Foundation
 import SpriteKit
 
-class MovementSystem {
-    var gameScene : GameScene!
+
+/// Uma classe onde toda a lógica relacionada ao movimento dentro de uma TopDownScene está contida.
+class MovementSystem: System {
+    // essa variável é um array de todas as teclas que estão pressionadas, a mais recente é a que vai valer, isso faz com que o movimento do usuário seja igual a outros jogos.
+    var mostRecentMove : [Move] = []
     
-    func config (_ gameScene : GameScene) {
-        self.gameScene = gameScene
+    enum Move {
+        case UP, DOWN, LEFT, RIGHT
     }
     
-    func movePlayer () {
-        let velocity : Int = User.singleton.movementComponent.velocity
-        let movimentoX = User.singleton.movementComponent.moveX
-        let movimentoY = User.singleton.movementComponent.moveY
+    
+    override func update () {
+
         
-        
-        if movimentoX >= velocity || movimentoX <= -velocity {
-            if movimentoX < 0 {
-                User.singleton.movementComponent.moveX += velocity
-                User.singleton.positionComponent.xPosition -= velocity
-            } else {
-                User.singleton.movementComponent.moveX -= velocity
-                User.singleton.positionComponent.xPosition += velocity
-            }
+        // Atualiza a posição do sprite com base nas teclas pressionadas
+        var moveX: CGFloat = 0
+        var moveY: CGFloat = 0
+        let playerSpeed = 300.0
+
+        switch mostRecentMove.last {
+            case .UP: moveY += playerSpeed
+            case .DOWN: moveY -= playerSpeed
+            case .LEFT: moveX -= playerSpeed
+            case .RIGHT: moveX += playerSpeed
+            case nil: break
         }
         
-        if movimentoY >= velocity || movimentoY <= -velocity {
-            if movimentoY < 0 {
-                User.singleton.movementComponent.moveY += velocity
-                User.singleton.positionComponent.yPosition -= velocity
-            } else {
-                User.singleton.movementComponent.moveY -= velocity
-                User.singleton.positionComponent.yPosition += velocity
-            }
+        User.singleton.spriteComponent.sprite.physicsBody?.velocity = CGVector(dx: moveX, dy: moveY)
+        let sinal = sign(User.singleton.spriteComponent.sprite.physicsBody!.velocity.dx)
+        if (sinal != 0) {
+            User.singleton.spriteComponent.sprite.xScale = sinal * -1
         }
         
         updateUserPosition()
+        updateCameraPosition()
     }
+    
     
     private func updateUserPosition () {
-        User.singleton.spriteComponent.sprite.position.x = CGFloat(User.singleton.positionComponent.xPosition)
-        User.singleton.spriteComponent.sprite.position.y = CGFloat(User.singleton.positionComponent.yPosition)
+        User.singleton.positionComponent.xPosition = Int(User.singleton.spriteComponent.sprite.position.x)
+        User.singleton.positionComponent.yPosition = Int(User.singleton.spriteComponent.sprite.position.y)
     }
     
+    func input (_ event : NSEvent) {
+        switch event.keyCode {
+            case 0x7E: // W key
+            mostRecentMove.append(.UP)
+            case 0x7B:  // A key
+                mostRecentMove.append(.LEFT)
+            case 0x7D:  // S key
+                mostRecentMove.append(.DOWN)
+            case 0x7C:  // D key
+                mostRecentMove.append(.RIGHT)
+            default:
+                break
+            }
+    }
+    
+    func keyUp (_ event : NSEvent) {
+        switch event.keyCode {
+            case 0x7E: // SETA PARA CIMA
+            endMove(.UP)
+            case 0x7B:  // SETA PARA A ESQUERDA
+                endMove(.LEFT)
+            case 0x7D:  // SETA PARA BAIXO
+                endMove(.DOWN)
+            case 0x7C:  // SETA PARA DIREITA
+                endMove(.RIGHT)
+            default:
+                break
+            }
+    }
+    
+    private func endMove (_ move : Move) {
+        mostRecentMove.removeAll { listedMove in
+            move == listedMove
+        }
+    }
+    
+    // lógica que vai atualizar a posição da câmera (isso provavelmente será alterado no futuro
     func updateCameraPosition () {
-        //self.camera?.position = helloWorld.position
-        guard let background = gameScene.background else {print("Não temos background no updateCameraPosition"); return}
         let playerSprite = User.singleton.spriteComponent.sprite
-        
         var cameraPosition = playerSprite.position
+        let cameraHalfSize = gameScene.frame.size.half
+        let bounds = gameScene.bounds
         
-        // Calcular os limites da câmera
-        let cameraHalfWidth = gameScene.size.width / 2
-        let cameraHalfHeight = gameScene.size.height / 2
-                
         // Limitar o movimento da câmera nos eixos X e Y
-        let minX = cameraHalfWidth
-        let maxX = background.size.width - cameraHalfWidth
-        let minY = cameraHalfHeight
-        let maxY = background.size.height - cameraHalfHeight
+        let minX = bounds.minX + cameraHalfSize.width
+        let maxX = bounds.maxX - cameraHalfSize.width
+        let minY = bounds.minY + cameraHalfSize.height
+        let maxY = bounds.maxY - cameraHalfSize.height
                 
-        // Verificar se a câmera está nos limites horizontais
-        if cameraPosition.x < minX {
-            cameraPosition.x = minX
-        } else if cameraPosition.x > maxX {
-            cameraPosition.x = maxX
-        }
-                
-        // Verificar se a câmera está nos limites verticais
-        if cameraPosition.y < minY {
-            cameraPosition.y = minY
-        } else if cameraPosition.y > maxY {
-            cameraPosition.y = maxY
-        }
+        
+        cameraPosition.x = Math
+            .clamp(value: cameraPosition.x, minV: minX, maxV: maxX)
+        
+        cameraPosition.y = Math
+            .clamp(value: cameraPosition.y, minV: minY, maxV: maxY)
+      
         
         // Atualizar a posição da câmera
         gameScene.cameraNode.position = cameraPosition
     }
-    
-    func keyDown (_ event : NSEvent) {
-        guard let character = event.charactersIgnoringModifiers else {
-            return
-        }
-                    
-        let moveAmount = 10
-        
-        switch character {
-        case "w" :
-            User.singleton.movementComponent.moveY += moveAmount
-        case "a" :
-            User.singleton.movementComponent.moveX -= moveAmount
-        case "s" :
-            User.singleton.movementComponent.moveY -= moveAmount
-        case "d" :
-            User.singleton.movementComponent.moveX += moveAmount
-            default: break
-        }
-    }
-    
-    func keyUp (_ event : NSEvent) {
-        User.singleton.movementComponent.moveX = 0
-        User.singleton.movementComponent.moveY = 0
-    }
-    
-    func checkColision () {
-        gameScene.enemies.forEach { enemy in
-            if isOtherNearPlayer(enemy.positionComponent, range: 30) {
-                // Troca para a próxima cena
-                let nextScene = BatalhaScene(size: gameScene.size)
-                nextScene.config(enemy: enemy)
-                enemy.spriteComponent.sprite.removeFromParent()
-                nextScene.scaleMode = .aspectFill
-                        
-                let transition = SKTransition.fade(withDuration: 1.0)
-                nextScene.config(gameScene)
-                gameScene.view?.presentScene(nextScene, transition: transition)
-            }
-        }
-    }
-    
-    func isOtherNearPlayer(_ positionOther : PositionComponent, range : CGFloat) -> Bool {
-        let otherX = positionOther.xPosition
-        let otherY = positionOther.yPosition
-        
-        let playerX = User.singleton.positionComponent.xPosition
-        let playerY = User.singleton.positionComponent.yPosition
-        
-        let distance = sqrt(pow(CGFloat(playerX) - CGFloat(otherX), 2) + pow(CGFloat(playerY) - CGFloat(otherY), 2))
-        return distance < range
-    }
-    
-    
 }

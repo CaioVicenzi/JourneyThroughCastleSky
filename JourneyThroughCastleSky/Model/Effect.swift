@@ -20,4 +20,7 @@ class Effect {
 enum EffectType {
     case CURE
     case DAMAGE
+    case STAMINE
+    case NONE
+    case UP_LEVEL
 }

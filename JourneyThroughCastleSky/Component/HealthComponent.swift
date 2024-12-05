@@ -7,10 +7,12 @@
 
 import Foundation
 
-class HealthComponent {
+class HealthComponent: Component {
     var health : Int
+    var maxHealth : Int
     
     init(health: Int) {
         self.health = health
+        self.maxHealth = 100
     }
 }
